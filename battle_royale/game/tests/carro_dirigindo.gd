@@ -196,9 +196,9 @@ func _ready() -> void:
 		print("CARRO hud_anchor=%s offset=%s parent=%s" % [hud.anchor_left, hud.offset_left, str(hud.get_parent().size)])
 		print("CARRO hud_pos=(%.0f, %.0f) tamanho=(%.0f, %.0f) viewport=%s" % [hud.global_position.x, hud.global_position.y, hud.size.x, hud.size.y, str(get_viewport().get_visible_rect().size)])
 	await _fase("acelera", 300, ["move_forward"])
-	await _fase("reduz_50", 240, ["move_back"], "abaixo:50")
-	await _fase("curva_D", 120, ["move_right"])
-	await _fase("drift_freio_mao", 120, ["jump", "move_left"])
+	await _fase("reduz_50", 240, ["move_back"], "abaixo:52")
+	await _fase("curva_D_50", 150, ["move_right"])
+	await _fase("drift_freio_mao_50", 120, ["jump", "move_left"])
 	await _fase("freia", 480, ["move_back"], "abaixo:3")
 	print("CARRO_RESULT vmax_kmh=%.1f marcha_max=%d rpm_max=%d rolagem_max=%.1f up_min=%.3f deriva_max=%.1f vida_min=%.1f vida_final=%.1f trecho_amp=%.2f" % [
 		_max_kmh, _max_marcha, _max_rpm, _max_roll, _min_up, _max_slip, _vida_min, _vida(), _trecho_amp])
