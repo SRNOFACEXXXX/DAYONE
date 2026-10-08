@@ -86,10 +86,16 @@ func _achar_trecho(terrain: IlhaTerrain, space: PhysicsDirectSpaceState3D, centr
 				var yaw := deg_to_rad(yaw_deg)
 				var frente := Basis(Vector3.UP, yaw).z
 				var a := Vector3(x, h0 + 0.8, z)
+				var lado := Basis(Vector3.UP, yaw).x
 				var livre := 150.0
-				var hit := space.intersect_ray(PhysicsRayQueryParameters3D.create(a, a + frente * 150.0, LAYER_WORLD))
-				if not hit.is_empty() and float(hit.normal.y) <= 0.5:
-					livre = a.distance_to(hit.position)
+				# três raios (esquerda, centro, direita) para cobrir a largura do carro
+				# alturas: 0,35 m (postes/cercas baixas) e 0,9 m (troncos e carros)
+				for off in [-2.0, 0.0, 2.0]:
+					for hh in [-0.45, 0.1]:
+						var o: Vector3 = a + lado * float(off) + Vector3.UP * float(hh)
+						var hit := space.intersect_ray(PhysicsRayQueryParameters3D.create(o, o + frente * 150.0, LAYER_WORLD))
+						if not hit.is_empty() and float(hit.normal.y) <= 0.5:
+							livre = minf(livre, o.distance_to(hit.position))
 				for k in range(1, 16):
 					var p := a + frente * (k * 10.0)
 					if terrain.height_world(p.x, p.z) < 2.0:
@@ -203,7 +209,7 @@ func _ready() -> void:
 		print("CARRO hud_pos=(%.0f, %.0f) tamanho=(%.0f, %.0f) viewport=%s" % [hud.global_position.x, hud.global_position.y, hud.size.x, hud.size.y, str(get_viewport().get_visible_rect().size)])
 	await _fase("acelera", 300, ["move_forward"])
 	await _fase("reduz_50", 240, ["move_back"], "abaixo:52")
-	await _fase("curva_D_50", 150, ["move_right"])
+	await _fase("curva_D_50", 60, ["move_right"])
 	await _fase("drift_freio_mao_50", 120, ["jump", "move_left"])
 	await _fase("reacelera_40", 300, ["move_forward"], "acima:40")
 	await _fase("freia", 480, ["move_back"], "abaixo:3")

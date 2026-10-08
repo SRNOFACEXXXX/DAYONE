@@ -9,6 +9,8 @@ const ENGINE_FORCE_N := 6400.0
 const REVERSE_FORCE_N := 3900.0
 const SERVICE_BRAKE_N := 44.0
 const HANDBRAKE_N := 72.0
+## Freio de mão ao DIRIGIR (derrapar): bem mais fraco que o de estacionar (HANDBRAKE_N), senão o carro trava em vez de deslizar.
+const HANDBRAKE_DRIVE_N := 12.0
 const AERO_DOWNFORCE_COEFFICIENT := 0.7
 const MAX_AERO_DOWNFORCE_N := 650.0
 const MAX_STEER := deg_to_rad(25.0)
@@ -30,7 +32,7 @@ static var superficie_chao := Callable()
 ## tempo capotado até endireitar sozinho e inclinação visual da carroceria.
 @export var vida_max := 100.0
 @export var aderencia_lateral := 3.0
-@export var aderencia_freio_mao := 0.55
+@export var aderencia_freio_mao := 0.3
 ## Batida só conta acima de 9 m/s de variação horizontal (lateral/frontal). Quicadas de terreno são ignoradas.
 @export var limiar_impacto_mps := 9.0
 @export var dano_por_mps := 2.6
@@ -76,7 +78,9 @@ var _modelo: Node3D
 var _fumaca: CPUParticles3D
 var _vel_anterior := Vector3.ZERO
 var _acel_suave := Vector3.ZERO
-var _impacto_cooldown := 0.0
+var _janela_t := 0.0
+var _janela_vel := Vector3.ZERO
+var _janela_dano := 0.0
 var _tempo_capotado := 0.0
 var _freio_mao := false
 var _freio_atual := 0.0
@@ -117,10 +121,9 @@ func _build(model: Node3D) -> void:
 	# VehicleWheel3D congelado desde a criação pode inicializar seus pontos em 0,0,0.
 	freeze = false
 	add_to_group("drivable_vehicle")
-	# Contatos reportados alimentam o dano por colisão (body_entered).
+	# Contatos reportados alimentam o dano por colisão (get_colliding_bodies, ver _registrar_impacto).
 	contact_monitor = true
 	max_contacts_reported = 4
-	body_entered.connect(_on_body_entered)
 	vida = vida_max
 	if Game.test_args.has("combustivel"):
 		usar_combustivel = true
@@ -388,8 +391,8 @@ func _finish_spawn() -> void:
 func _physics_process(dt: float) -> void:
 	# Aceleração do quadro anterior (rolagem visual) e velocidade antes do passo de física (impacto).
 	var acel_mundo := (linear_velocity - _vel_anterior) / maxf(dt, 0.0001)
+	_registrar_impacto(dt)
 	_vel_anterior = linear_velocity
-	_impacto_cooldown = maxf(_impacto_cooldown - dt, 0.0)
 	_atualizar_motor(dt)
 	if freeze and driver == null and _entry_timer < 0.0 and _exit_timer < 0.0 and not _parking and not _paineis_ativos:
 		return
@@ -491,10 +494,11 @@ func _drive(dt: float) -> void:
 			# Ré: força cai conforme ganha velocidade para trás (sem disparo de marcha ré).
 			motor = REVERSE_FORCE_N * throttle * _fator_motor() * (1.0 - .5 * clampf(-forward_speed / MAX_REVERSE_MPS, 0.0, 1.0))
 	else:
-		freio = 2.5
+		# sem acelerador: freio leve em movimento; parado (<1 m/s) segura o carro numa ladeira
+		freio = 8.0 if speed < 1.0 else 2.5
 	_freio_mao = not blocked and Input.is_action_pressed("jump")
 	if _freio_mao:
-		freio = HANDBRAKE_N
+		freio = HANDBRAKE_DRIVE_N
 		motor = 0.0
 	# Freio com rampa: o pedal não vai de 0 a 44 de um quadro para o outro.
 	_freio_atual = move_toward(_freio_atual, freio, dt * (600.0 if freio > _freio_atual else 900.0))
@@ -608,17 +612,30 @@ func _endireitar() -> void:
 
 
 ## Dano por colisão: a variação de velocidade da batida (m/s) acima do limiar vira % de vida.
-func _on_body_entered(body: Node) -> void:
-	if freeze or body == driver or _impacto_cooldown > 0.0 or vida <= 0.0:
+## Dano por colisão, por quadro: enquanto o carro encosta em algo que não é terreno (nem o motorista), a variação
+## de velocidade é medida desde o início do contato (janela que dura 0,3 s após o último contato). Só o dano novo
+## é aplicado, então parar em duas quadros contra a mesma cerca conta como uma batida só.
+func _registrar_impacto(dt: float) -> void:
+	if freeze or vida <= 0.0:
+		_janela_t = 0.0
 		return
-	# Terreno (chassi batendo no relevo) não é batida: ver Estab.e_terreno e dano_colisao.
-	if Estab.e_terreno(String(body.name)):
+	var batendo := false
+	for c in get_colliding_bodies():
+		if c != driver and not Estab.e_terreno(String(c.name)):
+			batendo = true
+			break
+	if not batendo:
+		_janela_t = maxf(_janela_t - dt, 0.0)
 		return
-	var dano := Estab.dano_colisao(_vel_anterior - linear_velocity, limiar_impacto_mps, dano_por_mps)
-	if dano <= 0.0:
-		return
-	_impacto_cooldown = 0.25
-	vida = maxf(vida - dano, 0.0)
+	if _janela_t <= 0.0:
+		_janela_vel = _vel_anterior
+		_janela_dano = 0.0
+	_janela_t = 0.3
+	var dano_total := Estab.dano_colisao(_janela_vel - linear_velocity, limiar_impacto_mps, dano_por_mps)
+	var novo := dano_total - _janela_dano
+	if novo > 0.0:
+		_janela_dano = dano_total
+		vida = maxf(vida - novo, 0.0)
 
 
 func start_entry(s: Soldier) -> bool:
