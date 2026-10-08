@@ -61,8 +61,8 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 	terrain = t
 	if not FileAccess.file_exists(path):
 		return 0
-	var data = JSON.parse_string(FileAccess.get_file_as_string(path))
-	var lista: Array = data if data is Array else data.get("instancias", [])
+	var data = JsonSeguro.ler(path)
+	var lista: Array = data if data is Array else JsonSeguro.lista(data, "instancias")
 	var meshes := {}
 	var grupos := {}          # "tipo|bx|bz|base[|perto|longe]" -> Array[Transform3D]
 	var copas := {}           # "base|cx|cz" -> Array[Transform3D] (impostor de copa, células de BLOCO_COPA)
@@ -74,10 +74,12 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 		casas.append([Vector2((c as Node3D).global_position.x, (c as Node3D).global_position.z), (c as Node3D).rotation.y])
 	# casas extras (casas_pacote.json) só nascem depois, no Detalhes: usa a mesma pose já ajustada (casas_ajuste.json)
 	if FileAccess.file_exists("res://maps/ilha/casas_pacote.json"):
-		var ex: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/casas_pacote.json"))
+		var ex: Dictionary = JsonSeguro.dict("res://maps/ilha/casas_pacote.json")
 		var aj: Dictionary = CasaPacote.ajustes()
 		var k := 0
-		for c in ex.get("casas", []):
+		for c in JsonSeguro.lista(ex, "casas"):
+			if not c is Dictionary:
+				continue
 			var a: Dictionary = aj.get("extra_%d" % k, {})
 			var yw := deg_to_rad(float(a.yaw_deg)) if a.has("yaw_deg") else deg_to_rad(float(c.get("rot_deg", 0.0)))
 			casas.append([Vector2(float(c.x) + float(a.get("dx", 0.0)), -float(c.y) - float(a.get("dy", 0.0))), yw])

@@ -1,5 +1,7 @@
 class_name PlantedBomb
 extends Node3D
+
+const BOMB_WORLD := preload("res://assets/models/weapons/bomb_world.tscn")
 ## The planted C4: model, blinking LED, accelerating beeps, explosion hook.
 
 var match_ref: Node
@@ -19,7 +21,7 @@ func setup(m: Node, timer: float) -> void:
 	time_left = timer
 	var path := "res://assets/models/weapons/bomb_world.tscn"
 	if ResourceLoader.exists(path):
-		var model: Node3D = load(path).instantiate()
+		var model: Node3D = BOMB_WORLD.instantiate()
 		add_child(model)
 	else:
 		var mi := MeshInstance3D.new()

@@ -7,6 +7,11 @@ const VM_SHADER := preload("res://shaders/viewmodel.gdshader")
 ## Braços do soldado de docs/ref/ak47_fps.jpg (tools/build_fp_bracos.py): mãos cor de pele facetadas + manga camuflada,
 ## no mesmo esqueleto dos *_fp.glb. Trocam, em tempo de execução, as malhas de braço originais do pacote.
 const ARMS_SCENE := "res://assets/models/weapons/fp_bracos.glb"
+const ARMS_CENA := preload("res://assets/models/weapons/fp_bracos.glb")
+const FLASH_SHADER := preload("res://shaders/viewmodel_flash.gdshader")
+const MUZZLE_FLASH_TEX := preload("res://fx/textures/muzzle_flash.png")
+const ACOG_CENA := preload("res://assets/models/weapons/wf/acog.glb")
+const REDDOT_CENA := preload("res://assets/models/weapons/wf/reddot.glb")
 const SLEEVE_TEX := "res://assets/models/characters/soldado_camo.png"
 const OLD_ARM_MESHES := ["Adult_Male_Body", "Outwear_Adult_Male"]
 
@@ -108,10 +113,10 @@ func _build_flash() -> void:
 	var qm := QuadMesh.new()
 	qm.size = Vector2(0.22, 0.22)
 	var m := ShaderMaterial.new()
-	m.shader = load("res://shaders/viewmodel_flash.gdshader")
+	m.shader = FLASH_SHADER
 	var tp := "res://fx/textures/muzzle_flash.png"
 	if ResourceLoader.exists(tp):
-		m.set_shader_parameter("tex", load(tp))
+		m.set_shader_parameter("tex", MUZZLE_FLASH_TEX)
 	m.set_shader_parameter("viewmodel_fov", _vm_fov())   # mesmo FOV da arma: o clarão nasce na boca do cano
 	qm.material = m
 	mi.mesh = qm
@@ -453,7 +458,7 @@ func _swap_arms(root: Node) -> void:
 		if c is MeshInstance3D and (c as MeshInstance3D).name in OLD_ARM_MESHES:
 			(c as MeshInstance3D).visible = false
 			c.name = "_antigo_" + String(c.name)
-	var src: Node = load(ARMS_SCENE).instantiate()
+	var src: Node = ARMS_CENA.instantiate()
 	var mi := src.find_child("BracosFP", true, false) as MeshInstance3D
 	if mi:
 		mi.get_parent().remove_child(mi)
@@ -534,7 +539,7 @@ func _aplicar_acog() -> void:
 	var arq := "res://assets/models/weapons/wf/%s.glb" % ("acog" if acog_installed else "reddot")
 	if not (acog_installed or reddot_installed) or t.is_empty() or _mira_no == null or not ResourceLoader.exists(arq):
 		return
-	_acog_node = load(arq).instantiate()
+	_acog_node = (ACOG_CENA if acog_installed else REDDOT_CENA).instantiate()   # mesmo arquivo que arq
 	_mira_no.add_child(_acog_node)
 	_convert_materials(_acog_node)
 	_alternar_miras_abertas(false)   # uma só mira: com ACOG/holográfica instalada, alça e massa do modelo somem
@@ -559,6 +564,7 @@ func _aplicar_acog() -> void:
 ## Holográfica: wf/../fp/holo_lp.glb (Fab "Holographic Sight", low poly) — eixo do modelo = +X, base em y -0,0388 m,
 ## centro da janela em y 0,0511 m. ACOG: wf/acog.glb (eixo -Z, base 3,8 cm abaixo do eixo óptico).
 const HOLO_GLB := "res://assets/models/fp/holo_lp.glb"
+const HOLO_CENA := preload("res://assets/models/fp/holo_lp.glb")
 const HOLO_ESC := Vector3(0.9, 0.9, 0.9)   # modelo em tamanho real (EXPS3 ~7,2 cm de altura com a base)
 
 
@@ -568,7 +574,7 @@ func _aplicar_mira_rig() -> void:
 		return
 	var base := Vector3(float(t[0]), float(t[1]), float(t[2]))
 	if reddot_installed:
-		_acog_node = load(HOLO_GLB).instantiate()
+		_acog_node = HOLO_CENA.instantiate()
 		var k := HOLO_ESC * 100.0
 		# medidas do modelo (tests/ver_modelo.tscn, vista frontal, pixels -> m): base visível em y 0 (a AABB vai a -0,039 por
 		# vértices soltos invisíveis), centro da janela em y 0,0509, janela 3,7 x 2,8 cm
@@ -581,7 +587,7 @@ func _aplicar_mira_rig() -> void:
 		_massa = janela + Vector3(0, 0, 20.0)
 		_alivio = float(_miras_rig.get("alivio_holo", 0.26))
 	else:
-		_acog_node = load("res://assets/models/weapons/wf/acog.glb").instantiate()
+		_acog_node = ACOG_CENA.instantiate()
 		var k2 := 100.0 * ACOG_ESCALA
 		_acog_node.scale = Vector3.ONE * k2
 		_acog_node.rotation = Vector3(0.0, PI, 0.0)

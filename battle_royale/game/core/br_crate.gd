@@ -12,6 +12,8 @@ const MUNICAO := {"762": ["ammo_762", 30], "556": ["ammo_556", 30], "9mm": ["amm
 # caixa de armamento do pacote do usuário (Assets/caixa de armamentos): corpo e tampa separados
 const CORPO := "res://assets/models/cenario/caixas/caixa_3_corpo.glb"
 const TAMPA := "res://assets/models/cenario/caixas/caixa_3_tampa.glb"
+const CORPO_CENA := preload("res://assets/models/cenario/caixas/caixa_3_corpo.glb")   # caixa: antes load() a cada construção
+const TAMPA_CENA := preload("res://assets/models/cenario/caixas/caixa_3_tampa.glb")
 const MODELOS_ITEM := {
 	"vest": "res://assets/models/props/colete_placas.glb",
 	"grenade": "res://assets/models/weapons/wf/rgd5.glb",
@@ -70,11 +72,11 @@ func _sortear() -> void:
 func _build_visual() -> void:
 	_visual = Node3D.new()
 	add_child(_visual)
-	var corpo: Node3D = load(CORPO).instantiate()
+	var corpo: Node3D = CORPO_CENA.instantiate()
 	_visual.add_child(corpo)
 	# dobradiça na aresta de trás (-Z) do topo do corpo; medidas tiradas das próprias malhas
 	var cb := _aabb(corpo)
-	var tampa: Node3D = load(TAMPA).instantiate()
+	var tampa: Node3D = TAMPA_CENA.instantiate()
 	var tb := _aabb(tampa)
 	_tampa = Node3D.new()
 	_tampa.position = Vector3(cb.get_center().x, cb.end.y, cb.position.z)

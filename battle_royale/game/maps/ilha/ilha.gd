@@ -43,7 +43,7 @@ func _ready() -> void:
 func _build_map_async() -> void:
 	Loading.show_progress("Lendo o mapa e as texturas...", 5.0)
 	Loading.marcar_passo("layout")
-	layout = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/ilha_layout.json"))
+	layout = JsonSeguro.dict("res://maps/ilha/ilha_layout.json")
 	if Loading.ceder():
 		await get_tree().process_frame
 	Loading.marcar_passo("ambiente")
@@ -371,8 +371,8 @@ func _coberturas_async() -> void:
 	var i := 0
 	var lista: Array = layout.cobertura_campo_aberto.duplicate()
 	if FileAccess.file_exists("res://maps/ilha/gameplay_01.json"):
-		var gp: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/gameplay_01.json"))
-		lista.append_array(gp.get("coberturas_novas", []))
+		var gp: Dictionary = JsonSeguro.dict("res://maps/ilha/gameplay_01.json")
+		lista.append_array(JsonSeguro.lista(gp, "coberturas_novas"))
 		_marcos(gp)
 	for c in lista:
 		i += 1
@@ -411,14 +411,14 @@ func _plataformas_carros() -> Array:
 			"res://maps/ilha/cenario_atualizacao.json"]
 
 	for file_path in files:
-		if not FileAccess.file_exists(file_path):
-			continue
-		var data = JSON.parse_string(FileAccess.get_file_as_string(file_path))
+		var data = JsonSeguro.ler(file_path, TYPE_DICTIONARY)
 		if data == null:
 			continue
 
-		for area in data.get("areas", []):
-			for prop in area.get("props", []):
+		for area in JsonSeguro.lista(data, "areas"):
+			for prop in JsonSeguro.lista(area, "props"):
+				if not prop is Dictionary:
+					continue
 				var tipo = String(prop.get("tipo", ""))
 				if not tipo.begins_with("cenario/carros/carro_"):
 					continue
@@ -440,8 +440,8 @@ func _bloqueios_terreno() -> Array:
 			out.append([Vector2(float(pts[i][0]), -float(pts[i][1])), Vector2(float(pts[i + 1][0]), -float(pts[i + 1][1])), float(tr.largura_m) * 0.5 + 6.0])
 	var lista: Array = []
 	if FileAccess.file_exists("res://maps/ilha/cenario_atualizacao.json"):
-		var ca: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/cenario_atualizacao.json"))
-		lista = ca.get("pontes", []).duplicate()
+		var ca: Dictionary = JsonSeguro.dict("res://maps/ilha/cenario_atualizacao.json")
+		lista = JsonSeguro.lista(ca, "pontes").duplicate()
 	lista.append({"centro": [-100.0, -86.0], "direcao_deg": -45.0, "comprimento_m": 40.0, "largura_m": 6.0})   # crista da barragem
 	for p in lista:
 		var dv := Vector2(cos(deg_to_rad(float(p.direcao_deg))), sin(deg_to_rad(float(p.direcao_deg))))

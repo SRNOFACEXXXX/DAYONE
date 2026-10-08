@@ -177,13 +177,16 @@ func _spawn_br_loot_async() -> void:
 	var n := 0
 	var arq := "res://maps/ilha/pontos_loot.json"
 	if FileAccess.file_exists(arq) and blk:
-		var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(arq))
-		for id in data.get("predios", {}):
+		var data: Dictionary = JsonSeguro.dict(arq)
+		var predios: Dictionary = JsonSeguro.mapa(data, "predios")
+		for id in predios:
 			var corpo := blk.get_node_or_null(NodePath(String(id))) as Node3D
 			if corpo == null or corpo.has_meta("casa_pacote"):
 				continue   # casas do pacote têm saque nos móveis
 			var k := 0
-			for pt in data.predios[id]:
+			for pt in (predios[id] if predios[id] is Array else []):
+				if not pt is Dictionary:
+					continue
 				# casas têm saque nos móveis (BRMovel); caixa de suprimento só em galpão/container/prédio militar (tier alto)
 				if String(pt.get("sala", "")) in ["quarto", "cozinha", "sala"] and String(pt.get("tier", "medio")) != "alto":
 					continue

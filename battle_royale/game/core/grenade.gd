@@ -1,5 +1,7 @@
 class_name Grenade
 extends RigidBody3D
+
+const RGD5_CENA := preload("res://assets/models/weapons/wf/rgd5.glb")   # granada: antes load() a cada arremesso
 ## Granada de fragmentação (tecla G): pavio de 2,5 s, dano em raio com queda linear; o autor recebe metade do dano.
 
 const PAVIO := 2.5
@@ -33,7 +35,7 @@ func _ready() -> void:
 	pm.bounce = 0.35
 	pm.friction = 0.8
 	physics_material_override = pm
-	var vis: Node3D = load("res://assets/models/weapons/wf/rgd5.glb").instantiate()
+	var vis: Node3D = RGD5_CENA.instantiate()
 	vis.position.y = -0.06
 	add_child(vis)
 

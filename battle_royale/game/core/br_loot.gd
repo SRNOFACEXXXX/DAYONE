@@ -1,5 +1,7 @@
 class_name BRLoot
 extends Node3D
+
+const MOCHILA_CENA := preload("res://assets/models/props/tactical_backpack.glb")   # mochila no chão: antes load() a cada item
 ## Contentor físico de saque. Os itens são definidos em br_loot.json, sem sorteio.
 
 var contents: BRInventory
@@ -28,7 +30,7 @@ func _build_visual() -> void:
 			has_bag = true
 			break
 	if has_bag and ResourceLoader.exists("res://assets/models/props/tactical_backpack.glb"):
-		_visual = load("res://assets/models/props/tactical_backpack.glb").instantiate()
+		_visual = MOCHILA_CENA.instantiate()
 	else:
 		var crate := MeshInstance3D.new()
 		var mesh := BoxMesh.new()

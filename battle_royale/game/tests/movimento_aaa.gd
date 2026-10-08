@@ -184,6 +184,21 @@ func _testes() -> void:
 	s.in_sprint = false
 	s.in_move = Vector2.ZERO
 
+	# 9. parede: andar em diagonal contra ela desliza ao longo dela (não gruda nem para)
+	_caixa(Vector3(10.5, 1.0, 0), Vector3(1, 2, 200))         # parede em x = 10..11, de z = -100 a 100
+	_zerar(Vector3(8.0, 0.1, 0))
+	await _frames(20)
+	s.in_move = Vector2(0.7071, -0.7071)                     # direita + trás = diagonal (+X, +Z) contra a parede
+	await _frames(20)
+	var z0 := s.global_position.z
+	await _frames(40)
+	var dz := s.global_position.z - z0
+	var vz := s.velocity.z
+	s.in_move = Vector2.ZERO
+	_ok(s.global_position.x < 9.7 and dz > 0.8 and s.is_on_floor(),
+		"parede diagonal: para em x=%.2f e desliza %.2f m ao longo dela" % [s.global_position.x, dz])
+	_ok(vz > 2.0, "parede diagonal: a velocidade ao longo da parede não zera (vz=%.2f)" % vz)
+
 
 ## Anda parado no ar (solta de altura_disparo m do chão) e aperta pulo quando passa por essa altura.
 ## Devolve o tempo entre o aperto e o pouso (s) e a maior velocidade vertical nos 3 quadros seguintes.

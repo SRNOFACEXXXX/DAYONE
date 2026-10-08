@@ -8,7 +8,7 @@ const N := 601
 const STEP := 2.0
 const ORIGIN := -600.0
 const MIN_PROPS := 40
-const MAX_PROPS := 250          # orçamento de draw calls: total de props do arquivo (fundidos em MultiMesh por célula)
+const MAX_PROPS := 300          # orçamento de draw calls: total de props do arquivo (fundidos em MultiMesh por célula)
 const MAX_RAIO := 45.0          # mancha: nenhum prop a mais de 45 m do centro da área
 const ARQ_LORE := "res://data/lore/pontos.json"
 const MIN_AREAS := 18
@@ -30,7 +30,10 @@ func _ready() -> void:
 	var cercas := 0
 	var areas: Array = dados.areas
 	_checar(areas.size() >= MIN_AREAS, "esperadas >= %d áreas, há %d" % [MIN_AREAS, areas.size()])
-	for area in areas:
+	var ruido: Array = dados.get("ruido", [])
+	_checar(ruido.size() >= 50, "ruído autoral: esperados >= 50 props, há %d" % ruido.size())
+	# o ruído passa pelas mesmas checagens de terra/água/declive/casa que as áreas (como uma área dispersa, sem raio)
+	for area in areas + [{"nome": "ruido (grupos soltos)", "lore": "ruido", "disperso": true, "props": ruido}]:
 		var pts: Array = area.get("props", [])
 		var dispersa := bool(area.get("disperso", false))   # áreas costeiras de propósito espalhadas (sem raio de mancha)
 		_checar(pts.size() >= (1 if dispersa else 3), "área '%s' com poucos props" % area.get("nome", "?"))

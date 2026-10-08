@@ -27,19 +27,25 @@ func _ready() -> void:
 		var props: Array = area.get("props", [])
 		if props.is_empty():
 			continue
-		for p in props:
-			c += Vector2(float(p.x), float(p.y))
-		c /= float(props.size())
+		var disperso := bool(area.get("disperso", false))
 		var raio := 8.0
-		for p in props:
-			raio = maxf(raio, c.distance_to(Vector2(float(p.x), float(p.y))))
-		var dist := clampf(raio * 1.6 + 6.0, 14.0, 60.0)
-		# câmera ao sul-sudoeste do centro (design y menor), olhando para ele
-		var cx := c.x - dist * 0.55
+		if disperso:   # área espalhada (costa): o centro médio cai no interior, então mira o primeiro ponto
+			c = Vector2(float(props[0].x), float(props[0].y))
+			raio = 12.0
+		else:
+			for p in props:
+				c += Vector2(float(p.x), float(p.y))
+			c /= float(props.size())
+			for p in props:
+				raio = maxf(raio, c.distance_to(Vector2(float(p.x), float(p.y))))
+		var dist := clampf(raio * 1.6 + 8.0, 20.0, 60.0)   # mínimo 20 m: câmera fora da copa das árvores
+		# câmera alterna entre sul-sudoeste e sul-sudeste (árvore na frente), mais alta com a distância, olhando o centro
+		var lado := -0.55 if n % 2 == 1 else 0.55
+		var cx := c.x + dist * lado
 		var cz := -(c.y - dist * 0.85)
 		var tx := c.x
 		var tz := -c.y
-		cam.global_position = Vector3(cx, t.height_world(cx, cz) + 4.5, cz)
+		cam.global_position = Vector3(cx, t.height_world(cx, cz) + 5.0 + dist * 0.35, cz)
 		cam.look_at(Vector3(tx, t.height_world(tx, tz) + 1.0, tz))
 		for i in 40:
 			await get_tree().process_frame
