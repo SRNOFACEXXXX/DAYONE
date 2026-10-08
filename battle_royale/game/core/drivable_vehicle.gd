@@ -555,44 +555,16 @@ func _nome_superficie(wheel: VehicleWheel3D) -> String:
 	return "asfalto"
 
 
-## Dinâmica por quadro com o carro livre: aderência lateral (drift com freio de mão), trava de
-## rolagem/arfagem no chão, inclinação visual da carroceria e endireitar após capotar.
-func _atualizar_estabilidade(dt: float, acel_mundo: Vector3) -> void:
-	var inv := global_basis.inverse()
-	_acel_suave = _acel_suave.lerp(inv * acel_mundo, 1.0 - exp(-dt * 8.0))
-	if _modelo:
-		_modelo.rotation = Vector3(-_acel_suave.z * arfagem_carroceria, 0.0, _acel_suave.x * inclinacao_carroceria)
+## Com o carro livre: só endireita depois de capotar. A física de pneu é a do VehicleBody3D (como na versão estável):
+## a "trava de rolagem" que reescrevia angular_velocity a cada quadro e o impulso lateral artificial apagavam a guinada
+## (carro com rodas viradas e giro 0°, medido em tests/carro_curva.tscn) e foram removidos.
+func _atualizar_estabilidade(dt: float, _acel_mundo: Vector3) -> void:
 	if Estab.esta_capotado(global_basis.y.dot(Vector3.UP)):
 		_tempo_capotado += dt
 		if _tempo_capotado >= tempo_recuperacao and linear_velocity.length() < 5.0:
 			_endireitar()
 	else:
 		_tempo_capotado = 0.0
-	var soma := 0.0
-	var contatos := 0
-	for w in _wheels:
-		if w.is_in_contact():
-			contatos += 1
-			soma += _fator_roda(w).x
-	if contatos == 0:
-		return
-	var aderencia := soma / float(contatos)
-	# Pneu absorve a velocidade lateral por quadro, com limite de aceleração. Com freio de mão
-	# a absorção cai e o limite também, então o carro derrapa de forma controlada.
-	var v_lat := (inv * linear_velocity).x
-	var fator_mao := aderencia_freio_mao if _freio_mao else 1.0
-	var taxa := aderencia_lateral * aderencia * fator_mao
-	var limite := ACEL_LATERAL_MAX * fator_mao * dt
-	var dv := clampf(v_lat * clampf(taxa * dt, 0.0, 0.9), -limite, limite)
-	if absf(dv) > 0.0:
-		apply_central_impulse(-global_basis.x * dv * mass)
-	# Trava de rolagem/arfagem enquanto há contato com o chão (2+ rodas): reduz o balanço sem travar a guinada.
-	if contatos >= 2:
-		var ang := inv * angular_velocity
-		var amortece := exp(-dt * 3.0)
-		ang.x *= amortece
-		ang.z *= amortece
-		angular_velocity = global_basis * ang
 
 
 ## Endireita o carro capotado mantendo a direção horizontal, um pouco acima do ponto atual.
