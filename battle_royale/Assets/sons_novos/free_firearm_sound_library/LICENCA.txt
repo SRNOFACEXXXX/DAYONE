@@ -1,0 +1,12 @@
+Free Firearm Sound Library (Still North Media / freefirearmsoundlibrary.com) - "Prepared SFX Library".
+Licença declarada pelo autor: royalty-free, uso livre em projetos comerciais e não comerciais, sem atribuição obrigatória
+(tratada como CC0 no projeto). Origem local: dust_fps/.local/firearm-sfx.7z (baixado em 2026-09-24) e raw/audio_user/lib.
+Página: https://freefirearmsoundlibrary.com/
+Arquivos usados (ver Prepared Master Sheet.csv para descrição: near = perto do atirador, mid = média distância):
+AK-47 C_28P (near), C_31P (mid), C_27P (rajada longa near), C_36P (rajada longa mid)
+AR-15 D_32P (near), D_24P (mid)            -> M4 e M249 (M249 com tom 0,93)
+Walther PPQ X_39P (near), X_31P (mid)      -> Glock
+1911 A_42P (near), A_34P (mid)             -> USP
+Carl Gustav M45 G_31P, G_20P, G_35P, G_24P -> Uzi
+Mosin Nagant M_21P, M_26P                  -> Mosin
+Tikka T3 .30-06 W_29P, W_24P (tom 0,78)    -> M107
