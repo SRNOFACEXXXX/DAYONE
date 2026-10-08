@@ -12,6 +12,7 @@ func _ready() -> void:
 	Game.test_mode = true
 	Game.test_args["bots"] = "0"
 	Game.test_args["chao"] = "1"
+	Game.test_args["sem_stamina"] = "1"   # mede o custo de frame do sprint; fôlego fica fora da medida
 	m = load("res://core/br_match.tscn").instantiate()
 	add_child(m)
 	await m.match_initialized

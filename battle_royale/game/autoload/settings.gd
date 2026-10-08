@@ -12,6 +12,8 @@ var fov := 90.0                   # FOV horizontal em 4:3 (padrão do CS)
 var viewmodel_fov := 62.0
 var viewmodel_bob := 1.0
 var camera_bob := 1.0   # 0–1: balanço da câmera ao andar (a arma balança à parte)
+var sprint_fov := true            # abre o FOV ~4° ao correr no chão (desligue se enjoar)
+var stamina_ativa := true         # fôlego de corrida (Shift): gasta correndo e recupera parado
 
 # --- áudio (0..1) ---
 var master_volume := 0.85
@@ -131,7 +133,7 @@ func save_settings() -> void:
 
 
 func _keys() -> Array[String]:
-	return ["sensitivity", "invert_y", "fov", "viewmodel_fov", "viewmodel_bob", "camera_bob", "master_volume",
+	return ["sensitivity", "invert_y", "fov", "viewmodel_fov", "viewmodel_bob", "camera_bob", "sprint_fov", "stamina_ativa", "master_volume",
 		"sfx_volume", "music_volume", "voice_volume", "quality", "render_scale", "fullscreen",
 		"vsync", "show_fps", "max_fps", "crosshair_color", "crosshair_size", "crosshair_gap",
 		"crosshair_thickness", "crosshair_dot", "crosshair_dynamic", "player_name"]

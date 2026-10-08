@@ -305,6 +305,10 @@ func _update_sprint(dt: float) -> void:
 
 ## Fôlego de corrida: gasta correndo (inclusive no ar após um sprint) e recupera sem correr.
 func _stamina_tick(correndo: bool, dt: float) -> void:
+	if not stamina_ligada():
+		stamina = 1.0
+		_stamina_cansado = false
+		return
 	if correndo:
 		stamina = maxf(stamina - STAMINA_DRENO * dt, 0.0)
 	else:
@@ -313,6 +317,15 @@ func _stamina_tick(correndo: bool, dt: float) -> void:
 		_stamina_cansado = true
 	elif _stamina_cansado and stamina >= STAMINA_RETORNO:
 		_stamina_cansado = false
+
+
+## Ajuste do jogador (Ajustes > Fôlego de corrida) ou teste com --sem_stamina: sem fôlego, corre sempre.
+func stamina_ligada() -> bool:
+	return Settings.stamina_ativa and not Game.test_args.has("sem_stamina")
+
+
+func stamina_cansado() -> bool:
+	return _stamina_cansado
 
 
 ## Borda do aperto de pulo: o momento em que `in_jump` passa a verdadeiro (não enquanto segura).

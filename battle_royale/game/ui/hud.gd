@@ -39,6 +39,38 @@ class Quickbar extends Control:
 					qty = str(int(it.qty))
 			YUI.draw_slot(self, font, rect, str(i + 1), "" if it.is_empty() else String(it.id), qty, ativo, it.is_empty())
 
+## Fôlego de corrida: fio fino no centro-baixo, logo acima da barra de acesso rápido. Só aparece quando falta fôlego
+## (ou quando está cansado); some devagar ao encher. Cansado: vermelho pulsando. Desligado em Ajustes, some.
+class FolegoBar extends Control:
+	var soldier: Soldier
+	var _vis := 0.0
+
+	func _init() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		modulate.a = 0.0
+
+	func _process(dt: float) -> void:
+		var mostrar := soldier != null and soldier.alive and Settings.stamina_ativa and (soldier.stamina < 0.999 or soldier.stamina_cansado())
+		_vis = move_toward(_vis, 1.0 if mostrar else 0.0, dt * 3.0)
+		modulate.a = _vis
+		if _vis > 0.0:
+			queue_redraw()
+
+	func _draw() -> void:
+		if soldier == null:
+			return
+		var r := Rect2(Vector2.ZERO, size)
+		var f := clampf(soldier.stamina, 0.0, 1.0)
+		var cansado := soldier.stamina_cansado()
+		draw_rect(r, Color(0, 0, 0, 0.5), true)
+		var cor := UIStyle.DANGER if cansado else UIStyle.ACCENT
+		if cansado:
+			cor = cor.lerp(Color.WHITE, 0.25 * (0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.01)))
+		draw_rect(Rect2(0, 0, r.size.x * f, r.size.y), cor, true)
+		# marca de 20%: abaixo dela, quem ficou sem fôlego ainda não volta a correr
+		draw_rect(Rect2(r.size.x * Soldier.STAMINA_RETORNO, 0, 1, r.size.y), Color(1, 1, 1, 0.35), true)
+
+
 var match_ref: Match
 var root: Control
 var crosshair: Crosshair
@@ -60,6 +92,7 @@ var lbl_reload_hint: Label
 var weapon_list: VBoxContainer
 var _weapon_list_t := 0.0
 var quickbar: Quickbar
+var folego: FolegoBar
 # dinheiro
 var lbl_money: Label
 var lbl_money_delta: Label
@@ -242,6 +275,9 @@ func _build() -> void:
 	quickbar.name = "Quickbar"
 	quickbar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place(quickbar, Control.PRESET_CENTER_BOTTOM, -220, -84, 220, -16)
+	folego = FolegoBar.new()
+	folego.name = "Folego"
+	_place(folego, Control.PRESET_CENTER_BOTTOM, -110, -92, 110, -88)
 
 	# ---- topo-centro: vivos + placar + cronômetro + rodada
 	var top := VBoxContainer.new()
@@ -392,6 +428,7 @@ func _process(dt: float) -> void:
 		var local_controller := lp.controller as PlayerController if lp.controller else null
 		quickbar.modulate.a = 0.28 if local_controller and not local_controller._third_person and local_controller._ads_amount > 0.05 else 1.0
 		quickbar.queue_redraw()
+		folego.soldier = lp
 		var low := view.health <= 25
 		lbl_health.text = str(view.health)
 		_cor(lbl_health, UIStyle.DANGER if low else UIStyle.TEXT)

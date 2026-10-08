@@ -12,6 +12,8 @@ func _ready() -> void:
 	_slider("FOV da arma", 50.0, 75.0, 1.0, Settings.viewmodel_fov, func(v): Settings.viewmodel_fov = v)
 	_slider("Balanço da câmera", 0.0, 1.0, 0.05, Settings.camera_bob, func(v): Settings.camera_bob = v)
 	_slider("Balanço da arma", 0.0, 1.0, 0.05, Settings.viewmodel_bob, func(v): Settings.viewmodel_bob = v)
+	_toggle("FOV ao correr", Settings.sprint_fov, func(v): Settings.sprint_fov = v)
+	_toggle("Fôlego de corrida (stamina)", Settings.stamina_ativa, func(v): Settings.stamina_ativa = v)
 	_title("Áudio")
 	_slider("Volume geral", 0.0, 1.0, 0.01, Settings.master_volume, func(v): Settings.master_volume = v; Settings.apply_audio())
 	_slider("Efeitos", 0.0, 1.0, 0.01, Settings.sfx_volume, func(v): Settings.sfx_volume = v; Settings.apply_audio())

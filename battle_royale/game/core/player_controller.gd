@@ -14,7 +14,7 @@ var _shake := 0.0
 var _eye := Soldier.EYE_STAND
 var _step_smooth := 0.0
 var _fov_kick := 0.0
-var _sprint_fov := 0.0           # graus somados ao FOV ao correr (suave; zera com Ajustes > Balanço da câmera = 0)
+var _sprint_fov := 0.0           # graus somados ao FOV ao correr (suave; zero se Settings.sprint_fov = false)
 var _ads_amount := 0.0
 var _ads_acog := false
 var _mira := ""                  # mira instalada na arma da mão: "", "acog" (4x, só luneta) ou "reddot" (holográfica); trocar = retirar a atual no inventário
@@ -391,8 +391,8 @@ func _process(dt: float) -> void:
 	var target_ads := 1.0 if not _third_person and can_ads and Input.is_action_pressed("alt_fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else 0.0
 	var transition := maxf(def.ads_transition, 0.05) if def else 0.16
 	_ads_amount = move_toward(_ads_amount, target_ads, dt / transition)
-	# correr no chão abre o FOV ~4° (suave); usa o mesmo interruptor do balanço da câmera, então 0 desliga
-	var sprint_alvo := 4.0 * Settings.camera_bob if soldier.alive and soldier.is_sprinting and soldier.is_on_floor() else 0.0
+	# correr no chão abre o FOV ~4° (suave); interruptor próprio em Ajustes (Settings.sprint_fov)
+	var sprint_alvo := 4.0 if Settings.sprint_fov and soldier.alive and soldier.is_sprinting and soldier.is_on_floor() else 0.0
 	_sprint_fov = lerpf(_sprint_fov, sprint_alvo, 1.0 - exp(-dt * 5.0))
 	var base_fov := (minf(Settings.vertical_fov(), 66.0) if _third_person else Settings.vertical_fov()) + _fov_kick + _sprint_fov + soldier.mantle_fx.z
 	var aim_fov := base_fov

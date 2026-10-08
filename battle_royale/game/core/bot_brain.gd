@@ -52,6 +52,8 @@ var _desired_yaw := 0.0
 var _desired_pitch := 0.0
 var _now := 0.0
 var _rng := RandomNumberGenerator.new()
+const PULO_INTERVALO := 0.7        # s mínimos entre dois apertos de pulo do bot (um aperto por vez, como um jogador)
+var _ultimo_pulo := -10.0
 
 
 func setup(soldier: Soldier, match_node: Match) -> void:
@@ -390,6 +392,17 @@ func _set_goal(p: Vector3, t: Task) -> void:
 	agent.target_position = p
 
 
+## Pulo ao desatolar: 50% por tentativa e no máximo um aperto a cada PULO_INTERVALO s. _act zera in_jump a cada tick,
+## então cada aperto é uma borda (o buffer do Soldier o aceita ao pousar).
+func _quer_pulo() -> bool:
+	if _now - _ultimo_pulo < PULO_INTERVALO:
+		return false
+	if _rng.randf() < 0.5:
+		_ultimo_pulo = _now
+		return true
+	return false
+
+
 # ------------------------------------------------------------------ ação (a cada tick)
 func _act(dt: float) -> void:
 	s.in_fire = false
@@ -513,7 +526,7 @@ func _act(dt: float) -> void:
 			unstuck_until = _now + 0.6
 			var r := Basis(Vector3.UP, s.yaw).x * (1.0 if _rng.randf() < 0.5 else -1.0)
 			unstuck_dir = Vector2(r.x, r.z)
-			s.in_jump = _rng.randf() < 0.5
+			s.in_jump = _quer_pulo()
 			if has_goal:
 				agent.target_position = agent.target_position
 	last_pos = s.global_position

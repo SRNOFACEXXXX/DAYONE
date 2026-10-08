@@ -16,6 +16,7 @@ func _ready() -> void:
 	Game.test_mode = true
 	Game.test_args["bots"] = "0"
 	Game.test_args["chao"] = "1"
+	Game.test_args["sem_stamina"] = "1"   # mede velocidade do sprint, não o fôlego (stamina tem teste próprio: movimento_aaa)
 	dtp = 1.0 / Engine.physics_ticks_per_second
 	m = load("res://core/br_match.tscn").instantiate()
 	add_child(m)
