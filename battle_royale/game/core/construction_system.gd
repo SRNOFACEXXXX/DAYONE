@@ -16,9 +16,15 @@ const PIECES := [
 
 const WOOD_MAT := Color("#9a6336")
 const STONE_MAT := Color("#92999a")
-const BLUEPRINT_COLOR := Color(0.12, 0.67, 1.0, 0.48)
-const INVALID_COLOR := Color(1.0, 0.22, 0.15, 0.55)
+const BLUEPRINT_COLOR := Color(0.28, 1.0, 0.42, 0.5)   # fantasma VERDE: posição válida
+const INVALID_COLOR := Color(1.0, 0.22, 0.15, 0.55)     # fantasma VERMELHO: inválida (sem material, espaço ocupado, terreno)
 const MAX_REACH := 14.0
+## Terreno: rise/run máximo sob a pegada de fundação e piso (0.45 ≈ 24°). Acima disso a peça não assenta.
+const MAX_SLOPE := .45
+## Durabilidade inicial (pontos). Dano vem de dano_em_peca(); chegando a 0 a peça é demolida.
+const HP_PECA := {"foundation": 600.0, "floor": 300.0, "wall": 400.0, "window": 300.0, "door": 250.0, "roof": 300.0, "stairs": 250.0, "pillar": 350.0, "chest": 200.0}
+## Fração do custo devolvida ao demolir (só com FREE_BUILD_MODE desligado).
+const REEMBOLSO := .5
 const GRID_MAJOR := 4.0
 const FREE_BUILD_MODE := true
 var match_ref
@@ -451,6 +457,12 @@ func _update_candidate() -> void:
 	elif not piece_snapped:
 		p.x = roundf(p.x / grid) * grid
 		p.z = roundf(p.z / grid) * grid
+	# Terreno: fundação/piso no chão só assentam se o solo sob os cantos for suave; a peça fica na média dos cantos.
+	var solo := {"ok": true, "sem_solo": false}
+	if not piece_snapped and hit_root == null and String(piece.id) in ["foundation", "floor"]:
+		solo = _avaliar_terreno(p, piece.size, yaw_step)
+		if not bool(solo["sem_solo"]):
+			p.y = float(solo["media_y"])
 	# Keep the exact hit height: rounding Y made foundations float or sink on uneven ground.
 	candidate_transform = Transform3D(Basis(Vector3.UP, float(yaw_step) * PI * .5), p)
 	preview_root.global_transform = candidate_transform
@@ -463,13 +475,16 @@ func _update_candidate() -> void:
 		surface_ok = false   # sem baú em cima de baú (nem empilhado em pilar/escada)
 	var in_range := origin.distance_to(hit.position) <= MAX_REACH
 	var clear := not _overlaps_constructed(p, piece)
-	candidate_valid = available and surface_ok and in_range and clear
+	var solo_ok := bool(solo["ok"])
+	candidate_valid = available and surface_ok and solo_ok and in_range and clear
 	if candidate_valid:
 		candidate_status = "PRONTO PARA COLOCAR"
 	elif not available:
 		candidate_status = "FALTAM MATERIAIS"
 	elif not surface_ok:
 		candidate_status = "MIRE NA FACE DE ENCAIXE"
+	elif not solo_ok:
+		candidate_status = "SEM SOLO SOB A PEÇA" if bool(solo["sem_solo"]) else "TERRENO MUITO INCLINADO"
 	elif not in_range:
 		candidate_status = "PEÇA FORA DO ALCANCE"
 	else:
@@ -477,6 +492,33 @@ func _update_candidate() -> void:
 	_set_preview_tint(candidate_valid)
 	if wheel_ui:
 		wheel_ui.queue_redraw()
+
+
+## Amostra o solo sob os 4 cantos da pegada (raios verticais, sem o próprio jogador). Devolve
+## {ok, sem_solo, media_y, inclinacao}: ok = inclinação máxima entre cantos <= MAX_SLOPE.
+func _avaliar_terreno(centro: Vector3, tamanho: Vector3, quarto: int) -> Dictionary:
+	var player: Soldier = match_ref.local_player
+	var base := Basis(Vector3.UP, float(quarto) * PI * .5)
+	var hx := tamanho.x * .5 - .08
+	var hz := tamanho.z * .5 - .08
+	var pontos: Array[Vector3] = []
+	for canto in [Vector2(-hx, -hz), Vector2(hx, -hz), Vector2(hx, hz), Vector2(-hx, hz)]:
+		var desloc := base * Vector3(canto.x, 0.0, canto.y)
+		var origem := Vector3(centro.x + desloc.x, centro.y + 6.0, centro.z + desloc.z)
+		var consulta := PhysicsRayQueryParameters3D.create(origem, origem + Vector3.DOWN * 12.0, Soldier.LAYER_WORLD, [player.get_rid()])
+		consulta.collide_with_areas = false
+		var acerto: Dictionary = match_ref.get_world_3d().direct_space_state.intersect_ray(consulta)
+		if acerto.is_empty():
+			return {"ok": false, "sem_solo": true, "media_y": centro.y, "inclinacao": INF}
+		pontos.append(acerto["position"])
+	var pior := 0.0
+	var soma := 0.0
+	for i in 4:
+		soma += pontos[i].y
+		for j in range(i + 1, 4):
+			var dist := Vector2(pontos[i].x - pontos[j].x, pontos[i].z - pontos[j].z).length()
+			pior = maxf(pior, absf(pontos[i].y - pontos[j].y) / maxf(dist, .01))
+	return {"ok": pior <= MAX_SLOPE, "sem_solo": false, "media_y": soma * .25, "inclinacao": pior}
 
 
 func _find_construction_root(node: Node) -> Node3D:
@@ -574,25 +616,75 @@ func _delete_aimed_piece() -> void:
 	if root == null:
 		_set_notice("Essa peça não é sua construção", 1.4)
 		return
-	var removed_name := String(root.get_meta("construction_id", "peça"))
+	var removed_id := String(root.get_meta("construction_id", ""))
+	if not _demolir(root):
+		_set_notice("Esvazie o baú antes de removê-lo", 1.8)
+		return
+	_reembolsar(removed_id)
+	_set_notice("Peça removida: %s" % (removed_id if not removed_id.is_empty() else "peça"), 1.4)
+
+
+## Remove a peça (baú derruba o conteúdo). Sem `forcar`, um baú com itens que não podem cair bloqueia a demolição.
+func _demolir(root: Node3D, forcar := false) -> bool:
 	if root.has_meta("bau_node"):
 		var bau := root.get_meta("bau_node") as StorageChest
-		if bau and not bau.vazio() and not bau.derrubar_itens(match_ref):
-			_set_notice("Esvazie o baú antes de removê-lo", 1.8)
-			return
+		if bau and not bau.vazio() and not bau.derrubar_itens(match_ref) and not forcar:
+			return false
 	root.queue_free()
 	candidate_valid = false
-	_set_notice("Peça removida: %s" % removed_name, 1.4)
+	return true
+
+
+## Dano numa peça do jogador (quebra, explosão, zumbi). Chegando a 0 a peça é demolida. Devolve true se destruiu.
+func dano_em_peca(root: Node3D, quantidade: float) -> bool:
+	if root == null or not root.has_meta("hp") or quantidade <= 0.0:
+		return false
+	var restante := maxf(0.0, float(root.get_meta("hp")) - quantidade)
+	root.set_meta("hp", restante)
+	if restante > 0.0:
+		return false
+	return _demolir(root, true)
+
+
+func hp_da_peca(root: Node3D) -> float:
+	return float(root.get_meta("hp", 0.0)) if root and root.has_meta("hp") else 0.0
+
+
+func _hp_inicial(id: String) -> float:
+	return float(HP_PECA.get(id, 300.0))
+
+
+func _definicao(id: String) -> Dictionary:
+	for definition in PIECES:
+		if String(definition.id) == id:
+			return definition
+	return {}
+
+
+## Demolição com modo pago: devolve parte do custo ao inventário (no modo livre não há custo, então não há reembolso).
+func _reembolsar(id: String) -> void:
+	if FREE_BUILD_MODE or match_ref.br_bag == null:
+		return
+	var definicao := _definicao(id)
+	if definicao.is_empty():
+		return
+	var cost: Dictionary = definicao.cost
+	for material in cost:
+		var devolve := int(floor(float(cost[material]) * REEMBOLSO))
+		if devolve > 0:
+			match_ref.br_bag.add_item(String(material), devolve)
 
 
 func _set_preview_tint(is_valid: bool) -> void:
 	var tint := BLUEPRINT_COLOR if is_valid else INVALID_COLOR
 	for visual in preview_root.find_children("*", "MeshInstance3D", true, false):
-		if String(visual.name) == "BlueprintGrid":
-			continue
 		var material := (visual as MeshInstance3D).material_override as StandardMaterial3D
-		if material:
-			material.albedo_color = tint
+		if material == null:
+			continue
+		if String(visual.name) == "BlueprintGrid":
+			material.albedo_color = Color(tint.r, tint.g, tint.b, .92)   # a grade acompanha a cor do fantasma
+			continue
+		material.albedo_color = tint
 	if wheel_ui:
 		wheel_ui.queue_redraw()
 
@@ -613,6 +705,7 @@ func place_current() -> bool:
 	root.set_meta("build_center", float(piece.center))
 	root.set_meta("construction_id", String(piece.id))
 	root.set_meta("build_profile", String(piece.profile))
+	root.set_meta("hp", _hp_inicial(String(piece.id)))
 	root.add_to_group("player_constructed")
 	world_root.add_child(root)
 	_add_piece_visual(root, piece, false)
@@ -651,6 +744,7 @@ func colocar_bau(xf: Transform3D, snap := {}) -> StorageChest:
 	root.set_meta("build_center", float(piece.center))
 	root.set_meta("construction_id", "chest")
 	root.set_meta("build_profile", "chest")
+	root.set_meta("hp", _hp_inicial("chest"))
 	root.add_to_group("player_constructed")
 	_add_piece_collision(root, piece)
 	return _add_chest(root, snap)

@@ -979,9 +979,9 @@ func _process(dt: float) -> void:
 	_lod_corpos()
 
 
-## LOD dos corpos pela distância à câmera: perto < 35 m, médio < 90 m, longe além.
 var _lod_corpos_t := -1.0
 
+## LOD dos corpos pela distância à câmera: perto < 35 m, médio < 90 m, longe além.
 func _lod_corpos() -> void:
 	if clock - _lod_corpos_t < 0.2:
 		return   # distâncias de LOD (35/90 m): 5 Hz bastam, não é quadro a quadro

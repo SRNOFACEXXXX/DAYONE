@@ -1045,6 +1045,8 @@ func soltar_escada(queda := true) -> void:
 	escada = null
 	_esc_estado = 0
 	climb_v = 0.0
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	if queda:
 		velocity = -f * 2.0
 	was_on_floor = false

@@ -87,7 +87,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				await get_tree().process_frame
 	# decoração por área com as peças dos pacotes do usuário (docs/design/cenario_areas.json, autoral: tipo = "cenario/<pasta>/<nome>")
 	for arq in ["res://maps/ilha/cenario_areas.json", "res://maps/ilha/cenario_areas_02.json", "res://maps/ilha/cenario_areas_03.json",
-			"res://maps/ilha/cenario_atualizacao.json"]:
+			"res://maps/ilha/cenario_atualizacao.json", "res://maps/ilha/cenario_pontos.json"]:
 		if not FileAccess.file_exists(arq):
 			continue
 		var areas: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(arq))
@@ -96,7 +96,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				continue   # A/B da rodada das vilas (tests/mundo_fps -- --sem_vilas)
 			for p in area.get("props", []):
 				var no := _colocar(String(p.tipo), Vector2(float(p.x), float(p.y)), float(p.get("rot_deg", 0.0)), 1.0,
-					float(p.get("escala", 1.0)), float(p.get("dy", 0.0)))
+					float(p.get("escala", 1.0)), float(p.get("dy", 0.0)), float(p.get("tomba", 0.0)))
 				if no and arq.ends_with("cenario_atualizacao.json"):
 					no.set_meta("atualizacao", true)   # tests/mundo_fps.gd mede com/sem estas peças
 				if no and p.has("copa"):   # árvore do pacote com copa de outono (escolha autoral por instância)
@@ -110,6 +110,8 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				completed += 1
 				if Loading.ceder():
 					await get_tree().process_frame
+			for c in area.get("cercas", []):   # cercas autorais do ponto de interesse (mesma montagem das cercas do layout)
+				n += await _cerca_async(String(c.tipo), c.pontos)
 	# pontes sobre o rio (decisões em cenario_atualizacao.json -> "pontes"; montagem em pontes_atualizacao.gd)
 	if FileAccess.file_exists("res://maps/ilha/cenario_atualizacao.json"):
 		var ca: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/cenario_atualizacao.json"))
@@ -224,9 +226,9 @@ func _chao(xy: Vector2) -> Vector3:
 var auditoria: Array = []
 
 
-func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0) -> Node3D:
+func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0, tomba := 0.0) -> Node3D:
 	var tipo0 := tipo
-	var r := _colocar_i(tipo, xy, rot_deg, escala_x, escala, dy)
+	var r := _colocar_i(tipo, xy, rot_deg, escala_x, escala, dy, tomba)
 	if r != null and Game.test_args.has("audit_props"):
 		var pts := PackedVector3Array()
 		for mi in r.find_children("*", "MeshInstance3D", true, false):
@@ -247,7 +249,7 @@ func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala
 	return r
 
 
-func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0) -> Node3D:
+func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0, tomba := 0.0) -> Node3D:
 	if TROCA.has(tipo) and not (tipo == "tambor" and Game.test_args.has("sem_vilas")):
 		_n_troca += 1
 		tipo = String(TROCA[tipo][_n_troca % TROCA[tipo].size()])
@@ -263,6 +265,9 @@ func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, esca
 	var e: float = ESCALA_TIPO.get(tipo, 1.0)
 	n.scale = Vector3(escala_x * e, e, e) * escala
 	n.position.y += dy
+	# tombado (poste caído): gira em torno do eixo Z local antes de criar a colisão, que é copiada da transformação atual
+	if tomba != 0.0:
+		n.rotation.z = deg_to_rad(tomba)
 	# Os carros do cenário deixam de ser cascos estáticos: a própria carroceria existente
 	# vira VehicleBody3D, mantendo posição, rotação, modelo e materiais autorais do mapa.
 	if tipo.begins_with("cenario/carros/carro_"):
