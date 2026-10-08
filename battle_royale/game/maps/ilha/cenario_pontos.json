@@ -365,7 +365,7 @@
 		},
 		{
 			"nome": "Barcos encalhados e canoas na costa",
-			"intencao": "barcos de pesca encalhados na maré baixa; alguns já sem remo",
+			"intencao": "barcos de pesca encalhados na maré baixa; alguns já sem remo (dispersa de propósito: pontos isolados ao longo da costa)",
 			"props": [
 				{
 					"tipo": "cobertura/barco_encalhado",
@@ -449,7 +449,8 @@
 					"alcance": 150
 				}
 			],
-			"lore": "costa_barcos"
+			"lore": "costa_barcos",
+			"disperso": true
 		},
 		{
 			"nome": "Farol e cais de pedra (costa oeste)",
