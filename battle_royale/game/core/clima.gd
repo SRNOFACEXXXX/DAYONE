@@ -86,6 +86,8 @@ var _flash_t := 99.0
 var _prox_raio := 8.0
 var _acc_ceu := 0.0
 var _acc_raio_cobertura := 0.0
+var _acc_luz := 0.0                 # luz/névoa/céu aplicados a 10 Hz (a cada quadro só durante relâmpago)
+var _acc_hud := 0.0                 # texto e ícone do HUD a 5 Hz
 var _pausa_visual := false
 var _fog_base := 0.0006
 var _parado_teste := false   # --semclima: só aplica a hora inicial (medir custo do sistema)
@@ -364,7 +366,10 @@ func _process(dt: float) -> void:
 			forcar_clima(sortear_proximo(), false, _rng.randf_range(30.0, 60.0))
 	_atualizar_raio(dt)
 	_acc_ceu += dt
-	_aplicar(false)
+	_acc_luz += dt
+	if _flash > 0.0 or _acc_luz >= 0.1:
+		_acc_luz = 0.0
+		_aplicar(false)
 	_atualizar_fx(dt)
 
 
@@ -561,8 +566,10 @@ func _atualizar_fx(dt: float) -> void:
 	_camada(_a_chuva, chuva * (0.35 if coberto else 1.0), -7.0, dt)
 	_camada(_a_vento, clampf(vento * 0.8 + 0.1, 0.0, 1.0) * (0.5 if coberto else 1.0), -14.0, dt)
 	_camada(_a_grilos, (1.0 - dia_f) * (1.0 - chuva), -38.0, dt)   # grilos bem baixos (-22 dB incomodavam)
-	# HUD
-	if is_instance_valid(_hud):
+	# HUD (5 Hz: o texto e o ícone mudam devagar; redesenhar a cada quadro custava à toa)
+	_acc_hud += dt
+	if is_instance_valid(_hud) and _acc_hud >= 0.2:
+		_acc_hud = 0.0
 		var ic: _IconeCeu = _hud.get_meta("icone")
 		ic.noite = e_noite()
 		ic.chuva = chuva

@@ -1,0 +1,101 @@
+{
+	"fonte": "autoral, escrito à mão (sessão de cenário mais cheio). Coordenadas de design: x leste, y norte (mundo: x, z = -y). Sítios escolhidos com tools de altura (terreno plano, longe de casas, refúgios e de outros props). Só assets já existentes em game/assets. Carros abandonados são carcaças estáticas (sem VehicleBody). Postes caídos usam tombamento (campo 'tomba', graus em torno do eixo Z local, pivô na base).",
+	"convencoes": {
+		"alcance": "distância de desenho (m). Pequenos 150; carros, barcos e estruturas grandes 220.",
+		"tomba": "graus de tombamento (poste caído). dy levanta a base para não afundar na terra."
+	},
+	"areas": [
+		{
+			"nome": "Acampamento do sobrevivente (interior, mata)",
+			"intencao": "barraca, fogueira com lenha, churrasqueira e galão: alguém viveu aqui e saiu às pressas",
+			"props": [
+				{"tipo": "atualizacao/mundo/Tent_002", "x": -352.0, "y": -127.0, "rot_deg": 35, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Tent_010", "x": -362.0, "y": -124.0, "rot_deg": 110, "alcance": 150},
+				{"tipo": "cenario/natureza/fogueira", "x": -356.0, "y": -132.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "cenario/natureza/lenha", "x": -353.5, "y": -136.5, "rot_deg": 70, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Barbecue_Grill", "x": -359.0, "y": -133.0, "rot_deg": 15, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Fuel_Canister", "x": -364.5, "y": -129.5, "rot_deg": 200, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Box_003", "x": -348.5, "y": -123.0, "rot_deg": 15, "alcance": 150},
+				{"tipo": "atualizacao/mundo/First_Aid", "x": -355.0, "y": -121.0, "rot_deg": 0, "alcance": 150}
+			]
+		},
+		{
+			"nome": "Carros abandonados na estrada (planície)",
+			"intencao": "um comboio parado às pressas: fusca, caminhão, teco-teco e pneus empilhados",
+			"props": [
+				{"tipo": "cobertura/carcaca_fusca", "x": 366.0, "y": -318.0, "rot_deg": 15, "alcance": 220},
+				{"tipo": "atualizacao/mundo/Apocalypse_Car", "x": 376.0, "y": -327.0, "rot_deg": 100, "alcance": 220},
+				{"tipo": "cobertura/caminhao_abandonado", "x": 361.0, "y": -331.0, "rot_deg": 160, "alcance": 220},
+				{"tipo": "cobertura/carcaca_teco_teco", "x": 383.0, "y": -315.0, "rot_deg": 250, "alcance": 220},
+				{"tipo": "cobertura/pilha_pneus", "x": 357.0, "y": -315.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Tire_001", "x": 371.0, "y": -312.0, "rot_deg": 20, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Road_Barrier_01", "x": 370.0, "y": -340.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Barrier_007", "x": 352.0, "y": -325.0, "rot_deg": 90, "alcance": 150}
+			]
+		},
+		{
+			"nome": "Caixotes e postes caídos (encosta)",
+			"intencao": "depósito de um armazém saqueado: caixotes, tambor e dois postes derrubados pelo vento",
+			"props": [
+				{"tipo": "cenario/rua/rua_box_01", "x": 116.0, "y": -58.0, "rot_deg": 10, "alcance": 150},
+				{"tipo": "cenario/rua/rua_box_02", "x": 124.0, "y": -66.0, "rot_deg": 75, "alcance": 150},
+				{"tipo": "cenario/caixas/caixa_2_corpo", "x": 119.0, "y": -70.0, "rot_deg": 40, "alcance": 150},
+				{"tipo": "cenario/caixas/caixa_2_tampa", "x": 119.0, "y": -70.0, "rot_deg": 40, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Box_022", "x": 111.0, "y": -60.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Barrel_005", "x": 128.0, "y": -54.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "poste_madeira", "x": 110.0, "y": -72.0, "rot_deg": 60, "tomba": 86, "dy": 0.3, "alcance": 150},
+				{"tipo": "poste_concreto", "x": 126.0, "y": -80.0, "rot_deg": 150, "tomba": 88, "dy": 0.3, "alcance": 150},
+				{"tipo": "cenario/natureza/tronco_caido", "x": 104.0, "y": -64.0, "rot_deg": 20, "alcance": 150}
+			]
+		},
+		{
+			"nome": "Posto de sentinela abandonado (planalto)",
+			"intencao": "barreira de sacos, muretas e geradores de um posto que foi evacuado",
+			"props": [
+				{"tipo": "cobertura/sacos_areia", "x": -58.0, "y": -46.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "cobertura/mureta_concreto", "x": -50.0, "y": -58.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Concrete_Fence", "x": -62.0, "y": -54.0, "rot_deg": 90, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Barrier_007", "x": -46.0, "y": -44.0, "rot_deg": 45, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Generator_004", "x": -56.0, "y": -40.0, "rot_deg": 170, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Signs_Shield", "x": -64.0, "y": -46.0, "rot_deg": 80, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Walkie_talkie", "x": -52.0, "y": -41.0, "rot_deg": 0, "alcance": 150}
+			],
+			"cercas": [
+				{"tipo": "cerca_arame", "pontos": [[-72.0, -36.0], [-38.0, -36.0], [-38.0, -66.0]]}
+			]
+		},
+		{
+			"nome": "Pasto cercado (interior sul)",
+			"intencao": "fardos, cocho e carreta de cana num pasto de cerca de madeira",
+			"props": [
+				{"tipo": "cobertura/fardo_feno_x3", "x": -158.0, "y": 340.0, "rot_deg": 30, "alcance": 150},
+				{"tipo": "cobertura/fardo_feno_x3", "x": -146.0, "y": 350.0, "rot_deg": 100, "alcance": 150},
+				{"tipo": "cobertura/cocho", "x": -140.0, "y": 338.0, "rot_deg": 90, "alcance": 150},
+				{"tipo": "cobertura/carreta_cana", "x": -164.0, "y": 352.0, "rot_deg": 0, "alcance": 220},
+				{"tipo": "cenario/natureza/pilha_troncos", "x": -134.0, "y": 350.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "atualizacao/mundo/Barrel_005", "x": -150.0, "y": 336.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "cobertura/tambor_x4", "x": -156.0, "y": 348.0, "rot_deg": 45, "alcance": 150}
+			],
+			"cercas": [
+				{"tipo": "cerca_madeira", "pontos": [[-170.0, 332.0], [-134.0, 332.0], [-134.0, 356.0], [-170.0, 356.0], [-170.0, 332.0]]}
+			]
+		},
+		{
+			"nome": "Barcos encalhados e canoas na costa",
+			"intencao": "barcos de pesca encalhados na maré baixa; alguns já sem remo",
+			"props": [
+				{"tipo": "cobertura/barco_encalhado", "x": -26.0, "y": 468.0, "rot_deg": 20, "dy": 0.2, "alcance": 220},
+				{"tipo": "canoa_praia", "x": 484.0, "y": -304.0, "rot_deg": 60, "alcance": 150},
+				{"tipo": "canoa_praia", "x": 489.0, "y": -312.0, "rot_deg": 200, "alcance": 150},
+				{"tipo": "cobertura/barco_encalhado", "x": -278.0, "y": 422.0, "rot_deg": 140, "dy": 0.15, "alcance": 220},
+				{"tipo": "canoa_praia", "x": -494.0, "y": 104.0, "rot_deg": 30, "alcance": 150},
+				{"tipo": "cobertura/barco_encalhado", "x": 504.0, "y": -96.0, "rot_deg": 250, "dy": 0.3, "alcance": 220},
+				{"tipo": "canoa_praia", "x": 446.0, "y": 310.0, "rot_deg": 90, "alcance": 150},
+				{"tipo": "cenario/natureza/galho", "x": 441.0, "y": 306.0, "rot_deg": 30, "alcance": 150},
+				{"tipo": "cobertura/barco_encalhado", "x": -484.0, "y": -294.0, "rot_deg": 315, "dy": 0.3, "alcance": 220},
+				{"tipo": "atualizacao/mundo/Barrel_005", "x": -478.0, "y": -289.0, "rot_deg": 0, "alcance": 150},
+				{"tipo": "canoa_praia", "x": 202.0, "y": -490.0, "rot_deg": 10, "alcance": 150}
+			]
+		}
+	]
+}

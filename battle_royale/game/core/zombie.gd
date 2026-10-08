@@ -626,6 +626,13 @@ func _physics_process(delta: float) -> void:
 	_groan_timer -= delta
 	if state == State.DEAD:
 		velocity = Vector3.ZERO
+		# corpo: depois que o clipe de morte termina (tempo real = _state_time * velocidade), alinha uma última vez
+		# e para a física (antes rodava todo quadro para sempre; a pose final já fica parada no AnimationPlayer)
+		if not _death_finished and _state_time * _morte_velocidade >= _animation_length(_death_animation):
+			_death_finished = true
+			_ajustar_corpo_ao_chao()
+		if _death_finished:
+			set_physics_process(false)
 		return
 	if _demo_locked:
 		velocity = Vector3.ZERO
@@ -1129,6 +1136,7 @@ func _set_state(next_state: State, clip_override: StringName = &"") -> void:
 			get_node("BodyCollider").set_deferred("disabled", true)
 			_death_animation = clip_override if not clip_override.is_empty() else _death_animation
 			_animation_tree.active = false
+			_death_finished = false
 			_variar_morte()
 			_voz(&"zombie_die", -1.0, 55.0)
 			_play(_death_animation, false)

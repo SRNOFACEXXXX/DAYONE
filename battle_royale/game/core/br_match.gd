@@ -452,7 +452,11 @@ func _nearby_loot() -> BRLoot:
 
 ## Porta e saque disputam o E quando ficam lado a lado (porta da cozinha ao lado do armário): vence quem está mais no centro da mira.
 func _porta_vence(loot: BRLoot) -> bool:
-	var pt := _porta_alvo()
+	return _porta_vence_com(loot, _porta_alvo())
+
+
+## Mesma disputa de _porta_vence, com a porta já escolhida (o HUD reaproveita a porta em cache).
+func _porta_vence_com(loot: BRLoot, pt: PortaCasa) -> bool:
 	if pt == null or loot == null:
 		return pt != null
 	var cam := get_viewport().get_camera_3d()
@@ -463,6 +467,19 @@ func _porta_vence(loot: BRLoot) -> bool:
 	var sl := frente.dot(vl.normalized()) * 2.0 - vl.length() * 0.3
 	var sp := frente.dot(vp.normalized()) * 2.0 - vp.length() * 0.3 + 0.45   # a porta é grande: leve preferência
 	return sp > sl
+
+
+var _porta_hint_t := -1.0
+var _porta_hint: PortaCasa = null
+
+
+## _porta_alvo() reavaliado a cada 0,1 s para o HUD (a tecla E continua consultando direto).
+func _porta_alvo_hint() -> PortaCasa:
+	if clock - _porta_hint_t < 0.1 and (_porta_hint == null or is_instance_valid(_porta_hint)):
+		return _porta_hint
+	_porta_hint_t = clock
+	_porta_hint = _porta_alvo()
+	return _porta_hint
 
 
 ## Porta que o jogador está olhando (até 2,4 m, dentro de ~55° da mira).
@@ -530,12 +547,13 @@ func _update_br_loot_hint() -> void:
 		hold_circle = HoldCircle.new()
 		hud.add_child(hold_circle)
 	var alvo := _nearby_loot()
-	if alvo != null and _porta_vence(alvo):
+	var pt_hint: PortaCasa = _porta_alvo_hint() if not br_ui.visible else null
+	if alvo != null and _porta_vence_com(alvo, pt_hint):
 		alvo = null
 	if alvo == null or br_ui.visible or not local_player.alive:
 		_loot_t = 0.0
 		hold_circle.mostrar(0.0, "")
-		var pt := _porta_alvo() if not br_ui.visible else null
+		var pt := pt_hint
 		br_loot_hint.text = ("[E] %s a porta" % ("Fechar" if pt.aberta else "Abrir")) if pt else "[TAB] Inventário"
 		return
 	if alvo is StorageChest:
@@ -962,7 +980,12 @@ func _process(dt: float) -> void:
 
 
 ## LOD dos corpos pela distância à câmera: perto < 35 m, médio < 90 m, longe além.
+var _lod_corpos_t := -1.0
+
 func _lod_corpos() -> void:
+	if clock - _lod_corpos_t < 0.2:
+		return   # distâncias de LOD (35/90 m): 5 Hz bastam, não é quadro a quadro
+	_lod_corpos_t = clock
 	var cam := get_viewport().get_camera_3d()
 	if cam == null:
 		return

@@ -448,14 +448,14 @@ func blood(pos: Vector3, dir: Vector3, headshot := false, damage := 30.0) -> voi
 	_blood_i2 = (_blood_i2 + 1) % _blood.size()
 	p.global_position = pos
 	p.global_transform.basis = _basis_from_normal(-dir)
-	p.amount = 22 if headshot else 14
+	_ajustar_amount(p, 22 if headshot else 14)
 	p.restart()
 	# gotas de saída (atravessam na direção do tiro)
 	var dr := _drops[_drop_i]
 	_drop_i = (_drop_i + 1) % _drops.size()
 	dr.global_position = pos + dir * 0.12
 	dr.global_transform.basis = _basis_from_normal((dir + Vector3.UP * 0.25).normalized())
-	dr.amount = 34 if headshot else 16 + int(damage * 0.15)
+	_ajustar_amount(dr, 34 if headshot else 16 + int(damage * 0.15))
 	dr.restart()
 	# jato de saída (sprite alongado que abre e some em 0,22 s), virado para a câmera
 	var sp := _sprays[_spray_i]
@@ -493,13 +493,19 @@ func blood(pos: Vector3, dir: Vector3, headshot := false, damage := 30.0) -> voi
 		Audio.play_at("hit_head", pos, {"volume_db": 0.0, "max_distance": 40.0, "pitch_var": 0.06})
 
 
+## Só reatribui amount quando muda (cada troca mexe nos buffers do sistema de partículas).
+func _ajustar_amount(p: CPUParticles3D, n: int) -> void:
+	if p.amount != n:
+		p.amount = n
+
+
 ## Morte por tiro: jato extra (gotas reaproveitadas do pool, sem alocar) + poça no chão; cabeça = jato maior.
 func blood_kill(pe: Vector3, pos: Vector3, dir: Vector3, headshot: bool) -> void:
 	var dr := _drops[_drop_i]
 	_drop_i = (_drop_i + 1) % _drops.size()
 	dr.global_position = pos
 	dr.global_transform.basis = _basis_from_normal((Vector3.UP * (1.0 if headshot else 0.5) - dir * 0.3).normalized())
-	dr.amount = 60 if headshot else 30
+	_ajustar_amount(dr, 60 if headshot else 30)
 	dr.restart()
 	blood_pool(pe, 1.7 if headshot else 1.3)
 

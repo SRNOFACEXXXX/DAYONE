@@ -467,8 +467,20 @@ func _swap_arms(root: Node) -> void:
 
 static func _mira_cfg(def: WeaponDef) -> Dictionary:
 	if _miras.is_empty() and FileAccess.file_exists(MIRAS_PATH):
-		_miras = JSON.parse_string(FileAccess.get_file_as_string(MIRAS_PATH))
-	return _miras.get(String(def.id), {})
+		_miras = ler_miras(FileAccess.get_file_as_string(MIRAS_PATH))
+	return cfg_da_arma(_miras, String(def.id))
+
+
+## JSON de miras: só Dictionary entra (texto inválido ou null viraria erro ao tipar _miras).
+static func ler_miras(texto: String) -> Dictionary:
+	var j: Variant = JSON.parse_string(texto)
+	return j if j is Dictionary else {}
+
+
+## Configuração de uma arma dentro do JSON de miras; entrada que não for Dictionary vira {}.
+static func cfg_da_arma(miras: Dictionary, id: String) -> Dictionary:
+	var c: Variant = miras.get(id, {})
+	return c if c is Dictionary else {}
 
 
 func _setup_mira(def: WeaponDef) -> void:

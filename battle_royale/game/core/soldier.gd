@@ -42,6 +42,11 @@ const CROUCH_MULT := 0.34
 const SPRINT_MULT := 1.25           # Shift: corrida rápida (arma baixa, sem tiro/ADS)
 const SPRINT_BLOCK := 0.22          # s sem atirar/mirar depois de parar de correr
 const ADS_SPEED_MULT := 0.55        # mirando pela alça anda a 55%
+const COYOTE_TIME := 0.10           # s: ainda pode pular logo após sair da beirada (sem ter pulado)
+const JUMP_BUFFER := 0.12           # s: um aperto de pulo feito no ar vale ao pousar
+const STAMINA_DRENO := 0.11         # por s correndo (cheio -> zero em ~9 s)
+const STAMINA_RECARGA := 0.16       # por s sem correr (zero -> cheio em ~6 s)
+const STAMINA_RETORNO := 0.20       # zerada, só volta a correr com 20%
 const PLANT_TIME := 3.2
 const DEFUSE_TIME := 10.0
 const DEFUSE_TIME_KIT := 5.0
@@ -92,6 +97,11 @@ var in_walk := false
 var in_sprint := false
 var is_sprinting := false            # leitura para viewmodel/corpo: arma abaixada enquanto corre
 var sprint_block_until := 0.0        # relógio t até quando tiro/ADS seguem bloqueados após o sprint
+var stamina := 1.0                   # 0..1 fôlego de corrida (Shift); zerada, só volta a correr com STAMINA_RETORNO
+var _stamina_cansado := false
+var _t_chao := -1000.0               # último t em que tocou o chão (coyote time)
+var _t_pulo_pedido := -1000.0        # t do último aperto de pulo (borda; segurar não conta). Vale JUMP_BUFFER s
+var _pulo_antes := false
 var in_fire := false
 var in_alt := false
 var in_reload := false
@@ -278,17 +288,38 @@ func sprint_bloqueado() -> bool:
 	return is_sprinting or t < sprint_block_until
 
 
-func _update_sprint() -> void:
+func _update_sprint(dt: float) -> void:
 	if nadando:
 		# nadando: arma abaixada, sem tiro/ADS/faca (mesmo bloqueio do sprint)
 		is_sprinting = true
 		sprint_block_until = t + SPRINT_BLOCK
+		_stamina_tick(false, dt)
 		return
-	var quer := in_sprint and not in_walk and not frozen and crouch < 0.5 and in_move.y > 0.3 and escada == null
+	var quer := in_sprint and not in_walk and not frozen and crouch < 0.5 and in_move.y > 0.3 and escada == null and not _stamina_cansado
 	if is_on_floor() or not quer:
 		is_sprinting = quer
 	if is_sprinting:
 		sprint_block_until = t + SPRINT_BLOCK
+	_stamina_tick(is_sprinting, dt)
+
+
+## Fôlego de corrida: gasta correndo (inclusive no ar após um sprint) e recupera sem correr.
+func _stamina_tick(correndo: bool, dt: float) -> void:
+	if correndo:
+		stamina = maxf(stamina - STAMINA_DRENO * dt, 0.0)
+	else:
+		stamina = minf(stamina + STAMINA_RECARGA * dt, 1.0)
+	if stamina <= 0.0:
+		_stamina_cansado = true
+	elif _stamina_cansado and stamina >= STAMINA_RETORNO:
+		_stamina_cansado = false
+
+
+## Borda do aperto de pulo: o momento em que `in_jump` passa a verdadeiro (não enquanto segura).
+func _registra_pulo() -> void:
+	if in_jump and not _pulo_antes:
+		_t_pulo_pedido = t
+	_pulo_antes = in_jump
 
 
 func horizontal_speed() -> float:
@@ -302,6 +333,7 @@ func is_reloading() -> bool:
 # ------------------------------------------------------------------ simulação
 func _physics_process(dt: float) -> void:
 	t += dt
+	_registra_pulo()
 	_cura_tick(dt)
 	_sim(dt)
 	_balas_passo(dt)
@@ -332,7 +364,7 @@ func _sim(dt: float) -> void:
 			body_model.sync_pose(self, dt)
 		return
 	_update_crouch(dt)
-	_update_sprint()
+	_update_sprint(dt)
 	_move(dt)
 	_update_hitboxes()
 	_update_weapon(dt)
@@ -553,6 +585,8 @@ func _move(dt: float) -> void:
 		_nado_mover(dt)
 		return
 	var on_floor := is_on_floor()
+	if on_floor:
+		_t_chao = t
 	var locked := frozen or planting > 0.0 or defusing > 0.0
 	var move := Vector2.ZERO if locked else in_move
 	var b := Basis(Vector3.UP, yaw)
@@ -567,18 +601,23 @@ func _move(dt: float) -> void:
 	if in_jump and not locked and _mantle_cool <= 0.0 and wish_len > 0.1 and ((on_floor and jump_released) or (not on_floor and velocity.y < 3.0)):
 		if _tentar_mantle(wish / wish_len):
 			jump_released = false
+			_t_pulo_pedido = -1000.0
 			return
-	if on_floor:
-		if in_jump and jump_released and not locked:
-			velocity.y = JUMP_VELOCITY
-			jump_released = false
-			jump_penalty = minf(jump_penalty + 0.45, 1.0)
-			on_floor = false
-			_emit_jump_sound()
-		else:
-			_friction(dt)
-			_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, ACCEL, dt)
-			velocity.y = minf(velocity.y, 0.0)
+	# pulo do chão: aperto recente (buffer) e no chão ou ainda dentro do coyote time; o aperto é consumido,
+	# então segurar a tecla não repete o pulo ao pousar
+	var pulo := not locked and (t - _t_pulo_pedido) <= JUMP_BUFFER and (on_floor or (t - _t_chao) <= COYOTE_TIME)
+	if pulo:
+		velocity.y = JUMP_VELOCITY
+		jump_released = false
+		jump_penalty = minf(jump_penalty + 0.45, 1.0)
+		_t_pulo_pedido = -1000.0
+		_t_chao = -1000.0
+		on_floor = false
+		_emit_jump_sound()
+	elif on_floor:
+		_friction(dt)
+		_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, ACCEL, dt)
+		velocity.y = minf(velocity.y, 0.0)
 	if not on_floor:
 		_air_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, dt)
 		velocity.y -= GRAVITY * dt
@@ -986,6 +1025,8 @@ func iniciar_escada(e: Node) -> void:
 	var de_cima: bool = global_position.y > meio
 	escada = e
 	climb_v = 0.0
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	velocity = Vector3.ZERO
 	_esc_de = global_position
 	_esc_para = e.linha_world(e.topo_world().y if de_cima else e.base_world().y)
@@ -1225,6 +1266,10 @@ func reset_for_round(keep_weapons: bool) -> void:
 	reload_end = 0.0
 	is_sprinting = false
 	sprint_block_until = 0.0
+	stamina = 1.0
+	_stamina_cansado = false
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	_balas.clear()
 	if not keep_weapons:
 		inventory.clear()

@@ -27,6 +27,8 @@ const ALCANCE_ATIVO := 250.0
 var _lod_cursor := 0
 var _lod_quadro := 0
 var _alvos_t := 0.0
+## alvos (grupo zombie_targets) lidos uma vez por segundo, junto com _registrar_alvos: evita alocar a lista a cada LOD
+var _alvos_cache: Array = []
 
 
 func setup(terrain_node: Node, player_node: Node3D, settlement_centers: Array[Vector3] = []) -> void:
@@ -83,6 +85,7 @@ func _physics_process(delta: float) -> void:
 	if _alvos_t <= 0.0:
 		_alvos_t = 1.0
 		_registrar_alvos()
+		_alvos_cache = get_tree().get_nodes_in_group("zombie_targets")
 	_lod_quadro += 1
 	if _lod_quadro % LOD_INTERVALO != 0:
 		return
@@ -93,8 +96,8 @@ func _physics_process(delta: float) -> void:
 	var cam := get_viewport().get_camera_3d()
 	if cam:
 		refs.append(cam.global_position)
-	for t in get_tree().get_nodes_in_group("zombie_targets"):
-		if t is Node3D and is_instance_valid(t) and (t as Node3D).is_inside_tree():
+	for t in _alvos_cache:
+		if is_instance_valid(t) and t is Node3D and (t as Node3D).is_inside_tree():
 			refs.append((t as Node3D).global_position)
 	for k in mini(LOD_ORCAMENTO, n):
 		_lod_cursor = (_lod_cursor + 1) % n

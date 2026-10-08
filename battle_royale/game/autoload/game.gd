@@ -27,7 +27,7 @@ const MAPS := {
 	},
 }
 
-var config := {
+const CONFIG_PADRAO := {
 	"map": "ilha",
 	"team": 0,              # 0 TR · 1 CT · -1 automático
 	"bots_per_team": 4,     # 5x5 com o jogador

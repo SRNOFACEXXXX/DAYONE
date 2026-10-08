@@ -77,6 +77,12 @@ var _hold_yaw_target := 0.0
 var _upper_tracks: Array[NodePath] = []
 
 
+## Offsets de arma (JSON): só Dictionary é aceito; texto inválido ou null vira {} em vez de quebrar _offsets (tipado).
+static func ler_offsets(texto: String) -> Dictionary:
+	var j: Variant = JSON.parse_string(texto)
+	return j if j is Dictionary else {}
+
+
 func setup(s: Soldier) -> void:
 	soldier = s
 	s.weapon_switched.connect(_on_weapon)
@@ -120,7 +126,7 @@ func rebuild(s: Soldier) -> void:
 		_offsets = {}
 		var op: String = OFFSET_PATHS[s.team]
 		if FileAccess.file_exists(op):
-			_offsets = JSON.parse_string(FileAccess.get_file_as_string(op))
+			_offsets = ler_offsets(FileAccess.get_file_as_string(op))
 		if skeleton and skeleton.find_bone("RightHandProp") >= 0:
 			var ba := BoneAttachment3D.new()
 			ba.name = "RightHandAttach"
