@@ -10,7 +10,7 @@ const SEM_COLISAO_PACOTE := ["arbusto_a", "arbusto_b", "samambaia_a", "samambaia
 const COLISAO_CAIXA := ["varal", "cenario/rua/rua_box_03"]   # ignora as formas UCX do glb (cobriam só parte): caixa do AABB da malha
 const SEM_COLISAO := ["lixeira", "mochila_tatica"]   # varal/placa_rua/bicicleta agora colidem (auditoria tests/props_colisao.gd)
 const SEGMENTO := 3.0
-const ESCALA_TIPO := {"lixeira": 0.65, "barraca_militar": 0.01}
+const ESCALA_TIPO := {"lixeira": 0.65, "barraca_militar": 0.01, "detalhes/barraca_militar": 0.01}   # barraca vem em cm (474 m sem escala)
 const CRUZETA := {"poste_madeira": [0.7, 7.78], "poste_concreto": [0.8, 8.73]}   # [x do isolador, altura]
 
 var terrain: IlhaTerrain

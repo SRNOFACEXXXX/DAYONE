@@ -157,13 +157,6 @@
 					"alcance": 150
 				},
 				{
-					"tipo": "cenario/caixas/caixa_2_tampa",
-					"x": 119.0,
-					"y": -70.0,
-					"rot_deg": 40,
-					"alcance": 150
-				},
-				{
 					"tipo": "atualizacao/mundo/Box_022",
 					"x": 111.0,
 					"y": -60.0,
