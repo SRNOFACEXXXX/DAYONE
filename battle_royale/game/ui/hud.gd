@@ -323,7 +323,7 @@ func _build() -> void:
 	_place(folego, Control.PRESET_CENTER_BOTTOM, -110, -92, 110, -88)
 	veiculo_hud = VeiculoHud.new()
 	veiculo_hud.name = "VeiculoHud"
-	_place(veiculo_hud, Control.PRESET_CENTER_BOTTOM, -120, -224, 120, -112)
+	_place(veiculo_hud, Control.PRESET_BOTTOM_RIGHT, -262, -236, -22, -124)   # acima da caixa de munição, longe da quickbar
 
 	# ---- topo-centro: vivos + placar + cronômetro + rodada
 	var top := VBoxContainer.new()

@@ -526,7 +526,7 @@ func _update_vehicle_prompt() -> void:
 	var text := ""
 	if active_vehicle:
 		var hold_exit := "  ·  Segure E %.0f%%" % [clampf(_vehicle_hold / VEHICLE_HOLD_TIME, 0.0, 1.0) * 100.0] if _vehicle_hold > 0.0 else ""
-		text = "%s  ·  %d km/h%s\nW/S acelerar/frear · A/D virar · C câmera · 1–4 portas · H capô · T porta-malas · Segure E sair" % [active_vehicle.display_name(), active_vehicle.speed_kmh(), hold_exit]
+		text = "%s%s\nW/S · A/D · C câmera · 1–4 portas · Segure E sair" % [active_vehicle.display_name(), hold_exit]   # km/h, marcha, RPM e vida ficam no painel do carro (hud.gd)
 	elif soldier.alive and not ui_blocking:
 		var near := _nearest_vehicle()
 		if near:
