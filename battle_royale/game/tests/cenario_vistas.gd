@@ -45,7 +45,7 @@ func _ready() -> void:
 		var cz := -(c.y - dist * 0.85)
 		var tx := c.x
 		var tz := -c.y
-		cam.global_position = Vector3(cx, t.height_world(cx, cz) + 5.0 + dist * 0.35, cz)
+		cam.global_position = Vector3(cx, t.height_world(cx, cz) + 10.0 + dist * 0.5, cz)   # acima da copa das árvores (mata)
 		cam.look_at(Vector3(tx, t.height_world(tx, tz) + 1.0, tz))
 		for i in 40:
 			await get_tree().process_frame

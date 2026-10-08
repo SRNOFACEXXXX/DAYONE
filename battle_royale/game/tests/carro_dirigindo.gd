@@ -63,8 +63,8 @@ func _kmh() -> float:
 ## Trecho plano (amplitude do quadrado de 60 m) e sem obstáculo à frente (raio de 60 m) para cada direção.
 func _achar_trecho(terrain: IlhaTerrain, space: PhysicsDirectSpaceState3D, centro: Vector3) -> Dictionary:
 	var melhor := {"pos": centro, "yaw": 0.0, "amp": INF}
-	for ix in range(-10, 11):
-		for iz in range(-10, 11):
+	for ix in range(-20, 21):
+		for iz in range(-20, 21):
 			var x := centro.x + ix * 15.0
 			var z := centro.z + iz * 15.0
 			var h0 := terrain.height_world(x, z)
@@ -78,7 +78,7 @@ func _achar_trecho(terrain: IlhaTerrain, space: PhysicsDirectSpaceState3D, centr
 					lo = minf(lo, h)
 					hi = maxf(hi, h)
 			var amp := hi - lo
-			if amp >= 0.6 or amp >= float(melhor.amp):
+			if amp >= 1.5 or amp >= float(melhor.amp):
 				continue
 			for yaw_deg in [0.0, 90.0, 180.0, 270.0]:
 				var yaw := deg_to_rad(yaw_deg)
