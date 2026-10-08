@@ -46,7 +46,55 @@ var quick_slots: Array[int] = [-1, -1, -1, -1, -1]   # atalhos 1–5 (uid de qua
 
 
 static func definition(id: String) -> Dictionary:
-	return DEFINITIONS.get(id, {})
+	if DEFINITIONS.has(id):
+		return DEFINITIONS[id]
+	_carregar_extras()
+	return _extras.get(id, {})
+
+
+## Itens de sobrevivência e outros vêm de dados: res://data/itens/*.json, cada arquivo {"<id>": {name, kind, size: [w, h], kg,
+## stack, ...}}. Um arquivo por área (comida, ferramentas, materiais...) para não haver conflito entre quem edita.
+## O que está em DEFINITIONS (armas, munição, mochilas) tem prioridade.
+const DIR_ITENS := "res://data/itens/"
+static var _extras := {}
+static var _extras_ok := false
+
+
+static func _carregar_extras() -> void:
+	if _extras_ok:
+		return
+	_extras_ok = true
+	var d := DirAccess.open(DIR_ITENS)
+	if d == null:
+		return
+	for arq in d.get_files():
+		var nome := arq.trim_suffix(".remap")
+		if not nome.ends_with(".json"):
+			continue
+		var dados = JSON.parse_string(FileAccess.get_file_as_string(DIR_ITENS + nome))
+		if not dados is Dictionary:
+			push_warning("Itens: %s não é um objeto JSON" % nome)
+			continue
+		for id in dados:
+			var def = dados[id]
+			if not def is Dictionary or DEFINITIONS.has(id):
+				continue
+			var tam = def.get("size", [1, 1])
+			def["size"] = Vector2i(int(tam[0]), int(tam[1])) if tam is Array and tam.size() >= 2 else Vector2i.ONE
+			def["kg"] = float(def.get("kg", 0.1))
+			def["stack"] = int(def.get("stack", 1))
+			def["name"] = String(def.get("name", id))
+			def["kind"] = String(def.get("kind", "material"))
+			_extras[String(id)] = def
+
+
+## Todos os ids conhecidos (DEFINITIONS + dados), para painel de admin e tabelas de saque.
+static func todos_ids() -> Array:
+	_carregar_extras()
+	var ids: Array = DEFINITIONS.keys()
+	for k in _extras:
+		ids.append(k)
+	return ids
 
 
 static func ammo_id_for_caliber(caliber: String) -> String:

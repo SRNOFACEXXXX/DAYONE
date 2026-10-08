@@ -566,7 +566,9 @@ func _atualizar_fx(dt: float) -> void:
 	var dia_f := smoothstep(-4.0, 12.0, elevacao_sol)
 	_camada(_a_chuva, chuva * (0.35 if coberto else 1.0), -7.0, dt)
 	_camada(_a_vento, clampf(vento * 0.8 + 0.1, 0.0, 1.0) * (0.5 if coberto else 1.0), -14.0, dt)
-	_camada(_a_grilos, (1.0 - dia_f) * (1.0 - chuva), -38.0, dt)   # grilos bem baixos (-22 dB incomodavam)
+	# grilos DESLIGADOS: grilos_loop.wav era síntese de 3 tons puros 4,4–5,3 kHz (soava como sinos agudos, reclamação do dono).
+	# Volta só com gravação real de grilo (CC0) no lugar do arquivo gerado por tools/gen_clima_audio.py.
+	_camada(_a_grilos, 0.0, -38.0, dt)
 	# HUD (5 Hz: o texto e o ícone mudam devagar; redesenhar a cada quadro custava à toa)
 	_acc_hud += dt
 	if is_instance_valid(_hud) and _acc_hud >= 0.2:

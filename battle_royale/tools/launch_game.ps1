@@ -38,9 +38,19 @@ public static class IlhaBravaWindow {
 # Clone novo: o cache de classes (class_name) e a importacao ficam em .godot/ (fora do Git). Sem isso o jogo abre em tela cinza
 # com "Could not find type WeaponDef/UIStyle...". Importa uma vez, com janela de progresso, antes de abrir.
 $cacheClasses = Join-Path $projectPath '.godot\global_script_class_cache.cfg'
-if (-not (Test-Path -LiteralPath $cacheClasses)) {
+# Reimporta também quando o projeto mudou depois da última importação (git pull trouxe scripts/modelos novos): sem isso
+# um class_name ou .glb novo não é encontrado e o jogo abre quebrado.
+$marcador = Join-Path $projectPath '.godot\dayone_importado.txt'
+$precisa = -not (Test-Path -LiteralPath $cacheClasses) -or -not (Test-Path -LiteralPath $marcador)
+if (-not $precisa) {
+    $marco = (Get-Item -LiteralPath $marcador).LastWriteTime
+    $novo = Get-ChildItem -LiteralPath $projectPath -Recurse -File -Include *.gd,*.tscn,*.glb,*.png,*.json,*.wav,*.ogg -ErrorAction SilentlyContinue |
+        Where-Object { $_.FullName -notmatch '\\.godot\\' -and $_.LastWriteTime -gt $marco } | Select-Object -First 1
+    $precisa = $null -ne $novo
+}
+if ($precisa) {
     Add-Type -AssemblyName PresentationFramework
-    [System.Windows.MessageBox]::Show("Primeira execucao: o Godot vai importar o projeto (pode levar varios minutos). Uma janela vai abrir e fechar sozinha. Clique OK e aguarde.", 'DAYONE') | Out-Null
+    [System.Windows.MessageBox]::Show("O projeto mudou (ou e a primeira execucao): o Godot vai importar os arquivos novos (pode levar alguns minutos). Uma janela vai abrir e fechar sozinha. Clique OK e aguarde.", 'DAYONE') | Out-Null
     Start-Process -FilePath $godotPath -ArgumentList @('--headless', '--editor', '--quit', '--path', ('"' + $projectPath + '"')) -Wait
 }
 

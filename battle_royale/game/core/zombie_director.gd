@@ -30,11 +30,32 @@ var _alvos_t := 0.0
 ## alvos (grupo zombie_targets) lidos uma vez por segundo, junto com _registrar_alvos: evita alocar a lista a cada LOD
 var _alvos_cache: Array = []
 
+## População por cidade (pedido do dono: no mínimo 20 zumbis em cada cidade). Cidades a menos de CIDADE_ATIVA m de um alvo
+## (jogador/bots) ficam cheias: nasce 1 zumbi a cada SPAWN_INTERVALO s, fora da vista do jogador, até `por_cidade` vivos
+## dentro do raio da cidade. Cidade que fica a mais de CIDADE_SOLTA m perde os zumbis que não estão caçando (memória/CPU:
+## no máximo umas 2-3 cidades ativas ao mesmo tempo). Mortos voltam aos poucos (1 a cada RESPAWN_S s por cidade).
+@export_range(0, 60, 1) var por_cidade := 20
+@export_range(10, 200, 1) var max_vivos := 70
+const CIDADE_ATIVA := 210.0
+const CIDADE_SOLTA := 330.0
+const SPAWN_INTERVALO := 0.22
+const RESPAWN_S := 120.0
+var city_radii: Array[float] = []
+var _mortos: Array[float] = []
+var _spawn_t := 0.0
+var _cidades_t := 0.0
+var _spawnados := 0
+
 
 func setup(terrain_node: Node, player_node: Node3D, settlement_centers: Array[Vector3] = []) -> void:
 	terrain = terrain_node
 	player = player_node
 	city_locations = settlement_centers.duplicate()
+	city_radii.clear()
+	_mortos.clear()
+	for c in city_locations:
+		city_radii.append(45.0)
+		_mortos.append(0.0)
 	_rng.randomize()
 	_spawn_opening_group()
 
@@ -86,6 +107,11 @@ func _physics_process(delta: float) -> void:
 		_alvos_t = 1.0
 		_registrar_alvos()
 		_alvos_cache = get_tree().get_nodes_in_group("zombie_targets")
+	_cidades_t -= delta
+	_spawn_t -= delta
+	if _cidades_t <= 0.0:
+		_cidades_t = 0.5
+		_atualizar_cidades(delta if delta > 0.5 else 0.5)
 	_lod_quadro += 1
 	if _lod_quadro % LOD_INTERVALO != 0:
 		return
@@ -163,7 +189,7 @@ func _find_grounded_point(center: Vector3, angle: float, distance: float, min_di
 				var collider: Object = hit.get("collider")
 				if collider is Node and terrain.is_ancestor_of(collider):
 					ground_y = (hit.get("position") as Vector3).y
-					if absf(ground_y + 0.06 - player.global_position.y) > max_height_delta:
+					if max_height_delta < INF and is_instance_valid(player) and absf(ground_y + 0.06 - player.global_position.y) > max_height_delta:
 						continue
 					if require_player_sight:
 						var sight_query := PhysicsRayQueryParameters3D.create(
@@ -177,3 +203,111 @@ func _find_grounded_point(center: Vector3, angle: float, distance: float, min_di
 				continue
 		return Vector3(x, ground_y + 0.06, z)
 	return Vector3(center.x + cos(angle) * distance, float(terrain.call("height_world", center.x + cos(angle) * distance, center.z + sin(angle) * distance)) + 0.06, center.z + sin(angle) * distance)
+
+
+## Raios das cidades (metade da extensão dos prédios + margem), vindos do layout. Sem isso, 45 m.
+func definir_raios(raios: Array) -> void:
+	for i in mini(raios.size(), city_radii.size()):
+		city_radii[i] = clampf(float(raios[i]), 25.0, 90.0)
+
+
+func _dist_alvo_mais_perto(p: Vector3) -> float:
+	var d2 := INF
+	for t in _alvos_cache:
+		if is_instance_valid(t) and t is Node3D and (t as Node3D).is_inside_tree():
+			var q := (t as Node3D).global_position
+			d2 = minf(d2, Vector2(q.x - p.x, q.z - p.z).length_squared())
+	if is_instance_valid(player):
+		var q := player.global_position
+		d2 = minf(d2, Vector2(q.x - p.x, q.z - p.z).length_squared())
+	return sqrt(d2)
+
+
+## O `player` do setup pode ser o Explorador do tour, apagado quando a partida começa: troca por um alvo válido.
+func _jogador_valido() -> bool:
+	if is_instance_valid(player) and player.is_inside_tree():
+		return true
+	for t in _alvos_cache:
+		if is_instance_valid(t) and t is Node3D and (t as Node3D).is_inside_tree():
+			player = t
+			return true
+	return false
+
+
+func _atualizar_cidades(dt: float) -> void:
+	_jogador_valido()
+	if city_locations.is_empty() or not is_instance_valid(terrain) or por_cidade <= 0:
+		return
+	var vivos_total := 0
+	var por_cid: Array[int] = []
+	por_cid.resize(city_locations.size())
+	por_cid.fill(0)
+	var zumbis := get_children()
+	for z in zumbis:
+		var zz := z as ZombieEnemy
+		if zz == null or zz.state == ZombieEnemy.State.DEAD:
+			continue
+		vivos_total += 1
+		for i in city_locations.size():
+			var c := city_locations[i]
+			if Vector2(zz.global_position.x - c.x, zz.global_position.z - c.z).length() <= city_radii[i] + 12.0:
+				por_cid[i] += 1
+				break
+	for i in city_locations.size():
+		_mortos[i] = maxf(_mortos[i] - dt / RESPAWN_S, 0.0)
+		var c := city_locations[i]
+		var d := _dist_alvo_mais_perto(c)
+		if d > CIDADE_SOLTA + city_radii[i]:
+			_soltar_cidade(i)
+			continue
+		if d > CIDADE_ATIVA + city_radii[i]:
+			continue
+		var alvo := por_cidade - int(floor(_mortos[i]))
+		if por_cid[i] < alvo and vivos_total < max_vivos and _spawn_t <= 0.0:
+			if _spawn_na_cidade(i):
+				_spawn_t = SPAWN_INTERVALO
+				vivos_total += 1
+				por_cid[i] += 1
+
+
+func _soltar_cidade(i: int) -> void:
+	var c := city_locations[i]
+	for z in get_children():
+		var zz := z as ZombieEnemy
+		if zz == null or not zz.has_meta("cidade") or int(zz.get_meta("cidade")) != i:
+			continue
+		if zz.state in [ZombieEnemy.State.CHASE, ZombieEnemy.State.ATTACK, ZombieEnemy.State.ALERT]:
+			continue
+		if Vector2(zz.global_position.x - c.x, zz.global_position.z - c.z).length() <= city_radii[i] + 40.0:
+			zz.queue_free()
+
+
+func _spawn_na_cidade(i: int) -> bool:
+	var c := city_locations[i]
+	var r := city_radii[i]
+	var cam := get_viewport().get_camera_3d()
+	for tentativa in 6:
+		var ang := _rng.randf_range(-PI, PI)
+		var dist := _rng.randf_range(4.0, r)
+		var ponto := _find_grounded_point(c, ang, dist, 4.0, r)
+		# nada de zumbi brotando na frente/perto do jogador
+		if is_instance_valid(player):
+			var dp := ponto.distance_to(player.global_position)
+			if dp < 25.0:
+				continue
+			if cam and dp < 90.0 and cam.is_position_in_frustum(ponto + Vector3.UP):
+				continue
+		var zombie := ZOMBIE_SCENE.instantiate() as ZombieEnemy
+		_spawnados += 1
+		zombie.name = "ZombieCidade_%d_%d" % [i, _spawnados]
+		zombie.set_meta("cidade", i)
+		add_child(zombie)
+		zombie.global_position = ponto
+		zombie.rotation.y = _rng.randf_range(-PI, PI)
+		zombie.begin_roaming(_rng.randf_range(0.25, 1.5))
+		if _spawnados % 7 == 6:
+			zombie.configure_archetype(&"brute")
+		zombie.set_lod(2)   # nasce dormindo; o LOD acorda conforme a distância
+		zombie.died.connect(func(_z, _h, _a): _mortos[i] += 1.0)
+		return true
+	return false

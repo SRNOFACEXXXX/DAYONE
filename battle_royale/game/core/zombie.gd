@@ -13,6 +13,8 @@ enum State { IDLE, PATROL, ALERT, INVESTIGATE, CHASE, ATTACK, DEAD }
 const ANIMATION_SCENE := "res://assets/models/zombies/free_animated_pack/scene.gltf"
 const ANIMATION_SCENE_RES: PackedScene = preload("res://assets/models/zombies/free_animated_pack/scene.gltf")
 const POSE_COPY_SCRIPT := preload("res://core/zombie_pose_copy.gd")
+const DESMEMBRAR_SCRIPT := preload("res://core/zumbi_desmembrar.gd")
+const PEDACOS := preload("res://fx/pedacos.gd")
 const POLYART_VARIANTS := [
 	"res://assets/models/zombies/polyart_pack/variants/zombie_00.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_01.tscn",
@@ -112,6 +114,7 @@ var _animation_player: AnimationPlayer
 var _animation_tree: AnimationTree
 var _source_skeleton: Skeleton3D
 var _target_skeleton: Skeleton3D
+var _desmembrar: Node
 var _navigation: NavigationAgent3D
 var _state_time := 0.0
 var _attack_time := 0.0
@@ -263,6 +266,9 @@ func _build_rig() -> void:
 	pose_copy.source_skeleton = _source_skeleton
 	_target_skeleton.add_child(pose_copy)
 	_pose_copy = pose_copy
+	_desmembrar = DESMEMBRAR_SCRIPT.new()
+	_desmembrar.name = "Desmembrar"
+	_target_skeleton.add_child(_desmembrar)   # depois da cópia de pose: encolhe os ossos arrancados
 	# longe do jogador o zumbi some (a IA continua no LOD do diretor); sombra só perto
 	for g in model_root.find_children("*", "GeometryInstance3D", true, false):
 		(g as GeometryInstance3D).visibility_range_end = VISIVEL_ATE
@@ -497,7 +503,30 @@ func hit_by_bullet(pos: Vector3, dir: Vector3, def: WeaponDef, escala := 1.0, at
 		fx.blood(pos, dir, zona == &"head", float(dano))
 		if morreu:
 			fx.blood_kill(global_position, pos, dir, zona == &"head")
+	if morreu:
+		# tiro forte: cabeça estoura (fuzil/sniper na cabeça) ou braço é arrancado (chance com dano alto no corpo)
+		if zona == &"head" and dano >= int(max_health * 0.6):
+			arrancar(&"Head", dir)
+		elif zona == &"body" and dano >= int(max_health * 0.55) and randf() < 0.4:
+			arrancar(&"LeftUpperArm" if randf() < 0.5 else &"RightUpperArm", dir)
 	return {"zone": zona, "damage": dano, "killed": morreu}
+
+
+## Arranca um membro (osso do Polyart: Head, LeftUpperArm, RightUpperArm, LeftUpperLeg, RightUpperLeg): o osso some do
+## modelo e pedaços low poly voam dele (fx/pedacos.gd). Só visual; a IA já está morta ou continua igual.
+func arrancar(osso: StringName, dir := Vector3.UP) -> void:
+	if _target_skeleton == null or _desmembrar == null:
+		return
+	var i := _target_skeleton.find_bone(osso)
+	if i < 0 or (_desmembrar.ocultos as PackedInt32Array).has(i):
+		return
+	var pos := (_target_skeleton.global_transform * _target_skeleton.get_bone_global_pose(i)).origin
+	_desmembrar.ocultar(i)
+	var tipo := &"cabeca" if osso == &"Head" else (&"perna" if String(osso).contains("Leg") else &"braco")
+	var pai := get_parent() if get_parent() else self
+	PEDACOS.soltar(pai, pos, dir, tipo)
+	if FxManager.shared:
+		FxManager.shared.blood(pos, dir if dir.length_squared() > 0.0001 else Vector3.UP, true, 80.0)
 
 
 ## Explosão (granada/C4): dano em pontos por distância; raio/linha de visada decididos por quem chama.
@@ -516,6 +545,15 @@ func hit_by_explosion(dano: int, centro: Vector3, attacker: Node3D = null) -> vo
 		fx.blood(pos, (dir.normalized() if dir.length_squared() > 0.0001 else Vector3.UP), false, float(dano))
 		if state == State.DEAD:
 			fx.blood_kill(global_position, pos, Vector3.UP, false)
+	if state == State.DEAD and dano >= int(max_health * 0.5):
+		# explosão forte: o corpo se despedaça (1–3 membros + cabeça às vezes)
+		var membros := [&"LeftUpperArm", &"RightUpperArm", &"LeftUpperLeg", &"RightUpperLeg"]
+		membros.shuffle()
+		for k in randi_range(1, 3):
+			arrancar(membros[k], dir + Vector3.UP)
+		if randf() < 0.35:
+			arrancar(&"Head", dir + Vector3.UP)
+		PEDACOS.soltar(get_parent() if get_parent() else self, global_position + Vector3.UP * 0.9, dir + Vector3.UP, &"corpo")
 
 
 ## Explosão em área sobre todos os zumbis da árvore: dano linear até raio (visada livre no mundo).
@@ -1086,9 +1124,23 @@ func _play_groan(volume_db: float = -15.0) -> void:
 ## Voz do zumbi (sons CC0 do OpenGameArt preparados por tools/prep_audio_net.py): groan = ocioso/patrulha,
 ## alert = viu o jogador, run = rosnado correndo, attack = golpe, hurt = levou tiro, die = morte.
 ## Posicional na altura da cabeça; alcance proporcional ao tipo para ouvir de longe a horda e perto o golpe.
+## Limite global de gemidos (com 20+ zumbis por cidade o coro virava ruído contínuo): no máximo GEMIDOS_MAX gemidos/
+## corrida em GEMIDOS_JANELA ms no mapa todo. Alerta, ataque, dor e morte sempre tocam (são informação para o jogador).
+const GEMIDOS_MAX := 3
+const GEMIDOS_JANELA := 2000
+static var _gemidos_ms: Array[int] = []
+
+
 func _voz(id: StringName, volume_db := -6.0, alcance := 40.0) -> void:
 	if not Audio.has_sound(String(id)):
 		return
+	if id == &"zombie_groan" or id == &"zombie_run":
+		var agora := Time.get_ticks_msec()
+		while not _gemidos_ms.is_empty() and agora - _gemidos_ms[0] > GEMIDOS_JANELA:
+			_gemidos_ms.pop_front()
+		if _gemidos_ms.size() >= GEMIDOS_MAX:
+			return
+		_gemidos_ms.append(agora)
 	Audio.play_at(String(id), global_position + Vector3.UP * 1.5, {
 		"volume_db": volume_db, "pitch": randf_range(0.9, 1.1) * (1.05 - float(_variant_index) * 0.01),
 		"pitch_var": 0.04, "unit_size": 7.0, "max_distance": alcance, "bus": "SFX"})
