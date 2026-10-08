@@ -15,10 +15,12 @@ var _hist: Array = []     # [tempo, memória estática, textura, buffer]
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	set_process_input(true)
+	set_process_input(OS.is_debug_build())   # F9 só em build de depuração (não em release)
 
 
 func _input(e: InputEvent) -> void:
+	if not OS.is_debug_build():
+		return
 	if e is InputEventKey and e.pressed and not e.echo and e.physical_keycode == KEY_F9:
 		var caminho := gravar()
 		print("RASTREIO gravado em: ", ProjectSettings.globalize_path(caminho))

@@ -227,6 +227,14 @@ func _varrer(dir: String, out: Array[String], vistos: Dictionary) -> void:
 		_varrer(dir.path_join(sub), out, vistos)
 
 
+## Ao voltar ao menu: solta só as CENAS da partida (br_match, HUD...) do _cache. GLB e shaders ficam: são o aquecimento
+## que evita travar a próxima partida (o aquecimento não roda de novo nesta execução).
+func soltar_cenas() -> void:
+	for p in _cache.keys():
+		if String(p).ends_with(".tscn"):
+			_cache.erase(p)
+
+
 func _criar_viewport() -> void:
 	_vp = SubViewport.new()
 	_vp.name = "Aquecimento"
