@@ -6,7 +6,7 @@ func _ready() -> void:
 	assert(ZombieEnemy.ANIMATION_SCENE_RES is PackedScene, "rig de animação preloadado")
 	assert(ZombieEnemy.POLYART_SCENES.size() == ZombieEnemy.POLYART_VARIANTS.size(), "todas as variantes preloadadas")
 	assert(ZombieEnemy.POLYART_SCENES[3] is PackedScene, "variante preloadada é cena")
-	var ex := load("res://fx/explosion.gd").new()
+	var ex = load("res://fx/explosion.gd").new()
 	add_child(ex)
 	await get_tree().process_frame
 	assert(ex._light != null, "explosão cria a luz")

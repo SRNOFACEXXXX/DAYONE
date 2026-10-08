@@ -509,13 +509,6 @@
 					"alcance": 150
 				},
 				{
-					"tipo": "cenario/natureza/galho",
-					"x": -54,
-					"y": -514,
-					"rot_deg": 10,
-					"alcance": 150
-				},
-				{
 					"tipo": "detalhes/canoa_praia",
 					"x": -48,
 					"y": -510,

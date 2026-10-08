@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://243ovjjqg30g"
-path="res://.godot/imported/Ch35_nonPBR.fbx-ad2b5e8b1523f98e35c2ff46f91a6718.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/zombies/scary_zombie_pack/Ch35_nonPBR.fbx"
-dest_files=["res://.godot/imported/Ch35_nonPBR.fbx-ad2b5e8b1523f98e35c2ff46f91a6718.scn"]
 
 [params]
 
