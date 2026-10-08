@@ -19,6 +19,7 @@ func _ready() -> void:
 	_check_direcao()
 	_check_superficies()
 	_check_dano_e_fumaca()
+	_check_colisao()
 	_check_transmissao()
 	_check_combustivel()
 	print("VEHICLE_RESULT failures=", failures)
@@ -54,6 +55,15 @@ func _check_dano_e_fumaca() -> void:
 	check(is_equal_approx(Estab.intensidade_fumaca(0.3), 0.0), "intensidade zero no limiar")
 	check(is_equal_approx(Estab.intensidade_fumaca(0.0), 1.0), "intensidade maxima com vida zero")
 	check(Estab.esta_capotado(0.1) and not Estab.esta_capotado(0.9), "capotado detectado pelo eixo para cima")
+
+
+func _check_colisao() -> void:
+	check(Estab.e_terreno("TerrenoColisao"), "colisor do terreno e reconhecido")
+	check(not Estab.e_terreno("Casa_01"), "casa nao e terreno")
+	check(Estab.dano_colisao(Vector3(0, -14, 0), 9.0, 2.6) == 0.0, "quicada vertical de 14 m/s nao causa dano")
+	check(Estab.dano_colisao(Vector3(8.9, 0, 0), 9.0, 2.6) == 0.0, "batida abaixo de 9 m/s nao causa dano")
+	check(absf(Estab.dano_colisao(Vector3(0, 0, 19), 9.0, 2.6) - 26.0) < 0.01, "batida frontal de 19 m/s causa 26%")
+	check(Estab.dano_colisao(Vector3(3, -2, 14), 9.0, 2.6) > 0.0, "batida lateral com pequena quicada ainda conta")
 
 
 func _check_transmissao() -> void:

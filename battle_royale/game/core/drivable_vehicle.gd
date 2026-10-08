@@ -31,11 +31,17 @@ static var superficie_chao := Callable()
 @export var vida_max := 100.0
 @export var aderencia_lateral := 3.0
 @export var aderencia_freio_mao := 0.55
-@export var limiar_impacto_mps := 7.5
+## Batida só conta acima de 9 m/s de variação horizontal (lateral/frontal). Quicadas de terreno são ignoradas.
+@export var limiar_impacto_mps := 9.0
 @export var dano_por_mps := 2.6
 @export var tempo_recuperacao := 2.5
-@export var inclinacao_carroceria := 0.008
-@export var arfagem_carroceria := 0.006
+## Rolagem/arfagem visual da carroceria. Padrão 0: as portas são filhas do modelo e o modelo gira com a
+## carroceria; sem validar em partida real, deixamos desligado (ajuste > 0 só para teste).
+@export var inclinacao_carroceria := 0.0
+@export var arfagem_carroceria := 0.0
+## Combustível simulado. Padrão desligado (não há posto no jogo): com false nunca consome e nunca corta o motor.
+## Liga com --combustivel (Game.test_args) ou ao chamar abastecer().
+@export var usar_combustivel := false
 
 var driver: Soldier
 var vehicle_kind := "sedan"
@@ -116,6 +122,8 @@ func _build(model: Node3D) -> void:
 	max_contacts_reported = 4
 	body_entered.connect(_on_body_entered)
 	vida = vida_max
+	if Game.test_args.has("combustivel"):
+		usar_combustivel = true
 	_last_safe_transform = global_transform
 
 	var chassis_shape := CollisionShape3D.new()
@@ -322,10 +330,10 @@ func _build_fumaca() -> void:
 
 
 func _atualizar_motor(dt: float) -> void:
-	var ligado := driver != null and vida > 0.0 and _trem.tem_combustivel()
+	var ligado := driver != null and vida > 0.0 and _tem_combustivel()
 	var v_frente := absf((global_basis.inverse() * linear_velocity).z)
 	_trem.atualizar(dt, v_frente, absf(_thr) if ligado else 0.0, ligado)
-	if ligado:
+	if ligado and usar_combustivel:
 		_trem.consumir(dt, absf(_thr))
 	_atualizar_fumaca()
 	if _mot.size() < 3:
@@ -513,7 +521,7 @@ func _drive(dt: float) -> void:
 
 ## Fator de torque do motor (curva e marcha, troca, vida e combustível). 0 = motor parado.
 func _fator_motor() -> float:
-	if vida <= 0.0 or not _trem.tem_combustivel():
+	if vida <= 0.0 or not _tem_combustivel():
 		return 0.0
 	# Carro muito batido perde potência: 100% acima de 60% de vida, 50% com a vida zerada.
 	var saude := clampf(vida / maxf(vida_max, 1.0) / 0.6, 0.0, 1.0)
@@ -603,7 +611,10 @@ func _endireitar() -> void:
 func _on_body_entered(body: Node) -> void:
 	if freeze or body == driver or _impacto_cooldown > 0.0 or vida <= 0.0:
 		return
-	var dano := Estab.dano_impacto((_vel_anterior - linear_velocity).length(), limiar_impacto_mps, dano_por_mps)
+	# Terreno (chassi batendo no relevo) não é batida: ver Estab.e_terreno e dano_colisao.
+	if Estab.e_terreno(String(body.name)):
+		return
+	var dano := Estab.dano_colisao(_vel_anterior - linear_velocity, limiar_impacto_mps, dano_por_mps)
 	if dano <= 0.0:
 		return
 	_impacto_cooldown = 0.25
@@ -821,8 +832,19 @@ func combustivel_frac() -> float:
 	return _trem.fracao_combustivel()
 
 
+## Abastecer liga o consumo de combustível (usar_combustivel) e enche o tanque em `litros`.
 func abastecer(litros: float) -> void:
+	usar_combustivel = true
 	_trem.abastecer(litros)
+
+
+## Rotação do motor como fração do limite (0..1) para barra de RPM.
+func rpm_frac() -> float:
+	return _trem.rpm_norm()
+
+
+func _tem_combustivel() -> bool:
+	return not usar_combustivel or _trem.tem_combustivel()
 
 
 ## Fração da vida do carro (0..1). Fumaça abaixo de 30%; vida zero desliga o motor.

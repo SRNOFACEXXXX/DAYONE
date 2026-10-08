@@ -50,6 +50,20 @@ static func dano_impacto(variacao_mps: float, limiar_mps: float, fator_por_mps: 
 	return maxf(variacao_mps - limiar_mps, 0.0) * fator_por_mps
 
 
+## Colisor do terreno da ilha (maps/ilha/terrain.gd cria "TerrenoColisao"). Contato com ele é relevo, não batida.
+static func e_terreno(nome_no: String) -> bool:
+	return nome_no.begins_with("TerrenoColisao")
+
+
+## Dano de colisão a partir da variação de velocidade do carro (vetor, m/s). Quicada vertical (chão, buraco,
+## queda) não conta: só a parte horizontal (lateral/frontal) da variação. Abaixo do limiar = 0.
+static func dano_colisao(dv: Vector3, limiar_mps: float, fator_por_mps: float) -> float:
+	var horizontal := Vector2(dv.x, dv.z).length()
+	if horizontal < absf(dv.y):
+		return 0.0
+	return dano_impacto(horizontal, limiar_mps, fator_por_mps)
+
+
 ## Fumaça do motor aparece abaixo de 30% de vida.
 static func fumaca_ligada(vida_frac: float) -> bool:
 	return vida_frac < LIMIAR_FUMACA
