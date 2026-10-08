@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Spell check for authored markdown, shared by CI and the pre-commit hook.
+# Legitimate project terms go in project-words.txt, never inline disables.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+pnpm exec cspell --no-progress --relative --no-must-find-files \
+  'skills/**/*.md' \
+  'README.md' \
+  'AGENTS.md' \
+  'CODE_OF_CONDUCT.md' \
+  'CONTRIBUTING.md' \
+  'SECURITY.md' \
+  '.github/**/*.md' \
+  '.claude/commands/*.md' \
+  '.agents/skills/skills-*/SKILL.md' \
+  '.claude/agents/*.md'

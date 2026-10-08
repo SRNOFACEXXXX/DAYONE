@@ -1,0 +1,47 @@
+{
+ "loot": [
+  {
+   "x": -4.5,
+   "y": 0.17,
+   "z": 3.4,
+   "rot_deg": 90.0,
+   "tier": "medio",
+   "sala": "escritorio"
+  },
+  {
+   "x": -3.3,
+   "y": 0.17,
+   "z": -6.5,
+   "rot_deg": 0.0,
+   "tier": "medio",
+   "sala": "cozinha"
+  },
+  {
+   "x": -4.5,
+   "y": 3.17,
+   "z": -3.45,
+   "rot_deg": 90.0,
+   "tier": "medio",
+   "sala": "escritorio"
+  }
+ ],
+ "entradas": [
+  {
+   "x": 0.0,
+   "y": -8.3,
+   "dx": 0,
+   "dy": 1
+  }
+ ],
+ "lances": [
+  {
+   "x": 4.17,
+   "y": 6.4,
+   "dx": 0,
+   "dy": -1,
+   "z": 3.17,
+   "tx": 4.17,
+   "ty": 2.3
+  }
+ ]
+}

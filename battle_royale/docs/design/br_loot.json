@@ -1,0 +1,33 @@
+{
+  "descricao": "Caixas e mochilas de saque colocadas individualmente nos pontos de interesse. x=leste, y=norte.",
+  "caches": [
+    {"id":"Vila_capela","pos":[-338,-348],"items":[["ammo_9mm",45],["backpack_small",1]]},
+    {"id":"Vila_cais","pos":[-406,-399],"items":[["ammo_9mm",36],["ammo_762",20]]},
+    {"id":"Vila_mercado","pos":[-324,-395],"items":[["ammo_556",30],["acog",1]]},
+    {"id":"Vila_pescador","pos":[-450,-279],"items":[["ammo_9mm",40]]},
+    {"id":"Cruzeiro_praca","pos":[-311,63],"items":[["ammo_762",30],["backpack_small",1]]},
+    {"id":"Cruzeiro_oficina","pos":[-289,49],"items":[["ammo_9mm",30]]},
+    {"id":"Cruzeiro_caixa","pos":[-345,72],"items":[["ammo_556",30]]},
+    {"id":"Usina_acampamento","pos":[-273,324],"items":[["ammo_762",40],["backpack_medium",1]]},
+    {"id":"Usina_galpao","pos":[-280,350],"items":[["ammo_556",50],["acog",1]]},
+    {"id":"Usina_caldeira","pos":[-218,278],"items":[["ammo_9mm",48]]},
+    {"id":"Farol_deposito","pos":[87,489],"items":[["ammo_762",30],["acog",1]]},
+    {"id":"Farol_casa","pos":[51,517],"items":[["ammo_9mm",24]]},
+    {"id":"Quartel_barraca_oeste","pos":[290,314],"items":[["ammo_556",60],["backpack_medium",1]]},
+    {"id":"Quartel_barraca_leste","pos":[334,310],"items":[["ammo_762",60],["acog",1]]},
+    {"id":"Quartel_oficina","pos":[389,311],"items":[["ammo_9mm",90],["backpack_large",1]]},
+    {"id":"Quartel_entrada","pos":[230,262],"items":[["ammo_556",30]]},
+    {"id":"Pedreira_paiol","pos":[347,-33],"items":[["ammo_762",40],["backpack_small",1]]},
+    {"id":"Pedreira_cava","pos":[319,-26],"items":[["ammo_9mm",36]]},
+    {"id":"Pista_barraca","pos":[321,-255],"items":[["ammo_762",35],["backpack_medium",1]]},
+    {"id":"Pista_hangar","pos":[394,-249],"items":[["ammo_556",60],["acog",1]]},
+    {"id":"Pista_torre","pos":[344,-217],"items":[["ammo_9mm",45]]},
+    {"id":"Represa_casa_forca","pos":[-117,-134],"items":[["ammo_762",40],["backpack_small",1]]},
+    {"id":"Represa_abrigo","pos":[-69,-110],"items":[["ammo_556",30]]},
+    {"id":"Fazenda_acampamento","pos":[-131,-340],"items":[["ammo_762",30],["backpack_small",1]]},
+    {"id":"Fazenda_curral","pos":[-139,-313],"items":[["ammo_9mm",45],["ammo_556",30]]},
+    {"id":"Fazenda_casarao","pos":[-110,-317],"items":[["ammo_762",40],["acog",1]]},
+    {"id":"Praia_quiosque","pos":[116,-451],"items":[["ammo_9mm",30],["backpack_small",1]]},
+    {"id":"Praia_barco","pos":[145,-462],"items":[["ammo_762",20]]}
+  ]
+}

@@ -1,0 +1,2620 @@
+{
+ "descricao": "Pontos INTERNOS de spawn de caixa de loot por prédio do layout (id -> lista). Coordenadas locais ao prédio, as mesmas do .glb instanciado em ilha.gd::_modelo_predio: x/z = plano horizontal Godot (z = -y do Blender), y = altura do piso interno sobre a origem do prédio (piso térreo ~0,12-0,25; 'andar' 1 = piso superior). rot_deg = giro em Y da frente da caixa (voltada para dentro do cômodo). Nunca em telhado/laje externa. tier: alto = prédios militares (quartel, paiol, hangar, garagem, comando); medio/baixo = demais. sala: quarto|cozinha|sala|galpao|container|... . Cada ponto tem 0,8 m de folga à frente.",
+ "predios": {
+  "vila_caicara_01": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_02": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_03": [
+   {
+    "x": -3.05,
+    "y": 0.17,
+    "z": 0.4,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 3.05,
+    "y": 0.17,
+    "z": 3.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.95,
+    "y": 0.17,
+    "z": 4.05,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_04": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_05": [
+   {
+    "x": -3.3,
+    "y": 0.05,
+    "z": 2.6,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.3,
+    "y": 0.05,
+    "z": -0.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.3,
+    "y": 0.05,
+    "z": 5.2,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_06": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_07": [
+   {
+    "x": -3.0,
+    "y": 0.3,
+    "z": -5.0,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 3.0,
+    "y": 0.3,
+    "z": -5.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_08": [
+   {
+    "x": -3.5,
+    "y": 0.17,
+    "z": 1.0,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.7,
+    "y": 0.17,
+    "z": 0.2,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 3.5,
+    "y": 3.17,
+    "z": 3.38,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   },
+   {
+    "x": -1.65,
+    "y": 3.17,
+    "z": -4.5,
+    "rot_deg": 0.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   }
+  ],
+  "vila_caicara_09": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_10": [
+   {
+    "x": -3.3,
+    "y": 0.05,
+    "z": 2.6,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.3,
+    "y": 0.05,
+    "z": -0.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.3,
+    "y": 0.05,
+    "z": 5.2,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_11": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_12": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_13": [
+   {
+    "x": -3.5,
+    "y": 0.17,
+    "z": 1.0,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.7,
+    "y": 0.17,
+    "z": 0.2,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 3.5,
+    "y": 3.17,
+    "z": 3.38,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   },
+   {
+    "x": -1.65,
+    "y": 3.17,
+    "z": -4.5,
+    "rot_deg": 0.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   }
+  ],
+  "vila_caicara_14": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_15": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "vila_caicara_16": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_01": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_02": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_03": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_04": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_05": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_06": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_07": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_08": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_09": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_10": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_11": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_12": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_13": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_14": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_15": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_16": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_17": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_18": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_19": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_20": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_21": [
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": 2.95,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 2.55,
+    "y": 0.12,
+    "z": -1.2,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "morro_cruzeiro_22": [
+   {
+    "x": -3.05,
+    "y": 0.17,
+    "z": 0.4,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 3.05,
+    "y": 0.17,
+    "z": 3.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.95,
+    "y": 0.17,
+    "z": 4.05,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_01": [
+   {
+    "x": 7.0,
+    "y": 0.12,
+    "z": 4.76,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 7.0,
+    "y": 0.12,
+    "z": -5.95,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -7.0,
+    "y": 0.12,
+    "z": -0.0,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 4.5,
+    "y": 0.12,
+    "z": 6.0,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_03": [
+   {
+    "x": -7.0,
+    "y": 0.12,
+    "z": 11.64,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -7.0,
+    "y": 0.12,
+    "z": -3.88,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 5.5,
+    "y": 0.12,
+    "z": 12.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 5.5,
+    "y": 0.12,
+    "z": -2.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_04": [
+   {
+    "x": -9.5,
+    "y": 0.12,
+    "z": -10.08,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 9.5,
+    "y": 0.12,
+    "z": -12.1,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": 12.5,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 4.5,
+    "y": 0.12,
+    "z": 8.0,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": -10.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_06": [
+   {
+    "x": -4.5,
+    "y": 0.17,
+    "z": 3.4,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "escritorio",
+    "andar": 0
+   },
+   {
+    "x": -3.3,
+    "y": 0.17,
+    "z": -6.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": -4.5,
+    "y": 3.17,
+    "z": -3.45,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "escritorio",
+    "andar": 1
+   }
+  ],
+  "usina_santa_cruz_07": [
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": 11.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": 0.55,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": -0.3,
+    "y": 0.14,
+    "z": -3.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": -6.45,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_08": [
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": 11.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": 0.55,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": -0.3,
+    "y": 0.14,
+    "z": -3.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": -6.45,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_09": [
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": 11.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": 0.55,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": -0.3,
+    "y": 0.14,
+    "z": -3.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 1.08,
+    "y": 0.14,
+    "z": -6.45,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "usina_santa_cruz_10": [
+   {
+    "x": 1.05,
+    "y": 0.1,
+    "z": 0.57,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -1.05,
+    "y": 0.1,
+    "z": -0.57,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "farol_ponta_norte_02": [
+   {
+    "x": -3.5,
+    "y": 0.17,
+    "z": 2.4,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.35,
+    "y": 0.17,
+    "z": -0.4,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 3.5,
+    "y": 0.17,
+    "z": -1.28,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "farol_ponta_norte_03": [
+   {
+    "x": -2.0,
+    "y": 0.17,
+    "z": 1.25,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -0.3,
+    "y": 0.17,
+    "z": -1.12,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "farol_ponta_norte_04": [
+   {
+    "x": -3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": -1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -1.04,
+    "y": 0.25,
+    "z": -4.58,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "quartel_01": [
+   {
+    "x": -11.5,
+    "y": 0.17,
+    "z": 3.75,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "escritorio",
+    "andar": 0
+   },
+   {
+    "x": 11.5,
+    "y": 0.17,
+    "z": 4.81,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "escritorio",
+    "andar": 0
+   },
+   {
+    "x": -3.6,
+    "y": 0.17,
+    "z": 0.3,
+    "rot_deg": 180.0,
+    "tier": "alto",
+    "sala": "reuniao",
+    "andar": 0
+   },
+   {
+    "x": 2.28,
+    "y": 3.17,
+    "z": 1.0,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "escritorio",
+    "andar": 1
+   },
+   {
+    "x": -11.5,
+    "y": 3.17,
+    "z": -3.1,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 1
+   }
+  ],
+  "quartel_02": [
+   {
+    "x": -5.5,
+    "y": 0.12,
+    "z": 7.43,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 5.5,
+    "y": 0.12,
+    "z": -7.47,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 4.32,
+    "y": 0.12,
+    "z": 0.35,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 4.32,
+    "y": 0.12,
+    "z": -0.45,
+    "rot_deg": 180.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "quartel_03": [
+   {
+    "x": -5.5,
+    "y": 0.12,
+    "z": 7.43,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 5.5,
+    "y": 0.12,
+    "z": -7.47,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 4.32,
+    "y": 0.12,
+    "z": 0.35,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 4.32,
+    "y": 0.12,
+    "z": -0.45,
+    "rot_deg": 180.0,
+    "tier": "alto",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "quartel_04": [
+   {
+    "x": -9.5,
+    "y": 0.12,
+    "z": 1.92,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 9.5,
+    "y": 0.12,
+    "z": 1.92,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -9.5,
+    "y": 0.12,
+    "z": -2.5,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 9.5,
+    "y": 0.12,
+    "z": -3.37,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "quartel_05": [
+   {
+    "x": -9.04,
+    "y": 0.12,
+    "z": -7.0,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 9.04,
+    "y": 0.12,
+    "z": -7.0,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -12.0,
+    "y": 0.12,
+    "z": -6.21,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -7.6,
+    "y": 0.12,
+    "z": -4.5,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 7.6,
+    "y": 0.12,
+    "z": -4.5,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "quartel_06": [
+   {
+    "x": -3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": -1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -1.04,
+    "y": 0.25,
+    "z": -4.58,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "quartel_07": [
+   {
+    "x": 1.05,
+    "y": 0.1,
+    "z": 0.57,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -1.05,
+    "y": 0.1,
+    "z": -0.57,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "quartel_08": [
+   {
+    "x": 1.05,
+    "y": 0.1,
+    "z": 0.57,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -1.05,
+    "y": 0.1,
+    "z": -0.57,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "quartel_09": [
+   {
+    "x": 1.05,
+    "y": 0.1,
+    "z": 0.57,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -1.05,
+    "y": 0.1,
+    "z": -0.57,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "pedreira_03": [
+   {
+    "x": 0.89,
+    "y": 0.2,
+    "z": 3.32,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   },
+   {
+    "x": -0.89,
+    "y": 0.2,
+    "z": -3.88,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   },
+   {
+    "x": 0.89,
+    "y": 0.2,
+    "z": 1.66,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   }
+  ],
+  "pedreira_04": [
+   {
+    "x": 0.89,
+    "y": 0.2,
+    "z": 3.32,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   },
+   {
+    "x": -0.89,
+    "y": 0.2,
+    "z": -3.88,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   },
+   {
+    "x": 0.89,
+    "y": 0.2,
+    "z": 1.66,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "container",
+    "andar": 0
+   }
+  ],
+  "pedreira_05": [
+   {
+    "x": -9.5,
+    "y": 0.12,
+    "z": -10.08,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 9.5,
+    "y": 0.12,
+    "z": -12.1,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": 12.5,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 4.5,
+    "y": 0.12,
+    "z": 8.0,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": -10.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "pedreira_06": [
+   {
+    "x": -3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": -1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -1.04,
+    "y": 0.25,
+    "z": -4.58,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "pista_pouso_01": [
+   {
+    "x": -11.5,
+    "y": 0.12,
+    "z": 3.76,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 11.5,
+    "y": 0.12,
+    "z": -2.82,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -3.42,
+    "y": 0.12,
+    "z": -9.5,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -9.0,
+    "y": 0.12,
+    "z": 4.0,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 9.0,
+    "y": 0.12,
+    "z": 4.0,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "pista_pouso_02": [
+   {
+    "x": -2.0,
+    "y": 0.15,
+    "z": 0.76,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 2.0,
+    "y": 0.15,
+    "z": 1.71,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "pista_pouso_03": [
+   {
+    "x": 0.0,
+    "y": 0.17,
+    "z": 0.3,
+    "rot_deg": 0.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.4,
+    "y": 0.17,
+    "z": -0.4,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 3.0,
+    "y": 0.17,
+    "z": -1.18,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "pista_pouso_05": [
+   {
+    "x": -9.5,
+    "y": 0.12,
+    "z": -10.08,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 9.5,
+    "y": 0.12,
+    "z": -12.1,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": 12.5,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 4.5,
+    "y": 0.12,
+    "z": 8.0,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 0.12,
+    "z": -10.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "represa_01": [
+   {
+    "x": -5.5,
+    "y": 0.12,
+    "z": -0.0,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 5.5,
+    "y": 0.12,
+    "z": -0.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -3.24,
+    "y": 0.12,
+    "z": 8.5,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "represa_02": [
+   {
+    "x": 0.0,
+    "y": 0.17,
+    "z": 0.3,
+    "rot_deg": 0.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.4,
+    "y": 0.17,
+    "z": -0.4,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 3.0,
+    "y": 0.17,
+    "z": -1.18,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ],
+  "represa_05": [
+   {
+    "x": 1.47,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_01": [
+   {
+    "x": -4.0,
+    "y": 0.17,
+    "z": 6.88,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 4.0,
+    "y": 0.17,
+    "z": -1.76,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": -6.32,
+    "y": 0.17,
+    "z": 8.5,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": -7.08,
+    "y": 0.17,
+    "z": -8.5,
+    "rot_deg": 0.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 12.5,
+    "y": 0.17,
+    "z": 6.88,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -4.0,
+    "y": 3.77,
+    "z": 2.32,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   },
+   {
+    "x": -5.56,
+    "y": 3.77,
+    "z": 8.5,
+    "rot_deg": 180.0,
+    "tier": "medio",
+    "sala": "quarto",
+    "andar": 1
+   },
+   {
+    "x": -8.6,
+    "y": 3.77,
+    "z": -8.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "quarto",
+    "andar": 1
+   },
+   {
+    "x": 12.5,
+    "y": 3.77,
+    "z": 5.36,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "quarto",
+    "andar": 1
+   }
+  ],
+  "fazenda_boa_esperanca_02": [
+   {
+    "x": -3.0,
+    "y": 0.3,
+    "z": -5.0,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": 3.0,
+    "y": 0.3,
+    "z": -5.0,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_03": [
+   {
+    "x": -3.5,
+    "y": 0.12,
+    "z": -0.0,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.5,
+    "y": 0.12,
+    "z": -0.0,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -3.5,
+    "y": 0.12,
+    "z": 5.64,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.5,
+    "y": 0.12,
+    "z": 5.64,
+    "rot_deg": 270.0,
+    "tier": "medio",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_05": [
+   {
+    "x": -1.96,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_06": [
+   {
+    "x": -1.96,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_07": [
+   {
+    "x": -1.96,
+    "y": 0.14,
+    "z": 3.55,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -2.45,
+    "y": 0.14,
+    "z": -1.2,
+    "rot_deg": 180.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   },
+   {
+    "x": 0.4,
+    "y": 0.14,
+    "z": -1.73,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   }
+  ],
+  "fazenda_boa_esperanca_08": [
+   {
+    "x": -3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 90.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": 1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": 3.58,
+    "y": 0.25,
+    "z": -1.79,
+    "rot_deg": 270.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   },
+   {
+    "x": -1.04,
+    "y": 0.25,
+    "z": -4.58,
+    "rot_deg": 0.0,
+    "tier": "alto",
+    "sala": "galpao",
+    "andar": 0
+   }
+  ],
+  "praia_quiosques_07": [
+   {
+    "x": -4.5,
+    "y": 0.17,
+    "z": 2.9,
+    "rot_deg": 90.0,
+    "tier": "baixo",
+    "sala": "salao",
+    "andar": 0
+   },
+   {
+    "x": 0.28,
+    "y": 0.17,
+    "z": -5.5,
+    "rot_deg": 0.0,
+    "tier": "medio",
+    "sala": "cozinha",
+    "andar": 0
+   },
+   {
+    "x": 4.5,
+    "y": 3.17,
+    "z": 3.9,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 1
+   }
+  ],
+  "pico_taua_02": [
+   {
+    "x": -2.0,
+    "y": 0.17,
+    "z": 1.25,
+    "rot_deg": 90.0,
+    "tier": "medio",
+    "sala": "sala",
+    "andar": 0
+   },
+   {
+    "x": -0.3,
+    "y": 0.17,
+    "z": -1.12,
+    "rot_deg": 270.0,
+    "tier": "baixo",
+    "sala": "quarto",
+    "andar": 0
+   }
+  ]
+ },
+ "externos_veiculos": [
+  {
+   "veiculo": "carcaca_fusca",
+   "x": -440,
+   "y": -190,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "carcaca_teco_teco",
+   "x": 300,
+   "y": -315,
+   "desloca_m": 2.6,
+   "tier": "alto",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "carcaca_teco_teco",
+   "x": 360,
+   "y": -300,
+   "desloca_m": 2.6,
+   "tier": "alto",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "caminhao_abandonado",
+   "x": 300,
+   "y": 200,
+   "desloca_m": 2.6,
+   "tier": "alto",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "carreta_cana",
+   "x": -200,
+   "y": 290,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "carreta_cana",
+   "x": -380,
+   "y": 330,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "trator",
+   "x": -160,
+   "y": 360,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 0
+  },
+  {
+   "veiculo": "carreta_cana",
+   "x": -272,
+   "y": 272,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 40
+  },
+  {
+   "veiculo": "trator",
+   "x": -366,
+   "y": 258,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 80
+  },
+  {
+   "veiculo": "carcaca_fusca",
+   "x": 340,
+   "y": 216.5,
+   "desloca_m": 2.6,
+   "tier": "alto",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 170
+  },
+  {
+   "veiculo": "carcaca_fusca",
+   "x": -274,
+   "y": 369,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 80
+  },
+  {
+   "veiculo": "carreta_cana",
+   "x": -289,
+   "y": 237,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 175
+  },
+  {
+   "veiculo": "trator",
+   "x": -262,
+   "y": 237,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 10
+  },
+  {
+   "veiculo": "carcaca_fusca",
+   "x": -236,
+   "y": 373,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 100
+  },
+  {
+   "veiculo": "carcaca_fusca",
+   "x": -416,
+   "y": -296,
+   "desloca_m": 2.6,
+   "tier": "medio",
+   "nota": "ponto a 2,6 m do veículo, no lado de +X local do modelo (gire pelo rot_deg do veículo)",
+   "rot_deg_veiculo": 62
+  }
+ ]
+}

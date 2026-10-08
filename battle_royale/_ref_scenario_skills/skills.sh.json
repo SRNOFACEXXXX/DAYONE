@@ -1,0 +1,146 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Getting started",
+      "description": "Connect the Scenario MCP server and learn the core generation loop every other skill builds on.",
+      "skills": ["scenario"]
+    },
+    {
+      "title": "Finding a direction",
+      "description": "Turn a blank brief into references, options someone can choose between, and a moodboard the next batch runs from.",
+      "skills": ["scenario-inspiration"]
+    },
+    {
+      "title": "Images",
+      "description": "Generate and edit images: model choice, sizing, references, masked edits, post-processing tools, and letter-perfect text overlay cards.",
+      "skills": [
+        "scenario-image",
+        "scenario-product-shots",
+        "scenario-brand-kit",
+        "scenario-image-editing",
+        "scenario-text-overlay",
+        "scenario-storyboards"
+      ]
+    },
+    {
+      "title": "Game art and environments",
+      "description": "Sprites, icons, tilesets, textures, skyboxes, and 3D assets ready for game engines.",
+      "skills": [
+        "scenario-game-assets",
+        "scenario-sprite-animation",
+        "scenario-textures",
+        "scenario-skyboxes",
+        "scenario-3d",
+        "scenario-patina-retexture",
+        "scenario-orbit-views"
+      ]
+    },
+    {
+      "title": "Video and audio",
+      "description": "Video generation and editing, music, sound effects, voice, and speech.",
+      "skills": [
+        "scenario-video",
+        "scenario-video-editing",
+        "scenario-seedance-music-video",
+        "scenario-seedance-storyboard",
+        "scenario-video-ads",
+        "scenario-ugc",
+        "scenario-fan-cam",
+        "scenario-audio",
+        "scenario-video-assembly",
+        "scenario-caption-studio"
+      ]
+    },
+    {
+      "title": "Consistency and custom models",
+      "description": "Hold one character, product, or style across a whole set, and train custom models on your own art.",
+      "skills": [
+        "scenario-consistency",
+        "scenario-identity-library",
+        "scenario-model-training"
+      ]
+    },
+    {
+      "title": "Reviewing and organizing output",
+      "description": "Read finished assets back: caption them, extract a style or a control map, check a batch against a brief or the Quality Gate, compare candidate models on one brief, and file the keepers.",
+      "skills": [
+        "scenario-asset-analysis",
+        "scenario-quality-gate",
+        "scenario-refine-loop",
+        "scenario-model-comparison"
+      ]
+    },
+    {
+      "title": "Formats and placements",
+      "description": "Ship one approved master, image or video, to every placement: ratios, safe zones, and platform specs from social feeds to shops, storefronts, and print.",
+      "skills": ["scenario-formats"]
+    },
+    {
+      "title": "Workflows and apps",
+      "description": "Discover, run, build, and publish Scenario workflows (apps), and migrate graphs from Weavy, ComfyUI, or other node editors.",
+      "skills": ["scenario-workflows", "scenario-workflow-authoring"]
+    },
+    {
+      "title": "Troubleshooting",
+      "description": "Get past a blocked generation, and turn a stuck session into a reproducible public issue.",
+      "skills": ["scenario-moderation", "scenario-report"]
+    },
+    {
+      "title": "Team administration",
+      "description": "Govern a team from the agent: which models it can run, who is on it and in which projects, per-member spend caps, API key roles, and who spent what.",
+      "skills": ["scenario-team-admin", "scenario-admin-analytics"]
+    },
+    {
+      "title": "Image model families",
+      "description": "The top image families in depth: generation and editing modes, reference rules, and the caps that differ per member.",
+      "skills": [
+        "scenario-gpt-image",
+        "scenario-mai-image",
+        "scenario-seedream",
+        "scenario-gemini-image",
+        "scenario-reve",
+        "scenario-ideogram",
+        "scenario-grok-imagine-image",
+        "scenario-luma-image"
+      ]
+    },
+    {
+      "title": "Video model families",
+      "description": "The top video families in depth: conditioning modes, native audio, editing and extension, and per-member caps and costs.",
+      "skills": [
+        "scenario-minimax-video",
+        "scenario-gemini-omni",
+        "scenario-grok-imagine-video",
+        "scenario-veo",
+        "scenario-seedance",
+        "scenario-kling",
+        "scenario-vidu",
+        "scenario-wan",
+        "scenario-runway",
+        "scenario-luma-video"
+      ]
+    },
+    {
+      "title": "Audio model families",
+      "description": "The top audio families in depth: music, covers and stems, sound effects, speech, dubbing, and video scoring.",
+      "skills": [
+        "scenario-minimax-music",
+        "scenario-elevenlabs",
+        "scenario-ace-step",
+        "scenario-sonilo"
+      ]
+    },
+    {
+      "title": "3D model families",
+      "description": "The top 3D families in depth: mesh generation, retexture and rigging toolchains, portraits, and explorable worlds and splats.",
+      "skills": [
+        "scenario-meshy",
+        "scenario-rodin",
+        "scenario-sparc3d",
+        "scenario-3d-worlds"
+      ]
+    }
+  ]
+}

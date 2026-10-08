@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgx8lvsdhtlq7"]
+
+[ext_resource type="Script" path="res://tests/terrain_slopes.gd" id="1_2b7jk"]
+
+[node name="TerrainSlopesTest" type="Node"]
+script = ExtResource("1_2b7jk")

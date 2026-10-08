@@ -1,0 +1,59 @@
+{
+ "loot": [
+  {
+   "x": -11.5,
+   "y": 0.12,
+   "z": 3.76,
+   "rot_deg": 90.0,
+   "tier": "alto",
+   "sala": "galpao"
+  },
+  {
+   "x": 11.5,
+   "y": 0.12,
+   "z": -2.82,
+   "rot_deg": 270.0,
+   "tier": "alto",
+   "sala": "galpao"
+  },
+  {
+   "x": -3.42,
+   "y": 0.12,
+   "z": -9.5,
+   "rot_deg": 0.0,
+   "tier": "alto",
+   "sala": "galpao"
+  },
+  {
+   "x": -9.0,
+   "y": 0.12,
+   "z": 4.0,
+   "rot_deg": 90.0,
+   "tier": "alto",
+   "sala": "galpao"
+  },
+  {
+   "x": 9.0,
+   "y": 0.12,
+   "z": 4.0,
+   "rot_deg": 270.0,
+   "tier": "alto",
+   "sala": "galpao"
+  }
+ ],
+ "entradas": [
+  {
+   "x": 0.0,
+   "y": -11.3,
+   "dx": 0,
+   "dy": 1
+  },
+  {
+   "x": 10.0,
+   "y": 11.3,
+   "dx": 0,
+   "dy": -1
+  }
+ ],
+ "lances": []
+}

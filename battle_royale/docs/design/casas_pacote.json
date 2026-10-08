@@ -1,0 +1,50 @@
+{
+ "descricao": "Casa completa do pacote de interiores (cenario/casas/casa_demo), colocada em terrenos planos perto de cada POI, porta (+Z) virada para o centro do POI. x leste, y norte.",
+ "casas": [
+  {
+   "x": -265,
+   "y": -330,
+   "rot_deg": -84.3
+  },
+  {
+   "x": -219,
+   "y": 80,
+   "rot_deg": -67.4
+  },
+  {
+   "x": -278,
+   "y": 272,
+   "rot_deg": -172.6
+  },
+  {
+   "x": 85,
+   "y": 470,
+   "rot_deg": -142.8
+  },
+  {
+   "x": 298,
+   "y": 81,
+   "rot_deg": 20.1
+  },
+  {
+   "x": -174,
+   "y": -394,
+   "rot_deg": 146.3
+  },
+  {
+   "x": -198,
+   "y": -370,
+   "rot_deg": 127.5
+  },
+  {
+   "x": 131,
+   "y": -370,
+   "rot_deg": -15.9
+  },
+  {
+   "x": 290,
+   "y": 267,
+   "rot_deg": 149.0
+  }
+ ]
+}

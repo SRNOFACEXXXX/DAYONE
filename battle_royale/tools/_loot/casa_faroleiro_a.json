@@ -1,0 +1,37 @@
+{
+ "loot": [
+  {
+   "x": -3.5,
+   "y": 0.17,
+   "z": 2.4,
+   "rot_deg": 90.0,
+   "tier": "baixo",
+   "sala": "sala"
+  },
+  {
+   "x": -2.35,
+   "y": 0.17,
+   "z": -0.4,
+   "rot_deg": 180.0,
+   "tier": "medio",
+   "sala": "cozinha"
+  },
+  {
+   "x": 3.5,
+   "y": 0.17,
+   "z": -1.28,
+   "rot_deg": 270.0,
+   "tier": "baixo",
+   "sala": "quarto"
+  }
+ ],
+ "entradas": [
+  {
+   "x": 0.0,
+   "y": -6.3,
+   "dx": 0,
+   "dy": 1
+  }
+ ],
+ "lances": []
+}

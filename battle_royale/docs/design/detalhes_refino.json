@@ -1,0 +1,383 @@
+{
+  "descricao": "Composição autoral de acampamentos, pontos de saque e sinais de ocupação. Coordenadas x=leste, y=norte, sem distribuição aleatória.",
+  "props": [
+    {
+      "tipo": "barraca_militar",
+      "x": 290,
+      "y": 319,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "barraca_militar",
+      "x": 334,
+      "y": 315,
+      "rot_deg": 180,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 281,
+      "y": 320,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 280,
+      "y": 317,
+      "rot_deg": 30,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 281,
+      "y": 315,
+      "rot_deg": 75,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "barril",
+      "x": 344,
+      "y": 315,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "barril",
+      "x": 346,
+      "y": 315,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 298,
+      "y": 331,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 329,
+      "y": 330,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": 387,
+      "y": 312,
+      "rot_deg": 15,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 392,
+      "y": 309,
+      "rot_deg": 40,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "barraca_militar",
+      "x": 321,
+      "y": -250,
+      "rot_deg": 45,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "barraca_militar",
+      "x": 344,
+      "y": -250,
+      "rot_deg": 45,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 333,
+      "y": -202,
+      "rot_deg": 60,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 335,
+      "y": -203,
+      "rot_deg": 10,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 356,
+      "y": -201,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 358,
+      "y": -202,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "barril",
+      "x": 394,
+      "y": -245,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 393,
+      "y": -249,
+      "rot_deg": 115,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "barraca_militar",
+      "x": -130,
+      "y": -335,
+      "rot_deg": 75,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -132,
+      "y": -310,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -134,
+      "y": -310,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -139,
+      "y": -312,
+      "rot_deg": 25,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -141,
+      "y": -314,
+      "rot_deg": 60,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -133,
+      "y": -322,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -112,
+      "y": -318,
+      "rot_deg": 180,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "varal",
+      "x": -84,
+      "y": -279,
+      "rot_deg": 25,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -46,
+      "y": -317,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barraca_militar",
+      "x": -275,
+      "y": 328,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -270,
+      "y": 343,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -272,
+      "y": 345,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -280,
+      "y": 350,
+      "rot_deg": 50,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -284,
+      "y": 351,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -218,
+      "y": 278,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -216,
+      "y": 278,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -350,
+      "y": -394,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -352,
+      "y": -396,
+      "rot_deg": 65,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -415,
+      "y": -408,
+      "rot_deg": 115,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -400,
+      "y": -290,
+      "rot_deg": 70,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -360,
+      "y": -287,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -313,
+      "y": 55,
+      "rot_deg": 45,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -326,
+      "y": 54,
+      "rot_deg": 90,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "barril",
+      "x": -291,
+      "y": 52,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "barril",
+      "x": -116,
+      "y": -121,
+      "rot_deg": 0,
+      "poi": "represa"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -70,
+      "y": -111,
+      "rot_deg": 70,
+      "poi": "represa"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -115,
+      "y": -108,
+      "rot_deg": 20,
+      "poi": "represa"
+    },
+    {
+      "tipo": "barril",
+      "x": 320,
+      "y": -26,
+      "rot_deg": 0,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 323,
+      "y": -24,
+      "rot_deg": 0,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 365,
+      "y": -22,
+      "rot_deg": 110,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 115,
+      "y": -504,
+      "rot_deg": 15,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 116,
+      "y": -451,
+      "rot_deg": 85,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 78,
+      "y": -463,
+      "rot_deg": 90,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 65,
+      "y": 487,
+      "rot_deg": 30,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "barril",
+      "x": 51,
+      "y": 519,
+      "rot_deg": 0,
+      "poi": "farol_ponta_norte"
+    }
+  ]
+}

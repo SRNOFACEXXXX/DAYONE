@@ -1,0 +1,95 @@
+{
+ "loot": [
+  {
+   "x": -4.0,
+   "y": 0.17,
+   "z": 6.88,
+   "rot_deg": 90.0,
+   "tier": "medio",
+   "sala": "sala"
+  },
+  {
+   "x": 4.0,
+   "y": 0.17,
+   "z": -1.76,
+   "rot_deg": 270.0,
+   "tier": "medio",
+   "sala": "cozinha"
+  },
+  {
+   "x": -6.32,
+   "y": 0.17,
+   "z": 8.5,
+   "rot_deg": 180.0,
+   "tier": "baixo",
+   "sala": "quarto"
+  },
+  {
+   "x": -7.08,
+   "y": 0.17,
+   "z": -8.5,
+   "rot_deg": 0.0,
+   "tier": "baixo",
+   "sala": "quarto"
+  },
+  {
+   "x": 12.5,
+   "y": 0.17,
+   "z": 6.88,
+   "rot_deg": 270.0,
+   "tier": "medio",
+   "sala": "sala"
+  },
+  {
+   "x": -4.0,
+   "y": 3.77,
+   "z": 2.32,
+   "rot_deg": 90.0,
+   "tier": "baixo",
+   "sala": "quarto"
+  },
+  {
+   "x": -5.56,
+   "y": 3.77,
+   "z": 8.5,
+   "rot_deg": 180.0,
+   "tier": "medio",
+   "sala": "quarto"
+  },
+  {
+   "x": -8.6,
+   "y": 3.77,
+   "z": -8.5,
+   "rot_deg": 0.0,
+   "tier": "medio",
+   "sala": "quarto"
+  },
+  {
+   "x": 12.5,
+   "y": 3.77,
+   "z": 5.36,
+   "rot_deg": 270.0,
+   "tier": "medio",
+   "sala": "quarto"
+  }
+ ],
+ "entradas": [
+  {
+   "x": 0.0,
+   "y": -10.3,
+   "dx": 0,
+   "dy": 1
+  }
+ ],
+ "lances": [
+  {
+   "x": 12.17,
+   "y": 8.4,
+   "dx": 0,
+   "dy": -1,
+   "z": 3.77,
+   "tx": 12.17,
+   "ty": 4.3
+  }
+ ]
+}

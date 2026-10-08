@@ -1,0 +1,156 @@
+# ---------------------------------------------------------------- ATO III — ARSENAL (várias armas atirando em zumbis)
+func armar_br(id: String, extra := {}) -> void:
+	## equipa a arma pelo inventário BR (mantém a mira holográfica/ACOG do item, igual ao jogo)
+	var bag: BRInventory = m.br_bag
+	for it in bag.items.duplicate():
+		if String(BRInventory.definition(String(it.id)).get("kind", "")) == "weapon":
+			bag.remove_item(int(it.uid))
+	if bag.backpack_id.is_empty():
+		bag.add_item("backpack_large")
+		for it in bag.items:
+			if String(it.id) == "backpack_large":
+				bag.equip_backpack(int(it.uid))
+	var ex := {"mag": 30}
+	ex.merge(extra, true)
+	bag.add_item(id, 1, Vector2i(-1, -1), ex)
+	for it in bag.items:
+		if String(it.id) == id:
+			m._equip_br_weapon(int(it.uid))
+			break
+	var ws := s.current()
+	if ws:
+		ws.mag = ws.def.mag_size
+		ws.reserve = 200
+
+
+func fps_liga(ads := true) -> void:
+	pc.set_process(true)
+	pc._prefer_third_person = false
+	pc._set_third_person(false)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	s.visible = true
+	bm.visible = false
+	if pc.viewmodel:
+		pc.viewmodel.visible = true
+		pc.viewmodel.set_viewmodel_enabled(true)
+	pc.camera.make_current()
+	for nome in ["MosinAimLayer", "AimLayer"]:
+		var al := pc.get_node_or_null(nome)
+		if al is CanvasLayer:
+			(al as CanvasLayer).visible = true          # mira holográfica/ACOG/luneta desenhadas pelo jogo
+	if ads:
+		Input.action_press("alt_fire")
+		pc._ads_amount = 1.0         # já entra mirando (sem a transição do quadril, que não é o foco do plano)
+
+
+func fps_desliga() -> void:
+	Input.action_release("alt_fire")
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	for nome in ["MosinAimLayer", "AimLayer"]:
+		var al2 := pc.get_node_or_null(nome)
+		if al2 is CanvasLayer:
+			(al2 as CanvasLayer).visible = false
+	pc.set_process(false)
+	if pc.viewmodel:
+		pc.viewmodel.visible = false
+	pc._set_third_person(true)
+	pc._prefer_third_person = true
+	pc.camera.current = false
+	cam.make_current()
+	bm.visible = true
+
+
+func _enxame_fps(n: int, dmin: float, dmax: float, arco: float) -> void:
+	var dir := Vector3(-sin(s.yaw), 0.0, -cos(s.yaw))
+	for i in n:
+		var a := randf_range(-arco, arco)
+		var d := randf_range(dmin, dmax)
+		var v := dir.rotated(Vector3.UP, a) * d
+		var z := z_novo(s.global_position + v, atan2(-v.x, -v.z) + PI, &"", i % 5)
+		z.target = s
+		z._set_state(ZombieEnemy.State.CHASE)
+
+
+func _p_ars_ak() -> void:
+	clima(20.4, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	desarmar()
+	armar_br("ak47", {"reddot": true})
+	fps_liga(true)
+	_enxame_fps(6, 14.0, 24.0, 0.35)
+
+
+func _a_ars(tl: float) -> void:
+	h_parado()
+	atira_no_mais_perto()
+
+
+func _c_ars(_tl: float) -> void:
+	pass          # a câmera é a do jogador (pc.camera), com coice, mira e viewmodel reais
+
+
+func _p_ars_m4() -> void:
+	fps_desliga()
+	clima(20.4, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	desarmar()
+	armar_br("m4", {"acog": true})
+	fps_liga(true)
+	_enxame_fps(6, 22.0, 40.0, 0.3)
+
+
+func _p_ars_snp() -> void:
+	fps_desliga()
+	clima(19.2, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	desarmar()
+	armar_br("mosin", {"mag": 5})
+	fps_liga(true)
+	if pc.viewmodel:
+		pc.viewmodel.visible = false
+	for i in 3:
+		var v := Vector3(-48.0 - i * 9.0, 0, randf_range(-3, 3))
+		var z := z_novo(s.global_position + v, PI * 0.5, &"patrol", i % 5)
+		_extras.append(z)
+
+
+func _a_ars_snp(tl: float) -> void:
+	h_parado()
+	if pc.viewmodel:
+		pc.viewmodel.visible = false
+	pc._ads_amount = 1.0          # mantém a luneta mesmo durante o ferrolho (o quadril da Mosin não é o foco do plano)
+	# um tiro por vez no alvo mais perto (ferrolho entre os tiros)
+	var z := mira_zumbi(90.0)
+	if z == null:
+		s.in_fire = false
+		return
+	var alvo := z.global_position + Vector3(0, 1.62, 0)
+	var d := alvo - s.eye_position()
+	s.yaw = lerp_angle(s.yaw, atan2(-d.x, -d.z), 0.2)
+	s.pitch = lerpf(s.pitch, asin(clampf(d.y / maxf(d.length(), 0.01), -1.0, 1.0)), 0.2)
+	var ws := s.current()
+	if ws:
+		ws.mag = 5
+		ws.reserve = 40
+	s.in_fire = int(tl * 100.0) % 130 < 4 and tl > 0.9
+
+
+func _p_ars_249() -> void:
+	fps_desliga()
+	clima(20.4, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	desarmar()
+	armar_br("m249", {"mag": 100})
+	fps_liga(false)
+	_enxame_fps(9, 12.0, 26.0, 0.5)
+
+
+func _a_ars_249(tl: float) -> void:
+	h_parado()
+	atira_no_mais_perto()
+
+
+func _c_ars_249(_tl: float) -> void:
+	pass
+
+

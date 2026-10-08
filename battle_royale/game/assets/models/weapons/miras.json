@@ -1,0 +1,582 @@
+{
+ "_doc": "Marcas de mira no espaço do nó 'no' da cena *_fp. alca/massa: pontos da linha de visada; alivio: olho->alça em ADS (m); luneta: mira pela luneta (overlay). Medidas nas vistas de tools/vista_arma.py (Assets/_vistas).",
+ "ak47": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.1885,
+   -0.1
+  ],
+  "massa": [
+   0,
+   0.192,
+   -0.405
+  ],
+  "alivio": 0.32,
+  "modelo": "ak47",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    0,
+    3,
+    -3
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.06,
+    -0.06,
+    -0.18
+   ]
+  }
+ },
+ "m4": {
+  "rig": "res://assets/models/fp/m4_lp.glb",
+  "osso": "Main",
+  "alca": [
+   0.34,
+   8.8,
+   -7.0
+  ],
+  "massa": [
+   0.34,
+   8.83,
+   34.0
+  ],
+  "alivio": 0.22,
+  "rig_off": [
+   -0.025,
+   0.0,
+   -0.14
+  ],
+  "muzzle": [
+   0.34,
+   1.7,
+   51.4
+  ],
+  "eject": [
+   2.5,
+   4.0,
+   2.0
+  ],
+  "trilho": [
+   0.34,
+   5.07,
+   4.0
+  ],
+  "ferro_caixas": [
+   [
+    -3,
+    5.6,
+    -11,
+    4,
+    10,
+    -2.5
+   ],
+   [
+    -4,
+    1.5,
+    24,
+    5,
+    10,
+    45
+   ]
+  ],
+  "rig_reload": [
+   0.03,
+   0.09,
+   -0.24
+  ]
+ },
+ "mosin": {
+  "rig": "res://assets/models/fp/m4_lp.glb",
+  "osso": "Main",
+  "troca": {
+   "glb": "res://assets/models/weapons/wf/mosin.glb",
+   "cabo": [
+    0.0,
+    0.013,
+    0.228
+   ],
+   "esc": 0.75,
+   "punho": [
+    0.3,
+    -13.0,
+    6.0
+   ],
+   "escurecer": 0.75
+  },
+  "alca": [
+   0.3,
+   -2.425,
+   4.35
+  ],
+  "massa": [
+   0.3,
+   -2.425,
+   34.35
+  ],
+  "alivio": 0.3,
+  "rig_off": [
+   -0.025,
+   -0.01,
+   -0.2
+  ],
+  "muzzle": [
+   0.3,
+   -13.975,
+   69.6
+  ],
+  "eject": [
+   3,
+   3,
+   0
+  ],
+  "luneta": true,
+  "ferrolho": true,
+  "quadril": {
+   "_doc": "Holder (m, graus). Gira em volta do receptor (pivo) e leva o rifle para a direita/abaixo, boca apontada para o centro e cantado à esquerda: cano visível até a boca (tests/sniper_fp.tscn).",
+   "pos": [0.16, -0.037, -0.143],
+   "rot": [12, 18, 30],
+   "pivo": [0.03, -0.183, -0.537]
+  },
+  "ferrolho_cfg": {
+   "_doc": "Coordenadas do wf/mosin.glb (m; +X dir, +Y cima, -Z boca). caixas: [x0,y0,z0,x1,y1,z1] da peça do ferrolho (traseira, raiz, alavanca, bola). eixo: eixo do cano/ferrolho. curso: recuo (m do glb; x0,75 no jogo). tempos: ciclo após o tiro (s) [alcança, sobe, recua, avança, desce, volta, fim]. rec_tempos: fração de reload_time.",
+   "malha": "sniper_rifle_001",
+   "caixas": [
+    [-0.029, 0.070, 0.155, -0.006, 0.091, 0.220],
+    [-0.010, 0.049, 0.170, 0.005, 0.082, 0.192],
+    [-0.022, 0.040, 0.173, 0.065, 0.074, 0.189],
+    [0.026, 0.030, 0.161, 0.072, 0.072, 0.201]
+   ],
+   "eixo": [-0.0175, 0.0805, 0.19],
+   "bola": [0.049, 0.051, 0.181],
+   "corpo": [0.0095, 0.12, -0.034],
+   "ang": 85.0,
+   "curso": 0.1,
+   "tempos": [0.2, 0.36, 0.48, 0.66, 0.84, 0.96, 1.2],
+   "rec_tempos": [0.0, 0.09, 0.15, 0.25, 0.33, 0.42, 0.5, 0.7, 0.76, 0.86, 0.9, 1.0],
+   "inclina_ciclo": [0.0, 0.1, 0.0, -0.25, 0.1, -0.03],
+   "inclina_rec": [0.0, 0.1, -0.1, -0.26, 0.11, -0.04],
+   "polo": [0.05, -0.5, 0.1],
+   "recolhe": [0.0, 0.0, 0.12],
+   "palma_off": [0.01, -0.035, 0.0],
+   "osso_palma": "RightHandMiddle1",
+   "palma_k": 0.6,
+   "clip": {"comp": 0.075, "diam": 0.012, "slot": [0.075, 0.14, 0.12], "empurra": [-0.05, -0.05, 0.0], "bolso": [0.12, -0.2, 0.05], "polegar": [0.015, 0.045, 0.05], "giro": 35.0}
+  },
+  "rig_reload": [
+   0.03,
+   0.09,
+   -0.24
+  ]
+ },
+ "glock": {
+  "rig": "res://assets/models/fp/g17_lp.glb",
+  "osso": "Main",
+  "alca": [
+   0.0,
+   4.05,
+   -10.5
+  ],
+  "massa": [
+   0.0,
+   4.12,
+   7.5
+  ],
+  "alivio": 0.36,
+  "rig_off": [
+   0.0,
+   -0.01,
+   -0.04
+  ],
+  "muzzle": [
+   0.0,
+   2.6,
+   8.6
+  ],
+  "eject": [
+   1.5,
+   3.8,
+   0.0
+  ],
+  "rig_reload": [
+   0.02,
+   0.05,
+   -0.08
+  ]
+ },
+ "usp": {
+  "rig": "res://assets/models/fp/g17_lp.glb",
+  "osso": "Main",
+  "alca": [
+   0.0,
+   4.05,
+   -10.5
+  ],
+  "massa": [
+   0.0,
+   4.12,
+   7.5
+  ],
+  "alivio": 0.36,
+  "rig_off": [
+   0.0,
+   -0.01,
+   -0.04
+  ],
+  "muzzle": [
+   0.0,
+   2.6,
+   8.6
+  ],
+  "eject": [
+   1.5,
+   3.8,
+   0.0
+  ],
+  "rig_reload": [
+   0.02,
+   0.05,
+   -0.08
+  ]
+ },
+ "uzi": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.06,
+   0.184
+  ],
+  "massa": [
+   0,
+   0.054,
+   -0.129
+  ],
+  "alivio": 0.26,
+  "modelo": "uzi",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    1,
+    3,
+    -3
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.058,
+    -0.06,
+    -0.24
+   ]
+  }
+ },
+ "m249": {
+  "rig": "res://assets/models/fp/m4_lp.glb",
+  "osso": "Main",
+  "troca": {
+   "glb": "res://assets/models/weapons/wf/m249.glb",
+   "cabo": [
+    0,
+    -0.129,
+    0.196
+   ],
+   "esc": 0.85,
+   "mag": "M249_Magazine",
+   "escurecer": 0.6
+  },
+  "alca": [
+   1.107,
+   4.47,
+   -7.38
+  ],
+  "massa": [
+   1.107,
+   5.107,
+   37.16
+  ],
+  "alivio": 0.25,
+  "rig_off": [
+   -0.025,
+   -0.01,
+   -0.16
+  ],
+  "muzzle": [
+   0.3,
+   -0.035,
+   55.86
+  ],
+  "eject": [
+   3,
+   3,
+   0
+  ],
+  "trilho": [
+   0.3,
+   4.1,
+   4.0
+  ],
+  "holo_riser": 2.2,
+  "rig_reload": [
+   0.03,
+   0.09,
+   -0.24
+  ]
+ },
+ "m107": {
+  "rig": "res://assets/models/fp/m4_lp.glb",
+  "osso": "Main",
+  "troca": {
+   "glb": "res://assets/models/weapons/wf/m107.glb",
+   "cabo": [
+    0,
+    -0.144,
+    0.324
+   ],
+   "esc": 0.72,
+   "mag": "M107_Magazine",
+   "escurecer": 0.5
+  },
+  "alca": [
+   2.1,
+   4.12,
+   1.408
+  ],
+  "massa": [
+   2.1,
+   4.12,
+   49.288
+  ],
+  "alivio": 0.28,
+  "rig_off": [
+   -0.025,
+   -0.01,
+   -0.16
+  ],
+  "muzzle": [
+   2.1,
+   -0.632,
+   70.168
+  ],
+  "eject": [
+   3,
+   3,
+   0
+  ],
+  "trilho": [
+   0.3,
+   2.9,
+   20.0
+  ],
+  "rig_reload": [
+   0.03,
+   0.09,
+   -0.24
+  ]
+ },
+ "_m4_antigo": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.054,
+   0.09
+  ],
+  "massa": [
+   0,
+   0.037,
+   -0.224
+  ],
+  "alivio": 0.22,
+  "modelo": "m4",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    0,
+    10,
+    -8
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.06,
+    -0.06,
+    -0.18
+   ]
+  }
+ },
+ "_glock_antigo": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.018,
+   0.073
+  ],
+  "massa": [
+   0,
+   0.018,
+   -0.108
+  ],
+  "alivio": 0.5,
+  "modelo": "m1911",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    1,
+    3,
+    -2
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.06,
+    -0.075,
+    -0.4
+   ]
+  }
+ },
+ "_usp_antigo": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.1,
+   0.062
+  ],
+  "massa": [
+   0,
+   0.096,
+   -0.145
+  ],
+  "alivio": 0.5,
+  "modelo": "revolver",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    1,
+    3,
+    -2
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.06,
+    -0.075,
+    -0.4
+   ]
+  }
+ },
+ "_m249_antigo": {
+  "no": "Arma",
+  "alca": [
+   -0.0095,
+   0.053,
+   0.224
+  ],
+  "massa": [
+   -0.0095,
+   0.0605,
+   -0.3
+  ],
+  "alivio": 0.4,
+  "modelo": "m249",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    1,
+    3,
+    -3
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.058,
+    -0.06,
+    -0.24
+   ]
+  }
+ },
+ "_m107_antigo": {
+  "no": "Arma",
+  "alca": [
+   -0.025,
+   0.066,
+   0.235
+  ],
+  "massa": [
+   -0.025,
+   0.066,
+   -0.43
+  ],
+  "alivio": 0.3,
+  "modelo": "m107",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    1,
+    3,
+    -3
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.058,
+    -0.06,
+    -0.24
+   ]
+  }
+ },
+ "_mosin_antigo": {
+  "no": "Arma",
+  "alca": [
+   0,
+   0.154,
+   0.25
+  ],
+  "massa": [
+   0,
+   0.154,
+   -0.15
+  ],
+  "alivio": 0.1,
+  "modelo": "mosin",
+  "quadril": {
+   "pos": [
+    0,
+    0,
+    0
+   ],
+   "rot": [
+    0,
+    10,
+    -8
+   ],
+   "escala": 1.0,
+   "pivo": [
+    0.1,
+    -0.12,
+    -0.34
+   ]
+  },
+  "luneta": true
+ }
+}

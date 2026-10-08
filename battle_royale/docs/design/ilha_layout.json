@@ -1,0 +1,8547 @@
+{
+  "nome": "Ilha do Tauá",
+  "versao": 1,
+  "unidades": "metros",
+  "sistema": {
+    "origem": "centro do mapa",
+    "x": "leste",
+    "y": "norte",
+    "z": "altura acima do nível do mar",
+    "rot_deg": "rotação em Z, anti-horária a partir do eixo X"
+  },
+  "limites_mapa": {
+    "xmin": -600,
+    "xmax": 600,
+    "ymin": -600,
+    "ymax": 600
+  },
+  "costa": [
+    [
+      505,
+      0
+    ],
+    [
+      500,
+      60
+    ],
+    [
+      490,
+      120
+    ],
+    [
+      500,
+      180
+    ],
+    [
+      482,
+      240
+    ],
+    [
+      458,
+      292
+    ],
+    [
+      440,
+      340
+    ],
+    [
+      410,
+      385
+    ],
+    [
+      365,
+      415
+    ],
+    [
+      315,
+      432
+    ],
+    [
+      270,
+      448
+    ],
+    [
+      220,
+      455
+    ],
+    [
+      175,
+      470
+    ],
+    [
+      140,
+      500
+    ],
+    [
+      112,
+      535
+    ],
+    [
+      72,
+      556
+    ],
+    [
+      30,
+      548
+    ],
+    [
+      5,
+      520
+    ],
+    [
+      -20,
+      482
+    ],
+    [
+      -60,
+      457
+    ],
+    [
+      -110,
+      450
+    ],
+    [
+      -160,
+      460
+    ],
+    [
+      -210,
+      455
+    ],
+    [
+      -260,
+      442
+    ],
+    [
+      -310,
+      425
+    ],
+    [
+      -355,
+      400
+    ],
+    [
+      -395,
+      366
+    ],
+    [
+      -430,
+      320
+    ],
+    [
+      -460,
+      270
+    ],
+    [
+      -480,
+      215
+    ],
+    [
+      -492,
+      160
+    ],
+    [
+      -505,
+      100
+    ],
+    [
+      -520,
+      40
+    ],
+    [
+      -515,
+      -20
+    ],
+    [
+      -500,
+      -75
+    ],
+    [
+      -486,
+      -125
+    ],
+    [
+      -490,
+      -170
+    ],
+    [
+      -478,
+      -215
+    ],
+    [
+      -486,
+      -262
+    ],
+    [
+      -495,
+      -310
+    ],
+    [
+      -480,
+      -355
+    ],
+    [
+      -458,
+      -392
+    ],
+    [
+      -432,
+      -412
+    ],
+    [
+      -400,
+      -428
+    ],
+    [
+      -365,
+      -441
+    ],
+    [
+      -320,
+      -456
+    ],
+    [
+      -272,
+      -480
+    ],
+    [
+      -222,
+      -500
+    ],
+    [
+      -160,
+      -506
+    ],
+    [
+      -100,
+      -511
+    ],
+    [
+      -40,
+      -520
+    ],
+    [
+      20,
+      -526
+    ],
+    [
+      80,
+      -522
+    ],
+    [
+      140,
+      -516
+    ],
+    [
+      200,
+      -506
+    ],
+    [
+      255,
+      -487
+    ],
+    [
+      300,
+      -462
+    ],
+    [
+      350,
+      -442
+    ],
+    [
+      400,
+      -421
+    ],
+    [
+      445,
+      -391
+    ],
+    [
+      480,
+      -346
+    ],
+    [
+      500,
+      -296
+    ],
+    [
+      515,
+      -240
+    ],
+    [
+      515,
+      -180
+    ],
+    [
+      508,
+      -120
+    ],
+    [
+      505,
+      -60
+    ]
+  ],
+  "terreno": {
+    "interpolacao": "Spline sobre 180 cotas autorais revisadas para planícies; cume 48 m, morro sul 29 m, Cruzeiro 24 m; costa em zero. Revisão planícies 2026-09-26.",
+    "pontos_altura": [
+      {
+        "x": -220,
+        "y": 120,
+        "z": 19,
+        "rotulo": "sela Morro-Serra"
+      },
+      {
+        "x": -160,
+        "y": 160,
+        "z": 24,
+        "rotulo": "serra"
+      },
+      {
+        "x": -100,
+        "y": 175,
+        "z": 30,
+        "rotulo": "serra"
+      },
+      {
+        "x": -40,
+        "y": 170,
+        "z": 37,
+        "rotulo": "serra"
+      },
+      {
+        "x": 20,
+        "y": 165,
+        "z": 43,
+        "rotulo": "serra"
+      },
+      {
+        "x": 80,
+        "y": 160,
+        "z": 48,
+        "rotulo": "Pico do Tauá"
+      },
+      {
+        "x": 130,
+        "y": 150,
+        "z": 43,
+        "rotulo": "serra"
+      },
+      {
+        "x": 180,
+        "y": 125,
+        "z": 36,
+        "rotulo": "serra"
+      },
+      {
+        "x": 230,
+        "y": 95,
+        "z": 30,
+        "rotulo": "serra"
+      },
+      {
+        "x": 280,
+        "y": 60,
+        "z": 27,
+        "rotulo": "serra"
+      },
+      {
+        "x": 330,
+        "y": 42,
+        "z": 26,
+        "rotulo": "borda norte da pedreira"
+      },
+      {
+        "x": 330,
+        "y": 0,
+        "z": 16,
+        "rotulo": "fundo da cava"
+      },
+      {
+        "x": 352,
+        "y": -12,
+        "z": 16,
+        "rotulo": "fundo da cava"
+      },
+      {
+        "x": 305,
+        "y": 12,
+        "z": 18,
+        "rotulo": "rampa"
+      },
+      {
+        "x": 382,
+        "y": 22,
+        "z": 25,
+        "rotulo": "borda"
+      },
+      {
+        "x": 362,
+        "y": -52,
+        "z": 23,
+        "rotulo": "borda sul"
+      },
+      {
+        "x": 290,
+        "y": -40,
+        "z": 22,
+        "rotulo": "borda sudoeste"
+      },
+      {
+        "x": 300,
+        "y": 52,
+        "z": 26,
+        "rotulo": "borda noroeste"
+      },
+      {
+        "x": 405,
+        "y": -30,
+        "z": 20,
+        "rotulo": "encosta leste"
+      },
+      {
+        "x": 450,
+        "y": 0,
+        "z": 14,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 482,
+        "y": 22,
+        "z": 12,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 384,
+        "y": -40,
+        "z": 21,
+        "rotulo": "platô da oficina"
+      },
+      {
+        "x": 268,
+        "y": 22,
+        "z": 23,
+        "rotulo": "platô do paiol"
+      },
+      {
+        "x": -160,
+        "y": 240,
+        "z": 14,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": -80,
+        "y": 262,
+        "z": 18,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 0,
+        "y": 252,
+        "z": 23,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 80,
+        "y": 240,
+        "z": 28,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 160,
+        "y": 222,
+        "z": 24,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 230,
+        "y": 200,
+        "z": 20,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 280,
+        "y": 180,
+        "z": 17,
+        "rotulo": "encosta N"
+      },
+      {
+        "x": 70,
+        "y": 300,
+        "z": 21,
+        "rotulo": "esporão N"
+      },
+      {
+        "x": 62,
+        "y": 360,
+        "z": 18,
+        "rotulo": "esporão N"
+      },
+      {
+        "x": 56,
+        "y": 420,
+        "z": 16,
+        "rotulo": "esporão N"
+      },
+      {
+        "x": 68,
+        "y": 480,
+        "z": 14,
+        "rotulo": "promontório"
+      },
+      {
+        "x": 76,
+        "y": 526,
+        "z": 14,
+        "rotulo": "base do farol"
+      },
+      {
+        "x": 40,
+        "y": 512,
+        "z": 12,
+        "rotulo": "promontório"
+      },
+      {
+        "x": 112,
+        "y": 502,
+        "z": 12,
+        "rotulo": "promontório"
+      },
+      {
+        "x": 60,
+        "y": 500,
+        "z": 14,
+        "rotulo": "platô do farol"
+      },
+      {
+        "x": 92,
+        "y": 516,
+        "z": 14,
+        "rotulo": "platô do farol"
+      },
+      {
+        "x": 52,
+        "y": 528,
+        "z": 13,
+        "rotulo": "platô do farol"
+      },
+      {
+        "x": 100,
+        "y": 492,
+        "z": 14,
+        "rotulo": "platô do farol"
+      },
+      {
+        "x": -50,
+        "y": 420,
+        "z": 8,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": -150,
+        "y": 410,
+        "z": 7,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": -205,
+        "y": 420,
+        "z": 5,
+        "rotulo": "praia N"
+      },
+      {
+        "x": 150,
+        "y": 432,
+        "z": 9,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": 200,
+        "y": 420,
+        "z": 8,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": 0,
+        "y": 420,
+        "z": 10,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": -60,
+        "y": 380,
+        "z": 11,
+        "rotulo": "baixada N"
+      },
+      {
+        "x": -20,
+        "y": 340,
+        "z": 15,
+        "rotulo": "pé da serra"
+      },
+      {
+        "x": -100,
+        "y": 340,
+        "z": 12,
+        "rotulo": "pé da serra"
+      },
+      {
+        "x": -150,
+        "y": 330,
+        "z": 10,
+        "rotulo": "pé da serra"
+      },
+      {
+        "x": -280,
+        "y": 300,
+        "z": 9,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -230,
+        "y": 280,
+        "z": 10,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -330,
+        "y": 340,
+        "z": 8,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -250,
+        "y": 360,
+        "z": 8,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -350,
+        "y": 260,
+        "z": 9,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -200,
+        "y": 330,
+        "z": 11,
+        "rotulo": "Usina"
+      },
+      {
+        "x": -400,
+        "y": 300,
+        "z": 5,
+        "rotulo": "praia NO"
+      },
+      {
+        "x": -300,
+        "y": 400,
+        "z": 5,
+        "rotulo": "praia NO"
+      },
+      {
+        "x": -420,
+        "y": 200,
+        "z": 8,
+        "rotulo": "baixada O"
+      },
+      {
+        "x": -380,
+        "y": 160,
+        "z": 11,
+        "rotulo": "baixada O"
+      },
+      {
+        "x": -460,
+        "y": 150,
+        "z": 7,
+        "rotulo": "baixada O"
+      },
+      {
+        "x": -200,
+        "y": 240,
+        "z": 12,
+        "rotulo": "canavial"
+      },
+      {
+        "x": 310,
+        "y": 300,
+        "z": 12,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 260,
+        "y": 280,
+        "z": 13,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 360,
+        "y": 330,
+        "z": 12,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 330,
+        "y": 250,
+        "z": 13,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 270,
+        "y": 340,
+        "z": 12,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 400,
+        "y": 280,
+        "z": 11,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 420,
+        "y": 340,
+        "z": 8,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 240,
+        "y": 240,
+        "z": 14,
+        "rotulo": "Quartel"
+      },
+      {
+        "x": 190,
+        "y": 300,
+        "z": 16,
+        "rotulo": "encosta NE"
+      },
+      {
+        "x": 180,
+        "y": 370,
+        "z": 12,
+        "rotulo": "encosta NE"
+      },
+      {
+        "x": 240,
+        "y": 392,
+        "z": 10,
+        "rotulo": "baixada NE"
+      },
+      {
+        "x": 400,
+        "y": 180,
+        "z": 17,
+        "rotulo": "leste"
+      },
+      {
+        "x": 350,
+        "y": 160,
+        "z": 21,
+        "rotulo": "leste"
+      },
+      {
+        "x": 440,
+        "y": 120,
+        "z": 13,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 470,
+        "y": 200,
+        "z": 12,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 470,
+        "y": 60,
+        "z": 12,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 420,
+        "y": 80,
+        "z": 17,
+        "rotulo": "leste"
+      },
+      {
+        "x": 200,
+        "y": 20,
+        "z": 27,
+        "rotulo": "contraforte"
+      },
+      {
+        "x": 170,
+        "y": 60,
+        "z": 31,
+        "rotulo": "contraforte"
+      },
+      {
+        "x": 485,
+        "y": -80,
+        "z": 11,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 486,
+        "y": -150,
+        "z": 10,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 480,
+        "y": -212,
+        "z": 9,
+        "rotulo": "topo falésia"
+      },
+      {
+        "x": 440,
+        "y": -120,
+        "z": 14,
+        "rotulo": "planalto leste"
+      },
+      {
+        "x": 400,
+        "y": -150,
+        "z": 13,
+        "rotulo": "planalto leste"
+      },
+      {
+        "x": 200,
+        "y": -340,
+        "z": 8,
+        "rotulo": "cabeceira 08"
+      },
+      {
+        "x": 270,
+        "y": -322,
+        "z": 8,
+        "rotulo": "pista"
+      },
+      {
+        "x": 335,
+        "y": -305,
+        "z": 8,
+        "rotulo": "pista"
+      },
+      {
+        "x": 400,
+        "y": -288,
+        "z": 8,
+        "rotulo": "pista"
+      },
+      {
+        "x": 470,
+        "y": -270,
+        "z": 8,
+        "rotulo": "cabeceira 26"
+      },
+      {
+        "x": 300,
+        "y": -220,
+        "z": 10,
+        "rotulo": "pátio"
+      },
+      {
+        "x": 380,
+        "y": -200,
+        "z": 11,
+        "rotulo": "pátio"
+      },
+      {
+        "x": 250,
+        "y": -400,
+        "z": 6,
+        "rotulo": "restinga"
+      },
+      {
+        "x": 350,
+        "y": -382,
+        "z": 6,
+        "rotulo": "restinga"
+      },
+      {
+        "x": 432,
+        "y": -340,
+        "z": 7,
+        "rotulo": "restinga"
+      },
+      {
+        "x": 200,
+        "y": -250,
+        "z": 12,
+        "rotulo": "encosta"
+      },
+      {
+        "x": 60,
+        "y": -60,
+        "z": 26,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 110,
+        "y": -110,
+        "z": 29,
+        "rotulo": "Morro do Sul (topo)"
+      },
+      {
+        "x": 160,
+        "y": -160,
+        "z": 25,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 200,
+        "y": -200,
+        "z": 18,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 100,
+        "y": -200,
+        "z": 20,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 40,
+        "y": -150,
+        "z": 20,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 250,
+        "y": -120,
+        "z": 21,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 200,
+        "y": -60,
+        "z": 26,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": 150,
+        "y": -20,
+        "z": 28,
+        "rotulo": "Morro do Sul"
+      },
+      {
+        "x": -40,
+        "y": -30,
+        "z": 15,
+        "rotulo": "espelho d'água"
+      },
+      {
+        "x": 15,
+        "y": -30,
+        "z": 18,
+        "rotulo": "margem L"
+      },
+      {
+        "x": -40,
+        "y": 30,
+        "z": 19,
+        "rotulo": "margem N"
+      },
+      {
+        "x": -95,
+        "y": -20,
+        "z": 18,
+        "rotulo": "margem O"
+      },
+      {
+        "x": -40,
+        "y": -88,
+        "z": 17,
+        "rotulo": "margem S"
+      },
+      {
+        "x": -100,
+        "y": -86,
+        "z": 17,
+        "rotulo": "crista da barragem"
+      },
+      {
+        "x": -136,
+        "y": -116,
+        "z": 11,
+        "rotulo": "pé da barragem"
+      },
+      {
+        "x": 40,
+        "y": 40,
+        "z": 25,
+        "rotulo": "morro"
+      },
+      {
+        "x": -20,
+        "y": 82,
+        "z": 30,
+        "rotulo": "morro"
+      },
+      {
+        "x": -100,
+        "y": 60,
+        "z": 24,
+        "rotulo": "morro"
+      },
+      {
+        "x": -150,
+        "y": 20,
+        "z": 21,
+        "rotulo": "morro"
+      },
+      {
+        "x": -10,
+        "y": -122,
+        "z": 21,
+        "rotulo": "morro"
+      },
+      {
+        "x": 60,
+        "y": -10,
+        "z": 26,
+        "rotulo": "morro"
+      },
+      {
+        "x": -200,
+        "y": 40,
+        "z": 19,
+        "rotulo": "morro"
+      },
+      {
+        "x": -180,
+        "y": -60,
+        "z": 17,
+        "rotulo": "encosta"
+      },
+      {
+        "x": -230,
+        "y": -80,
+        "z": 15,
+        "rotulo": "encosta"
+      },
+      {
+        "x": -150,
+        "y": -126,
+        "z": 10,
+        "rotulo": "vale"
+      },
+      {
+        "x": -200,
+        "y": -170,
+        "z": 8,
+        "rotulo": "vale"
+      },
+      {
+        "x": -250,
+        "y": -210,
+        "z": 6,
+        "rotulo": "vale"
+      },
+      {
+        "x": -300,
+        "y": -260,
+        "z": 4,
+        "rotulo": "vale"
+      },
+      {
+        "x": -345,
+        "y": -305,
+        "z": 3,
+        "rotulo": "vale"
+      },
+      {
+        "x": -420,
+        "y": -386,
+        "z": 1,
+        "rotulo": "foz"
+      },
+      {
+        "x": -320,
+        "y": 60,
+        "z": 24,
+        "rotulo": "topo do Morro do Cruzeiro"
+      },
+      {
+        "x": -280,
+        "y": 40,
+        "z": 21,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -360,
+        "y": 80,
+        "z": 20,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -330,
+        "y": 0,
+        "z": 17,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -300,
+        "y": 110,
+        "z": 19,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -380,
+        "y": 20,
+        "z": 15,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -260,
+        "y": 90,
+        "z": 21,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -400,
+        "y": 70,
+        "z": 14,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -340,
+        "y": -40,
+        "z": 12,
+        "rotulo": "pé do Morro"
+      },
+      {
+        "x": -250,
+        "y": 0,
+        "z": 17,
+        "rotulo": "Morro"
+      },
+      {
+        "x": -440,
+        "y": 40,
+        "z": 10,
+        "rotulo": "baixada O"
+      },
+      {
+        "x": -470,
+        "y": 60,
+        "z": 7,
+        "rotulo": "baixada O"
+      },
+      {
+        "x": -430,
+        "y": -60,
+        "z": 8,
+        "rotulo": "pasto O"
+      },
+      {
+        "x": -450,
+        "y": -150,
+        "z": 6,
+        "rotulo": "pasto O"
+      },
+      {
+        "x": -400,
+        "y": -150,
+        "z": 10,
+        "rotulo": "pasto O"
+      },
+      {
+        "x": -380,
+        "y": -230,
+        "z": 7,
+        "rotulo": "pasto O"
+      },
+      {
+        "x": -300,
+        "y": -120,
+        "z": 12,
+        "rotulo": "pasto O"
+      },
+      {
+        "x": -110,
+        "y": -290,
+        "z": 11,
+        "rotulo": "casarão"
+      },
+      {
+        "x": -60,
+        "y": -260,
+        "z": 12,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -160,
+        "y": -300,
+        "z": 10,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -110,
+        "y": -350,
+        "z": 9,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -50,
+        "y": -330,
+        "z": 10,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -170,
+        "y": -240,
+        "z": 11,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -60,
+        "y": -200,
+        "z": 14,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -200,
+        "y": -360,
+        "z": 7,
+        "rotulo": "Fazenda"
+      },
+      {
+        "x": -100,
+        "y": -180,
+        "z": 15,
+        "rotulo": "encosta"
+      },
+      {
+        "x": -150,
+        "y": -200,
+        "z": 12,
+        "rotulo": "encosta"
+      },
+      {
+        "x": 100,
+        "y": -470,
+        "z": 3,
+        "rotulo": "praia"
+      },
+      {
+        "x": 40,
+        "y": -480,
+        "z": 2,
+        "rotulo": "praia"
+      },
+      {
+        "x": 160,
+        "y": -476,
+        "z": 3,
+        "rotulo": "praia"
+      },
+      {
+        "x": 0,
+        "y": -462,
+        "z": 4,
+        "rotulo": "praia"
+      },
+      {
+        "x": 100,
+        "y": -432,
+        "z": 6,
+        "rotulo": "restinga"
+      },
+      {
+        "x": 200,
+        "y": -442,
+        "z": 5,
+        "rotulo": "restinga"
+      },
+      {
+        "x": -50,
+        "y": -442,
+        "z": 6,
+        "rotulo": "restinga"
+      },
+      {
+        "x": 50,
+        "y": -400,
+        "z": 8,
+        "rotulo": "sul"
+      },
+      {
+        "x": 150,
+        "y": -390,
+        "z": 9,
+        "rotulo": "sul"
+      },
+      {
+        "x": 0,
+        "y": -300,
+        "z": 12,
+        "rotulo": "sul"
+      },
+      {
+        "x": 50,
+        "y": -250,
+        "z": 15,
+        "rotulo": "sul"
+      },
+      {
+        "x": 100,
+        "y": -320,
+        "z": 11,
+        "rotulo": "sul"
+      },
+      {
+        "x": -20,
+        "y": -380,
+        "z": 9,
+        "rotulo": "sul"
+      },
+      {
+        "x": 160,
+        "y": -300,
+        "z": 10,
+        "rotulo": "sul"
+      },
+      {
+        "x": -370,
+        "y": -350,
+        "z": 4,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -330,
+        "y": -382,
+        "z": 4,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -400,
+        "y": -320,
+        "z": 5,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -340,
+        "y": -312,
+        "z": 6,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -300,
+        "y": -360,
+        "z": 7,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -425,
+        "y": -362,
+        "z": 2,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -280,
+        "y": -420,
+        "z": 5,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -250,
+        "y": -330,
+        "z": 8,
+        "rotulo": "Vila"
+      },
+      {
+        "x": -270,
+        "y": -462,
+        "z": 7,
+        "rotulo": "costão SO"
+      },
+      {
+        "x": -220,
+        "y": -472,
+        "z": 5,
+        "rotulo": "praia SO"
+      }
+    ],
+    "cumeeiras": [
+      {
+        "nome": "Serra do Tauá",
+        "pontos": [
+          [
+            -220,
+            120
+          ],
+          [
+            -160,
+            160
+          ],
+          [
+            -100,
+            175
+          ],
+          [
+            -40,
+            170
+          ],
+          [
+            20,
+            165
+          ],
+          [
+            80,
+            160
+          ],
+          [
+            130,
+            150
+          ],
+          [
+            180,
+            125
+          ],
+          [
+            230,
+            95
+          ],
+          [
+            280,
+            60
+          ],
+          [
+            330,
+            42
+          ]
+        ]
+      },
+      {
+        "nome": "Esporão do Farol",
+        "pontos": [
+          [
+            80,
+            160
+          ],
+          [
+            70,
+            300
+          ],
+          [
+            62,
+            360
+          ],
+          [
+            56,
+            420
+          ],
+          [
+            68,
+            480
+          ],
+          [
+            76,
+            526
+          ]
+        ]
+      },
+      {
+        "nome": "Morro do Sul",
+        "pontos": [
+          [
+            40,
+            -150
+          ],
+          [
+            110,
+            -110
+          ],
+          [
+            150,
+            -20
+          ],
+          [
+            200,
+            20
+          ],
+          [
+            280,
+            60
+          ]
+        ]
+      },
+      {
+        "nome": "Esporão do Cruzeiro",
+        "pontos": [
+          [
+            -220,
+            120
+          ],
+          [
+            -260,
+            90
+          ],
+          [
+            -320,
+            60
+          ],
+          [
+            -380,
+            20
+          ]
+        ]
+      }
+    ],
+    "vales": [
+      {
+        "nome": "Vale do Rio Tauá",
+        "pontos": [
+          [
+            -40,
+            -30
+          ],
+          [
+            -100,
+            -86
+          ],
+          [
+            -150,
+            -126
+          ],
+          [
+            -200,
+            -170
+          ],
+          [
+            -250,
+            -210
+          ],
+          [
+            -300,
+            -260
+          ],
+          [
+            -345,
+            -305
+          ],
+          [
+            -420,
+            -386
+          ]
+        ]
+      },
+      {
+        "nome": "Vale da Usina",
+        "pontos": [
+          [
+            -200,
+            240
+          ],
+          [
+            -250,
+            300
+          ],
+          [
+            -300,
+            380
+          ]
+        ]
+      },
+      {
+        "nome": "Grota do Quartel",
+        "pontos": [
+          [
+            230,
+            200
+          ],
+          [
+            300,
+            260
+          ],
+          [
+            400,
+            330
+          ]
+        ]
+      },
+      {
+        "nome": "Vale da Pista",
+        "pontos": [
+          [
+            250,
+            -120
+          ],
+          [
+            300,
+            -220
+          ],
+          [
+            335,
+            -305
+          ]
+        ]
+      },
+      {
+        "nome": "Grota da Fazenda",
+        "pontos": [
+          [
+            -60,
+            -200
+          ],
+          [
+            -110,
+            -290
+          ],
+          [
+            -160,
+            -380
+          ]
+        ]
+      }
+    ],
+    "falesias": [
+      {
+        "nome": "Falésias do Leste",
+        "altura_topo_m": [
+          9,
+          14
+        ],
+        "pontos": [
+          [
+            482,
+            240
+          ],
+          [
+            500,
+            180
+          ],
+          [
+            490,
+            120
+          ],
+          [
+            500,
+            60
+          ],
+          [
+            505,
+            0
+          ],
+          [
+            505,
+            -60
+          ],
+          [
+            508,
+            -120
+          ],
+          [
+            515,
+            -180
+          ],
+          [
+            515,
+            -240
+          ]
+        ]
+      },
+      {
+        "nome": "Costão do Farol",
+        "altura_topo_m": [
+          12,
+          14
+        ],
+        "pontos": [
+          [
+            5,
+            520
+          ],
+          [
+            30,
+            548
+          ],
+          [
+            72,
+            556
+          ],
+          [
+            112,
+            535
+          ],
+          [
+            140,
+            500
+          ]
+        ]
+      },
+      {
+        "nome": "Costão Sudoeste",
+        "altura_topo_m": [
+          5,
+          7
+        ],
+        "pontos": [
+          [
+            -320,
+            -456
+          ],
+          [
+            -272,
+            -480
+          ],
+          [
+            -222,
+            -500
+          ]
+        ]
+      }
+    ],
+    "revisao": "planicies_01"
+  },
+  "agua": {
+    "rio": {
+      "nome": "Rio Tauá",
+      "nota": "nasce na encosta sul do Pico, alimenta a Represa, desce pelo vale e corta a Vila Caiçara até a foz",
+      "trechos": [
+        {
+          "trecho": "cabeceira",
+          "largura_m": 3,
+          "pontos": [
+            [
+              40,
+              95,
+              32
+            ],
+            [
+              22,
+              55,
+              25
+            ],
+            [
+              5,
+              20,
+              19
+            ],
+            [
+              -15,
+              -5,
+              15
+            ]
+          ]
+        },
+        {
+          "trecho": "jusante",
+          "largura_m": 10,
+          "pontos": [
+            [
+              -104,
+              -90,
+              12
+            ],
+            [
+              -136,
+              -116,
+              11
+            ],
+            [
+              -150,
+              -126,
+              10
+            ],
+            [
+              -200,
+              -170,
+              8
+            ],
+            [
+              -250,
+              -210,
+              6
+            ],
+            [
+              -300,
+              -260,
+              4
+            ],
+            [
+              -345,
+              -305,
+              3
+            ],
+            [
+              -385,
+              -350,
+              2
+            ],
+            [
+              -420,
+              -386,
+              1
+            ],
+            [
+              -445,
+              -404,
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    "represa": {
+      "nome": "Represa do Tauá",
+      "nivel_agua_m": 15,
+      "profundidade_max_m": 3,
+      "contorno": [
+        [
+          -100,
+          -84
+        ],
+        [
+          -95,
+          -40
+        ],
+        [
+          -80,
+          0
+        ],
+        [
+          -50,
+          25
+        ],
+        [
+          -15,
+          25
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          18,
+          -30
+        ],
+        [
+          0,
+          -65
+        ],
+        [
+          -35,
+          -90
+        ],
+        [
+          -70,
+          -100
+        ]
+      ],
+      "barragem": {
+        "de": [
+          -122,
+          -64
+        ],
+        "ate": [
+          -78,
+          -108
+        ],
+        "altura_crista_m": 17,
+        "largura_crista_m": 6,
+        "altura_face_m": 6
+      }
+    }
+  },
+  "estradas": [
+    {
+      "id": "E1",
+      "nome": "Estrada da Costa Sul",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          -367,
+          -330
+        ],
+        [
+          -300,
+          -335
+        ],
+        [
+          -230,
+          -318
+        ],
+        [
+          -165,
+          -270
+        ],
+        [
+          -105,
+          -245
+        ]
+      ]
+    },
+    {
+      "id": "E2",
+      "nome": "Estrada dos Coqueiros",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          -105,
+          -245
+        ],
+        [
+          -40,
+          -280
+        ],
+        [
+          0,
+          -395
+        ],
+        [
+          50,
+          -420
+        ],
+        [
+          100,
+          -425
+        ]
+      ]
+    },
+    {
+      "id": "E3",
+      "nome": "Estrada da Pista",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          100,
+          -425
+        ],
+        [
+          170,
+          -420
+        ],
+        [
+          230,
+          -380
+        ],
+        [
+          270,
+          -290
+        ],
+        [
+          285,
+          -275
+        ]
+      ]
+    },
+    {
+      "id": "E4",
+      "nome": "Estrada do Leste",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          285,
+          -275
+        ],
+        [
+          360,
+          -258
+        ],
+        [
+          440,
+          -238
+        ],
+        [
+          420,
+          -150
+        ],
+        [
+          410,
+          -80
+        ],
+        [
+          360,
+          -60
+        ],
+        [
+          318,
+          -38
+        ]
+      ]
+    },
+    {
+      "id": "E5",
+      "nome": "Estrada da Pedreira ao Quartel",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          318,
+          -38
+        ],
+        [
+          400,
+          -10
+        ],
+        [
+          430,
+          70
+        ],
+        [
+          410,
+          150
+        ],
+        [
+          360,
+          200
+        ],
+        [
+          300,
+          220
+        ],
+        [
+          240,
+          282
+        ]
+      ]
+    },
+    {
+      "id": "E6",
+      "nome": "Estrada do Farol",
+      "tipo": "estrada_terra",
+      "largura_m": 6,
+      "pontos": [
+        [
+          240,
+          282
+        ],
+        [
+          200,
+          360
+        ],
+        [
+          150,
+          410
+        ],
+        [
+          100,
+          440
+        ],
+        [
+          70,
+          480
+        ]
+      ]
+    },
+    {
+      "id": "E7",
+      "nome": "Estrada do Norte",
+      "tipo": "estrada_terra",
+      "largura_m": 6,
+      "pontos": [
+        [
+          70,
+          480
+        ],
+        [
+          20,
+          440
+        ],
+        [
+          -60,
+          405
+        ],
+        [
+          -150,
+          390
+        ],
+        [
+          -220,
+          360
+        ],
+        [
+          -235,
+          320
+        ]
+      ]
+    },
+    {
+      "id": "E8",
+      "nome": "Estrada da Usina ao Morro",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          -235,
+          320
+        ],
+        [
+          -300,
+          262
+        ],
+        [
+          -360,
+          210
+        ],
+        [
+          -400,
+          140
+        ],
+        [
+          -410,
+          60
+        ],
+        [
+          -385,
+          0
+        ],
+        [
+          -350,
+          -35
+        ]
+      ]
+    },
+    {
+      "id": "E9",
+      "nome": "Estrada da Costa Oeste",
+      "tipo": "estrada_terra",
+      "largura_m": 7,
+      "pontos": [
+        [
+          -350,
+          -35
+        ],
+        [
+          -400,
+          -80
+        ],
+        [
+          -430,
+          -170
+        ],
+        [
+          -425,
+          -240
+        ],
+        [
+          -398,
+          -285
+        ],
+        [
+          -367,
+          -330
+        ]
+      ]
+    },
+    {
+      "id": "E10",
+      "nome": "Estrada da Represa (crista)",
+      "tipo": "estrada_terra",
+      "largura_m": 6,
+      "pontos": [
+        [
+          -350,
+          -35
+        ],
+        [
+          -250,
+          -30
+        ],
+        [
+          -180,
+          -55
+        ],
+        [
+          -122,
+          -64
+        ],
+        [
+          -78,
+          -108
+        ],
+        [
+          -50,
+          -150
+        ],
+        [
+          -70,
+          -210
+        ],
+        [
+          -105,
+          -245
+        ]
+      ]
+    },
+    {
+      "id": "E11",
+      "nome": "Subida do Pico",
+      "tipo": "estrada_terra",
+      "largura_m": 5,
+      "pontos": [
+        [
+          -50,
+          -150
+        ],
+        [
+          20,
+          -100
+        ],
+        [
+          35,
+          -40
+        ],
+        [
+          50,
+          30
+        ],
+        [
+          95,
+          70
+        ],
+        [
+          60,
+          105
+        ],
+        [
+          110,
+          125
+        ],
+        [
+          75,
+          138
+        ]
+      ]
+    },
+    {
+      "id": "V1",
+      "nome": "Rua da Vila (calçamento)",
+      "tipo": "estrada_calcamento",
+      "largura_m": 5,
+      "pontos": [
+        [
+          -398,
+          -285
+        ],
+        [
+          -425,
+          -315
+        ],
+        [
+          -440,
+          -335
+        ]
+      ]
+    },
+    {
+      "id": "V2",
+      "nome": "Acesso do Morro (escadaria + beco)",
+      "tipo": "estrada_calcamento",
+      "largura_m": 4,
+      "pontos": [
+        [
+          -350,
+          -35
+        ],
+        [
+          -309,
+          -28
+        ],
+        [
+          -309,
+          2
+        ],
+        [
+          -321,
+          8
+        ],
+        [
+          -321,
+          30
+        ],
+        [
+          -318,
+          38
+        ],
+        [
+          -318,
+          54
+        ]
+      ]
+    },
+    {
+      "id": "T1",
+      "nome": "Trilha da Cumeeira",
+      "tipo": "trilha",
+      "largura_m": 2.5,
+      "pontos": [
+        [
+          -235,
+          320
+        ],
+        [
+          -220,
+          250
+        ],
+        [
+          -220,
+          120
+        ],
+        [
+          -160,
+          160
+        ],
+        [
+          -100,
+          175
+        ],
+        [
+          -40,
+          170
+        ],
+        [
+          20,
+          165
+        ],
+        [
+          75,
+          138
+        ]
+      ]
+    },
+    {
+      "id": "T2",
+      "nome": "Trilha do Farol",
+      "tipo": "trilha",
+      "largura_m": 2.5,
+      "pontos": [
+        [
+          75,
+          138
+        ],
+        [
+          60,
+          170
+        ],
+        [
+          70,
+          300
+        ],
+        [
+          62,
+          360
+        ],
+        [
+          56,
+          420
+        ],
+        [
+          70,
+          480
+        ]
+      ]
+    },
+    {
+      "id": "T3",
+      "nome": "Trilha da Serra Leste",
+      "tipo": "trilha",
+      "largura_m": 2.5,
+      "pontos": [
+        [
+          75,
+          138
+        ],
+        [
+          130,
+          150
+        ],
+        [
+          180,
+          125
+        ],
+        [
+          230,
+          95
+        ],
+        [
+          280,
+          60
+        ],
+        [
+          318,
+          -38
+        ]
+      ]
+    },
+    {
+      "id": "T4",
+      "nome": "Trilha do Vau",
+      "tipo": "trilha",
+      "largura_m": 2.5,
+      "pontos": [
+        [
+          -350,
+          -35
+        ],
+        [
+          -300,
+          -120
+        ],
+        [
+          -232,
+          -196
+        ],
+        [
+          -190,
+          -240
+        ],
+        [
+          -165,
+          -270
+        ]
+      ]
+    },
+    {
+      "id": "T5",
+      "nome": "Trilha do Morro do Sul",
+      "tipo": "trilha",
+      "largura_m": 2.5,
+      "pontos": [
+        [
+          20,
+          -100
+        ],
+        [
+          110,
+          -110
+        ],
+        [
+          200,
+          -200
+        ],
+        [
+          285,
+          -275
+        ]
+      ]
+    },
+    {
+      "id": "P1",
+      "nome": "Pista de Pouso do Tauá (terra batida)",
+      "tipo": "pista_pouso",
+      "largura_m": 25,
+      "pontos": [
+        [
+          200,
+          -340
+        ],
+        [
+          470,
+          -270
+        ]
+      ]
+    }
+  ],
+  "pontes": [
+    {
+      "nome": "Ponte da Vila",
+      "tipo": "concreto",
+      "pos": [
+        -367,
+        -330
+      ],
+      "comprimento_m": 16,
+      "largura_m": 7,
+      "estrada": "E1/V1",
+      "rot_deg": 312
+    },
+    {
+      "nome": "Passarela dos Pescadores",
+      "tipo": "madeira",
+      "pos": [
+        -400,
+        -367
+      ],
+      "comprimento_m": 14,
+      "largura_m": 2,
+      "estrada": "a pé",
+      "rot_deg": 312
+    },
+    {
+      "nome": "Crista da Barragem",
+      "tipo": "barragem",
+      "pos": [
+        -100,
+        -86
+      ],
+      "comprimento_m": 62,
+      "largura_m": 6,
+      "estrada": "E10",
+      "rot_deg": 315
+    },
+    {
+      "nome": "Vau do Tauá",
+      "tipo": "vau (pedras)",
+      "pos": [
+        -232,
+        -196
+      ],
+      "comprimento_m": 12,
+      "largura_m": 3,
+      "estrada": "T4",
+      "rot_deg": 312
+    }
+  ],
+  "tipos_predio": {
+    "casa_caicara": {
+      "tam": [
+        6,
+        8,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "casa_laje": {
+      "tam": [
+        6,
+        7,
+        3
+      ],
+      "andares": 1,
+      "entravel": true,
+      "nota": "alvenaria sem reboco, laje plana acessível por escada externa; altura = 3 m x andares"
+    },
+    "sobrado": {
+      "tam": [
+        8,
+        10,
+        7
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "venda_bar": {
+      "tam": [
+        7,
+        9,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "rancho_pesca": {
+      "tam": [
+        8,
+        12,
+        4
+      ],
+      "andares": 1,
+      "entravel": true,
+      "nota": "galpão aberto de canoas"
+    },
+    "capela": {
+      "tam": [
+        8,
+        16,
+        9
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "caixa_dagua": {
+      "tam": [
+        5,
+        5,
+        20
+      ],
+      "andares": 1,
+      "entravel": false,
+      "nota": "escada de marinheiro até o topo"
+    },
+    "cruzeiro": {
+      "tam": [
+        2,
+        2,
+        8
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "casa_moenda": {
+      "tam": [
+        15,
+        25,
+        10
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "chamine": {
+      "tam": [
+        4,
+        4,
+        40
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "armazem_acucar": {
+      "tam": [
+        15,
+        40,
+        9
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "galpao": {
+      "tam": [
+        20,
+        30,
+        8
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "escritorio": {
+      "tam": [
+        10,
+        14,
+        7
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "vila_operaria": {
+      "tam": [
+        6,
+        24,
+        4
+      ],
+      "andares": 1,
+      "entravel": true,
+      "nota": "4 casas geminadas"
+    },
+    "guarita": {
+      "tam": [
+        3,
+        3,
+        8
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "tanque": {
+      "tam": [
+        6,
+        6,
+        6
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "farol_torre": {
+      "tam": [
+        6,
+        6,
+        22
+      ],
+      "andares": 5,
+      "entravel": true,
+      "nota": "escada helicoidal, varanda no topo"
+    },
+    "casa_faroleiro": {
+      "tam": [
+        8,
+        10,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "casa_gerador": {
+      "tam": [
+        5,
+        6,
+        3
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "paiol": {
+      "tam": [
+        8,
+        10,
+        3.5
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "comando": {
+      "tam": [
+        24,
+        14,
+        8
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "alojamento": {
+      "tam": [
+        12,
+        30,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "refeitorio": {
+      "tam": [
+        20,
+        12,
+        5
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "garagem_viaturas": {
+      "tam": [
+        25,
+        15,
+        6
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "heliponto": {
+      "tam": [
+        20,
+        20,
+        0.3
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "hangar": {
+      "tam": [
+        24,
+        20,
+        8
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "torre_controle": {
+      "tam": [
+        5,
+        5,
+        12
+      ],
+      "andares": 3,
+      "entravel": true
+    },
+    "casa_piloto": {
+      "tam": [
+        7,
+        9,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "britador": {
+      "tam": [
+        12,
+        15,
+        14
+      ],
+      "andares": 3,
+      "entravel": true,
+      "nota": "estrutura metálica com passarelas"
+    },
+    "correia": {
+      "tam": [
+        3,
+        40,
+        10
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "container_escritorio": {
+      "tam": [
+        3,
+        12,
+        3
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "casa_forca": {
+      "tam": [
+        12,
+        18,
+        9
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "casa_operador": {
+      "tam": [
+        7,
+        9,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "torre_tomada": {
+      "tam": [
+        5,
+        5,
+        14
+      ],
+      "andares": 2,
+      "entravel": true,
+      "nota": "tomada d'água no lago, passarela até a crista"
+    },
+    "subestacao": {
+      "tam": [
+        14,
+        10,
+        6
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "casarao": {
+      "tam": [
+        26,
+        18,
+        9
+      ],
+      "andares": 2,
+      "entravel": true,
+      "nota": "varanda em volta, 12 janelas por fachada"
+    },
+    "tulha": {
+      "tam": [
+        8,
+        20,
+        5
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "curral": {
+      "tam": [
+        20,
+        20,
+        1.5
+      ],
+      "andares": 0,
+      "entravel": false
+    },
+    "casa_colono": {
+      "tam": [
+        6,
+        8,
+        4
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "quiosque": {
+      "tam": [
+        5,
+        5,
+        3.5
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "banheiro_praia": {
+      "tam": [
+        6,
+        4,
+        3
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "restaurante_praia": {
+      "tam": [
+        10,
+        12,
+        7
+      ],
+      "andares": 2,
+      "entravel": true
+    },
+    "posto_salvavidas": {
+      "tam": [
+        3,
+        3,
+        5
+      ],
+      "andares": 1,
+      "entravel": true
+    },
+    "antena": {
+      "tam": [
+        4,
+        4,
+        30
+      ],
+      "andares": 0,
+      "entravel": false,
+      "nota": "treliça escalável com 2 patamares (10 m e 20 m)"
+    },
+    "casa_radio": {
+      "tam": [
+        5,
+        6,
+        3
+      ],
+      "andares": 1,
+      "entravel": true
+    }
+  },
+  "pois": [
+    {
+      "id": "vila_caicara",
+      "nome": "Vila Caiçara",
+      "tema": "vila de pescadores com rio cortando a vila, ranchos de canoa, capela na praia",
+      "centro": [
+        -370,
+        -350
+      ],
+      "tier": "medio",
+      "altura_m": [
+        0,
+        9
+      ],
+      "referencia": "Trindade (Paraty-RJ); Saco do Mamanguá; vila de Itaúnas-ES",
+      "raio_m": 95,
+      "n_predios": 16,
+      "predios": [
+        {
+          "id": "vila_caicara_01",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -420,
+            -330
+          ],
+          "rot_deg": 35,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_02",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -435,
+            -300
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_03",
+          "tipo": "venda_bar",
+          "nome": "Bar do Tião",
+          "pos": [
+            -415,
+            -285
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            7,
+            9,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_04",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -378,
+            -282
+          ],
+          "rot_deg": 35,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_05",
+          "tipo": "rancho_pesca",
+          "nome": null,
+          "pos": [
+            -445,
+            -350
+          ],
+          "rot_deg": 40,
+          "tamanho_m": [
+            8,
+            12,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_06",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -458,
+            -272
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_07",
+          "tipo": "capela",
+          "nome": "Capela de São Pedro",
+          "pos": [
+            -345,
+            -372
+          ],
+          "rot_deg": 35,
+          "tamanho_m": [
+            8,
+            16,
+            9
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_08",
+          "tipo": "sobrado",
+          "nome": null,
+          "pos": [
+            -325,
+            -352
+          ],
+          "rot_deg": 35,
+          "tamanho_m": [
+            8,
+            10,
+            7
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_09",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -312,
+            -382
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_10",
+          "tipo": "rancho_pesca",
+          "nome": null,
+          "pos": [
+            -342,
+            -420
+          ],
+          "rot_deg": 40,
+          "tamanho_m": [
+            8,
+            12,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_11",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -298,
+            -352
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_12",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -288,
+            -404
+          ],
+          "rot_deg": 25,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_13",
+          "tipo": "sobrado",
+          "nome": "Pousada",
+          "pos": [
+            -318,
+            -306
+          ],
+          "rot_deg": 35,
+          "tamanho_m": [
+            8,
+            10,
+            7
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_14",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -268,
+            -370
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_15",
+          "tipo": "casa_caicara",
+          "nome": null,
+          "pos": [
+            -378,
+            -408
+          ],
+          "rot_deg": 40,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "vila_caicara_16",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -440,
+            -250
+          ],
+          "rot_deg": 25,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0001",
+          "pos": [
+            -422.4,
+            -329.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_01"
+        },
+        {
+          "id": "L0002",
+          "pos": [
+            -417.6,
+            -330.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_01"
+        },
+        {
+          "id": "L0003",
+          "pos": [
+            -437.3,
+            -299.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_02"
+        },
+        {
+          "id": "L0004",
+          "pos": [
+            -432.7,
+            -301.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_02"
+        },
+        {
+          "id": "L0005",
+          "pos": [
+            -416.5,
+            -282.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_03"
+        },
+        {
+          "id": "L0006",
+          "pos": [
+            -415.7,
+            -287.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_03"
+        },
+        {
+          "id": "L0007",
+          "pos": [
+            -412.3,
+            -285.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_03"
+        },
+        {
+          "id": "L0008",
+          "pos": [
+            -380.1,
+            -281.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_04"
+        },
+        {
+          "id": "L0009",
+          "pos": [
+            -375.9,
+            -282.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_04"
+        },
+        {
+          "id": "L0010",
+          "pos": [
+            -378.0,
+            -282.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "vila_caicara_04"
+        },
+        {
+          "id": "L0011",
+          "pos": [
+            -449.1,
+            -348.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_05"
+        },
+        {
+          "id": "L0012",
+          "pos": [
+            -440.9,
+            -351.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_05"
+        },
+        {
+          "id": "L0013",
+          "pos": [
+            -460.1,
+            -270.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_06"
+        },
+        {
+          "id": "L0014",
+          "pos": [
+            -455.9,
+            -273.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_06"
+        },
+        {
+          "id": "L0015",
+          "pos": [
+            -348.4,
+            -367.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_07"
+        },
+        {
+          "id": "L0016",
+          "pos": [
+            -341.6,
+            -376.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_07"
+        },
+        {
+          "id": "L0017",
+          "pos": [
+            -328.4,
+            -350.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_08"
+        },
+        {
+          "id": "L0018",
+          "pos": [
+            -321.6,
+            -353.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_08"
+        },
+        {
+          "id": "L0019",
+          "pos": [
+            -324.9,
+            -355.6
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "medio",
+          "origem": "vila_caicara_08"
+        },
+        {
+          "id": "L0020",
+          "pos": [
+            -325.1,
+            -348.4
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "medio",
+          "origem": "vila_caicara_08"
+        },
+        {
+          "id": "L0021",
+          "pos": [
+            -314.3,
+            -381.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_09"
+        },
+        {
+          "id": "L0022",
+          "pos": [
+            -309.7,
+            -383.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_09"
+        },
+        {
+          "id": "L0023",
+          "pos": [
+            -346.1,
+            -418.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_10"
+        },
+        {
+          "id": "L0024",
+          "pos": [
+            -337.9,
+            -421.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_10"
+        },
+        {
+          "id": "L0025",
+          "pos": [
+            -300.0,
+            -351.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_11"
+        },
+        {
+          "id": "L0026",
+          "pos": [
+            -296.0,
+            -352.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_11"
+        },
+        {
+          "id": "L0027",
+          "pos": [
+            -298.0,
+            -352.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "vila_caicara_11"
+        },
+        {
+          "id": "L0028",
+          "pos": [
+            -290.2,
+            -402.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_12"
+        },
+        {
+          "id": "L0029",
+          "pos": [
+            -285.8,
+            -405.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_12"
+        },
+        {
+          "id": "L0030",
+          "pos": [
+            -321.4,
+            -304.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_13"
+        },
+        {
+          "id": "L0031",
+          "pos": [
+            -314.6,
+            -307.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_13"
+        },
+        {
+          "id": "L0032",
+          "pos": [
+            -317.9,
+            -309.6
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "medio",
+          "origem": "vila_caicara_13"
+        },
+        {
+          "id": "L0033",
+          "pos": [
+            -318.1,
+            -302.4
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "medio",
+          "origem": "vila_caicara_13"
+        },
+        {
+          "id": "L0034",
+          "pos": [
+            -270.1,
+            -368.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_14"
+        },
+        {
+          "id": "L0035",
+          "pos": [
+            -265.9,
+            -371.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_14"
+        },
+        {
+          "id": "L0036",
+          "pos": [
+            -380.4,
+            -407.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_15"
+        },
+        {
+          "id": "L0037",
+          "pos": [
+            -375.6,
+            -408.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_15"
+        },
+        {
+          "id": "L0038",
+          "pos": [
+            -442.0,
+            -249.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_16"
+        },
+        {
+          "id": "L0039",
+          "pos": [
+            -438.0,
+            -250.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "vila_caicara_16"
+        },
+        {
+          "id": "L0040",
+          "pos": [
+            -440.0,
+            -250.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "vila_caicara_16"
+        },
+        {
+          "id": "L0041",
+          "pos": [
+            -395,
+            -385
+          ],
+          "z_abs_m": 1,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0042",
+          "pos": [
+            -430,
+            -375
+          ],
+          "z_abs_m": 1,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0043",
+          "pos": [
+            -360,
+            -440
+          ],
+          "z_abs_m": 1,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0044",
+          "pos": [
+            -300,
+            -330
+          ],
+          "z_abs_m": 7,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "morro_cruzeiro",
+      "nome": "Morro do Cruzeiro",
+      "tema": "comunidade em encosta: casas de alvenaria com laje, becos e escadarias, cruzeiro no topo",
+      "centro": [
+        -320,
+        45
+      ],
+      "tier": "medio",
+      "altura_m": [
+        12,
+        24
+      ],
+      "referencia": "Morro da Providência e Rocinha (Rio de Janeiro-RJ)",
+      "raio_m": 85,
+      "n_predios": 24,
+      "predios": [
+        {
+          "id": "morro_cruzeiro_01",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -362,
+            -8
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_02",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -342,
+            -14
+          ],
+          "rot_deg": 5,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_03",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -320,
+            -12
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_04",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -298,
+            -5
+          ],
+          "rot_deg": 350,
+          "tamanho_m": [
+            6,
+            7,
+            9
+          ],
+          "andares": 3,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_05",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -278,
+            6
+          ],
+          "rot_deg": 340,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_06",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -260,
+            24
+          ],
+          "rot_deg": 330,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_07",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -372,
+            16
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_08",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -352,
+            14
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            7,
+            9
+          ],
+          "andares": 3,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_09",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -332,
+            16
+          ],
+          "rot_deg": 5,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_10",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -310,
+            20
+          ],
+          "rot_deg": 355,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_11",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -290,
+            30
+          ],
+          "rot_deg": 345,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_12",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -274,
+            48
+          ],
+          "rot_deg": 330,
+          "tamanho_m": [
+            6,
+            7,
+            9
+          ],
+          "andares": 3,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_13",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -266,
+            72
+          ],
+          "rot_deg": 310,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_14",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -356,
+            42
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_15",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -336,
+            40
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_16",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -300,
+            44
+          ],
+          "rot_deg": 350,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_17",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -286,
+            66
+          ],
+          "rot_deg": 330,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_18",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -282,
+            92
+          ],
+          "rot_deg": 300,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_19",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -346,
+            86
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_20",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -386,
+            50
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            7,
+            6
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_21",
+          "tipo": "casa_laje",
+          "nome": null,
+          "pos": [
+            -380,
+            80
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            6,
+            7,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_22",
+          "tipo": "venda_bar",
+          "nome": "Bar da Laje",
+          "pos": [
+            -305,
+            80
+          ],
+          "rot_deg": 340,
+          "tamanho_m": [
+            7,
+            9,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "morro_cruzeiro_23",
+          "tipo": "cruzeiro",
+          "nome": "Cruzeiro",
+          "pos": [
+            -320,
+            62
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            2,
+            2,
+            8
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "morro_cruzeiro_24",
+          "tipo": "caixa_dagua",
+          "nome": null,
+          "pos": [
+            -340,
+            68
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            20
+          ],
+          "andares": 1,
+          "entravel": false
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0045",
+          "pos": [
+            -363.7,
+            -6.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_01"
+        },
+        {
+          "id": "L0046",
+          "pos": [
+            -360.3,
+            -9.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_01"
+        },
+        {
+          "id": "L0047",
+          "pos": [
+            -362.0,
+            -8.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_01"
+        },
+        {
+          "id": "L0048",
+          "pos": [
+            -343.6,
+            -12.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_02"
+        },
+        {
+          "id": "L0049",
+          "pos": [
+            -340.4,
+            -15.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_02"
+        },
+        {
+          "id": "L0050",
+          "pos": [
+            -342.0,
+            -14.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_02"
+        },
+        {
+          "id": "L0051",
+          "pos": [
+            -321.5,
+            -10.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_03"
+        },
+        {
+          "id": "L0052",
+          "pos": [
+            -318.5,
+            -13.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_03"
+        },
+        {
+          "id": "L0053",
+          "pos": [
+            -320.0,
+            -12.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_03"
+        },
+        {
+          "id": "L0054",
+          "pos": [
+            -299.2,
+            -3.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_04"
+        },
+        {
+          "id": "L0055",
+          "pos": [
+            -296.8,
+            -6.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_04"
+        },
+        {
+          "id": "L0056",
+          "pos": [
+            -298.0,
+            -5.0
+          ],
+          "dz_sobre_piso_m": 9.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_04"
+        },
+        {
+          "id": "L0057",
+          "pos": [
+            -278.9,
+            7.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_05"
+        },
+        {
+          "id": "L0058",
+          "pos": [
+            -277.1,
+            4.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_05"
+        },
+        {
+          "id": "L0059",
+          "pos": [
+            -278.0,
+            6.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_05"
+        },
+        {
+          "id": "L0060",
+          "pos": [
+            -260.5,
+            26.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_06"
+        },
+        {
+          "id": "L0061",
+          "pos": [
+            -259.5,
+            22.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_06"
+        },
+        {
+          "id": "L0062",
+          "pos": [
+            -260.0,
+            24.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_06"
+        },
+        {
+          "id": "L0063",
+          "pos": [
+            -373.8,
+            17.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_07"
+        },
+        {
+          "id": "L0064",
+          "pos": [
+            -370.2,
+            14.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_07"
+        },
+        {
+          "id": "L0065",
+          "pos": [
+            -372.0,
+            16.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_07"
+        },
+        {
+          "id": "L0066",
+          "pos": [
+            -353.7,
+            15.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_08"
+        },
+        {
+          "id": "L0067",
+          "pos": [
+            -350.3,
+            12.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_08"
+        },
+        {
+          "id": "L0068",
+          "pos": [
+            -352.0,
+            14.0
+          ],
+          "dz_sobre_piso_m": 9.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_08"
+        },
+        {
+          "id": "L0069",
+          "pos": [
+            -333.6,
+            17.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_09"
+        },
+        {
+          "id": "L0070",
+          "pos": [
+            -330.4,
+            14.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_09"
+        },
+        {
+          "id": "L0071",
+          "pos": [
+            -332.0,
+            16.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_09"
+        },
+        {
+          "id": "L0072",
+          "pos": [
+            -311.4,
+            21.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_10"
+        },
+        {
+          "id": "L0073",
+          "pos": [
+            -308.6,
+            18.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_10"
+        },
+        {
+          "id": "L0074",
+          "pos": [
+            -310.0,
+            20.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_10"
+        },
+        {
+          "id": "L0075",
+          "pos": [
+            -291.1,
+            31.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_11"
+        },
+        {
+          "id": "L0076",
+          "pos": [
+            -288.9,
+            28.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_11"
+        },
+        {
+          "id": "L0077",
+          "pos": [
+            -290.0,
+            30.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_11"
+        },
+        {
+          "id": "L0078",
+          "pos": [
+            -274.5,
+            50.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_12"
+        },
+        {
+          "id": "L0079",
+          "pos": [
+            -273.5,
+            46.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_12"
+        },
+        {
+          "id": "L0080",
+          "pos": [
+            -274.0,
+            48.0
+          ],
+          "dz_sobre_piso_m": 9.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_12"
+        },
+        {
+          "id": "L0081",
+          "pos": [
+            -265.8,
+            74.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_13"
+        },
+        {
+          "id": "L0082",
+          "pos": [
+            -266.2,
+            69.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_13"
+        },
+        {
+          "id": "L0083",
+          "pos": [
+            -266.0,
+            72.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_13"
+        },
+        {
+          "id": "L0084",
+          "pos": [
+            -357.8,
+            43.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_14"
+        },
+        {
+          "id": "L0085",
+          "pos": [
+            -354.2,
+            40.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_14"
+        },
+        {
+          "id": "L0086",
+          "pos": [
+            -356.0,
+            42.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_14"
+        },
+        {
+          "id": "L0087",
+          "pos": [
+            -337.7,
+            41.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_15"
+        },
+        {
+          "id": "L0088",
+          "pos": [
+            -334.3,
+            38.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_15"
+        },
+        {
+          "id": "L0089",
+          "pos": [
+            -336.0,
+            40.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_15"
+        },
+        {
+          "id": "L0090",
+          "pos": [
+            -301.2,
+            45.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_16"
+        },
+        {
+          "id": "L0091",
+          "pos": [
+            -298.8,
+            42.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_16"
+        },
+        {
+          "id": "L0092",
+          "pos": [
+            -300.0,
+            44.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_16"
+        },
+        {
+          "id": "L0093",
+          "pos": [
+            -286.5,
+            68.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_17"
+        },
+        {
+          "id": "L0094",
+          "pos": [
+            -285.5,
+            64.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_17"
+        },
+        {
+          "id": "L0095",
+          "pos": [
+            -286.0,
+            66.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_17"
+        },
+        {
+          "id": "L0096",
+          "pos": [
+            -281.5,
+            94.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_18"
+        },
+        {
+          "id": "L0097",
+          "pos": [
+            -282.5,
+            90.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_18"
+        },
+        {
+          "id": "L0098",
+          "pos": [
+            -282.0,
+            92.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_18"
+        },
+        {
+          "id": "L0099",
+          "pos": [
+            -348.0,
+            86.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_19"
+        },
+        {
+          "id": "L0100",
+          "pos": [
+            -344.0,
+            85.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_19"
+        },
+        {
+          "id": "L0101",
+          "pos": [
+            -346.0,
+            86.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_19"
+        },
+        {
+          "id": "L0102",
+          "pos": [
+            -387.9,
+            50.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_20"
+        },
+        {
+          "id": "L0103",
+          "pos": [
+            -384.1,
+            49.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_20"
+        },
+        {
+          "id": "L0104",
+          "pos": [
+            -386.0,
+            50.0
+          ],
+          "dz_sobre_piso_m": 6.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_20"
+        },
+        {
+          "id": "L0105",
+          "pos": [
+            -382.0,
+            80.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_21"
+        },
+        {
+          "id": "L0106",
+          "pos": [
+            -378.0,
+            79.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_21"
+        },
+        {
+          "id": "L0107",
+          "pos": [
+            -380.0,
+            80.0
+          ],
+          "dz_sobre_piso_m": 3.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_21"
+        },
+        {
+          "id": "L0108",
+          "pos": [
+            -304.0,
+            82.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_22"
+        },
+        {
+          "id": "L0109",
+          "pos": [
+            -307.6,
+            78.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_22"
+        },
+        {
+          "id": "L0110",
+          "pos": [
+            -303.8,
+            77.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_22"
+        },
+        {
+          "id": "L0111",
+          "pos": [
+            -340.0,
+            68.0
+          ],
+          "dz_sobre_piso_m": 20.1,
+          "tier": "medio",
+          "origem": "morro_cruzeiro_24"
+        },
+        {
+          "id": "L0112",
+          "pos": [
+            -330,
+            30
+          ],
+          "z_abs_m": 55,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0113",
+          "pos": [
+            -295,
+            12
+          ],
+          "z_abs_m": 50,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0114",
+          "pos": [
+            -320,
+            50
+          ],
+          "z_abs_m": 70,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "usina_santa_cruz",
+      "nome": "Usina Santa Cruz",
+      "tema": "engenho/usina de açúcar desativada com chaminé de tijolo, armazém, vila operária e canaviais",
+      "centro": [
+        -280,
+        305
+      ],
+      "tier": "alto",
+      "altura_m": [
+        4,
+        13
+      ],
+      "referencia": "Engenho Central de Piracicaba-SP; Usina Trapiche (Sirinhaém-PE); Museu da Cana (Pontal-SP)",
+      "raio_m": 95,
+      "n_predios": 11,
+      "predios": [
+        {
+          "id": "usina_santa_cruz_01",
+          "tipo": "casa_moenda",
+          "nome": "Casa da Moenda",
+          "pos": [
+            -290,
+            310
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            15,
+            25,
+            10
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_02",
+          "tipo": "chamine",
+          "nome": "Chaminé (40 m)",
+          "pos": [
+            -266,
+            330
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            4,
+            4,
+            40
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "usina_santa_cruz_03",
+          "tipo": "armazem_acucar",
+          "nome": "Armazém de Açúcar",
+          "pos": [
+            -238,
+            286
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            15,
+            40,
+            9
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_04",
+          "tipo": "galpao",
+          "nome": "Destilaria",
+          "pos": [
+            -322,
+            278
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            20,
+            30,
+            8
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_05",
+          "tipo": "caixa_dagua",
+          "nome": null,
+          "pos": [
+            -302,
+            348
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            20
+          ],
+          "andares": 1,
+          "entravel": false
+        },
+        {
+          "id": "usina_santa_cruz_06",
+          "tipo": "escritorio",
+          "nome": "Escritório da Usina",
+          "pos": [
+            -248,
+            342
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            10,
+            14,
+            7
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_07",
+          "tipo": "vila_operaria",
+          "nome": null,
+          "pos": [
+            -345,
+            328
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            24,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_08",
+          "tipo": "vila_operaria",
+          "nome": null,
+          "pos": [
+            -357,
+            352
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            24,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_09",
+          "tipo": "vila_operaria",
+          "nome": null,
+          "pos": [
+            -325,
+            372
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            24,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_10",
+          "tipo": "guarita",
+          "nome": "Balança",
+          "pos": [
+            -222,
+            252
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            3,
+            3,
+            8
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "usina_santa_cruz_11",
+          "tipo": "tanque",
+          "nome": null,
+          "pos": [
+            -212,
+            305
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            6,
+            6,
+            6
+          ],
+          "andares": 0,
+          "entravel": false
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0115",
+          "pos": [
+            -297.4,
+            315.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_01"
+        },
+        {
+          "id": "L0116",
+          "pos": [
+            -282.6,
+            304.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_01"
+        },
+        {
+          "id": "L0117",
+          "pos": [
+            -292.0,
+            300.8
+          ],
+          "dz_sobre_piso_m": 5.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_01"
+        },
+        {
+          "id": "L0118",
+          "pos": [
+            -288.0,
+            319.2
+          ],
+          "dz_sobre_piso_m": 5.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_01"
+        },
+        {
+          "id": "L0119",
+          "pos": [
+            -290.0,
+            310.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_01"
+        },
+        {
+          "id": "L0120",
+          "pos": [
+            -247.8,
+            298.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_03"
+        },
+        {
+          "id": "L0121",
+          "pos": [
+            -235.0,
+            292.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_03"
+        },
+        {
+          "id": "L0122",
+          "pos": [
+            -241.0,
+            279.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_03"
+        },
+        {
+          "id": "L0123",
+          "pos": [
+            -228.2,
+            273.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_03"
+        },
+        {
+          "id": "L0124",
+          "pos": [
+            -332.0,
+            285.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_04"
+        },
+        {
+          "id": "L0125",
+          "pos": [
+            -312.0,
+            271.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_04"
+        },
+        {
+          "id": "L0126",
+          "pos": [
+            -322.0,
+            278.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_04"
+        },
+        {
+          "id": "L0127",
+          "pos": [
+            -318.8,
+            289.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_04"
+        },
+        {
+          "id": "L0128",
+          "pos": [
+            -302.0,
+            348.0
+          ],
+          "dz_sobre_piso_m": 20.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_05"
+        },
+        {
+          "id": "L0129",
+          "pos": [
+            -252.2,
+            344.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_06"
+        },
+        {
+          "id": "L0130",
+          "pos": [
+            -243.8,
+            339.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_06"
+        },
+        {
+          "id": "L0131",
+          "pos": [
+            -249.5,
+            337.2
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_06"
+        },
+        {
+          "id": "L0132",
+          "pos": [
+            -246.5,
+            346.8
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_06"
+        },
+        {
+          "id": "L0133",
+          "pos": [
+            -348.1,
+            336.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_07"
+        },
+        {
+          "id": "L0134",
+          "pos": [
+            -346.0,
+            330.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_07"
+        },
+        {
+          "id": "L0135",
+          "pos": [
+            -344.0,
+            325.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_07"
+        },
+        {
+          "id": "L0136",
+          "pos": [
+            -341.9,
+            319.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_07"
+        },
+        {
+          "id": "L0137",
+          "pos": [
+            -360.1,
+            360.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_08"
+        },
+        {
+          "id": "L0138",
+          "pos": [
+            -358.0,
+            354.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_08"
+        },
+        {
+          "id": "L0139",
+          "pos": [
+            -356.0,
+            349.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_08"
+        },
+        {
+          "id": "L0140",
+          "pos": [
+            -353.9,
+            343.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_08"
+        },
+        {
+          "id": "L0141",
+          "pos": [
+            -328.1,
+            380.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_09"
+        },
+        {
+          "id": "L0142",
+          "pos": [
+            -326.0,
+            374.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_09"
+        },
+        {
+          "id": "L0143",
+          "pos": [
+            -324.0,
+            369.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_09"
+        },
+        {
+          "id": "L0144",
+          "pos": [
+            -321.9,
+            363.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_09"
+        },
+        {
+          "id": "L0145",
+          "pos": [
+            -222.0,
+            252.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "usina_santa_cruz_10"
+        },
+        {
+          "id": "L0146",
+          "pos": [
+            -270,
+            300
+          ],
+          "z_abs_m": 14,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0147",
+          "pos": [
+            -300,
+            295
+          ],
+          "z_abs_m": 14,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0148",
+          "pos": [
+            -260,
+            270
+          ],
+          "z_abs_m": 15,
+          "tier": "alto",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "farol_ponta_norte",
+      "nome": "Farol da Ponta Norte",
+      "tema": "farol listrado sobre o costão, casa do faroleiro",
+      "centro": [
+        70,
+        505
+      ],
+      "tier": "medio",
+      "altura_m": [
+        0,
+        17
+      ],
+      "referencia": "Farol de Santa Marta (Laguna-SC); Farol de Abrolhos (BA)",
+      "raio_m": 55,
+      "n_predios": 4,
+      "predios": [
+        {
+          "id": "farol_ponta_norte_01",
+          "tipo": "farol_torre",
+          "nome": "Farol",
+          "pos": [
+            74,
+            512
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            6,
+            6,
+            22
+          ],
+          "andares": 5,
+          "entravel": true
+        },
+        {
+          "id": "farol_ponta_norte_02",
+          "tipo": "casa_faroleiro",
+          "nome": null,
+          "pos": [
+            48,
+            500
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            8,
+            10,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "farol_ponta_norte_03",
+          "tipo": "casa_gerador",
+          "nome": null,
+          "pos": [
+            96,
+            506
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            5,
+            6,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "farol_ponta_norte_04",
+          "tipo": "paiol",
+          "nome": "Depósito",
+          "pos": [
+            34,
+            480
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            8,
+            10,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0149",
+          "pos": [
+            74.0,
+            512.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "farol_ponta_norte_01"
+        },
+        {
+          "id": "L0150",
+          "pos": [
+            74.0,
+            512.0
+          ],
+          "dz_sobre_piso_m": 21.1,
+          "tier": "medio",
+          "origem": "farol_ponta_norte_01"
+        },
+        {
+          "id": "L0151",
+          "pos": [
+            45.5,
+            502.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "farol_ponta_norte_02"
+        },
+        {
+          "id": "L0152",
+          "pos": [
+            50.5,
+            497.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "farol_ponta_norte_02"
+        },
+        {
+          "id": "L0153",
+          "pos": [
+            96.0,
+            506.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "farol_ponta_norte_03"
+        },
+        {
+          "id": "L0154",
+          "pos": [
+            31.5,
+            482.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "farol_ponta_norte_04"
+        },
+        {
+          "id": "L0155",
+          "pos": [
+            36.0,
+            480.3
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "farol_ponta_norte_04"
+        },
+        {
+          "id": "L0156",
+          "pos": [
+            32.6,
+            476.7
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "farol_ponta_norte_04"
+        },
+        {
+          "id": "L0157",
+          "pos": [
+            66,
+            522
+          ],
+          "z_abs_m": 46,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0158",
+          "pos": [
+            85,
+            490
+          ],
+          "z_abs_m": 48,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "quartel",
+      "nome": "Quartel do 7º BIL",
+      "tema": "batalhão de infantaria leve: pátio de formatura, alojamentos, paiol, muro com guaritas",
+      "centro": [
+        315,
+        300
+      ],
+      "tier": "alto",
+      "altura_m": [
+        5,
+        17
+      ],
+      "referencia": "Quartel do Exército em Bela Vista; quartel do Bacacheri (Curitiba-PR)",
+      "raio_m": 100,
+      "n_predios": 11,
+      "predios": [
+        {
+          "id": "quartel_01",
+          "tipo": "comando",
+          "nome": "Comando",
+          "pos": [
+            312,
+            345
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            24,
+            14,
+            8
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "quartel_02",
+          "tipo": "alojamento",
+          "nome": "Alojamento A",
+          "pos": [
+            265,
+            300
+          ],
+          "rot_deg": 90,
+          "tamanho_m": [
+            12,
+            30,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "quartel_03",
+          "tipo": "alojamento",
+          "nome": "Alojamento B",
+          "pos": [
+            360,
+            300
+          ],
+          "rot_deg": 90,
+          "tamanho_m": [
+            12,
+            30,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "quartel_04",
+          "tipo": "refeitorio",
+          "nome": null,
+          "pos": [
+            312,
+            255
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            20,
+            12,
+            5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "quartel_05",
+          "tipo": "garagem_viaturas",
+          "nome": null,
+          "pos": [
+            380,
+            250
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            25,
+            15,
+            6
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "quartel_06",
+          "tipo": "paiol",
+          "nome": "Paiol",
+          "pos": [
+            250,
+            245
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            8,
+            10,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "quartel_07",
+          "tipo": "guarita",
+          "nome": "Portão",
+          "pos": [
+            228,
+            285
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            3,
+            3,
+            8
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "quartel_08",
+          "tipo": "guarita",
+          "nome": null,
+          "pos": [
+            402,
+            365
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            3,
+            3,
+            8
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "quartel_09",
+          "tipo": "guarita",
+          "nome": null,
+          "pos": [
+            236,
+            228
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            3,
+            3,
+            8
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "quartel_10",
+          "tipo": "heliponto",
+          "nome": null,
+          "pos": [
+            392,
+            335
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            20,
+            20,
+            0.3
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "quartel_11",
+          "tipo": "caixa_dagua",
+          "nome": null,
+          "pos": [
+            252,
+            360
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            20
+          ],
+          "andares": 1,
+          "entravel": false
+        }
+      ],
+      "muro": [
+        [
+          222,
+          222
+        ],
+        [
+          410,
+          222
+        ],
+        [
+          410,
+          376
+        ],
+        [
+          222,
+          376
+        ]
+      ],
+      "saque": [
+        {
+          "id": "L0159",
+          "pos": [
+            304.0,
+            348.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_01"
+        },
+        {
+          "id": "L0160",
+          "pos": [
+            320.0,
+            342.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_01"
+        },
+        {
+          "id": "L0161",
+          "pos": [
+            304.0,
+            342.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_01"
+        },
+        {
+          "id": "L0162",
+          "pos": [
+            320.0,
+            348.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_01"
+        },
+        {
+          "id": "L0163",
+          "pos": [
+            312.0,
+            345.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_01"
+        },
+        {
+          "id": "L0164",
+          "pos": [
+            255.0,
+            297.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_02"
+        },
+        {
+          "id": "L0165",
+          "pos": [
+            265.0,
+            303.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_02"
+        },
+        {
+          "id": "L0166",
+          "pos": [
+            275.0,
+            297.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_02"
+        },
+        {
+          "id": "L0167",
+          "pos": [
+            350.0,
+            297.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_03"
+        },
+        {
+          "id": "L0168",
+          "pos": [
+            360.0,
+            303.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_03"
+        },
+        {
+          "id": "L0169",
+          "pos": [
+            370.0,
+            297.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_03"
+        },
+        {
+          "id": "L0170",
+          "pos": [
+            306.0,
+            257.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_04"
+        },
+        {
+          "id": "L0171",
+          "pos": [
+            318.0,
+            253.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_04"
+        },
+        {
+          "id": "L0172",
+          "pos": [
+            372.0,
+            253.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_05"
+        },
+        {
+          "id": "L0173",
+          "pos": [
+            380.0,
+            247.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_05"
+        },
+        {
+          "id": "L0174",
+          "pos": [
+            388.0,
+            253.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_05"
+        },
+        {
+          "id": "L0175",
+          "pos": [
+            248.0,
+            248.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_06"
+        },
+        {
+          "id": "L0176",
+          "pos": [
+            252.0,
+            245.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_06"
+        },
+        {
+          "id": "L0177",
+          "pos": [
+            248.0,
+            242.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "quartel_06"
+        },
+        {
+          "id": "L0178",
+          "pos": [
+            228.0,
+            285.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_07"
+        },
+        {
+          "id": "L0179",
+          "pos": [
+            402.0,
+            365.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_08"
+        },
+        {
+          "id": "L0180",
+          "pos": [
+            236.0,
+            228.0
+          ],
+          "dz_sobre_piso_m": 4.1,
+          "tier": "alto",
+          "origem": "quartel_09"
+        },
+        {
+          "id": "L0181",
+          "pos": [
+            252.0,
+            360.0
+          ],
+          "dz_sobre_piso_m": 20.1,
+          "tier": "alto",
+          "origem": "quartel_11"
+        },
+        {
+          "id": "L0182",
+          "pos": [
+            312,
+            300
+          ],
+          "z_abs_m": 22,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0183",
+          "pos": [
+            330,
+            290
+          ],
+          "z_abs_m": 22,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0184",
+          "pos": [
+            395,
+            335
+          ],
+          "z_abs_m": 20,
+          "tier": "alto",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "pedreira",
+      "nome": "Pedreira São Jorge",
+      "tema": "cava de granito em degraus, britador, correia transportadora",
+      "centro": [
+        335,
+        5
+      ],
+      "tier": "medio",
+      "altura_m": [
+        15,
+        29
+      ],
+      "referencia": "Pedreira do Morro Santana (Porto Alegre-RS); pedreiras de Santo Antônio da Patrulha-RS",
+      "raio_m": 80,
+      "n_predios": 6,
+      "predios": [
+        {
+          "id": "pedreira_01",
+          "tipo": "britador",
+          "nome": null,
+          "pos": [
+            368,
+            42
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            12,
+            15,
+            14
+          ],
+          "andares": 3,
+          "entravel": true
+        },
+        {
+          "id": "pedreira_02",
+          "tipo": "correia",
+          "nome": null,
+          "pos": [
+            348,
+            22
+          ],
+          "rot_deg": 30,
+          "tamanho_m": [
+            3,
+            40,
+            10
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "pedreira_03",
+          "tipo": "container_escritorio",
+          "nome": null,
+          "pos": [
+            300,
+            -46
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            3,
+            12,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "pedreira_04",
+          "tipo": "container_escritorio",
+          "nome": null,
+          "pos": [
+            318,
+            -52
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            3,
+            12,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "pedreira_05",
+          "tipo": "galpao",
+          "nome": "Oficina de Máquinas",
+          "pos": [
+            384,
+            -40
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            20,
+            30,
+            8
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "pedreira_06",
+          "tipo": "paiol",
+          "nome": "Paiol de Explosivos",
+          "pos": [
+            272,
+            20
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            8,
+            10,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0185",
+          "pos": [
+            368.0,
+            42.0
+          ],
+          "dz_sobre_piso_m": 7.1,
+          "tier": "medio",
+          "origem": "pedreira_01"
+        },
+        {
+          "id": "L0186",
+          "pos": [
+            363.4,
+            44.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_01"
+        },
+        {
+          "id": "L0187",
+          "pos": [
+            299.2,
+            -43.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_03"
+        },
+        {
+          "id": "L0188",
+          "pos": [
+            317.2,
+            -49.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_04"
+        },
+        {
+          "id": "L0189",
+          "pos": [
+            374.7,
+            -32.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_05"
+        },
+        {
+          "id": "L0190",
+          "pos": [
+            393.3,
+            -47.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_05"
+        },
+        {
+          "id": "L0191",
+          "pos": [
+            384.0,
+            -40.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_05"
+        },
+        {
+          "id": "L0192",
+          "pos": [
+            388.2,
+            -28.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pedreira_05"
+        },
+        {
+          "id": "L0193",
+          "pos": [
+            270.0,
+            23.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "pedreira_06"
+        },
+        {
+          "id": "L0194",
+          "pos": [
+            274.0,
+            20.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "pedreira_06"
+        },
+        {
+          "id": "L0195",
+          "pos": [
+            270.0,
+            17.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "pedreira_06"
+        },
+        {
+          "id": "L0196",
+          "pos": [
+            330,
+            0
+          ],
+          "z_abs_m": 58,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0197",
+          "pos": [
+            352,
+            -12
+          ],
+          "z_abs_m": 58,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0198",
+          "pos": [
+            300,
+            12
+          ],
+          "z_abs_m": 62,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "pista_pouso",
+      "nome": "Pista do Tauá",
+      "tema": "pista de pouso de terra com hangar, biruta e torre de madeira",
+      "centro": [
+        330,
+        -285
+      ],
+      "tier": "medio",
+      "altura_m": [
+        0,
+        19
+      ],
+      "referencia": "Aeródromo do Aeroclube de Birigui-SP; pistas de terra do interior",
+      "raio_m": 150,
+      "n_predios": 5,
+      "predios": [
+        {
+          "id": "pista_pouso_01",
+          "tipo": "hangar",
+          "nome": null,
+          "pos": [
+            300,
+            -237
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            24,
+            20,
+            8
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "pista_pouso_02",
+          "tipo": "torre_controle",
+          "nome": null,
+          "pos": [
+            345,
+            -228
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            5,
+            5,
+            12
+          ],
+          "andares": 3,
+          "entravel": true
+        },
+        {
+          "id": "pista_pouso_03",
+          "tipo": "casa_piloto",
+          "nome": null,
+          "pos": [
+            268,
+            -225
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            7,
+            9,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "pista_pouso_04",
+          "tipo": "tanque",
+          "nome": null,
+          "pos": [
+            382,
+            -221
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            6,
+            6,
+            6
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "pista_pouso_05",
+          "tipo": "galpao",
+          "nome": "Depósito de Carga",
+          "pos": [
+            412,
+            -215
+          ],
+          "rot_deg": 15,
+          "tamanho_m": [
+            20,
+            30,
+            8
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0199",
+          "pos": [
+            291.0,
+            -234.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_01"
+        },
+        {
+          "id": "L0200",
+          "pos": [
+            309.0,
+            -239.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_01"
+        },
+        {
+          "id": "L0201",
+          "pos": [
+            300.0,
+            -237.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_01"
+        },
+        {
+          "id": "L0202",
+          "pos": [
+            345.0,
+            -228.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_02"
+        },
+        {
+          "id": "L0203",
+          "pos": [
+            345.0,
+            -228.0
+          ],
+          "dz_sobre_piso_m": 9.1,
+          "tier": "medio",
+          "origem": "pista_pouso_02"
+        },
+        {
+          "id": "L0204",
+          "pos": [
+            265.6,
+            -223.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_03"
+        },
+        {
+          "id": "L0205",
+          "pos": [
+            270.4,
+            -226.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_03"
+        },
+        {
+          "id": "L0206",
+          "pos": [
+            402.7,
+            -207.2
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_05"
+        },
+        {
+          "id": "L0207",
+          "pos": [
+            421.3,
+            -222.8
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_05"
+        },
+        {
+          "id": "L0208",
+          "pos": [
+            412.0,
+            -215.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_05"
+        },
+        {
+          "id": "L0209",
+          "pos": [
+            416.2,
+            -203.5
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "pista_pouso_05"
+        },
+        {
+          "id": "L0210",
+          "pos": [
+            360,
+            -300
+          ],
+          "z_abs_m": 12,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0211",
+          "pos": [
+            240,
+            -330
+          ],
+          "z_abs_m": 12,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0212",
+          "pos": [
+            440,
+            -278
+          ],
+          "z_abs_m": 12,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "represa",
+      "nome": "Represa do Tauá",
+      "tema": "barragem de concreto com crista transitável, casa de força e tomada d'água",
+      "centro": [
+        -85,
+        -70
+      ],
+      "tier": "alto",
+      "altura_m": [
+        8,
+        21
+      ],
+      "referencia": "Represa Usina de Atibaia-SP; vertedouro da Barragem de Santa Maria (Brasília-DF)",
+      "raio_m": 80,
+      "n_predios": 5,
+      "predios": [
+        {
+          "id": "represa_01",
+          "tipo": "casa_forca",
+          "nome": "Casa de Força",
+          "pos": [
+            -100,
+            -128
+          ],
+          "rot_deg": 45,
+          "tamanho_m": [
+            12,
+            18,
+            9
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "represa_02",
+          "tipo": "casa_operador",
+          "nome": null,
+          "pos": [
+            -58,
+            -122
+          ],
+          "rot_deg": 45,
+          "tamanho_m": [
+            7,
+            9,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "represa_03",
+          "tipo": "subestacao",
+          "nome": null,
+          "pos": [
+            -150,
+            -92
+          ],
+          "rot_deg": 45,
+          "tamanho_m": [
+            14,
+            10,
+            6
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "represa_04",
+          "tipo": "torre_tomada",
+          "nome": "Tomada d'Água",
+          "pos": [
+            -88,
+            -78
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            14
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "represa_05",
+          "tipo": "casa_caicara",
+          "nome": "Casa do Caseiro",
+          "pos": [
+            -30,
+            42
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0213",
+          "pos": [
+            -106.4,
+            -125.9
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_01"
+        },
+        {
+          "id": "L0214",
+          "pos": [
+            -93.6,
+            -130.1
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_01"
+        },
+        {
+          "id": "L0215",
+          "pos": [
+            -97.9,
+            -134.4
+          ],
+          "dz_sobre_piso_m": 4.6,
+          "tier": "alto",
+          "origem": "represa_01"
+        },
+        {
+          "id": "L0216",
+          "pos": [
+            -102.1,
+            -121.6
+          ],
+          "dz_sobre_piso_m": 4.6,
+          "tier": "alto",
+          "origem": "represa_01"
+        },
+        {
+          "id": "L0217",
+          "pos": [
+            -60.8,
+            -122.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_02"
+        },
+        {
+          "id": "L0218",
+          "pos": [
+            -55.2,
+            -122.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_02"
+        },
+        {
+          "id": "L0219",
+          "pos": [
+            -88.0,
+            -78.0
+          ],
+          "dz_sobre_piso_m": 7.1,
+          "tier": "alto",
+          "origem": "represa_04"
+        },
+        {
+          "id": "L0220",
+          "pos": [
+            -32.1,
+            43.4
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_05"
+        },
+        {
+          "id": "L0221",
+          "pos": [
+            -27.9,
+            40.6
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "represa_05"
+        },
+        {
+          "id": "L0222",
+          "pos": [
+            -100,
+            -86
+          ],
+          "z_abs_m": 52,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0223",
+          "pos": [
+            -122,
+            -64
+          ],
+          "z_abs_m": 52,
+          "tier": "alto",
+          "origem": "externo"
+        },
+        {
+          "id": "L0224",
+          "pos": [
+            -78,
+            -108
+          ],
+          "z_abs_m": 52,
+          "tier": "alto",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "fazenda_boa_esperanca",
+      "nome": "Fazenda Boa Esperança",
+      "tema": "casarão colonial com varanda, capela, tulha, terreiro e curral",
+      "centro": [
+        -110,
+        -295
+      ],
+      "tier": "medio",
+      "altura_m": [
+        7,
+        15
+      ],
+      "referencia": "Fazenda Jambeiro (Casa Branca-SP); Fazenda Ponte Alta (Barra do Piraí-RJ); casarão de Mangaraí-ES",
+      "raio_m": 90,
+      "n_predios": 8,
+      "predios": [
+        {
+          "id": "fazenda_boa_esperanca_01",
+          "tipo": "casarao",
+          "nome": "Casarão",
+          "pos": [
+            -110,
+            -285
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            26,
+            18,
+            9
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_02",
+          "tipo": "capela",
+          "nome": null,
+          "pos": [
+            -150,
+            -235
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            8,
+            16,
+            9
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_03",
+          "tipo": "tulha",
+          "nome": null,
+          "pos": [
+            -68,
+            -302
+          ],
+          "rot_deg": 90,
+          "tamanho_m": [
+            8,
+            20,
+            5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_04",
+          "tipo": "curral",
+          "nome": null,
+          "pos": [
+            -60,
+            -342
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            20,
+            20,
+            1.5
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "fazenda_boa_esperanca_05",
+          "tipo": "casa_colono",
+          "nome": null,
+          "pos": [
+            -172,
+            -320
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_06",
+          "tipo": "casa_colono",
+          "nome": null,
+          "pos": [
+            -162,
+            -346
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_07",
+          "tipo": "casa_colono",
+          "nome": null,
+          "pos": [
+            -146,
+            -372
+          ],
+          "rot_deg": 10,
+          "tamanho_m": [
+            6,
+            8,
+            4
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "fazenda_boa_esperanca_08",
+          "tipo": "paiol",
+          "nome": null,
+          "pos": [
+            -60,
+            -258
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            8,
+            10,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "terreiro": [
+        [
+          -125,
+          -310
+        ],
+        [
+          -85,
+          -310
+        ],
+        [
+          -85,
+          -335
+        ],
+        [
+          -125,
+          -335
+        ]
+      ],
+      "saque": [
+        {
+          "id": "L0225",
+          "pos": [
+            -118.0,
+            -280.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0226",
+          "pos": [
+            -102.0,
+            -290.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0227",
+          "pos": [
+            -118.0,
+            -290.0
+          ],
+          "dz_sobre_piso_m": 4.6,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0228",
+          "pos": [
+            -102.0,
+            -280.0
+          ],
+          "dz_sobre_piso_m": 4.6,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0229",
+          "pos": [
+            -110.0,
+            -285.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0230",
+          "pos": [
+            -110.0,
+            -285.0
+          ],
+          "dz_sobre_piso_m": 4.6,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_01"
+        },
+        {
+          "id": "L0231",
+          "pos": [
+            -150.0,
+            -229.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_02"
+        },
+        {
+          "id": "L0232",
+          "pos": [
+            -150.0,
+            -241.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_02"
+        },
+        {
+          "id": "L0233",
+          "pos": [
+            -74.0,
+            -302.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_03"
+        },
+        {
+          "id": "L0234",
+          "pos": [
+            -62.0,
+            -302.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_03"
+        },
+        {
+          "id": "L0235",
+          "pos": [
+            -172.3,
+            -318.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_05"
+        },
+        {
+          "id": "L0236",
+          "pos": [
+            -162.3,
+            -344.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_06"
+        },
+        {
+          "id": "L0237",
+          "pos": [
+            -146.3,
+            -370.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "medio",
+          "origem": "fazenda_boa_esperanca_07"
+        },
+        {
+          "id": "L0238",
+          "pos": [
+            -62.0,
+            -255.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "fazenda_boa_esperanca_08"
+        },
+        {
+          "id": "L0239",
+          "pos": [
+            -58.0,
+            -258.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "fazenda_boa_esperanca_08"
+        },
+        {
+          "id": "L0240",
+          "pos": [
+            -62.0,
+            -261.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "alto",
+          "origem": "fazenda_boa_esperanca_08"
+        },
+        {
+          "id": "L0241",
+          "pos": [
+            -105,
+            -322
+          ],
+          "z_abs_m": 20,
+          "tier": "medio",
+          "origem": "externo"
+        },
+        {
+          "id": "L0242",
+          "pos": [
+            -130,
+            -270
+          ],
+          "z_abs_m": 24,
+          "tier": "medio",
+          "origem": "externo"
+        }
+      ]
+    },
+    {
+      "id": "praia_quiosques",
+      "nome": "Praia dos Quiosques",
+      "tema": "orla com quiosques de sapê, restaurante de dois andares, posto salva-vidas",
+      "centro": [
+        100,
+        -465
+      ],
+      "tier": "baixo",
+      "altura_m": [
+        0,
+        9
+      ],
+      "referencia": "Praia de Tambaú (João Pessoa-PB); Canoa Quebrada (Aracati-CE)",
+      "raio_m": 75,
+      "n_predios": 8,
+      "predios": [
+        {
+          "id": "praia_quiosques_01",
+          "tipo": "quiosque",
+          "nome": null,
+          "pos": [
+            30,
+            -482
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_02",
+          "tipo": "quiosque",
+          "nome": null,
+          "pos": [
+            65,
+            -484
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_03",
+          "tipo": "quiosque",
+          "nome": null,
+          "pos": [
+            100,
+            -484
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_04",
+          "tipo": "quiosque",
+          "nome": null,
+          "pos": [
+            135,
+            -484
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_05",
+          "tipo": "quiosque",
+          "nome": null,
+          "pos": [
+            170,
+            -482
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            5,
+            5,
+            3.5
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_06",
+          "tipo": "banheiro_praia",
+          "nome": null,
+          "pos": [
+            100,
+            -446
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            6,
+            4,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_07",
+          "tipo": "restaurante_praia",
+          "nome": "Restaurante Maré Alta",
+          "pos": [
+            58,
+            -442
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            10,
+            12,
+            7
+          ],
+          "andares": 2,
+          "entravel": true
+        },
+        {
+          "id": "praia_quiosques_08",
+          "tipo": "posto_salvavidas",
+          "nome": null,
+          "pos": [
+            150,
+            -500
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            3,
+            3,
+            5
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0243",
+          "pos": [
+            30.0,
+            -482.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_01"
+        },
+        {
+          "id": "L0244",
+          "pos": [
+            65.0,
+            -484.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_02"
+        },
+        {
+          "id": "L0245",
+          "pos": [
+            100.0,
+            -484.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_03"
+        },
+        {
+          "id": "L0246",
+          "pos": [
+            135.0,
+            -484.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_04"
+        },
+        {
+          "id": "L0247",
+          "pos": [
+            170.0,
+            -482.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_05"
+        },
+        {
+          "id": "L0248",
+          "pos": [
+            100.0,
+            -446.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_06"
+        },
+        {
+          "id": "L0249",
+          "pos": [
+            55.0,
+            -439.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_07"
+        },
+        {
+          "id": "L0250",
+          "pos": [
+            61.0,
+            -445.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_07"
+        },
+        {
+          "id": "L0251",
+          "pos": [
+            58.0,
+            -442.0
+          ],
+          "dz_sobre_piso_m": 3.6,
+          "tier": "baixo",
+          "origem": "praia_quiosques_07"
+        },
+        {
+          "id": "L0252",
+          "pos": [
+            150.0,
+            -500.0
+          ],
+          "dz_sobre_piso_m": 2.1,
+          "tier": "baixo",
+          "origem": "praia_quiosques_08"
+        },
+        {
+          "id": "L0253",
+          "pos": [
+            15,
+            -445
+          ],
+          "z_abs_m": 6,
+          "tier": "baixo",
+          "origem": "externo"
+        },
+        {
+          "id": "L0254",
+          "pos": [
+            120,
+            -500
+          ],
+          "z_abs_m": 2,
+          "tier": "baixo",
+          "origem": "externo"
+        },
+        {
+          "id": "L0255",
+          "pos": [
+            180,
+            -455
+          ],
+          "z_abs_m": 5,
+          "tier": "baixo",
+          "origem": "externo"
+        }
+      ]
+    }
+  ],
+  "marcos": [
+    {
+      "id": "pico_taua",
+      "nome": "Pico do Tauá",
+      "tema": "cume com antena de rádio (marco de orientação; saque baixo)",
+      "centro": [
+        82,
+        158
+      ],
+      "tier": "baixo",
+      "altura_m": [
+        45,
+        48
+      ],
+      "referencia": "",
+      "raio_m": 30,
+      "n_predios": 2,
+      "predios": [
+        {
+          "id": "pico_taua_01",
+          "tipo": "antena",
+          "nome": "Antena",
+          "pos": [
+            80,
+            160
+          ],
+          "rot_deg": 0,
+          "tamanho_m": [
+            4,
+            4,
+            30
+          ],
+          "andares": 0,
+          "entravel": false
+        },
+        {
+          "id": "pico_taua_02",
+          "tipo": "casa_radio",
+          "nome": null,
+          "pos": [
+            92,
+            150
+          ],
+          "rot_deg": 20,
+          "tamanho_m": [
+            5,
+            6,
+            3
+          ],
+          "andares": 1,
+          "entravel": true
+        }
+      ],
+      "saque": [
+        {
+          "id": "L0256",
+          "pos": [
+            92.0,
+            150.0
+          ],
+          "dz_sobre_piso_m": 0.1,
+          "tier": "baixo",
+          "origem": "pico_taua_02"
+        },
+        {
+          "id": "L0257",
+          "pos": [
+            75,
+            165
+          ],
+          "z_abs_m": 48,
+          "tier": "baixo",
+          "origem": "externo"
+        }
+      ]
+    }
+  ],
+  "vegetacao": [
+    {
+      "nome": "Mata da Serra",
+      "tipo": "mata_atlantica_densa",
+      "cobertura": "bloqueia visão, árvores 15–20 m, sub-bosque",
+      "poligono": [
+        [
+          -200,
+          150
+        ],
+        [
+          -140,
+          200
+        ],
+        [
+          -60,
+          215
+        ],
+        [
+          20,
+          212
+        ],
+        [
+          60,
+          200
+        ],
+        [
+          58,
+          176
+        ],
+        [
+          30,
+          140
+        ],
+        [
+          -20,
+          125
+        ],
+        [
+          -90,
+          120
+        ],
+        [
+          -160,
+          115
+        ]
+      ]
+    },
+    {
+      "nome": "Mata da Serra Leste",
+      "tipo": "mata_atlantica_densa",
+      "cobertura": "bloqueia visão",
+      "poligono": [
+        [
+          108,
+          188
+        ],
+        [
+          170,
+          180
+        ],
+        [
+          240,
+          140
+        ],
+        [
+          290,
+          95
+        ],
+        [
+          285,
+          70
+        ],
+        [
+          240,
+          80
+        ],
+        [
+          180,
+          100
+        ],
+        [
+          120,
+          130
+        ]
+      ]
+    },
+    {
+      "nome": "Mata do Esporão Norte",
+      "tipo": "mata_atlantica_media",
+      "cobertura": "árvores esparsas 10–15 m",
+      "poligono": [
+        [
+          30,
+          240
+        ],
+        [
+          110,
+          240
+        ],
+        [
+          100,
+          330
+        ],
+        [
+          90,
+          410
+        ],
+        [
+          40,
+          410
+        ],
+        [
+          35,
+          320
+        ]
+      ]
+    },
+    {
+      "nome": "Mata do Morro do Sul",
+      "tipo": "mata_atlantica_densa",
+      "cobertura": "bloqueia visão",
+      "poligono": [
+        [
+          30,
+          -120
+        ],
+        [
+          80,
+          -70
+        ],
+        [
+          160,
+          -40
+        ],
+        [
+          220,
+          -80
+        ],
+        [
+          230,
+          -150
+        ],
+        [
+          180,
+          -200
+        ],
+        [
+          100,
+          -190
+        ],
+        [
+          50,
+          -170
+        ]
+      ]
+    },
+    {
+      "nome": "Capoeira do Cruzeiro",
+      "tipo": "capoeira",
+      "cobertura": "arbustos 2–4 m, esconde agachado",
+      "poligono": [
+        [
+          -420,
+          100
+        ],
+        [
+          -360,
+          120
+        ],
+        [
+          -290,
+          130
+        ],
+        [
+          -240,
+          110
+        ],
+        [
+          -250,
+          150
+        ],
+        [
+          -330,
+          170
+        ],
+        [
+          -410,
+          150
+        ]
+      ]
+    },
+    {
+      "nome": "Mata Ciliar do Tauá",
+      "tipo": "mata_ciliar",
+      "cobertura": "faixa de 20 m ao longo do rio",
+      "poligono": [
+        [
+          -140,
+          -105
+        ],
+        [
+          -200,
+          -155
+        ],
+        [
+          -255,
+          -195
+        ],
+        [
+          -300,
+          -245
+        ],
+        [
+          -320,
+          -270
+        ],
+        [
+          -290,
+          -275
+        ],
+        [
+          -245,
+          -225
+        ],
+        [
+          -195,
+          -185
+        ],
+        [
+          -140,
+          -135
+        ]
+      ]
+    },
+    {
+      "nome": "Mata da Represa Norte",
+      "tipo": "mata_atlantica_media",
+      "cobertura": "árvores esparsas",
+      "poligono": [
+        [
+          -120,
+          10
+        ],
+        [
+          -60,
+          60
+        ],
+        [
+          20,
+          60
+        ],
+        [
+          50,
+          20
+        ],
+        [
+          20,
+          40
+        ],
+        [
+          -60,
+          35
+        ],
+        [
+          -100,
+          0
+        ]
+      ]
+    },
+    {
+      "nome": "Canavial Norte",
+      "tipo": "canavial",
+      "cobertura": "cana 2,5 m: oculta de pé, não para tiros",
+      "poligono": [
+        [
+          -230,
+          380
+        ],
+        [
+          -160,
+          380
+        ],
+        [
+          -150,
+          330
+        ],
+        [
+          -220,
+          330
+        ]
+      ]
+    },
+    {
+      "nome": "Canavial Sul",
+      "tipo": "canavial",
+      "cobertura": "cana 2,5 m",
+      "poligono": [
+        [
+          -230,
+          240
+        ],
+        [
+          -170,
+          250
+        ],
+        [
+          -160,
+          190
+        ],
+        [
+          -240,
+          200
+        ]
+      ]
+    },
+    {
+      "nome": "Canavial Oeste",
+      "tipo": "canavial",
+      "cobertura": "cana 2,5 m",
+      "poligono": [
+        [
+          -420,
+          280
+        ],
+        [
+          -380,
+          300
+        ],
+        [
+          -370,
+          240
+        ],
+        [
+          -410,
+          225
+        ]
+      ]
+    },
+    {
+      "nome": "Bananal da Vila",
+      "tipo": "bananal",
+      "cobertura": "folhagem 4 m, visão curta",
+      "poligono": [
+        [
+          -300,
+          -290
+        ],
+        [
+          -250,
+          -300
+        ],
+        [
+          -240,
+          -350
+        ],
+        [
+          -270,
+          -345
+        ],
+        [
+          -295,
+          -320
+        ]
+      ]
+    },
+    {
+      "nome": "Manguezal da Foz",
+      "tipo": "manguezal",
+      "cobertura": "raízes, água rasa, lento",
+      "poligono": [
+        [
+          -450,
+          -392
+        ],
+        [
+          -430,
+          -388
+        ],
+        [
+          -418,
+          -400
+        ],
+        [
+          -432,
+          -406
+        ]
+      ]
+    },
+    {
+      "nome": "Coqueiral da Orla",
+      "tipo": "coqueiral",
+      "cobertura": "troncos finos, visão aberta",
+      "poligono": [
+        [
+          -40,
+          -460
+        ],
+        [
+          220,
+          -468
+        ],
+        [
+          215,
+          -440
+        ],
+        [
+          -40,
+          -430
+        ]
+      ]
+    },
+    {
+      "nome": "Restinga Sul",
+      "tipo": "restinga",
+      "cobertura": "arbusto baixo 0,5–1,5 m",
+      "poligono": [
+        [
+          -220,
+          -480
+        ],
+        [
+          -40,
+          -455
+        ],
+        [
+          -40,
+          -425
+        ],
+        [
+          -200,
+          -440
+        ]
+      ]
+    },
+    {
+      "nome": "Restinga da Pista",
+      "tipo": "restinga",
+      "cobertura": "arbusto baixo",
+      "poligono": [
+        [
+          230,
+          -470
+        ],
+        [
+          420,
+          -400
+        ],
+        [
+          440,
+          -360
+        ],
+        [
+          240,
+          -410
+        ]
+      ]
+    },
+    {
+      "nome": "Quebra-vento de Eucalipto",
+      "tipo": "eucalipto_linha",
+      "cobertura": "fila de troncos a cada 4 m",
+      "poligono": [
+        [
+          210,
+          -222
+        ],
+        [
+          440,
+          -170
+        ],
+        [
+          442,
+          -162
+        ],
+        [
+          212,
+          -214
+        ]
+      ]
+    },
+    {
+      "nome": "Pasto da Fazenda",
+      "tipo": "pasto_aberto",
+      "cobertura": "ABERTO — usar cobertura pontual",
+      "poligono": [
+        [
+          -230,
+          -240
+        ],
+        [
+          -40,
+          -180
+        ],
+        [
+          0,
+          -260
+        ],
+        [
+          -20,
+          -380
+        ],
+        [
+          -200,
+          -400
+        ]
+      ]
+    },
+    {
+      "nome": "Pasto Oeste",
+      "tipo": "pasto_aberto",
+      "cobertura": "ABERTO",
+      "poligono": [
+        [
+          -470,
+          -60
+        ],
+        [
+          -360,
+          -60
+        ],
+        [
+          -330,
+          -200
+        ],
+        [
+          -460,
+          -220
+        ]
+      ]
+    },
+    {
+      "nome": "Campo do Quartel",
+      "tipo": "pasto_aberto",
+      "cobertura": "ABERTO, capim roçado",
+      "poligono": [
+        [
+          180,
+          200
+        ],
+        [
+          430,
+          200
+        ],
+        [
+          430,
+          330
+        ],
+        [
+          400,
+          385
+        ],
+        [
+          180,
+          400
+        ]
+      ]
+    }
+  ],
+  "cobertura_campo_aberto": [
+    {
+      "pos": [
+        -150,
+        -180
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        -120,
+        -200
+      ],
+      "tipo": "cupinzeiro",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        -80,
+        -170
+      ],
+      "tipo": "matacao",
+      "altura_m": 3.0
+    },
+    {
+      "pos": [
+        -60,
+        -230
+      ],
+      "tipo": "cocho",
+      "altura_m": 1.0
+    },
+    {
+      "pos": [
+        -180,
+        -220
+      ],
+      "tipo": "cupinzeiro",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        -40,
+        -290
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.0
+    },
+    {
+      "pos": [
+        -200,
+        -270
+      ],
+      "tipo": "muro_pedra_seca_10m",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        -30,
+        -350
+      ],
+      "tipo": "cupinzeiro",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        -190,
+        -390
+      ],
+      "tipo": "tronco_caido",
+      "altura_m": 0.8
+    },
+    {
+      "pos": [
+        -420,
+        -100
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        -380,
+        -140
+      ],
+      "tipo": "cupinzeiro",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        -440,
+        -190
+      ],
+      "tipo": "carcaca_fusca",
+      "altura_m": 1.4
+    },
+    {
+      "pos": [
+        -360,
+        -190
+      ],
+      "tipo": "fardo_feno_x3",
+      "altura_m": 1.5
+    },
+    {
+      "pos": [
+        -400,
+        -60
+      ],
+      "tipo": "muro_pedra_seca_10m",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        240,
+        -300
+      ],
+      "tipo": "tambor_x4",
+      "altura_m": 1.1
+    },
+    {
+      "pos": [
+        300,
+        -315
+      ],
+      "tipo": "carcaca_teco_teco",
+      "altura_m": 2.2
+    },
+    {
+      "pos": [
+        360,
+        -300
+      ],
+      "tipo": "carcaca_teco_teco",
+      "altura_m": 2.2
+    },
+    {
+      "pos": [
+        420,
+        -300
+      ],
+      "tipo": "tambor_x4",
+      "altura_m": 1.1
+    },
+    {
+      "pos": [
+        330,
+        -330
+      ],
+      "tipo": "biruta_base_concreto",
+      "altura_m": 1.0
+    },
+    {
+      "pos": [
+        450,
+        -250
+      ],
+      "tipo": "pilha_pneus",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        200,
+        250
+      ],
+      "tipo": "sacos_areia",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        200,
+        330
+      ],
+      "tipo": "trincheira",
+      "altura_m": 1.0
+    },
+    {
+      "pos": [
+        430,
+        250
+      ],
+      "tipo": "sacos_areia",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        300,
+        200
+      ],
+      "tipo": "caminhao_abandonado",
+      "altura_m": 3.0
+    },
+    {
+      "pos": [
+        180,
+        300
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        -200,
+        290
+      ],
+      "tipo": "carreta_cana",
+      "altura_m": 3.0
+    },
+    {
+      "pos": [
+        -380,
+        330
+      ],
+      "tipo": "carreta_cana",
+      "altura_m": 3.0
+    },
+    {
+      "pos": [
+        -160,
+        360
+      ],
+      "tipo": "trator",
+      "altura_m": 2.5
+    },
+    {"pos": [-117.1, -65.1], "tipo": "mureta_concreto", "altura_m": 1.0, "rot_deg": -45, "nota": "MUNDO: saiu de cima da estrada da crista (E10); parapeito do lado do lago"},
+    {"pos": [-98.1, -84.1], "tipo": "mureta_concreto", "altura_m": 1.0, "rot_deg": -45, "nota": "MUNDO: era no meio da estrada da crista (E10) e bloqueava a passagem; virou parapeito do lado do lago"},
+    {"pos": [-80.1, -102.1], "tipo": "mureta_concreto", "altura_m": 1.0, "rot_deg": -45, "nota": "MUNDO: saiu de cima da estrada da crista (E10); parapeito do lado do lago"},
+    {
+      "pos": [
+        -160,
+        -60
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        -40,
+        -140
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        60,
+        150
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.0
+    },
+    {
+      "pos": [
+        100,
+        170
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.0
+    },
+    {
+      "pos": [
+        70,
+        175
+      ],
+      "tipo": "matacao",
+      "altura_m": 1.5
+    },
+    {
+      "pos": [
+        -100,
+        420
+      ],
+      "tipo": "barco_encalhado",
+      "altura_m": 2.0
+    },
+    {
+      "pos": [
+        0,
+        440
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        150,
+        440
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.0
+    },
+    {
+      "pos": [
+        0,
+        -250
+      ],
+      "tipo": "matacao",
+      "altura_m": 2.5
+    },
+    {
+      "pos": [
+        60,
+        -300
+      ],
+      "tipo": "cupinzeiro",
+      "altura_m": 1.2
+    },
+    {
+      "pos": [
+        160,
+        -340
+      ],
+      "tipo": "tronco_caido",
+      "altura_m": 0.8
+    }
+  ],
+  "zona": {
+    "nota": "centro de cada fase sorteado APENAS entre candidatos autorais dentro do círculo anterior; dano em HP/s",
+    "fases": [
+      {
+        "fase": 0,
+        "raio_m": 640,
+        "espera_s": 0,
+        "fechamento_s": 0,
+        "dano_hp_s": 0,
+        "descricao": "ilha inteira; voo + saque"
+      },
+      {
+        "fase": 1,
+        "raio_m": 400,
+        "espera_s": 120,
+        "fechamento_s": 60,
+        "dano_hp_s": 1
+      },
+      {
+        "fase": 2,
+        "raio_m": 260,
+        "espera_s": 90,
+        "fechamento_s": 50,
+        "dano_hp_s": 2
+      },
+      {
+        "fase": 3,
+        "raio_m": 160,
+        "espera_s": 75,
+        "fechamento_s": 40,
+        "dano_hp_s": 4
+      },
+      {
+        "fase": 4,
+        "raio_m": 90,
+        "espera_s": 60,
+        "fechamento_s": 30,
+        "dano_hp_s": 6
+      },
+      {
+        "fase": 5,
+        "raio_m": 45,
+        "espera_s": 45,
+        "fechamento_s": 25,
+        "dano_hp_s": 8
+      },
+      {
+        "fase": 6,
+        "raio_m": 15,
+        "espera_s": 30,
+        "fechamento_s": 25,
+        "dano_hp_s": 10
+      },
+      {
+        "fase": 7,
+        "raio_m": 0,
+        "espera_s": 30,
+        "fechamento_s": 30,
+        "dano_hp_s": 15
+      }
+    ],
+    "tempo_voo_s": 60,
+    "finais_candidatos": [
+      {
+        "nome": "Terreiro da Fazenda",
+        "pos": [
+          -105,
+          -305
+        ]
+      },
+      {
+        "nome": "Beco do Morro",
+        "pos": [
+          -315,
+          20
+        ]
+      },
+      {
+        "nome": "Pátio da Usina",
+        "pos": [
+          -275,
+          300
+        ]
+      },
+      {
+        "nome": "Pátio do Quartel",
+        "pos": [
+          312,
+          300
+        ]
+      },
+      {
+        "nome": "Cava da Pedreira",
+        "pos": [
+          335,
+          0
+        ]
+      },
+      {
+        "nome": "Hangar da Pista",
+        "pos": [
+          305,
+          -262
+        ]
+      },
+      {
+        "nome": "Casa de Força",
+        "pos": [
+          -140,
+          -125
+        ]
+      },
+      {
+        "nome": "Capela da Vila",
+        "pos": [
+          -345,
+          -360
+        ]
+      },
+      {
+        "nome": "Margem Norte da Represa",
+        "pos": [
+          -40,
+          45
+        ]
+      },
+      {
+        "nome": "Mata do Morro do Sul",
+        "pos": [
+          120,
+          -120
+        ]
+      },
+      {
+        "nome": "Pé da Serra Norte",
+        "pos": [
+          -100,
+          330
+        ]
+      },
+      {
+        "nome": "Baixada do Farol",
+        "pos": [
+          60,
+          430
+        ]
+      },
+      {
+        "nome": "Pasto Oeste (matacões)",
+        "pos": [
+          -410,
+          -110
+        ]
+      },
+      {
+        "nome": "Restaurante da Praia",
+        "pos": [
+          60,
+          -445
+        ]
+      }
+    ]
+  },
+  "aviao": {
+    "altitude_m": 300,
+    "velocidade_m_s": 45,
+    "salto_liberado_apos_s": 3,
+    "salto_forcado_no_fim": true,
+    "nota": "uma das 4 rotas autorais por partida (sorteio entre 4, sentido pode inverter = 8 variações)",
+    "rotas": [
+      {
+        "id": "R1",
+        "nome": "Sudoeste -> Nordeste",
+        "de": [
+          -760,
+          -640
+        ],
+        "ate": [
+          760,
+          700
+        ]
+      },
+      {
+        "id": "R2",
+        "nome": "Oeste -> Leste (norte)",
+        "de": [
+          -800,
+          200
+        ],
+        "ate": [
+          800,
+          60
+        ]
+      },
+      {
+        "id": "R3",
+        "nome": "Sul -> Norte",
+        "de": [
+          -60,
+          -800
+        ],
+        "ate": [
+          160,
+          800
+        ]
+      },
+      {
+        "id": "R4",
+        "nome": "Noroeste -> Sudeste",
+        "de": [
+          -720,
+          700
+        ],
+        "ate": [
+          760,
+          -620
+        ]
+      }
+    ]
+  }
+}

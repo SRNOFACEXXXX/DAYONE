@@ -1,0 +1,51 @@
+  ok    costa com 66 pontos (meta 40–80)
+  ok    costa: 0 autointerseções
+  ok    área da ilha ≈ 0.90 km² (mapa 1,44 km²)
+  ok    180 pontos de altura (meta 100–200)
+  ok    pontos de altura fora da ilha: 0 []
+  ok    z autoral entre 1 e 178 m (plausível 0–~180)
+  ok    terreno interpolado: máx 178.9 m (grade 5 m)
+  ok    declividade: mediana 15.2°, p95 40.9°, máx 65.1° (falésias)
+  ok    interpolador reproduz pontos autorais (erro máx 0.00 m)
+  ok    10 POIs (meta 8–10) + 1 marco(s)
+  ok    100 prédios checados; 0 sobreposições
+  ok    menor distância entre POIs: 226 m
+  ok    POIs desconectados da malha viária: []
+  ok    POIs sem acesso por estrada (só trilha): []
+  ok    19 vias, 6343 m no total
+  ok    ponte 'Ponte da Vila' a 0.2 m do eixo do rio
+  ok    ponte 'Passarela dos Pescadores' a 1.1 m do eixo do rio
+  ok    ponte 'Crista da Barragem' a 0.0 m do eixo do rio
+  ok    ponte 'Vau do Tauá' a 0.3 m do eixo do rio
+  ok    via E9 cruza o rio com ponte/vau
+  ok    via T4 cruza o rio com ponte/vau
+  ok    foz do rio a 1.6 m da costa
+  ok    rio (cabeceira) sempre descendo: [118, 90, 62, 48]
+  ok    rio (jusante) sempre descendo: [34, 30, 28, 22, 16, 10, 6, 3, 1, 0]
+  ok    257 pontos de saque (10.7 por jogador); 0 fora da ilha
+  ok    saque por tier: {'medio': 161, 'alto': 81, 'baixo': 15}
+  ok      Vila Caiçara              16 prédios   44 saques  tier medio
+  ok      Morro do Cruzeiro         24 prédios   70 saques  tier medio
+  ok      Usina Santa Cruz          11 prédios   34 saques  tier alto
+  ok      Farol da Ponta Norte       4 prédios   10 saques  tier medio
+  ok      Quartel do 7º BIL         11 prédios   26 saques  tier alto
+  ok      Pedreira São Jorge         6 prédios   14 saques  tier medio
+  ok      Pista do Tauá              5 prédios   14 saques  tier medio
+  ok      Represa do Tauá            5 prédios   12 saques  tier alto
+  ok      Fazenda Boa Esperança      8 prédios   18 saques  tier medio
+  ok      Praia dos Quiosques        8 prédios   13 saques  tier baixo
+  ok    raios decrescentes [640, 400, 260, 160, 90, 45, 15, 0]
+  ok    duração máxima da partida 770 s = 12.8 min (meta 12–15)
+  ok    finais candidatos: 14; maior distância de um ponto de terra ao final mais próximo = 237 m
+  ok    rota R1 cruza a costa 2x; 2026 m = 45 s de voo
+  ok    rota R2 cruza a costa 2x; 1606 m = 36 s de voo
+  ok    rota R3 cruza a costa 2x; 1615 m = 36 s de voo
+  ok    rota R4 cruza a costa 2x; 1983 m = 44 s de voo
+  ok    19 manchas de vegetação, 42 peças de cobertura
+  AVISO prédio farol_ponta_norte_04 (paiol): desnível 6.9 m sob a planta — precisa de platô/pilotis
+  AVISO prédio pedreira_05 (galpao): desnível 9.6 m sob a planta — precisa de platô/pilotis
+  AVISO prédio pedreira_06 (paiol): desnível 9.4 m sob a planta — precisa de platô/pilotis
+  AVISO prédio pista_pouso_05 (galpao): desnível 6.6 m sob a planta — precisa de platô/pilotis
+  AVISO prédio represa_05 (casa_caicara): desnível 8.8 m sob a planta — precisa de platô/pilotis
+
+RESULTADO: 0 erro(s), 5 aviso(s)

@@ -1,0 +1,15 @@
+# Registro do /loop (uma linha por volta: feito | medido | pendente)
+- Volta 1 (2026-10-02): FEITO C1 ponto colimado (holo_reticulo 0 falhas, 5 armas), C2 mira no mundo (mira_mundo_check), C9 ícones (inventario.png), A1 triagem do pack (atualizacao.json, vilas nota 4–6) | MEDIDO ver backlog | PENDENTE combate-núcleo/som/interiores/menu retomados após limite; sniper em andamento
+- Volta 1b: C5/C6/C7 combate-núcleo OK (combate_mov/combate_coice/combate_balistica), C8 áudio, A3 interiores 439 lootáveis; spray 0,35x; sprint abaixa arma | pendente: sniper, menu, mundo
+- Volta 1c: U1 DAYONE, U2 criador + aquecimento (lentos 70→9), C4 sniper parcial (braço cobre a tela, em correção)
+- Volta 1d: mundo (paleta, Quartel/Pista com pack, notas +0,5–2), sv_smoke OK
+- Volta 1e: U2 boneco no corpo + carga 23,5→0,5 s; sniper rosa/travando reportado pelo dono → prioridade do agente sniper
+- QA v1: 0 rosa, 0 erros; falham U2 (6,6 s/quadros >100 ms), C6 (pico sprint), visual interior 4,5, 3ª pessoa −25 fps sem arma, M107 sem caber na mochila
+- 2026-10-07: limite semanal resetou; retomados travadas (personagem) e fundo do menu; pontes/pack nas vilas e interiores v2 na fila (parados no meio, projeto compila: sv_smoke OK)
+- Travadas: corpo novo podado (30→8 malhas), sombra-só em 1ª pessoa, arma visível correndo; CAUSA real: mapa +2.900 nós (física 1,3→6,3 ms, GPU 9→14 ms, média 10,4→22,8 ms) → agente do mundo otimizando
+- Perf 1: média 22,8→17,8 ms; pontes OK; Desempenho 2 (zumbis/vegetação/casas) e vilas com pack em andamento
+- Perf 2: travadas resolvidas (0 quadros >33 ms, física 1,3 ms); GPU 15 ms por MSAA 4x 1600x900
+- QA v2: 0 rosa; falham pontes a pé (3/8), criador congela 3,2 s, zumbis não atacam, HUD sobre menu, AK some no sprint, Uzi ADS mãos, testes vermelhos (sv_smoke, mira_mundo, combate_mov)
+- Volta 3: pontes 8/8 a pé
+- Volta 3: zumbis atacam (2,8 s a 6 m); sv_smoke verde
+- Volta 3: criador 55,8 fps (sem congelamento), testes verdes

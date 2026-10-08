@@ -1,0 +1,6570 @@
+{
+ "versao": 1,
+ "fonte": "tools/cenario_02_src.py (decisões autorais; sem sorteio)",
+ "total": 997,
+ "areas": [
+  {
+   "nome": "Vila: quintais",
+   "intencao": "Cada casa da Vila ganha o seu lote cercado de ripas (frente com vão de portão na porta, laterais; os fundos já fecham com o cercado antigo), e um quintal que conta o ofício de quem mora: pesca, lavanderia, obra, horta, oficina.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -413.43,
+     "y": -343.2,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -412.55,
+     "y": -340.99,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -411.67,
+     "y": -338.79,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -410.78,
+     "y": -336.58,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -408.79,
+     "y": -331.59,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -407.91,
+     "y": -329.38,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -407.02,
+     "y": -327.18,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -406.14,
+     "y": -324.97,
+     "rot_deg": 68.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -407.65,
+     "y": -323.09,
+     "rot_deg": 158.2,
+     "escala": 0.93
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -411.56,
+     "y": -321.53,
+     "rot_deg": 158.2,
+     "escala": 0.93
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -415.46,
+     "y": -319.97,
+     "rot_deg": 158.2,
+     "escala": 0.93
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -419.37,
+     "y": -318.41,
+     "rot_deg": 158.2,
+     "escala": 0.93
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -432.26,
+     "y": -336.95,
+     "rot_deg": 338.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -428.17,
+     "y": -338.58,
+     "rot_deg": 338.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -424.09,
+     "y": -340.21,
+     "rot_deg": 338.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -420.0,
+     "y": -341.85,
+     "rot_deg": 338.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -415.91,
+     "y": -343.48,
+     "rot_deg": 338.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": -430.66,
+     "y": -328.11,
+     "rot_deg": 68.2
+    },
+    {
+     "tipo": "barril",
+     "x": -424.18,
+     "y": -319.17,
+     "rot_deg": 68.2
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -415.39,
+     "y": -341.1,
+     "rot_deg": 88.2
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -414.28,
+     "y": -341.55,
+     "rot_deg": 58.2
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -432.26,
+     "y": -314.48,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -430.82,
+     "y": -312.6,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -429.37,
+     "y": -310.72,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -427.92,
+     "y": -308.84,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -424.64,
+     "y": -304.58,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -423.19,
+     "y": -302.69,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -421.75,
+     "y": -300.81,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -420.3,
+     "y": -298.93,
+     "rot_deg": 52.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -421.32,
+     "y": -296.65,
+     "rot_deg": 142.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -424.81,
+     "y": -293.96,
+     "rot_deg": 142.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -428.29,
+     "y": -291.28,
+     "rot_deg": 142.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -431.78,
+     "y": -288.6,
+     "rot_deg": 142.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -435.27,
+     "y": -285.92,
+     "rot_deg": 142.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -448.68,
+     "y": -303.35,
+     "rot_deg": 322.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -445.19,
+     "y": -306.04,
+     "rot_deg": 322.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -441.71,
+     "y": -308.72,
+     "rot_deg": 322.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -438.22,
+     "y": -311.4,
+     "rot_deg": 322.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -434.73,
+     "y": -314.08,
+     "rot_deg": 322.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "varal",
+     "x": -444.46,
+     "y": -295.24,
+     "rot_deg": 52.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -436.1,
+     "y": -288.31,
+     "rot_deg": 52.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -436.65,
+     "y": -287.88,
+     "rot_deg": 82.4
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -447.02,
+     "y": -301.85,
+     "rot_deg": 122.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -456.28,
+     "y": -286.64,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -454.7,
+     "y": -284.86,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -453.13,
+     "y": -283.08,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -451.55,
+     "y": -281.31,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -447.99,
+     "y": -277.29,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -446.41,
+     "y": -275.51,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -444.83,
+     "y": -273.73,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -443.26,
+     "y": -271.95,
+     "rot_deg": 48.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -444.12,
+     "y": -269.61,
+     "rot_deg": 138.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -447.41,
+     "y": -266.69,
+     "rot_deg": 138.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -450.7,
+     "y": -263.77,
+     "rot_deg": 138.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -454.0,
+     "y": -260.85,
+     "rot_deg": 138.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -457.29,
+     "y": -257.93,
+     "rot_deg": 138.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -471.88,
+     "y": -274.39,
+     "rot_deg": 318.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -468.59,
+     "y": -277.31,
+     "rot_deg": 318.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -465.3,
+     "y": -280.23,
+     "rot_deg": 318.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -462.0,
+     "y": -283.15,
+     "rot_deg": 318.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -458.71,
+     "y": -286.07,
+     "rot_deg": 318.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -467.92,
+     "y": -267.21,
+     "rot_deg": 48.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -466.6,
+     "y": -265.72,
+     "rot_deg": 88.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -465.27,
+     "y": -264.22,
+     "rot_deg": 128.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -463.94,
+     "y": -262.72,
+     "rot_deg": 168.4
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -458.35,
+     "y": -260.33,
+     "rot_deg": 48.4
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -446.09,
+     "y": -270.93,
+     "rot_deg": 138.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -316.89,
+     "y": -368.09,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -318.04,
+     "y": -370.17,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -319.19,
+     "y": -372.25,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -320.33,
+     "y": -374.33,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -322.93,
+     "y": -379.04,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -324.08,
+     "y": -381.12,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -325.22,
+     "y": -383.2,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -326.37,
+     "y": -385.28,
+     "rot_deg": 241.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -325.02,
+     "y": -387.38,
+     "rot_deg": 331.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -321.17,
+     "y": -389.51,
+     "rot_deg": 331.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -317.31,
+     "y": -391.63,
+     "rot_deg": 331.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -313.46,
+     "y": -393.76,
+     "rot_deg": 331.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -309.61,
+     "y": -395.88,
+     "rot_deg": 331.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -298.98,
+     "y": -376.62,
+     "rot_deg": 151.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -302.83,
+     "y": -374.49,
+     "rot_deg": 151.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -306.69,
+     "y": -372.37,
+     "rot_deg": 151.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.54,
+     "y": -370.24,
+     "rot_deg": 151.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -314.39,
+     "y": -368.12,
+     "rot_deg": 151.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "tambor",
+     "x": -309.15,
+     "y": -393.39,
+     "rot_deg": 241.1
+    },
+    {
+     "tipo": "tambor",
+     "x": -308.27,
+     "y": -393.88,
+     "rot_deg": 241.1
+    },
+    {
+     "tipo": "barril",
+     "x": -307.22,
+     "y": -394.46,
+     "rot_deg": 241.1
+    },
+    {
+     "tipo": "bicicleta",
+     "x": -315.54,
+     "y": -370.0,
+     "rot_deg": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -299.33,
+     "y": -378.49,
+     "rot_deg": 261.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -291.79,
+     "y": -389.75,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -293.1,
+     "y": -391.74,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -294.4,
+     "y": -393.72,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -295.71,
+     "y": -395.71,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -298.66,
+     "y": -400.19,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -299.97,
+     "y": -402.18,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -301.28,
+     "y": -404.16,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -302.58,
+     "y": -406.15,
+     "rot_deg": 236.6,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -301.4,
+     "y": -408.35,
+     "rot_deg": 326.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -297.72,
+     "y": -410.77,
+     "rot_deg": 326.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -294.05,
+     "y": -413.19,
+     "rot_deg": 326.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -290.38,
+     "y": -415.61,
+     "rot_deg": 326.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -286.7,
+     "y": -418.03,
+     "rot_deg": 326.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -274.6,
+     "y": -399.65,
+     "rot_deg": 146.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -278.28,
+     "y": -397.23,
+     "rot_deg": 146.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -281.95,
+     "y": -394.81,
+     "rot_deg": 146.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -285.62,
+     "y": -392.39,
+     "rot_deg": 146.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -289.3,
+     "y": -389.97,
+     "rot_deg": 146.6,
+     "escala": 0.98
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -285.99,
+     "y": -415.86,
+     "rot_deg": 246.6
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -276.09,
+     "y": -401.19,
+     "rot_deg": 251.6
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -290.62,
+     "y": -391.62,
+     "rot_deg": 336.6
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -300.19,
+     "y": -406.51,
+     "rot_deg": 271.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -276.91,
+     "y": -358.25,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -277.36,
+     "y": -360.58,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -277.82,
+     "y": -362.92,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -278.28,
+     "y": -365.25,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -279.31,
+     "y": -370.52,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -279.77,
+     "y": -372.85,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -280.23,
+     "y": -375.18,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -280.68,
+     "y": -377.51,
+     "rot_deg": 258.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -278.75,
+     "y": -379.1,
+     "rot_deg": 348.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -274.43,
+     "y": -379.95,
+     "rot_deg": 348.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -270.12,
+     "y": -380.79,
+     "rot_deg": 348.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -265.8,
+     "y": -381.64,
+     "rot_deg": 348.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -261.48,
+     "y": -382.49,
+     "rot_deg": 348.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -257.25,
+     "y": -360.9,
+     "rot_deg": 168.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -261.57,
+     "y": -360.05,
+     "rot_deg": 168.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -265.88,
+     "y": -359.21,
+     "rot_deg": 168.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -270.2,
+     "y": -358.36,
+     "rot_deg": 168.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -274.52,
+     "y": -357.51,
+     "rot_deg": 168.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": -258.02,
+     "y": -374.2,
+     "rot_deg": 258.9
+    },
+    {
+     "tipo": "barril",
+     "x": -258.61,
+     "y": -363.18,
+     "rot_deg": 258.9
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -277.9,
+     "y": -376.82,
+     "rot_deg": 278.9
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -279.08,
+     "y": -376.59,
+     "rot_deg": 248.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -366.78,
+     "y": -398.44,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -369.13,
+     "y": -398.12,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -371.48,
+     "y": -397.79,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -373.83,
+     "y": -397.47,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -379.16,
+     "y": -396.74,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -381.51,
+     "y": -396.41,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -383.86,
+     "y": -396.09,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -386.22,
+     "y": -395.76,
+     "rot_deg": 172.1,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -387.69,
+     "y": -397.78,
+     "rot_deg": 262.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -388.3,
+     "y": -402.14,
+     "rot_deg": 262.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -388.9,
+     "y": -406.5,
+     "rot_deg": 262.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -389.5,
+     "y": -410.86,
+     "rot_deg": 262.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -390.1,
+     "y": -415.21,
+     "rot_deg": 262.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -368.31,
+     "y": -418.22,
+     "rot_deg": 82.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -367.7,
+     "y": -413.86,
+     "rot_deg": 82.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -367.1,
+     "y": -409.5,
+     "rot_deg": 82.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -366.5,
+     "y": -405.14,
+     "rot_deg": 82.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -365.9,
+     "y": -400.79,
+     "rot_deg": 82.1,
+     "escala": 0.98
+    },
+    {
+     "tipo": "varal",
+     "x": -377.44,
+     "y": -418.58,
+     "rot_deg": 172.1
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -370.57,
+     "y": -417.1,
+     "rot_deg": 172.1
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -370.67,
+     "y": -417.79,
+     "rot_deg": 202.1
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -387.87,
+     "y": -415.12,
+     "rot_deg": 242.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -386.46,
+     "y": -294.07,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -384.1,
+     "y": -293.79,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -381.74,
+     "y": -293.52,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -379.38,
+     "y": -293.24,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -374.05,
+     "y": -292.61,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -371.69,
+     "y": -292.33,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -369.33,
+     "y": -292.06,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -366.97,
+     "y": -291.78,
+     "rot_deg": 6.7,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -366.05,
+     "y": -289.45,
+     "rot_deg": 96.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -366.56,
+     "y": -285.08,
+     "rot_deg": 96.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -367.08,
+     "y": -280.71,
+     "rot_deg": 96.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -367.59,
+     "y": -276.34,
+     "rot_deg": 96.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -368.1,
+     "y": -271.98,
+     "rot_deg": 96.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -389.95,
+     "y": -274.55,
+     "rot_deg": 276.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -389.44,
+     "y": -278.92,
+     "rot_deg": 276.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -388.92,
+     "y": -283.29,
+     "rot_deg": 276.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -388.41,
+     "y": -287.66,
+     "rot_deg": 276.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -387.9,
+     "y": -292.02,
+     "rot_deg": 276.7,
+     "escala": 0.98
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -387.7,
+     "y": -274.88,
+     "rot_deg": 16.7
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -370.14,
+     "y": -272.62,
+     "rot_deg": 21.7
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -368.11,
+     "y": -289.9,
+     "rot_deg": 106.7
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -385.71,
+     "y": -291.77,
+     "rot_deg": 41.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -308.72,
+     "y": -341.89,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -308.79,
+     "y": -344.26,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -308.86,
+     "y": -346.63,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -308.92,
+     "y": -349.01,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -309.07,
+     "y": -354.38,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -309.14,
+     "y": -356.76,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -309.2,
+     "y": -359.13,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -309.27,
+     "y": -361.5,
+     "rot_deg": 268.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -307.1,
+     "y": -362.75,
+     "rot_deg": 358.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -302.7,
+     "y": -362.87,
+     "rot_deg": 358.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -298.31,
+     "y": -363.0,
+     "rot_deg": 358.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.91,
+     "y": -363.12,
+     "rot_deg": 358.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -289.51,
+     "y": -363.24,
+     "rot_deg": 358.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -288.9,
+     "y": -341.25,
+     "rot_deg": 178.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.3,
+     "y": -341.13,
+     "rot_deg": 178.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -297.69,
+     "y": -341.0,
+     "rot_deg": 178.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -302.09,
+     "y": -340.88,
+     "rot_deg": 178.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -306.49,
+     "y": -340.76,
+     "rot_deg": 178.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -287.32,
+     "y": -349.3,
+     "rot_deg": 268.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -287.38,
+     "y": -351.29,
+     "rot_deg": 308.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -287.43,
+     "y": -353.29,
+     "rot_deg": 348.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -287.49,
+     "y": -355.29,
+     "rot_deg": 28.4
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -289.77,
+     "y": -343.73,
+     "rot_deg": 268.4
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -305.96,
+     "y": -343.08,
+     "rot_deg": 358.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -441.73,
+     "y": -264.64,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -439.78,
+     "y": -263.28,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -437.84,
+     "y": -261.91,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -435.89,
+     "y": -260.55,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -431.49,
+     "y": -257.47,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -429.54,
+     "y": -256.11,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -427.6,
+     "y": -254.75,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -425.65,
+     "y": -253.38,
+     "rot_deg": 35.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -425.94,
+     "y": -250.9,
+     "rot_deg": 125.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -428.47,
+     "y": -247.3,
+     "rot_deg": 125.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -430.99,
+     "y": -243.69,
+     "rot_deg": 125.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -433.51,
+     "y": -240.09,
+     "rot_deg": 125.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -436.03,
+     "y": -236.48,
+     "rot_deg": 125.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -454.06,
+     "y": -249.1,
+     "rot_deg": 305.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -451.53,
+     "y": -252.7,
+     "rot_deg": 305.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -449.01,
+     "y": -256.31,
+     "rot_deg": 305.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -446.49,
+     "y": -259.91,
+     "rot_deg": 305.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -443.97,
+     "y": -263.52,
+     "rot_deg": 305.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "tambor",
+     "x": -451.63,
+     "y": -248.38,
+     "rot_deg": 35.0
+    },
+    {
+     "tipo": "tambor",
+     "x": -452.21,
+     "y": -247.56,
+     "rot_deg": 35.0
+    },
+    {
+     "tipo": "barril",
+     "x": -452.89,
+     "y": -246.58,
+     "rot_deg": 35.0
+    },
+    {
+     "tipo": "bicicleta",
+     "x": -427.69,
+     "y": -252.24,
+     "rot_deg": 155.0
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -437.85,
+     "y": -237.02,
+     "rot_deg": 55.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -335.55,
+     "y": -341.71,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -335.66,
+     "y": -344.08,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -335.76,
+     "y": -346.45,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -335.87,
+     "y": -348.83,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -336.11,
+     "y": -354.2,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -336.21,
+     "y": -356.57,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -336.32,
+     "y": -358.94,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -336.42,
+     "y": -361.31,
+     "rot_deg": 267.5,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -334.28,
+     "y": -362.6,
+     "rot_deg": 357.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -329.88,
+     "y": -362.79,
+     "rot_deg": 357.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -325.49,
+     "y": -362.99,
+     "rot_deg": 357.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -321.09,
+     "y": -363.18,
+     "rot_deg": 357.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -316.7,
+     "y": -363.38,
+     "rot_deg": 357.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -315.72,
+     "y": -341.4,
+     "rot_deg": 177.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -320.12,
+     "y": -341.21,
+     "rot_deg": 177.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -324.51,
+     "y": -341.01,
+     "rot_deg": 177.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -328.91,
+     "y": -340.82,
+     "rot_deg": 177.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -333.3,
+     "y": -340.62,
+     "rot_deg": 177.5,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -333.22,
+     "y": -343.33,
+     "rot_deg": 267.5
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -333.96,
+     "y": -359.91,
+     "rot_deg": 297.5
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -316.41,
+     "y": -352.38,
+     "rot_deg": 267.5
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -315.44,
+     "y": -362.03,
+     "rot_deg": 267.5
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -332.74,
+     "y": -305.61,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -331.2,
+     "y": -307.43,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -329.67,
+     "y": -309.24,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -328.13,
+     "y": -311.05,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -324.66,
+     "y": -315.16,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -323.13,
+     "y": -316.97,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -321.59,
+     "y": -318.78,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -320.06,
+     "y": -320.6,
+     "rot_deg": 310.2,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -317.61,
+     "y": -320.08,
+     "rot_deg": 40.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -314.25,
+     "y": -317.24,
+     "rot_deg": 40.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.89,
+     "y": -314.4,
+     "rot_deg": 40.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -307.54,
+     "y": -311.56,
+     "rot_deg": 40.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -304.18,
+     "y": -308.71,
+     "rot_deg": 40.2,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -318.29,
+     "y": -291.83,
+     "rot_deg": 220.2,
+     "escala": 0.92
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -321.44,
+     "y": -294.5,
+     "rot_deg": 220.2,
+     "escala": 0.92
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -324.6,
+     "y": -297.17,
+     "rot_deg": 220.2,
+     "escala": 0.92
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -319.2,
+     "y": -317.89,
+     "rot_deg": 310.2
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -329.93,
+     "y": -305.22,
+     "rot_deg": 340.2
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -311.43,
+     "y": -300.44,
+     "rot_deg": 310.2
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -316.57,
+     "y": -292.21,
+     "rot_deg": 310.2
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -415.53,
+     "y": -295.12,
+     "rot_deg": 30.0,
+     "escala": 1.07
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -413.5,
+     "y": -293.95,
+     "rot_deg": 30.0,
+     "escala": 1.07
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -408.46,
+     "y": -291.04,
+     "rot_deg": 30.0,
+     "escala": 0.59
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -406.1,
+     "y": -287.01,
+     "rot_deg": 120.0,
+     "escala": 1.03
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -408.42,
+     "y": -283.0,
+     "rot_deg": 120.0,
+     "escala": 1.03
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -410.73,
+     "y": -279.0,
+     "rot_deg": 120.0,
+     "escala": 1.03
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -413.04,
+     "y": -274.99,
+     "rot_deg": 120.0,
+     "escala": 1.03
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": -416.31,
+     "y": -293.73,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": -406.79,
+     "y": -288.23,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "barril",
+     "x": -413.33,
+     "y": -277.69,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -422.27,
+     "y": -282.61,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -423.64,
+     "y": -280.64,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -443.44,
+     "y": -361.48,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -441.43,
+     "y": -359.8,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -435.97,
+     "y": -355.22,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -433.96,
+     "y": -353.53,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -434.26,
+     "y": -351.13,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -436.87,
+     "y": -348.02,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -439.48,
+     "y": -344.91,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -442.09,
+     "y": -341.8,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -444.7,
+     "y": -338.69,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -456.19,
+     "y": -348.33,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -453.58,
+     "y": -351.44,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -450.97,
+     "y": -354.55,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -448.36,
+     "y": -357.66,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -445.75,
+     "y": -360.77,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": -449.83,
+     "y": -354.05,
+     "rot_deg": 130
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -436.34,
+     "y": -351.61,
+     "rot_deg": 130
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -435.63,
+     "y": -352.45,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "tambor",
+     "x": -445.21,
+     "y": -341.04,
+     "rot_deg": 40.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -340.44,
+     "y": -431.48,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -338.43,
+     "y": -429.8,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -332.97,
+     "y": -425.22,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -330.96,
+     "y": -423.53,
+     "rot_deg": 40.0,
+     "escala": 1.19
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -331.26,
+     "y": -421.13,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -333.87,
+     "y": -418.02,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -336.48,
+     "y": -414.91,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -339.09,
+     "y": -411.8,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -341.7,
+     "y": -408.69,
+     "rot_deg": 130.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -353.19,
+     "y": -418.33,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -350.58,
+     "y": -421.44,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -347.97,
+     "y": -424.55,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -345.36,
+     "y": -427.66,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -342.75,
+     "y": -430.77,
+     "rot_deg": 310.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": -337.17,
+     "y": -415.95,
+     "rot_deg": 130
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -341.92,
+     "y": -428.81,
+     "rot_deg": 130
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -341.21,
+     "y": -429.65,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "tambor",
+     "x": -350.79,
+     "y": -418.24,
+     "rot_deg": 40.0
+    }
+   ]
+  },
+  {
+   "nome": "Cruzeiro: lotes da ladeira",
+   "intencao": "Casas de laje coladas na ladeira: cada lote tem cerca de ripas na frente e nos lados (o morro faz o muro dos fundos), vão no degrau da porta, e um canto com a vida de quem mora (roupa no varal, obra da próxima laje, horta, oficina, lenha do fogão).",
+   "props": [
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -350.17,
+     "y": -4.1,
+     "rot_deg": 141.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -353.07,
+     "y": -1.81,
+     "rot_deg": 141.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -358.01,
+     "y": 2.11,
+     "rot_deg": 141.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -360.91,
+     "y": 4.41,
+     "rot_deg": 141.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -363.76,
+     "y": 3.79,
+     "rot_deg": 231.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -350.12,
+     "y": -7.02,
+     "rot_deg": 51.6
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -360.2,
+     "y": 1.68,
+     "rot_deg": 141.6
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -360.94,
+     "y": 2.52,
+     "rot_deg": 181.6
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -352.93,
+     "y": -3.96,
+     "rot_deg": 141.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -331.95,
+     "y": -6.65,
+     "rot_deg": 159.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -335.41,
+     "y": -5.36,
+     "rot_deg": 159.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -341.32,
+     "y": -3.15,
+     "rot_deg": 159.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -344.78,
+     "y": -1.86,
+     "rot_deg": 159.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -347.3,
+     "y": -3.32,
+     "rot_deg": 249.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -331.0,
+     "y": -9.4,
+     "rot_deg": 69.6
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -334.62,
+     "y": -7.36,
+     "rot_deg": 174.6
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -343.42,
+     "y": -4.08,
+     "rot_deg": 169.6
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -333.22,
+     "y": -8.2,
+     "rot_deg": 189.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -313.15,
+     "y": -1.6,
+     "rot_deg": 180.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -316.85,
+     "y": -1.6,
+     "rot_deg": 180.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -323.15,
+     "y": -1.6,
+     "rot_deg": 180.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -326.85,
+     "y": -1.6,
+     "rot_deg": 180.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -328.7,
+     "y": -3.85,
+     "rot_deg": 270.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -316.4,
+     "y": -3.4,
+     "rot_deg": 180.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -323.6,
+     "y": -3.4,
+     "rot_deg": 230.0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -325.6,
+     "y": -3.2,
+     "rot_deg": 180.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -295.92,
+     "y": 7.28,
+     "rot_deg": 203.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -299.31,
+     "y": 5.79,
+     "rot_deg": 203.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -304.74,
+     "y": 3.4,
+     "rot_deg": 203.7,
+     "escala": 0.66
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.32,
+     "y": 5.96,
+     "rot_deg": 113.7
+    },
+    {
+     "tipo": "tambor",
+     "x": -297.21,
+     "y": 4.63,
+     "rot_deg": 203.7
+    },
+    {
+     "tipo": "tambor",
+     "x": -296.11,
+     "y": 5.12,
+     "rot_deg": 203.7
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -305.75,
+     "y": 1.2,
+     "rot_deg": 283.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -280.96,
+     "y": 18.1,
+     "rot_deg": 227.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -283.48,
+     "y": 15.38,
+     "rot_deg": 227.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -287.76,
+     "y": 10.77,
+     "rot_deg": 227.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -290.28,
+     "y": 8.06,
+     "rot_deg": 227.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -289.89,
+     "y": 5.17,
+     "rot_deg": 317.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -278.05,
+     "y": 17.92,
+     "rot_deg": 137.1
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -281.18,
+     "y": 15.51,
+     "rot_deg": 227.1
+    },
+    {
+     "tipo": "barril",
+     "x": -287.43,
+     "y": 8.48,
+     "rot_deg": 227.1
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": -288.53,
+     "y": 7.59,
+     "rot_deg": 317.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -267.55,
+     "y": 33.9,
+     "rot_deg": 250.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -268.78,
+     "y": 30.41,
+     "rot_deg": 250.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -270.86,
+     "y": 24.46,
+     "rot_deg": 250.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -272.08,
+     "y": 20.97,
+     "rot_deg": 250.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -270.57,
+     "y": 18.48,
+     "rot_deg": 340.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -264.82,
+     "y": 34.9,
+     "rot_deg": 160.7
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -266.69,
+     "y": 31.22,
+     "rot_deg": 250.7
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -266.52,
+     "y": 32.32,
+     "rot_deg": 290.7
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -269.83,
+     "y": 22.57,
+     "rot_deg": 250.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -361.57,
+     "y": 18.65,
+     "rot_deg": 119.1,
+     "escala": 0.65
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -364.45,
+     "y": 23.82,
+     "rot_deg": 119.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -366.25,
+     "y": 27.05,
+     "rot_deg": 119.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -369.12,
+     "y": 27.57,
+     "rot_deg": 209.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -361.78,
+     "y": 11.74,
+     "rot_deg": 29.1,
+     "escala": 0.42
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -366.55,
+     "y": 24.3,
+     "rot_deg": 134.1
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -361.98,
+     "y": 16.09,
+     "rot_deg": 129.1
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -367.6,
+     "y": 25.55,
+     "rot_deg": 149.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -342.6,
+     "y": 19.25,
+     "rot_deg": 134.1,
+     "escala": 0.65
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -346.72,
+     "y": 23.5,
+     "rot_deg": 134.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -349.3,
+     "y": 26.16,
+     "rot_deg": 134.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -352.2,
+     "y": 25.92,
+     "rot_deg": 224.1
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -348.33,
+     "y": 22.57,
+     "rot_deg": 134.1
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -343.32,
+     "y": 17.4,
+     "rot_deg": 184.1
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -341.78,
+     "y": 16.1,
+     "rot_deg": 134.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -325.46,
+     "y": 24.55,
+     "rot_deg": 157.5,
+     "escala": 0.65
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -330.93,
+     "y": 26.81,
+     "rot_deg": 157.5,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -334.35,
+     "y": 28.23,
+     "rot_deg": 157.5,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -336.92,
+     "y": 26.86,
+     "rot_deg": 247.5
+    },
+    {
+     "tipo": "tambor",
+     "x": -333.0,
+     "y": 25.61,
+     "rot_deg": 157.5
+    },
+    {
+     "tipo": "tambor",
+     "x": -334.11,
+     "y": 26.07,
+     "rot_deg": 157.5
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -324.38,
+     "y": 22.37,
+     "rot_deg": 237.5
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -307.5,
+     "y": 32.2,
+     "rot_deg": 201.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.94,
+     "y": 30.83,
+     "rot_deg": 201.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -316.43,
+     "y": 28.63,
+     "rot_deg": 201.8,
+     "escala": 0.65
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -304.95,
+     "y": 30.8,
+     "rot_deg": 111.8
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -317.72,
+     "y": 26.39,
+     "rot_deg": 201.8
+    },
+    {
+     "tipo": "barril",
+     "x": -308.92,
+     "y": 29.69,
+     "rot_deg": 201.8
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": -307.7,
+     "y": 30.4,
+     "rot_deg": 291.8
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -300.71,
+     "y": 31.83,
+     "rot_deg": 243.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -302.37,
+     "y": 28.52,
+     "rot_deg": 243.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -301.18,
+     "y": 25.86,
+     "rot_deg": 333.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -299.84,
+     "y": 29.78,
+     "rot_deg": 243.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -300.51,
+     "y": 28.88,
+     "rot_deg": 283.4
+    },
+    {
+     "tipo": "barril",
+     "x": -300.2,
+     "y": 27.94,
+     "rot_deg": 243.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -284.82,
+     "y": 54.16,
+     "rot_deg": 273.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -284.58,
+     "y": 50.47,
+     "rot_deg": 273.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -284.17,
+     "y": 44.18,
+     "rot_deg": 273.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -283.93,
+     "y": 40.49,
+     "rot_deg": 273.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -281.57,
+     "y": 38.79,
+     "rot_deg": 3.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -282.7,
+     "y": 56.15,
+     "rot_deg": 183.7
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -283.08,
+     "y": 52.02,
+     "rot_deg": 288.7
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -282.47,
+     "y": 42.64,
+     "rot_deg": 283.7
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -282.89,
+     "y": 53.63,
+     "rot_deg": 303.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -278.37,
+     "y": 73.48,
+     "rot_deg": 296.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -276.71,
+     "y": 70.17,
+     "rot_deg": 296.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -273.89,
+     "y": 64.53,
+     "rot_deg": 296.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -272.24,
+     "y": 61.22,
+     "rot_deg": 296.6,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -269.4,
+     "y": 60.57,
+     "rot_deg": 26.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -277.18,
+     "y": 76.14,
+     "rot_deg": 206.6
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -275.3,
+     "y": 71.37,
+     "rot_deg": 296.6
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -272.08,
+     "y": 64.93,
+     "rot_deg": 346.6
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -271.37,
+     "y": 63.06,
+     "rot_deg": 296.6
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -345.07,
+     "y": 36.04,
+     "rot_deg": 94.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -345.37,
+     "y": 39.72,
+     "rot_deg": 94.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -345.9,
+     "y": 46.0,
+     "rot_deg": 94.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -346.2,
+     "y": 49.69,
+     "rot_deg": 94.8,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -348.6,
+     "y": 51.35,
+     "rot_deg": 184.8
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -347.16,
+     "y": 34.01,
+     "rot_deg": 4.8
+    },
+    {
+     "tipo": "tambor",
+     "x": -347.15,
+     "y": 38.12,
+     "rot_deg": 94.8
+    },
+    {
+     "tipo": "tambor",
+     "x": -347.05,
+     "y": 36.93,
+     "rot_deg": 94.8
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -347.61,
+     "y": 47.31,
+     "rot_deg": 174.8
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -324.03,
+     "y": 36.56,
+     "rot_deg": 107.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -325.13,
+     "y": 40.1,
+     "rot_deg": 107.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -327.01,
+     "y": 46.11,
+     "rot_deg": 107.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -328.12,
+     "y": 49.64,
+     "rot_deg": 107.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -330.82,
+     "y": 50.73,
+     "rot_deg": 197.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -325.63,
+     "y": 34.13,
+     "rot_deg": 17.4
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -326.17,
+     "y": 38.04,
+     "rot_deg": 107.4
+    },
+    {
+     "tipo": "barril",
+     "x": -329.16,
+     "y": 46.96,
+     "rot_deg": 107.4
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": -329.39,
+     "y": 48.35,
+     "rot_deg": 197.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.04,
+     "y": 51.36,
+     "rot_deg": 267.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.23,
+     "y": 47.67,
+     "rot_deg": 267.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.54,
+     "y": 41.37,
+     "rot_deg": 267.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -310.73,
+     "y": 37.68,
+     "rot_deg": 267.1,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -308.57,
+     "y": 35.72,
+     "rot_deg": 357.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -307.71,
+     "y": 53.1,
+     "rot_deg": 177.1
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -308.46,
+     "y": 49.03,
+     "rot_deg": 267.1
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -308.6,
+     "y": 50.14,
+     "rot_deg": 307.1
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -309.02,
+     "y": 39.85,
+     "rot_deg": 267.1
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -298.45,
+     "y": 66.36,
+     "rot_deg": 301.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -296.5,
+     "y": 63.21,
+     "rot_deg": 301.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.19,
+     "y": 57.85,
+     "rot_deg": 301.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -291.25,
+     "y": 54.71,
+     "rot_deg": 301.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -288.36,
+     "y": 54.32,
+     "rot_deg": 31.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -297.51,
+     "y": 69.12,
+     "rot_deg": 211.7
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -291.07,
+     "y": 57.46,
+     "rot_deg": 316.7
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -296.01,
+     "y": 65.46,
+     "rot_deg": 311.7
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -289.97,
+     "y": 56.26,
+     "rot_deg": 331.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.87,
+     "y": 88.22,
+     "rot_deg": 321.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -290.99,
+     "y": 85.89,
+     "rot_deg": 321.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -286.09,
+     "y": 81.93,
+     "rot_deg": 321.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -283.21,
+     "y": 79.61,
+     "rot_deg": 321.0,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -280.36,
+     "y": 80.19,
+     "rot_deg": 51.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -293.89,
+     "y": 91.13,
+     "rot_deg": 231.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -284.61,
+     "y": 83.05,
+     "rot_deg": 321.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -290.21,
+     "y": 87.58,
+     "rot_deg": 11.0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -291.89,
+     "y": 88.68,
+     "rot_deg": 321.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -346.22,
+     "y": 73.55,
+     "rot_deg": 32.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -343.09,
+     "y": 75.53,
+     "rot_deg": 32.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -337.77,
+     "y": 78.9,
+     "rot_deg": 32.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -334.65,
+     "y": 80.89,
+     "rot_deg": 32.4,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -334.29,
+     "y": 83.78,
+     "rot_deg": 122.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -348.98,
+     "y": 74.46,
+     "rot_deg": 302.4
+    },
+    {
+     "tipo": "tambor",
+     "x": -337.56,
+     "y": 81.29,
+     "rot_deg": 32.4
+    },
+    {
+     "tipo": "tambor",
+     "x": -336.55,
+     "y": 81.93,
+     "rot_deg": 32.4
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -345.17,
+     "y": 76.1,
+     "rot_deg": 112.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -376.15,
+     "y": 42.38,
+     "rot_deg": 85.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -375.87,
+     "y": 46.07,
+     "rot_deg": 85.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -375.39,
+     "y": 52.36,
+     "rot_deg": 85.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -375.11,
+     "y": 56.04,
+     "rot_deg": 85.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -377.22,
+     "y": 58.06,
+     "rot_deg": 175.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -378.53,
+     "y": 40.71,
+     "rot_deg": 355.7
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -376.86,
+     "y": 54.12,
+     "rot_deg": 85.7
+    },
+    {
+     "tipo": "barril",
+     "x": -377.77,
+     "y": 44.76,
+     "rot_deg": 85.7
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": -377.68,
+     "y": 43.35,
+     "rot_deg": 175.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -374.47,
+     "y": 68.84,
+     "rot_deg": 59.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -372.6,
+     "y": 72.04,
+     "rot_deg": 59.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -369.43,
+     "y": 77.48,
+     "rot_deg": 59.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -367.57,
+     "y": 80.68,
+     "rot_deg": 59.7,
+     "escala": 0.82
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -368.58,
+     "y": 83.41,
+     "rot_deg": 149.7
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -377.34,
+     "y": 68.38,
+     "rot_deg": 329.7
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -370.17,
+     "y": 79.59,
+     "rot_deg": 59.7
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -369.44,
+     "y": 80.44,
+     "rot_deg": 99.7
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -374.72,
+     "y": 71.59,
+     "rot_deg": 59.7
+    }
+   ]
+  },
+  {
+   "nome": "Fazenda: casarão, colonos e capela",
+   "intencao": "A fazenda ganha hierarquia: o casarão tem jardim cercado de ripas com vão no eixo da porta, sebe de arbustos e duas sombras de carvalho; os três colonos têm lote próprio com a vida de roça; a capela tem adro com bancos; a tulha e o paiol têm pátio de trabalho.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -128.08,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -124.25,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -120.42,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -113.67,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.81
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -110.0,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.81
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -106.33,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.81
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -99.58,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -95.75,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -91.92,
+     "y": -304.0,
+     "rot_deg": 0.0,
+     "escala": 0.85
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -130.0,
+     "y": -301.83,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -130.0,
+     "y": -297.5,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -130.0,
+     "y": -293.17,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -90.0,
+     "y": -301.83,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -90.0,
+     "y": -297.5,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -90.0,
+     "y": -293.17,
+     "rot_deg": 90.0,
+     "escala": 0.96
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -126,
+     "y": -298.2,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -123,
+     "y": -298.2,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -112,
+     "y": -298.2,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -110,
+     "y": -298.2,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -108,
+     "y": -298.2,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -97,
+     "y": -298.2,
+     "rot_deg": 50
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -94,
+     "y": -298.2,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -127,
+     "y": -299.5,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -93,
+     "y": -299.5,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -124,
+     "y": -301.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -96,
+     "y": -301.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -128.2,
+     "y": -294.5,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_b",
+     "x": -91.8,
+     "y": -294.5,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -158.13,
+     "y": -324.99,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -159.02,
+     "y": -322.78,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -159.9,
+     "y": -320.58,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -160.79,
+     "y": -318.38,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -162.8,
+     "y": -313.39,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -163.69,
+     "y": -311.19,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -164.58,
+     "y": -308.99,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -165.47,
+     "y": -306.79,
+     "rot_deg": 112.0,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -167.95,
+     "y": -306.51,
+     "rot_deg": 202.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -172.03,
+     "y": -308.15,
+     "rot_deg": 202.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -176.11,
+     "y": -309.8,
+     "rot_deg": 202.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -180.19,
+     "y": -311.44,
+     "rot_deg": 202.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -184.28,
+     "y": -313.09,
+     "rot_deg": 202.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -176.05,
+     "y": -333.49,
+     "rot_deg": 22.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -171.97,
+     "y": -331.85,
+     "rot_deg": 22.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -167.89,
+     "y": -330.2,
+     "rot_deg": 22.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -163.81,
+     "y": -328.56,
+     "rot_deg": 22.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -159.72,
+     "y": -326.91,
+     "rot_deg": 22.0,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -182.54,
+     "y": -314.98,
+     "rot_deg": 112.0
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -183.19,
+     "y": -315.24,
+     "rot_deg": 147.0
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -176.65,
+     "y": -331.47,
+     "rot_deg": 127.0
+    },
+    {
+     "tipo": "barril",
+     "x": -167.24,
+     "y": -308.81,
+     "rot_deg": 112.0
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -160.18,
+     "y": -324.72,
+     "rot_deg": 167.0
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -147.28,
+     "y": -345.3,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -148.94,
+     "y": -343.61,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -150.6,
+     "y": -341.91,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -152.26,
+     "y": -340.22,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -156.03,
+     "y": -336.38,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -157.69,
+     "y": -334.68,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -159.35,
+     "y": -332.99,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -161.02,
+     "y": -331.29,
+     "rot_deg": 134.4,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -163.42,
+     "y": -331.98,
+     "rot_deg": 224.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -166.56,
+     "y": -335.07,
+     "rot_deg": 224.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -169.7,
+     "y": -338.15,
+     "rot_deg": 224.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -172.84,
+     "y": -341.23,
+     "rot_deg": 224.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -175.98,
+     "y": -344.31,
+     "rot_deg": 224.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -160.58,
+     "y": -360.02,
+     "rot_deg": 44.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -157.44,
+     "y": -356.93,
+     "rot_deg": 44.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -154.3,
+     "y": -353.85,
+     "rot_deg": 44.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -151.16,
+     "y": -350.77,
+     "rot_deg": 44.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -148.02,
+     "y": -347.69,
+     "rot_deg": 44.4,
+     "escala": 0.98
+    },
+    {
+     "tipo": "varal",
+     "x": -168.02,
+     "y": -354.71,
+     "rot_deg": 134.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -161.69,
+     "y": -357.74,
+     "rot_deg": 134.4
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -162.19,
+     "y": -358.23,
+     "rot_deg": 164.4
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -174.16,
+     "y": -345.6,
+     "rot_deg": 204.4
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -132.45,
+     "y": -366.19,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -134.6,
+     "y": -365.19,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -136.76,
+     "y": -364.18,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -138.91,
+     "y": -363.17,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -143.78,
+     "y": -360.9,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -145.93,
+     "y": -359.89,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -148.08,
+     "y": -358.89,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -150.23,
+     "y": -357.88,
+     "rot_deg": 154.9,
+     "escala": 1.08
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -152.24,
+     "y": -359.37,
+     "rot_deg": 244.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -154.1,
+     "y": -363.36,
+     "rot_deg": 244.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -155.96,
+     "y": -367.34,
+     "rot_deg": 244.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -157.83,
+     "y": -371.33,
+     "rot_deg": 244.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -159.69,
+     "y": -375.31,
+     "rot_deg": 244.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -139.76,
+     "y": -384.63,
+     "rot_deg": 64.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -137.9,
+     "y": -380.64,
+     "rot_deg": 64.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -136.04,
+     "y": -376.66,
+     "rot_deg": 64.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -134.17,
+     "y": -372.67,
+     "rot_deg": 64.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira",
+     "x": -132.31,
+     "y": -368.69,
+     "rot_deg": 64.9,
+     "escala": 0.98
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -147.77,
+     "y": -382.87,
+     "rot_deg": 154.9
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -149.58,
+     "y": -382.03,
+     "rot_deg": 194.9
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -151.4,
+     "y": -381.18,
+     "rot_deg": 234.9
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -153.21,
+     "y": -380.33,
+     "rot_deg": 274.9
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -157.09,
+     "y": -375.65,
+     "rot_deg": 154.9
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -150.41,
+     "y": -360.89,
+     "rot_deg": 244.9
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -156.97,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -154.9,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -152.83,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -147.17,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -145.1,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "cenario/natureza/cerca_madeira_curta",
+     "x": -143.03,
+     "y": -248.0,
+     "rot_deg": 0.0,
+     "escala": 0.94
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -153.4,
+     "y": -245.2,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -146.6,
+     "y": -245.2,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "lixeira",
+     "x": -144.4,
+     "y": -246.6,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -157.0,
+     "y": -246.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -155.4,
+     "y": -244.4,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -144.6,
+     "y": -244.4,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/pilha_troncos",
+     "x": -54.8,
+     "y": -307.5,
+     "rot_deg": 180
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": -55.6,
+     "y": -297.0,
+     "rot_deg": 190
+    },
+    {
+     "tipo": "barril",
+     "x": -56.8,
+     "y": -298.4,
+     "rot_deg": 90.0
+    },
+    {
+     "tipo": "barril",
+     "x": -55.6,
+     "y": -298.4,
+     "rot_deg": 90.0
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -56.2,
+     "y": -305.4,
+     "rot_deg": 150
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -56.5,
+     "y": -309.0,
+     "rot_deg": 180
+    },
+    {
+     "tipo": "tambor",
+     "x": -54.4,
+     "y": -264.2,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "tambor",
+     "x": -53.3,
+     "y": -264.2,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -54.2,
+     "y": -251.6,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -66.0,
+     "y": -251.5,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Alamedas das estradas",
+   "intencao": "As estradas de terra ganham fileiras de árvores nos trechos de campo aberto, em quincôncio, como na referência de FPS low poly: sombra e linha de fuga para quem corre de carro ou a pé, e cobertura lateral de tronco.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -24.95,
+     "y": -306.53,
+     "rot_deg": 289.2
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -19.69,
+     "y": -321.64,
+     "rot_deg": 359.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -14.44,
+     "y": -336.75,
+     "rot_deg": 69.2,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -9.18,
+     "y": -351.86,
+     "rot_deg": 139.2,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -3.92,
+     "y": -366.98,
+     "rot_deg": 209.2,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 1.33,
+     "y": -382.09,
+     "rot_deg": 324.2
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -32.71,
+     "y": -317.7,
+     "rot_deg": 289.2
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -27.45,
+     "y": -332.81,
+     "rot_deg": 359.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -22.2,
+     "y": -347.92,
+     "rot_deg": 69.2,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -16.94,
+     "y": -363.03,
+     "rot_deg": 139.2,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -11.69,
+     "y": -378.15,
+     "rot_deg": 209.2,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 107.59,
+     "y": -418.94,
+     "rot_deg": 4.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 123.55,
+     "y": -417.8,
+     "rot_deg": 74.1,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 139.51,
+     "y": -416.66,
+     "rot_deg": 144.1,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 155.47,
+     "y": -415.52,
+     "rot_deg": 214.1,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 116.35,
+     "y": -429.35,
+     "rot_deg": 4.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 132.31,
+     "y": -428.21,
+     "rot_deg": 74.1,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 148.27,
+     "y": -427.07,
+     "rot_deg": 144.1,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 164.23,
+     "y": -425.93,
+     "rot_deg": 214.1,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 368.37,
+     "y": -250.24,
+     "rot_deg": 14.0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 383.89,
+     "y": -246.36,
+     "rot_deg": 84.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 399.41,
+     "y": -242.48,
+     "rot_deg": 154.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 414.93,
+     "y": -238.6,
+     "rot_deg": 224.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 430.46,
+     "y": -234.72,
+     "rot_deg": 294.0,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 378.8,
+     "y": -258.97,
+     "rot_deg": 14.0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 394.32,
+     "y": -255.09,
+     "rot_deg": 84.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 409.84,
+     "y": -251.21,
+     "rot_deg": 154.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 425.36,
+     "y": -247.33,
+     "rot_deg": 224.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 432.86,
+     "y": -231.42,
+     "rot_deg": 102.8
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 429.32,
+     "y": -215.82,
+     "rot_deg": 172.8,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 425.77,
+     "y": -200.21,
+     "rot_deg": 242.8,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 422.23,
+     "y": -184.61,
+     "rot_deg": 312.8,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 418.68,
+     "y": -169.01,
+     "rot_deg": 22.8,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 441.82,
+     "y": -221.18,
+     "rot_deg": 102.8
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 438.27,
+     "y": -205.58,
+     "rot_deg": 172.8,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 434.73,
+     "y": -189.97,
+     "rot_deg": 242.8,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 431.18,
+     "y": -174.37,
+     "rot_deg": 312.8,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 427.63,
+     "y": -158.77,
+     "rot_deg": 22.8,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 422.72,
+     "y": 76.43,
+     "rot_deg": 104.0
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 418.84,
+     "y": 91.95,
+     "rot_deg": 174.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 414.96,
+     "y": 107.47,
+     "rot_deg": 244.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 411.08,
+     "y": 122.99,
+     "rot_deg": 314.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 407.2,
+     "y": 138.52,
+     "rot_deg": 24.0,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 431.46,
+     "y": 86.86,
+     "rot_deg": 104.0
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 427.57,
+     "y": 102.38,
+     "rot_deg": 174.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 423.69,
+     "y": 117.9,
+     "rot_deg": 244.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 419.81,
+     "y": 133.42,
+     "rot_deg": 314.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -67.07,
+     "y": 398.75,
+     "rot_deg": 189.5
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -82.85,
+     "y": 396.12,
+     "rot_deg": 259.5,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -98.63,
+     "y": 393.49,
+     "rot_deg": 329.5,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -114.42,
+     "y": 390.86,
+     "rot_deg": 39.5,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -130.2,
+     "y": 388.23,
+     "rot_deg": 109.5,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -76.6,
+     "y": 407.3,
+     "rot_deg": 189.5
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -92.39,
+     "y": 404.67,
+     "rot_deg": 259.5,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -108.17,
+     "y": 402.04,
+     "rot_deg": 329.5,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -123.95,
+     "y": 399.41,
+     "rot_deg": 39.5,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -139.73,
+     "y": 396.78,
+     "rot_deg": 109.5,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -302.44,
+     "y": 252.6,
+     "rot_deg": 220.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -314.53,
+     "y": 242.13,
+     "rot_deg": 290.9,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -326.63,
+     "y": 231.65,
+     "rot_deg": 0.9,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -338.72,
+     "y": 221.17,
+     "rot_deg": 70.9,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -350.81,
+     "y": 210.69,
+     "rot_deg": 140.9,
+     "escala": 1.05
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -315.69,
+     "y": 255.68,
+     "rot_deg": 220.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -327.78,
+     "y": 245.2,
+     "rot_deg": 290.9,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -339.88,
+     "y": 234.72,
+     "rot_deg": 0.9,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -351.97,
+     "y": 224.24,
+     "rot_deg": 70.9,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -424.09,
+     "y": -175.59,
+     "rot_deg": 274.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -422.95,
+     "y": -191.55,
+     "rot_deg": 344.1,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -421.81,
+     "y": -207.51,
+     "rot_deg": 54.1,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -420.67,
+     "y": -223.47,
+     "rot_deg": 124.1,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -434.49,
+     "y": -184.36,
+     "rot_deg": 274.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -433.35,
+     "y": -200.32,
+     "rot_deg": 344.1,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -432.21,
+     "y": -216.27,
+     "rot_deg": 54.1,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -431.07,
+     "y": -232.23,
+     "rot_deg": 124.1,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -293.52,
+     "y": -327.77,
+     "rot_deg": 13.7
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -277.98,
+     "y": -323.99,
+     "rot_deg": 83.7,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -283.15,
+     "y": -336.57,
+     "rot_deg": 13.7
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -252.71,
+     "y": -317.86,
+     "rot_deg": 13.7
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -237.16,
+     "y": -314.08,
+     "rot_deg": 83.7,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -242.34,
+     "y": -326.66,
+     "rot_deg": 13.7
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 192.22,
+     "y": 360.71,
+     "rot_deg": 135.0
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 180.91,
+     "y": 372.02,
+     "rot_deg": 205.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 169.59,
+     "y": 383.33,
+     "rot_deg": 275.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 158.28,
+     "y": 394.65,
+     "rot_deg": 345.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 193.64,
+     "y": 373.44,
+     "rot_deg": 135.0
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 182.32,
+     "y": 384.75,
+     "rot_deg": 205.0,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 171.01,
+     "y": 396.06,
+     "rot_deg": 275.0,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 159.69,
+     "y": 407.38,
+     "rot_deg": 345.0,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -91.83,
+     "y": -245.85,
+     "rot_deg": 331.7
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -72.46,
+     "y": -256.28,
+     "rot_deg": 41.7,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -87.36,
+     "y": -260.75,
+     "rot_deg": 331.7
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 171.94,
+     "y": -412.1,
+     "rot_deg": 33.7
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 190.25,
+     "y": -399.89,
+     "rot_deg": 103.7,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 208.55,
+     "y": -387.69,
+     "rot_deg": 173.7,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 187.2,
+     "y": -415.15,
+     "rot_deg": 33.7
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 205.5,
+     "y": -402.94,
+     "rot_deg": 103.7,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 223.81,
+     "y": -390.74,
+     "rot_deg": 173.7,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 402.39,
+     "y": -82.88,
+     "rot_deg": 158.2
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 381.96,
+     "y": -74.71,
+     "rot_deg": 228.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 361.53,
+     "y": -66.54,
+     "rot_deg": 298.2,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 396.26,
+     "y": -68.58,
+     "rot_deg": 158.2
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 375.83,
+     "y": -60.41,
+     "rot_deg": 228.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 396.96,
+     "y": -2.45,
+     "rot_deg": 69.4
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 404.68,
+     "y": 18.15,
+     "rot_deg": 139.4,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 412.41,
+     "y": 38.75,
+     "rot_deg": 209.4,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 420.13,
+     "y": 59.35,
+     "rot_deg": 279.4,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 411.12,
+     "y": 3.99,
+     "rot_deg": 69.4
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 418.84,
+     "y": 24.59,
+     "rot_deg": 139.4,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 426.57,
+     "y": 45.18,
+     "rot_deg": 209.4,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -153.55,
+     "y": 383.04,
+     "rot_deg": 203.2
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -173.77,
+     "y": 374.37,
+     "rot_deg": 273.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -193.99,
+     "y": 365.71,
+     "rot_deg": 343.2,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -214.21,
+     "y": 357.04,
+     "rot_deg": 53.2,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -167.6,
+     "y": 387.9,
+     "rot_deg": 203.2
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -187.82,
+     "y": 379.23,
+     "rot_deg": 273.2,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -208.04,
+     "y": 370.57,
+     "rot_deg": 343.2,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 16.51,
+     "y": 433.01,
+     "rot_deg": 203.6
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -3.65,
+     "y": 424.2,
+     "rot_deg": 273.6,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -23.8,
+     "y": 415.38,
+     "rot_deg": 343.6,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -43.96,
+     "y": 406.56,
+     "rot_deg": 53.6,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 2.42,
+     "y": 437.77,
+     "rot_deg": 203.6
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": -17.73,
+     "y": 428.95,
+     "rot_deg": 273.6,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -37.89,
+     "y": 420.13,
+     "rot_deg": 343.6,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -397.31,
+     "y": -89.33,
+     "rot_deg": 251.6
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -404.27,
+     "y": -110.2,
+     "rot_deg": 321.6,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -411.23,
+     "y": -131.07,
+     "rot_deg": 31.6,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -418.18,
+     "y": -151.94,
+     "rot_deg": 101.6,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -226.83,
+     "y": -308.82,
+     "rot_deg": 36.4
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -209.13,
+     "y": -295.75,
+     "rot_deg": 106.4,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -191.44,
+     "y": -282.69,
+     "rot_deg": 176.4,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -173.74,
+     "y": -269.62,
+     "rot_deg": 246.4,
+     "escala": 0.95
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -211.45,
+     "y": -311.14,
+     "rot_deg": 36.4
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -193.75,
+     "y": -298.07,
+     "rot_deg": 106.4,
+     "escala": 0.9
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -176.05,
+     "y": -285.0,
+     "rot_deg": 176.4,
+     "escala": 1.1
+    }
+   ]
+  },
+  {
+   "nome": "Usina Santa Cruz: vila operária e pátio",
+   "intencao": "Quem trabalhava na usina deixou rastro: varal e bicicleta na vila operária, barris de melaço na moenda, tijolos da chaminé que desabou, tambores vazando junto ao tanque e o posto de guarda com barreiras no acostamento.",
+   "props": [
+    {
+     "tipo": "bicicleta",
+     "x": -333.31,
+     "y": 321.61,
+     "rot_deg": 210.0
+    },
+    {
+     "tipo": "barril",
+     "x": -337.01,
+     "y": 330.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "lixeira",
+     "x": -340.15,
+     "y": 340.41,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "varal",
+     "x": -353.15,
+     "y": 322.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "cenario/natureza/tufo_capim",
+     "x": -355.63,
+     "y": 332.64,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "bicicleta",
+     "x": -345.31,
+     "y": 345.61,
+     "rot_deg": 210.0
+    },
+    {
+     "tipo": "barril",
+     "x": -349.01,
+     "y": 354.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "lixeira",
+     "x": -352.15,
+     "y": 364.41,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "varal",
+     "x": -365.15,
+     "y": 346.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "cenario/natureza/tufo_capim",
+     "x": -367.63,
+     "y": 356.64,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "bicicleta",
+     "x": -313.31,
+     "y": 365.61,
+     "rot_deg": 210.0
+    },
+    {
+     "tipo": "barril",
+     "x": -317.01,
+     "y": 374.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "lixeira",
+     "x": -320.15,
+     "y": 384.41,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "varal",
+     "x": -333.15,
+     "y": 366.91,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "cenario/natureza/tufo_capim",
+     "x": -335.63,
+     "y": 376.64,
+     "rot_deg": 110.0
+    },
+    {
+     "tipo": "cenario/natureza/pilha_troncos",
+     "x": -289.26,
+     "y": 293.35,
+     "rot_deg": 110
+    },
+    {
+     "tipo": "cenario/natureza/pilha_troncos",
+     "x": -279.54,
+     "y": 296.46,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "barril",
+     "x": -287.67,
+     "y": 295.42,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "barril",
+     "x": -288.5,
+     "y": 294.48,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "carrinho_mao",
+     "x": -281.87,
+     "y": 297.32,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -262.2,
+     "y": 329.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -269.6,
+     "y": 332.4,
+     "rot_deg": 110
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -261.8,
+     "y": 333.4,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -270.0,
+     "y": 327.0,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "tambor",
+     "x": -207.4,
+     "y": 300.8,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "tambor",
+     "x": -207.4,
+     "y": 299.6,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "tambor",
+     "x": -216.6,
+     "y": 309.4,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -217.4,
+     "y": 300.4,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": -237.71,
+     "y": 335.95,
+     "rot_deg": 35
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -252.01,
+     "y": 331.39,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -242.62,
+     "y": 353.54,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_road_barrier_01",
+     "x": -226.0,
+     "y": 256.5,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "cenario/rua/rua_road_barrier_01",
+     "x": -218.0,
+     "y": 247.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": -224.0,
+     "y": 261.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": -217.0,
+     "y": 258.0,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Quartel do 7º BIL: rancho, paiol e heliponto",
+   "intencao": "A vida do pátio militar: mesas do rancho ao ar livre, caixas de rancho empilhadas, tambores alinhados no paiol, bancos na frente do comando e cones demarcando o heliponto.",
+   "props": [
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 305.0,
+     "y": 246.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 319.0,
+     "y": 246.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 305.0,
+     "y": 242.8,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_box_01",
+     "x": 307.4,
+     "y": 247.6,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "cenario/rua/rua_box_02",
+     "x": 306.4,
+     "y": 247.4,
+     "rot_deg": 340
+    },
+    {
+     "tipo": "cenario/rua/rua_box_01",
+     "x": 316.6,
+     "y": 247.6,
+     "rot_deg": 350
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 307.0,
+     "y": 336.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 317.0,
+     "y": 336.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": 303.6,
+     "y": 336.8,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": 320.4,
+     "y": 336.8,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "lixeira",
+     "x": 320.0,
+     "y": 335.4,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "tambor",
+     "x": 255.6,
+     "y": 239.2,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "tambor",
+     "x": 255.6,
+     "y": 238.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "tambor",
+     "x": 255.6,
+     "y": 236.8,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "tambor",
+     "x": 255.6,
+     "y": 235.6,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 244.4,
+     "y": 238.8,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": 244.4,
+     "y": 237.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "tambor",
+     "x": 394.1,
+     "y": 241.3,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 394.1,
+     "y": 240.2,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 395.2,
+     "y": 241.3,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": 365.3,
+     "y": 240.5,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "tambor",
+     "x": 281.4,
+     "y": 306.0,
+     "rot_deg": 90.0
+    },
+    {
+     "tipo": "barril",
+     "x": 376.4,
+     "y": 306.0,
+     "rot_deg": 90.0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 382.0,
+     "y": 325.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 402.0,
+     "y": 325.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 382.0,
+     "y": 345.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 402.0,
+     "y": 345.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 296.0,
+     "y": 238.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 372.0,
+     "y": 368.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 236.0,
+     "y": 368.0,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Pedreira São Jorge: cava e britador",
+   "intencao": "A cava ganha cones na borda, a pilha de brita sob o britador, tambores de óleo no galpão e um canto de lanche dos operários nos contêineres.",
+   "props": [
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": 378.08,
+     "y": 34.54,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/pedras/pedra_04",
+     "x": 371.85,
+     "y": 29.33,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": 375.08,
+     "y": 33.73,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": 368.05,
+     "y": 29.91,
+     "rot_deg": 50
+    },
+    {
+     "tipo": "tambor",
+     "x": 399.4,
+     "y": -52.65,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 399.71,
+     "y": -53.8,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 400.71,
+     "y": -52.91,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": 376.71,
+     "y": -59.14,
+     "rot_deg": 35
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 297.95,
+     "y": -54.21,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 305.73,
+     "y": -52.33,
+     "rot_deg": 105
+    },
+    {
+     "tipo": "lixeira",
+     "x": 301.57,
+     "y": -38.33,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "cenario/rua/rua_road_barrier_02",
+     "x": 272.0,
+     "y": 10.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 269.0,
+     "y": 10.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 275.0,
+     "y": 10.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 320.0,
+     "y": 12.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 331.0,
+     "y": 15.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_01",
+     "x": 346.0,
+     "y": 15.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/pedras/pedra_05",
+     "x": 305.0,
+     "y": 2.0,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": 312.0,
+     "y": -30.0,
+     "rot_deg": 100
+    }
+   ]
+  },
+  {
+   "nome": "Pista do Tauá: balizamento e hangar",
+   "intencao": "A pista tem balizas na borda sul, o hangar tem tambores de combustível alinhados e a casa do piloto, lenha e bicicleta.",
+   "props": [
+    {
+     "tipo": "tambor",
+     "x": 289.52,
+     "y": -251.2,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "tambor",
+     "x": 289.83,
+     "y": -252.36,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "tambor",
+     "x": 290.14,
+     "y": -253.52,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "tambor",
+     "x": 290.45,
+     "y": -254.67,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "barril",
+     "x": 316.33,
+     "y": -244.63,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "cenario/rua/rua_box_01",
+     "x": 316.69,
+     "y": -245.99,
+     "rot_deg": 35
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": 268.09,
+     "y": -213.4,
+     "rot_deg": 45.9
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": 267.59,
+     "y": -212.91,
+     "rot_deg": 75.9
+    },
+    {
+     "tipo": "bicicleta",
+     "x": 268.48,
+     "y": -237.16,
+     "rot_deg": 145.9
+    },
+    {
+     "tipo": "tambor",
+     "x": 378.7,
+     "y": -226.44,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 378.98,
+     "y": -227.5,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 228.0,
+     "y": -361.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 268.0,
+     "y": -350.7,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 308.0,
+     "y": -340.4,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 348.0,
+     "y": -330.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 388.0,
+     "y": -319.7,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/rua/rua_roadcone_02",
+     "x": 428.0,
+     "y": -309.4,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Farol da Ponta Norte: vigia e ventania",
+   "intencao": "O faroleiro vive de lenha, barril e vento: banco de olhar o mar, varal no fundo da casa, tambores do gerador.",
+   "props": [
+    {
+     "tipo": "varal",
+     "x": 39.5,
+     "y": 494.99,
+     "rot_deg": 102.8
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": 38.34,
+     "y": 506.42,
+     "rot_deg": 102.8
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": 37.65,
+     "y": 506.26,
+     "rot_deg": 132.8
+    },
+    {
+     "tipo": "barril",
+     "x": 58.05,
+     "y": 493.67,
+     "rot_deg": 102.8
+    },
+    {
+     "tipo": "bicicleta",
+     "x": 54.63,
+     "y": 510.53,
+     "rot_deg": 202.8
+    },
+    {
+     "tipo": "tambor",
+     "x": 100.57,
+     "y": 502.54,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 100.76,
+     "y": 501.46,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "tambor",
+     "x": 91.43,
+     "y": 509.46,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 62.0,
+     "y": 522.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 86.0,
+     "y": 520.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": 56.0,
+     "y": 521.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": 92.0,
+     "y": 518.0,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/tufo_capim",
+     "x": 70.0,
+     "y": 524.0,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Represa do Tauá: casa de força e subestação",
+   "intencao": "Área pequena de propósito (a vista da barragem é a mais pesada): tambores na subestação, barris na casa de força, banco do operador de frente para o remanso.",
+   "props": [
+    {
+     "tipo": "tambor",
+     "x": -139.53,
+     "y": -90.3,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "tambor",
+     "x": -138.76,
+     "y": -91.08,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "cenario/rua/rua_box_01",
+     "x": -151.56,
+     "y": -102.89,
+     "rot_deg": 75
+    },
+    {
+     "tipo": "barril",
+     "x": -98.23,
+     "y": -141.08,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "barril",
+     "x": -97.45,
+     "y": -141.86,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "lixeira",
+     "x": -86.56,
+     "y": -130.12,
+     "rot_deg": 45
+    },
+    {
+     "tipo": "banco_praca",
+     "x": -53.62,
+     "y": -110.04,
+     "rot_deg": 207.4
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -54.52,
+     "y": -109.6,
+     "rot_deg": 0
+    }
+   ]
+  },
+  {
+   "nome": "Praia dos Quiosques: mesas e redes",
+   "intencao": "Cada quiosque estende o seu varejo pela areia: mesas do lado de fora, caixotes de peixe e barris na parte de trás, canoas arrastadas ao pé da maré, bancos e lixeiras na orla.",
+   "props": [
+    {
+     "tipo": "caixote_peixe",
+     "x": 36.6,
+     "y": -486.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 36.6,
+     "y": -487.1,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/rua/rua_bin",
+     "x": 23.6,
+     "y": -486.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 26.6,
+     "y": -478.1,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 71.6,
+     "y": -488.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 71.6,
+     "y": -489.1,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "cenario/rua/rua_trash_bin",
+     "x": 58.6,
+     "y": -488.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 61.6,
+     "y": -480.1,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 106.6,
+     "y": -488.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 106.6,
+     "y": -489.1,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/rua/rua_bin",
+     "x": 93.6,
+     "y": -488.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 96.6,
+     "y": -480.1,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 141.6,
+     "y": -488.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 141.6,
+     "y": -489.1,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "cenario/rua/rua_trash_bin",
+     "x": 128.6,
+     "y": -488.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 131.6,
+     "y": -480.1,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 176.6,
+     "y": -486.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": 176.6,
+     "y": -487.1,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/rua/rua_bin",
+     "x": 163.6,
+     "y": -486.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 166.6,
+     "y": -478.1,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 53.4,
+     "y": -452.6,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 62.6,
+     "y": -452.6,
+     "rot_deg": 25
+    },
+    {
+     "tipo": "mesa_bar_cadeiras",
+     "x": 66.8,
+     "y": -450.6,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "lixeira",
+     "x": 65.0,
+     "y": -452.4,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 82.0,
+     "y": -468.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "banco_praca",
+     "x": 118.0,
+     "y": -468.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "lixeira",
+     "x": 100.0,
+     "y": -468.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": 48.0,
+     "y": -499.0,
+     "rot_deg": 4
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": 118.0,
+     "y": -500.0,
+     "rot_deg": 356
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": 154.4,
+     "y": -502.5,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "barril",
+     "x": 147.6,
+     "y": -502.9,
+     "rot_deg": 0.0
+    }
+   ]
+  },
+  {
+   "nome": "Campo aberto: sítios e vestígios",
+   "intencao": "Os vazios do mapa ganham motivo para parar: acampamento largado, curral em ruína, capoeira queimada, bosquete de pinheiros, naufrágio na praia, pedras do planalto. Cada sítio tem 5 a 8 peças e uma cena que se lê de longe.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/fogueira",
+     "x": -170.0,
+     "y": 60.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -172.3,
+     "y": 60.2,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -168.0,
+     "y": 62.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -168.6,
+     "y": 57.8,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": -164.0,
+     "y": 64.5,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -174.4,
+     "y": 56.4,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "barril",
+     "x": -175.6,
+     "y": 57.8,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "lona_barraca",
+     "x": -177.0,
+     "y": 63.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 150.0,
+     "y": 50.0,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": 157.0,
+     "y": 46.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/rocha_media",
+     "x": 143.5,
+     "y": 45.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/toco_baixo",
+     "x": 153.5,
+     "y": 57.0,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": 142.5,
+     "y": 54.0,
+     "rot_deg": 160
+    },
+    {
+     "tipo": "cenario/natureza/muro_ruina",
+     "x": -44.0,
+     "y": 378.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/muro_ruina",
+     "x": -39.0,
+     "y": 374.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/muro_ruina",
+     "x": -44.0,
+     "y": 370.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -45.0,
+     "y": 374.2,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -36.5,
+     "y": 382.0,
+     "rot_deg": 150
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": -34.0,
+     "y": 369.0,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/toco_baixo",
+     "x": -49.5,
+     "y": 383.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": 296.0,
+     "y": -126.0,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": 306.0,
+     "y": -133.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": 312.0,
+     "y": -122.0,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca_p",
+     "x": 301.0,
+     "y": -137.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca_p",
+     "x": 316.0,
+     "y": -129.0,
+     "rot_deg": 130
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": 304.0,
+     "y": -124.0,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": 311.0,
+     "y": -139.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/pedras/pedra_04",
+     "x": 298.0,
+     "y": -131.0,
+     "rot_deg": 45
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 80.0,
+     "y": -290.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 94.0,
+     "y": -297.0,
+     "rot_deg": 140
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 70.0,
+     "y": -298.0,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "cenario/natureza/rocha_grande",
+     "x": 86.0,
+     "y": -283.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": 101.0,
+     "y": -286.0,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": -452.0,
+     "y": 12.0,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "cenario/natureza/fogueira",
+     "x": -446.0,
+     "y": 8.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -448.0,
+     "y": 5.8,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": -443.8,
+     "y": 9.5,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "caixote_peixe",
+     "x": -456.0,
+     "y": 17.0,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "barril",
+     "x": -457.4,
+     "y": 15.6,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "lona_barraca",
+     "x": -453.0,
+     "y": 3.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 180,
+     "y": 415,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_jovem",
+     "x": 186,
+     "y": 420,
+     "rot_deg": 50
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_jovem",
+     "x": 192,
+     "y": 412,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_medio",
+     "x": 198,
+     "y": 421,
+     "rot_deg": 150
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_jovem",
+     "x": 205,
+     "y": 414,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "cenario/natureza/pinheiro_jovem",
+     "x": 212,
+     "y": 419,
+     "rot_deg": 250
+    },
+    {
+     "tipo": "cenario/pedras/pedra_05",
+     "x": 190.0,
+     "y": 426.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/rocha_grande",
+     "x": 60.0,
+     "y": -180.0,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "cenario/natureza/rocha_media",
+     "x": 63.5,
+     "y": -183.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/pedras/pedra_04",
+     "x": 56.0,
+     "y": -176.0,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "cenario/pedras/pedra_09",
+     "x": 65.0,
+     "y": -176.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/pedras/pedra_05",
+     "x": 58.0,
+     "y": -185.0,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": 340.0,
+     "y": -362.0,
+     "rot_deg": 15
+    },
+    {
+     "tipo": "canoa_praia",
+     "x": 362.0,
+     "y": -358.0,
+     "rot_deg": 160
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": 350.0,
+     "y": -366.0,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/raiz",
+     "x": 354.0,
+     "y": -360.0,
+     "rot_deg": 70
+    },
+    {
+     "tipo": "cenario/natureza/raiz",
+     "x": 346.0,
+     "y": -356.0,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "cenario/natureza/galho",
+     "x": 358.0,
+     "y": -364.0,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca_p",
+     "x": 344.0,
+     "y": -368.0,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca_p",
+     "x": 357.0,
+     "y": -354.0,
+     "rot_deg": 200
+    },
+    {
+     "tipo": "cenario/natureza/muro_ruina",
+     "x": -258.0,
+     "y": 196.0,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "cenario/natureza/muro_ruina",
+     "x": -252.0,
+     "y": 190.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -254.0,
+     "y": 194.0,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/natureza/entulho",
+     "x": -262.0,
+     "y": 190.0,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -246.0,
+     "y": 197.0,
+     "rot_deg": 10
+    },
+    {
+     "tipo": "pilha_tijolo",
+     "x": -248.5,
+     "y": 186.0,
+     "rot_deg": 80
+    },
+    {
+     "tipo": "cenario/natureza/monte_terra",
+     "x": -264.0,
+     "y": 200.0,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": -266.0,
+     "y": 188.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -200,
+     "y": 20,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -140,
+     "y": 80,
+     "rot_deg": 90
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 100,
+     "y": 20,
+     "rot_deg": 180
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 208,
+     "y": -12,
+     "rot_deg": 40
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": -20,
+     "y": -200,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 20,
+     "y": -280,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -280,
+     "y": -90,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "cenario/natureza/arvore_seca",
+     "x": 360,
+     "y": -110,
+     "rot_deg": 150
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": -100,
+     "y": 420,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": 130,
+     "y": -340,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": -197.0,
+     "y": 17.0,
+     "rot_deg": 30
+    },
+    {
+     "tipo": "cenario/pedras/pedra_04",
+     "x": 211.0,
+     "y": -15.0,
+     "rot_deg": 100
+    },
+    {
+     "tipo": "cenario/natureza/rocha_grande",
+     "x": -17.0,
+     "y": -203.0,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/rocha_media",
+     "x": 133.0,
+     "y": -337.0,
+     "rot_deg": 70
+    }
+   ]
+  },
+  {
+   "nome": "Carros abandonados nas estradas",
+   "intencao": "Quatro carros largados no acostamento, a mais de 60 m de qualquer outro carro e fora da faixa de rodagem: o sedã do morador que não subiu o morro (E8), o táxi que quebrou na subida do quartel (E5), a viatura parada na reta da costa oeste (E9) e o sedã da subida do leste (E4). Todos paralelos à estrada, no mesmo sentido do eixo.",
+   "props": [
+    {
+     "tipo": "cenario/carros/carro_sedan",
+     "x": -399.5,
+     "y": 100.0,
+     "rot_deg": 352.9
+    },
+    {
+     "tipo": "cenario/carros/carro_taxi",
+     "x": 414.0,
+     "y": 111.4,
+     "rot_deg": 194.0
+    },
+    {
+     "tipo": "cenario/carros/carro_policia",
+     "x": -406.0,
+     "y": -114.9,
+     "rot_deg": 341.6
+    },
+    {
+     "tipo": "cenario/carros/carro_sedan",
+     "x": 420.3,
+     "y": -114.5,
+     "rot_deg": 188.1
+    }
+   ]
+  },
+  {
+   "nome": "Margens do rio e praça do Cruzeiro",
+   "intencao": "Samambaias, arbustos e pedras na margem do Rio Tauá no trecho aberto (1,5 m além da borda d'água) e um canteiro de arbustos em volta do cruzeiro, com duas pedras de sentar.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -200.31,
+     "y": -179.21,
+     "rot_deg": 218.7
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -214.37,
+     "y": -190.46,
+     "rot_deg": 218.7
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_b",
+     "x": -260.61,
+     "y": -210.71,
+     "rot_deg": 225.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -273.33,
+     "y": -223.44,
+     "rot_deg": 225.0
+    },
+    {
+     "tipo": "cenario/natureza/samambaia_a",
+     "x": -286.06,
+     "y": -236.16,
+     "rot_deg": 225.0
+    },
+    {
+     "tipo": "cenario/natureza/rocha_media",
+     "x": -298.79,
+     "y": -248.89,
+     "rot_deg": 225.0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -313,
+     "y": 62,
+     "rot_deg": 0
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -316.5,
+     "y": 68,
+     "rot_deg": 60
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -323.5,
+     "y": 68,
+     "rot_deg": 120
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -327,
+     "y": 62,
+     "rot_deg": 180
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_a",
+     "x": -323.5,
+     "y": 56,
+     "rot_deg": 240
+    },
+    {
+     "tipo": "cenario/natureza/arbusto_b",
+     "x": -316.5,
+     "y": 56,
+     "rot_deg": 300
+    },
+    {
+     "tipo": "cenario/pedras/pedra_05",
+     "x": -304.0,
+     "y": 56.0,
+     "rot_deg": 20
+    },
+    {
+     "tipo": "cenario/pedras/pedra_03",
+     "x": -331.0,
+     "y": 53.0,
+     "rot_deg": 100
+    }
+   ]
+  }
+ ]
+}

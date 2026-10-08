@@ -1,0 +1,6244 @@
+{
+ "versao": 1,
+ "fonte": "tools/gameplay_src.py (coberturas, marcos e mirante escritos à mão; análise determinística)",
+ "regra": {
+  "agachado_m": 25,
+  "em_pe_m": 40,
+  "grade_m": 5,
+  "aberto": "terra fora de prédio, água, canavial (ocultação) e mata densa (>= 3 troncos a 10 m)",
+  "cobre_agachado": "prédios, coberturas (>= 0,8 m), muros, cerca de madeira, tambor/barril/tijolos/canoa/portão, troncos",
+  "cobre_em_pe": "prédios, muro alto, árvores, coberturas >= 1,8 m (matacão, trator, carreta)"
+ },
+ "analise_antes": {
+  "stats": {
+   "pontos_abertos": 31831,
+   "pct_ate_25m_agachado": 59.8,
+   "pct_ate_40m_em_pe": 74.9,
+   "dist_max_agachado_m": 130.8,
+   "dist_max_em_pe_m": 136.1,
+   "pontos_em_pe_acima_40m": 7998
+  },
+  "zonas_acima_25m": [
+   {
+    "id": "Z05",
+    "centro": [
+     194,
+     -220
+    ],
+    "area_m2": 181650,
+    "dist_max_m": 117.5,
+    "xmin": -287.5,
+    "xmax": 512.5,
+    "ymin": -522.5,
+    "ymax": 342.5,
+    "poi_mais_proximo": "pista_pouso"
+   },
+   {
+    "id": "Z04",
+    "centro": [
+     -343,
+     8
+    ],
+    "area_m2": 92875,
+    "dist_max_m": 130.8,
+    "xmin": -517.5,
+    "xmax": -87.5,
+    "ymin": -282.5,
+    "ymax": 342.5,
+    "poi_mais_proximo": "morro_cruzeiro"
+   },
+   {
+    "id": "Z01",
+    "centro": [
+     82,
+     392
+    ],
+    "area_m2": 39650,
+    "dist_max_m": 75.6,
+    "xmin": -287.5,
+    "xmax": 382.5,
+    "ymin": 197.5,
+    "ymax": 507.5,
+    "poi_mais_proximo": "farol_ponta_norte"
+   },
+   {
+    "id": "Z24",
+    "centro": [
+     -480,
+     -316
+    ],
+    "area_m2": 1300,
+    "dist_max_m": 48.6,
+    "xmin": -492.5,
+    "xmax": -462.5,
+    "ymin": -352.5,
+    "ymax": -282.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z25",
+    "centro": [
+     -381,
+     -323
+    ],
+    "area_m2": 775,
+    "dist_max_m": 40.3,
+    "xmin": -392.5,
+    "xmax": -362.5,
+    "ymin": -347.5,
+    "ymax": -307.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z03",
+    "centro": [
+     365,
+     340
+    ],
+    "area_m2": 600,
+    "dist_max_m": 33.5,
+    "xmin": 352.5,
+    "xmax": 377.5,
+    "ymin": 332.5,
+    "ymax": 347.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z08",
+    "centro": [
+     312,
+     300
+    ],
+    "area_m2": 450,
+    "dist_max_m": 32.5,
+    "xmin": 307.5,
+    "xmax": 317.5,
+    "ymin": 287.5,
+    "ymax": 312.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z18",
+    "centro": [
+     -117,
+     -167
+    ],
+    "area_m2": 425,
+    "dist_max_m": 32.6,
+    "xmin": -127.5,
+    "xmax": -107.5,
+    "ymin": -177.5,
+    "ymax": -157.5,
+    "poi_mais_proximo": "represa"
+   },
+   {
+    "id": "Z23",
+    "centro": [
+     -161,
+     -278
+    ],
+    "area_m2": 425,
+    "dist_max_m": 33.0,
+    "xmin": -172.5,
+    "xmax": -152.5,
+    "ymin": -287.5,
+    "ymax": -267.5,
+    "poi_mais_proximo": "fazenda_boa_esperanca"
+   },
+   {
+    "id": "Z31",
+    "centro": [
+     -386,
+     -366
+    ],
+    "area_m2": 375,
+    "dist_max_m": 35.0,
+    "xmin": -397.5,
+    "xmax": -377.5,
+    "ymin": -377.5,
+    "ymax": -352.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z14",
+    "centro": [
+     389,
+     187
+    ],
+    "area_m2": 325,
+    "dist_max_m": 31.7,
+    "xmin": 382.5,
+    "xmax": 397.5,
+    "ymin": 177.5,
+    "ymax": 192.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z28",
+    "centro": [
+     -357,
+     -330
+    ],
+    "area_m2": 250,
+    "dist_max_m": 31.0,
+    "xmin": -367.5,
+    "xmax": -347.5,
+    "ymin": -342.5,
+    "ymax": -317.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z02",
+    "centro": [
+     -165,
+     458
+    ],
+    "area_m2": 150,
+    "dist_max_m": 27.1,
+    "xmin": -177.5,
+    "xmax": -152.5,
+    "ymin": 457.5,
+    "ymax": 457.5,
+    "poi_mais_proximo": "usina_santa_cruz"
+   },
+   {
+    "id": "Z16",
+    "centro": [
+     -318,
+     112
+    ],
+    "area_m2": 150,
+    "dist_max_m": 27.7,
+    "xmin": -327.5,
+    "xmax": -307.5,
+    "ymin": 107.5,
+    "ymax": 112.5,
+    "poi_mais_proximo": "morro_cruzeiro"
+   },
+   {
+    "id": "Z06",
+    "centro": [
+     266,
+     334
+    ],
+    "area_m2": 125,
+    "dist_max_m": 26.9,
+    "xmin": 257.5,
+    "xmax": 272.5,
+    "ymin": 332.5,
+    "ymax": 337.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z22",
+    "centro": [
+     -26,
+     -264
+    ],
+    "area_m2": 125,
+    "dist_max_m": 28.5,
+    "xmin": -27.5,
+    "xmax": -22.5,
+    "ymin": -267.5,
+    "ymax": -257.5,
+    "poi_mais_proximo": "fazenda_boa_esperanca"
+   },
+   {
+    "id": "Z10",
+    "centro": [
+     -278,
+     272
+    ],
+    "area_m2": 75,
+    "dist_max_m": 27.8,
+    "xmin": -282.5,
+    "xmax": -272.5,
+    "ymin": 272.5,
+    "ymax": 272.5,
+    "poi_mais_proximo": "usina_santa_cruz"
+   },
+   {
+    "id": "Z32",
+    "centro": [
+     -406,
+     -359
+    ],
+    "area_m2": 75,
+    "dist_max_m": 28.6,
+    "xmin": -407.5,
+    "xmax": -402.5,
+    "ymin": -362.5,
+    "ymax": -357.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z11",
+    "centro": [
+     275,
+     268
+    ],
+    "area_m2": 50,
+    "dist_max_m": 25.5,
+    "xmin": 272.5,
+    "xmax": 277.5,
+    "ymin": 267.5,
+    "ymax": 267.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z15",
+    "centro": [
+     405,
+     178
+    ],
+    "area_m2": 50,
+    "dist_max_m": 25.7,
+    "xmin": 402.5,
+    "xmax": 407.5,
+    "ymin": 177.5,
+    "ymax": 177.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z34",
+    "centro": [
+     25,
+     -522
+    ],
+    "area_m2": 50,
+    "dist_max_m": 27.6,
+    "xmin": 22.5,
+    "xmax": 27.5,
+    "ymin": -522.5,
+    "ymax": -522.5,
+    "poi_mais_proximo": "praia_quiosques"
+   },
+   {
+    "id": "Z07",
+    "centro": [
+     248,
+     332
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.1,
+    "xmin": 247.5,
+    "xmax": 247.5,
+    "ymin": 332.5,
+    "ymax": 332.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z09",
+    "centro": [
+     192,
+     278
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.7,
+    "xmin": 192.5,
+    "xmax": 192.5,
+    "ymin": 277.5,
+    "ymax": 277.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z12",
+    "centro": [
+     -372,
+     258
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.9,
+    "xmin": -372.5,
+    "xmax": -372.5,
+    "ymin": 257.5,
+    "ymax": 257.5,
+    "poi_mais_proximo": "usina_santa_cruz"
+   },
+   {
+    "id": "Z13",
+    "centro": [
+     258,
+     192
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.1,
+    "xmin": 257.5,
+    "xmax": 257.5,
+    "ymin": 192.5,
+    "ymax": 192.5,
+    "poi_mais_proximo": "quartel"
+   },
+   {
+    "id": "Z17",
+    "centro": [
+     8,
+     108
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.7,
+    "xmin": 7.5,
+    "xmax": 7.5,
+    "ymin": 107.5,
+    "ymax": 107.5,
+    "poi_mais_proximo": "pico_taua"
+   },
+   {
+    "id": "Z19",
+    "centro": [
+     232,
+     -188
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.0,
+    "xmin": 232.5,
+    "xmax": 232.5,
+    "ymin": -187.5,
+    "ymax": -187.5,
+    "poi_mais_proximo": "pista_pouso"
+   },
+   {
+    "id": "Z20",
+    "centro": [
+     -482,
+     -242
+    ],
+    "area_m2": 25,
+    "dist_max_m": 27.5,
+    "xmin": -482.5,
+    "xmax": -482.5,
+    "ymin": -242.5,
+    "ymax": -242.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z21",
+    "centro": [
+     -182,
+     -248
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.7,
+    "xmin": -182.5,
+    "xmax": -182.5,
+    "ymin": -247.5,
+    "ymax": -247.5,
+    "poi_mais_proximo": "fazenda_boa_esperanca"
+   },
+   {
+    "id": "Z26",
+    "centro": [
+     -358,
+     -308
+    ],
+    "area_m2": 25,
+    "dist_max_m": 28.0,
+    "xmin": -357.5,
+    "xmax": -357.5,
+    "ymin": -307.5,
+    "ymax": -307.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z27",
+    "centro": [
+     -28,
+     -312
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.7,
+    "xmin": -27.5,
+    "xmax": -27.5,
+    "ymin": -312.5,
+    "ymax": -312.5,
+    "poi_mais_proximo": "fazenda_boa_esperanca"
+   },
+   {
+    "id": "Z29",
+    "centro": [
+     -372,
+     -348
+    ],
+    "area_m2": 25,
+    "dist_max_m": 28.2,
+    "xmin": -372.5,
+    "xmax": -372.5,
+    "ymin": -347.5,
+    "ymax": -347.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z30",
+    "centro": [
+     -398,
+     -352
+    ],
+    "area_m2": 25,
+    "dist_max_m": 27.5,
+    "xmin": -397.5,
+    "xmax": -397.5,
+    "ymin": -352.5,
+    "ymax": -352.5,
+    "poi_mais_proximo": "vila_caicara"
+   },
+   {
+    "id": "Z33",
+    "centro": [
+     -412,
+     -368
+    ],
+    "area_m2": 25,
+    "dist_max_m": 25.5,
+    "xmin": -412.5,
+    "xmax": -412.5,
+    "ymin": -367.5,
+    "ymax": -367.5,
+    "poi_mais_proximo": "vila_caicara"
+   }
+  ]
+ },
+ "analise_depois": {
+  "stats": {
+   "pontos_abertos": 31831,
+   "pct_ate_25m_agachado": 100.0,
+   "pct_ate_40m_em_pe": 96.8,
+   "dist_max_agachado_m": 25.0,
+   "dist_max_em_pe_m": 69.1,
+   "pontos_em_pe_acima_40m": 1018
+  },
+  "zonas_acima_25m": []
+ },
+ "coberturas_novas": [
+  {
+   "pos": [
+    -400,
+    345
+   ],
+   "tipo": "matacao",
+   "rot_deg": 20,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -432,
+    296
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 30,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -455,
+    262
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -440,
+    250
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -475,
+    215
+   ],
+   "tipo": "matacao",
+   "rot_deg": 45,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -440,
+    205
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 60,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -400,
+    205
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -320,
+    212
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -300,
+    215
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -260,
+    215
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 90,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    175
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -432,
+    172
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -390,
+    185
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 60,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -340,
+    180
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -300,
+    180
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -250,
+    178
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -205,
+    185
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -490,
+    140
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -455,
+    130
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -425,
+    150
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -280,
+    160
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -235,
+    140
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -495,
+    100
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -460,
+    95
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -430,
+    110
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -318,
+    108
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -200,
+    95
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -225,
+    90
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 45,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -505,
+    55
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 30,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -440,
+    50
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -200,
+    60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -160,
+    70
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 120,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -505,
+    15
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    20
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -435,
+    25
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    30
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -190,
+    20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -150,
+    35
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -500,
+    -25
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -465,
+    -20
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -420,
+    -15
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 20,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -270,
+    -10
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    -5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 90,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -190,
+    -15
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -150,
+    -20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -110,
+    -25
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -490,
+    -65
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -455,
+    -55
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -340,
+    -65
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -300,
+    -60
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -260,
+    -55
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -220,
+    -60
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -185,
+    -80
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -490,
+    -105
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -455,
+    -100
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 80,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -385,
+    -110
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -330,
+    -100
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -290,
+    -95
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 40,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -250,
+    -100
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -210,
+    -100
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 45,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -145
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -440,
+    -140
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -350,
+    -140
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -310,
+    -150
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -270,
+    -135
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    -140
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -185
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -400,
+    -185
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -320,
+    -180
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -280,
+    -175
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 45,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -225
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -400,
+    -225
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 90,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -360,
+    -230
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -330,
+    -215
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -215,
+    -240
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -110,
+    -220
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -245
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -290
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -478,
+    -330
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -475,
+    -310
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -470,
+    -345
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 70,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -385,
+    -330
+   ],
+   "tipo": "mureta_concreto",
+   "rot_deg": 50,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -360,
+    -345
+   ],
+   "tipo": "mureta_concreto",
+   "rot_deg": 50,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -378,
+    -375
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -400,
+    -352
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -240,
+    -300
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 30,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -260,
+    -345
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    -370
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 60,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -215,
+    -330
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -120,
+    -360
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -105,
+    -385
+   ],
+   "tipo": "cocho",
+   "rot_deg": 0,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -250,
+    -250
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    -230
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    -262
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 70,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -44,
+    -312
+   ],
+   "tipo": "cocho",
+   "rot_deg": 80,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -170,
+    -245
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -155,
+    -285
+   ],
+   "tipo": "cocho",
+   "rot_deg": 20,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -120,
+    -235
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -250,
+    -420
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -215,
+    -445
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -260,
+    -470
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -175,
+    -470
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 15,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -130,
+    -440
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -95,
+    -475
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -60,
+    -450
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -45,
+    -495
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -140,
+    -495
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -210,
+    -490
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -170,
+    -420
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -100,
+    -410
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -60,
+    -420
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    -440
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    25,
+    -512
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    -380
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    30,
+    -370
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 20,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    70,
+    -395
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    110,
+    -390
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    150,
+    -395
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    190,
+    -380
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    240,
+    -405
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    280,
+    -420
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    320,
+    -400
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    360,
+    -420
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    400,
+    -395
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    440,
+    -370
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    330,
+    -440
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    270,
+    -460
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    230,
+    -470
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    300,
+    -450
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    118,
+    -452
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    60,
+    -340
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    100,
+    -360
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    20,
+    -330
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    140,
+    -360
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    175,
+    -355
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    100,
+    -285
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    140,
+    -270
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    180,
+    -280
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    20,
+    -275
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    120,
+    -235
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    160,
+    -255
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    200,
+    -250
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    240,
+    -270
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    270,
+    -370
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    330,
+    -355
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    390,
+    -340
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    450,
+    -320
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    256,
+    -344
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    301.3,
+    -332.3
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    359.4,
+    -317.2
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    417.5,
+    -302.2
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    461,
+    -291
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    224.5,
+    -315.1
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    321.3,
+    -290
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    389.1,
+    -272.4
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    447.2,
+    -257.3
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    330,
+    -240
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 15,
+   "altura_m": 1.1,
+   "lote": 1
+  },
+  {
+   "pos": [
+    470,
+    205
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    430,
+    195
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    390,
+    205
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    485,
+    160
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    445,
+    165
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    470,
+    125
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    440,
+    130
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    480,
+    85
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    450,
+    70
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    485,
+    40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    450,
+    30
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    490,
+    0
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    450,
+    -5
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    420,
+    5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 60,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    485,
+    -40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    450,
+    -45
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    410,
+    -40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    490,
+    -85
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    455,
+    -80
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    380,
+    -95
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    290,
+    -85
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    330,
+    -100
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    490,
+    -125
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    455,
+    -120
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    380,
+    -130
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    340,
+    -120
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    300,
+    -130
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 45,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    490,
+    -165
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    455,
+    -160
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    390,
+    -165
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    350,
+    -170
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 13,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    300,
+    -160
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    260,
+    -165
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    490,
+    -205
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    460,
+    -200
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    495,
+    -245
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    470,
+    -225
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    395,
+    185
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    -90
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    0,
+    -130
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -30,
+    -175
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -10,
+    -215
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -110,
+    -165
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    20,
+    -60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    25,
+    -35
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    240,
+    -40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    250,
+    -80
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    270,
+    -20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    60,
+    20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    100,
+    40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    140,
+    10
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    180,
+    40
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    220,
+    20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    260,
+    40
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    80,
+    -10
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    120,
+    -15
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 100,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    200,
+    -20
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    240,
+    60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    160,
+    80
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    300,
+    30
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    60,
+    60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    80,
+    100
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    15,
+    110
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -160,
+    440
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -100,
+    435
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -40,
+    440
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    100,
+    470
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    140,
+    460
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    190,
+    445
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    230,
+    430
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    280,
+    432
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    330,
+    410
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    0,
+    480
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -230,
+    400
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -190,
+    410
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 20,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    0,
+    395
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    30,
+    410
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 90,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    100,
+    395
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    140,
+    380
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    170,
+    350
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 45,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -60,
+    360
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    370
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -100,
+    370
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -150,
+    360
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 30,
+   "altura_m": 1.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    150,
+    330
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -20,
+    330
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    20,
+    350
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 1
+  },
+  {
+   "pos": [
+    160,
+    300
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    130,
+    260
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    180,
+    240
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    120,
+    215
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    90,
+    215
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    250,
+    410
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    300,
+    400
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    350,
+    395
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 20,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    312,
+    300
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    362,
+    345
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    257,
+    336
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    272,
+    262
+   ],
+   "tipo": "mureta_concreto",
+   "rot_deg": 0,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    192,
+    278
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 1
+  },
+  {
+   "pos": [
+    258,
+    192
+   ],
+   "tipo": "trincheira",
+   "rot_deg": 0,
+   "altura_m": 1.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -272,
+    272
+   ],
+   "tipo": "carreta_cana",
+   "rot_deg": 40,
+   "altura_m": 3.0,
+   "lote": 1
+  },
+  {
+   "pos": [
+    -366,
+    258
+   ],
+   "tipo": "trator",
+   "rot_deg": 80,
+   "altura_m": 2.5,
+   "lote": 1
+  },
+  {
+   "pos": [
+    2,
+    508
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 0,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    133,
+    490
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 37,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    78,
+    482
+   ],
+   "tipo": "matacao",
+   "rot_deg": 74,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    168,
+    470
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 111,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -30,
+    468
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 148,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -128,
+    448
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 5,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    80,
+    448
+   ],
+   "tipo": "matacao",
+   "rot_deg": 42,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    259,
+    445
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 79,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    52,
+    444
+   ],
+   "tipo": "matacao",
+   "rot_deg": 116,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -260,
+    435
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 153,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    122,
+    434
+   ],
+   "tipo": "matacao",
+   "rot_deg": 10,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -63,
+    432
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 47,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    38,
+    432
+   ],
+   "tipo": "matacao",
+   "rot_deg": 84,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    309,
+    431
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 121,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -276,
+    425
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 158,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    118,
+    416
+   ],
+   "tipo": "matacao",
+   "rot_deg": 15,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    156,
+    414
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    208,
+    412
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 89,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -141,
+    404
+   ],
+   "tipo": "matacao",
+   "rot_deg": 126,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    380,
+    402
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 163,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -69,
+    398
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 20,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -179,
+    392
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 57,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -135,
+    386
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -208,
+    385
+   ],
+   "tipo": "matacao",
+   "rot_deg": 131,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    166,
+    384
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 168,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    122,
+    353
+   ],
+   "tipo": "matacao",
+   "rot_deg": 25,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -98,
+    342
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 62,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    438,
+    338
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 99,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -417,
+    308
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 136,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    447,
+    308
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 173,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    131,
+    299
+   ],
+   "tipo": "matacao",
+   "rot_deg": 30,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -422,
+    272
+   ],
+   "tipo": "matacao",
+   "rot_deg": 67,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    160,
+    265
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 104,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    451,
+    262
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 141,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -464,
+    245
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 178,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    468,
+    233
+   ],
+   "tipo": "matacao",
+   "rot_deg": 35,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -416,
+    232
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 72,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -376,
+    220
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 109,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -360,
+    220
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 146,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    150,
+    220
+   ],
+   "tipo": "matacao",
+   "rot_deg": 3,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -376,
+    204
+   ],
+   "tipo": "matacao",
+   "rot_deg": 40,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -230,
+    198
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 77,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    492,
+    190
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 114,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -226,
+    162
+   ],
+   "tipo": "matacao",
+   "rot_deg": 151,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    418,
+    159
+   ],
+   "tipo": "matacao",
+   "rot_deg": 8,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -410,
+    123
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 45,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    50,
+    128
+   ],
+   "tipo": "matacao",
+   "rot_deg": 82,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -224,
+    118
+   ],
+   "tipo": "matacao",
+   "rot_deg": 119,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -422,
+    77
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 156,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    422,
+    76
+   ],
+   "tipo": "matacao",
+   "rot_deg": 13,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    207,
+    67
+   ],
+   "tipo": "matacao",
+   "rot_deg": 50,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    104,
+    64
+   ],
+   "tipo": "matacao",
+   "rot_deg": 87,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    494,
+    62
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 124,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -232,
+    60
+   ],
+   "tipo": "matacao",
+   "rot_deg": 161,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    293,
+    57
+   ],
+   "tipo": "matacao",
+   "rot_deg": 18,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    408,
+    48
+   ],
+   "tipo": "matacao",
+   "rot_deg": 55,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    132,
+    46
+   ],
+   "tipo": "matacao",
+   "rot_deg": 92,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -178,
+    45
+   ],
+   "tipo": "matacao",
+   "rot_deg": 129,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -122,
+    38
+   ],
+   "tipo": "matacao",
+   "rot_deg": 166,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -406,
+    17
+   ],
+   "tipo": "matacao",
+   "rot_deg": 23,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    104,
+    12
+   ],
+   "tipo": "matacao",
+   "rot_deg": 60,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    392,
+    11
+   ],
+   "tipo": "matacao",
+   "rot_deg": 97,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -152,
+    6
+   ],
+   "tipo": "matacao",
+   "rot_deg": 134,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    184,
+    6
+   ],
+   "tipo": "matacao",
+   "rot_deg": 171,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -448,
+    2
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 28,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    48,
+    -6
+   ],
+   "tipo": "matacao",
+   "rot_deg": 65,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    296,
+    -6
+   ],
+   "tipo": "matacao",
+   "rot_deg": 102,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    237,
+    -7
+   ],
+   "tipo": "matacao",
+   "rot_deg": 139,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -392,
+    -8
+   ],
+   "tipo": "matacao",
+   "rot_deg": 176,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    166,
+    -10
+   ],
+   "tipo": "matacao",
+   "rot_deg": 33,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -88,
+    -12
+   ],
+   "tipo": "matacao",
+   "rot_deg": 70,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    321,
+    -18
+   ],
+   "tipo": "matacao",
+   "rot_deg": 107,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -384,
+    -32
+   ],
+   "tipo": "matacao",
+   "rot_deg": 144,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -366,
+    -32
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 1,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -227,
+    -32
+   ],
+   "tipo": "matacao",
+   "rot_deg": 38,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    96,
+    -36
+   ],
+   "tipo": "matacao",
+   "rot_deg": 75,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    342,
+    -39
+   ],
+   "tipo": "matacao",
+   "rot_deg": 112,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -478,
+    -42
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 149,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -325,
+    -42
+   ],
+   "tipo": "matacao",
+   "rot_deg": 6,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -429,
+    -44
+   ],
+   "tipo": "matacao",
+   "rot_deg": 43,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -136,
+    -44
+   ],
+   "tipo": "matacao",
+   "rot_deg": 80,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -186,
+    -46
+   ],
+   "tipo": "matacao",
+   "rot_deg": 117,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -98,
+    -48
+   ],
+   "tipo": "matacao",
+   "rot_deg": 154,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    269,
+    -54
+   ],
+   "tipo": "matacao",
+   "rot_deg": 11,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    228,
+    -62
+   ],
+   "tipo": "matacao",
+   "rot_deg": 48,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    502,
+    -62
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 85,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    350,
+    -68
+   ],
+   "tipo": "matacao",
+   "rot_deg": 122,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -378,
+    -70
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 159,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -432,
+    -74
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 16,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    424,
+    -86
+   ],
+   "tipo": "matacao",
+   "rot_deg": 53,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -394,
+    -88
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    13,
+    -94
+   ],
+   "tipo": "matacao",
+   "rot_deg": 127,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    278,
+    -112
+   ],
+   "tipo": "matacao",
+   "rot_deg": 164,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -25,
+    -118
+   ],
+   "tipo": "matacao",
+   "rot_deg": 21,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    424,
+    -118
+   ],
+   "tipo": "matacao",
+   "rot_deg": 58,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -308,
+    -122
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 95,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -410,
+    -136
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 132,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    272,
+    -140
+   ],
+   "tipo": "matacao",
+   "rot_deg": 169,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    355,
+    -142
+   ],
+   "tipo": "matacao",
+   "rot_deg": 26,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    328,
+    -147
+   ],
+   "tipo": "matacao",
+   "rot_deg": 63,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    412,
+    -148
+   ],
+   "tipo": "matacao",
+   "rot_deg": 100,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -416,
+    -154
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 137,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -255,
+    -158
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 174,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -368,
+    -162
+   ],
+   "tipo": "matacao",
+   "rot_deg": 31,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    2,
+    -163
+   ],
+   "tipo": "matacao",
+   "rot_deg": 68,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -342,
+    -168
+   ],
+   "tipo": "matacao",
+   "rot_deg": 105,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -46,
+    -168
+   ],
+   "tipo": "matacao",
+   "rot_deg": 142,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    2,
+    -177
+   ],
+   "tipo": "matacao",
+   "rot_deg": 179,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    238,
+    -180
+   ],
+   "tipo": "matacao",
+   "rot_deg": 36,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    512,
+    -185
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 73,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -54,
+    -192
+   ],
+   "tipo": "matacao",
+   "rot_deg": 110,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -305,
+    -202
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 147,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -76,
+    -204
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 4,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -419,
+    -218
+   ],
+   "tipo": "matacao",
+   "rot_deg": 41,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    512,
+    -220
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 78,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    185,
+    -228
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 115,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -89,
+    -241
+   ],
+   "tipo": "matacao",
+   "rot_deg": 152,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    235,
+    -242
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 9,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -382,
+    -248
+   ],
+   "tipo": "matacao",
+   "rot_deg": 46,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    356,
+    -250
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 83,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    100,
+    -254
+   ],
+   "tipo": "matacao",
+   "rot_deg": 120,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    418,
+    -265
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 157,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -346,
+    -266
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 14,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    268,
+    -266
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    348,
+    -268
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 88,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -235,
+    -272
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 125,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    502,
+    -272
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 162,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    210,
+    -284
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 19,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    286,
+    -285
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 56,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    488,
+    -294
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 93,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -274,
+    -298
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 130,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -3,
+    -298
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 167,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    254,
+    -302
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 24,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    132,
+    -304
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 61,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -202,
+    -306
+   ],
+   "tipo": "matacao",
+   "rot_deg": 98,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -358,
+    -308
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 135,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    389,
+    -309
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 172,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -276,
+    -312
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 29,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    104,
+    -320
+   ],
+   "tipo": "matacao",
+   "rot_deg": 66,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -132,
+    -330
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 103,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -111,
+    -322
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 140,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    190,
+    -327
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 177,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    468,
+    -330
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 34,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    438,
+    -342
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 108,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    371,
+    -348
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 145,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    409,
+    -348
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 2,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    235,
+    -350
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 39,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -200,
+    -358
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 76,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    465,
+    -358
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 113,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    1,
+    -361
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 150,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    210,
+    -364
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 7,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    65,
+    -368
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 44,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    298,
+    -376
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 81,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    371,
+    -376
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 118,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    238,
+    -384
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 155,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    345,
+    -388
+   ],
+   "tipo": "matacao",
+   "rot_deg": 12,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -58,
+    -394
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 49,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    268,
+    -398
+   ],
+   "tipo": "matacao",
+   "rot_deg": 86,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    429,
+    -398
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 123,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    28,
+    -399
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 160,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -12,
+    -405
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 17,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -217,
+    -409
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 54,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -129,
+    -411
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 91,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    197,
+    -411
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 0,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    122,
+    -412
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 165,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    389,
+    -421
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 22,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    308,
+    -422
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 59,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    245,
+    -437
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 96,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -93,
+    -441
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 133,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -262,
+    -450
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 170,
+   "altura_m": 1.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -186,
+    -444
+   ],
+   "tipo": "matacao",
+   "rot_deg": 27,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -158,
+    -445
+   ],
+   "tipo": "matacao",
+   "rot_deg": 64,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -135,
+    -476
+   ],
+   "tipo": "matacao",
+   "rot_deg": 101,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -232,
+    -472
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 138,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    252,
+    -485
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 175,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -82,
+    -498
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 32,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -176,
+    -500
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 69,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -102,
+    -506
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 106,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    -18,
+    -507
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 143,
+   "altura_m": 0.8,
+   "lote": 2
+  },
+  {
+   "pos": [
+    182,
+    418
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 2
+  },
+  {
+   "pos": [
+    486,
+    -256
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 40,
+   "altura_m": 1.1,
+   "lote": 2
+  },
+  {
+   "pos": [
+    270,
+    -345
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 2
+  },
+  {
+   "pos": [
+    401,
+    308
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    404,
+    305
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    398,
+    303
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 20,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    401,
+    301
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    406,
+    323.5
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    406,
+    327
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 90,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    406.5,
+    330.5
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    421,
+    288
+   ],
+   "tipo": "matacao",
+   "rot_deg": 15,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    424,
+    284
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    418,
+    284
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 110,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    340,
+    216.5
+   ],
+   "tipo": "carcaca_fusca",
+   "rot_deg": 170,
+   "altura_m": 1.4,
+   "lote": 3
+  },
+  {
+   "pos": [
+    343.5,
+    217.5
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    337,
+    218.5
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 30,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    322,
+    228
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    318,
+    231
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    325,
+    231
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    276,
+    229
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 45,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    273.5,
+    231.5
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    278.5,
+    226.5
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    212,
+    363
+   ],
+   "tipo": "matacao",
+   "rot_deg": 30,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    216,
+    361
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    213,
+    366.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 60,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    231,
+    385
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    235,
+    388
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    228,
+    389
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    276,
+    385
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    279,
+    383
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    273.5,
+    387.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 20,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    321,
+    383
+   ],
+   "tipo": "trincheira",
+   "rot_deg": 0,
+   "altura_m": 1.0,
+   "lote": 3
+  },
+  {
+   "pos": [
+    321,
+    387
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    325,
+    386.5
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 90,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    368,
+    384
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    371,
+    381
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    365,
+    381
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 170,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    316,
+    11
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    320,
+    6
+   ],
+   "tipo": "matacao",
+   "rot_deg": 40,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    315,
+    6
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    40,
+    528
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    43.5,
+    530
+   ],
+   "tipo": "matacao",
+   "rot_deg": 50,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    37.5,
+    525.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    66,
+    534
+   ],
+   "tipo": "matacao",
+   "rot_deg": 20,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    70,
+    532.5
+   ],
+   "tipo": "matacao",
+   "rot_deg": 70,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    63,
+    535.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 5,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -271,
+    373
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -267,
+    370
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -274,
+    369
+   ],
+   "tipo": "carcaca_fusca",
+   "rot_deg": 80,
+   "altura_m": 1.4,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -376,
+    294
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 60,
+   "altura_m": 1.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -379,
+    297
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -373,
+    297.5
+   ],
+   "tipo": "cocho",
+   "rot_deg": 20,
+   "altura_m": 1.0,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -289,
+    237
+   ],
+   "tipo": "carreta_cana",
+   "rot_deg": 175,
+   "altura_m": 3.0,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -292,
+    240.5
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -285,
+    240.5
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -262,
+    237
+   ],
+   "tipo": "trator",
+   "rot_deg": 10,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -259,
+    240.5
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -265,
+    240.5
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -188,
+    255
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 100,
+   "altura_m": 1.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -186,
+    251
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -191,
+    251
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -188,
+    326
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -184,
+    324
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -191,
+    323
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    222,
+    203
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 45,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    225,
+    201
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    219.5,
+    205.5
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    232,
+    318
+   ],
+   "tipo": "sacos_areia",
+   "rot_deg": 90,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    235,
+    315
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    235.5,
+    321
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    127,
+    77
+   ],
+   "tipo": "matacao",
+   "rot_deg": 25,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    130.5,
+    75
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 140,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    124.5,
+    80
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    122,
+    328
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    125.5,
+    326
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    119.5,
+    331
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 75,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    80,
+    422
+   ],
+   "tipo": "matacao",
+   "rot_deg": 10,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    83,
+    420
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    77.5,
+    425
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 120,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    40,
+    -82
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    43,
+    -80
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 30,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    42,
+    -85.5
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    28,
+    -158
+   ],
+   "tipo": "matacao",
+   "rot_deg": 60,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    31,
+    -156
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    25.5,
+    -155
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 10,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    2,
+    -486
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    5.5,
+    -484.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 165,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -1,
+    -483.5
+   ],
+   "tipo": "matacao",
+   "rot_deg": 35,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -78,
+    -378
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 20,
+   "altura_m": 1.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -75,
+    -381
+   ],
+   "tipo": "cocho",
+   "rot_deg": 110,
+   "altura_m": 1.0,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -81,
+    -381
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -236,
+    373
+   ],
+   "tipo": "carcaca_fusca",
+   "rot_deg": 100,
+   "altura_m": 1.4,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -239,
+    376
+   ],
+   "tipo": "tambor_x4",
+   "rot_deg": 0,
+   "altura_m": 1.1,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -238.5,
+    370
+   ],
+   "tipo": "pilha_pneus",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -282,
+    -42
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -278.5,
+    -44
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 15,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -285,
+    -45
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -336,
+    218
+   ],
+   "tipo": "fardo_feno_x3",
+   "rot_deg": 40,
+   "altura_m": 1.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -333,
+    215.5
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -339,
+    215
+   ],
+   "tipo": "cocho",
+   "rot_deg": 40,
+   "altura_m": 1.0,
+   "lote": 3
+  },
+  {
+   "pos": [
+    434,
+    101
+   ],
+   "tipo": "matacao",
+   "rot_deg": 0,
+   "altura_m": 2.5,
+   "lote": 3
+  },
+  {
+   "pos": [
+    437,
+    98.5
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 80,
+   "altura_m": 0.8,
+   "lote": 3
+  },
+  {
+   "pos": [
+    433,
+    97.5
+   ],
+   "tipo": "cupinzeiro",
+   "rot_deg": 0,
+   "altura_m": 1.2,
+   "lote": 3
+  },
+  {
+   "pos": [
+    -409,
+    -318
+   ],
+   "tipo": "mureta_concreto",
+   "rot_deg": 12,
+   "altura_m": 0.9,
+   "lote": 4
+  },
+  {
+   "pos": [
+    -412,
+    -305
+   ],
+   "tipo": "mureta_concreto",
+   "rot_deg": 168,
+   "altura_m": 0.9,
+   "lote": 4
+  },
+  {
+   "pos": [
+    -416,
+    -296
+   ],
+   "tipo": "carcaca_fusca",
+   "rot_deg": 62,
+   "altura_m": 1.5,
+   "lote": 4
+  },
+  {
+   "pos": [
+    -74,
+    -172
+   ],
+   "tipo": "tronco_caido",
+   "rot_deg": 28,
+   "altura_m": 0.8,
+   "lote": 4
+  },
+  {
+   "pos": [
+    -83,
+    -164
+   ],
+   "tipo": "matacao",
+   "rot_deg": 140,
+   "altura_m": 1.8,
+   "lote": 4
+  }
+ ],
+ "contagem_coberturas_por_tipo": {
+  "matacao": 240,
+  "fardo_feno_x3": 47,
+  "cupinzeiro": 67,
+  "tronco_caido": 80,
+  "mureta_concreto": 3,
+  "tambor_x4": 37,
+  "cocho": 6,
+  "pilha_pneus": 28,
+  "sacos_areia": 26,
+  "trincheira": 2,
+  "carreta_cana": 2,
+  "trator": 2,
+  "carcaca_fusca": 3
+ },
+ "marcos_verticais": {
+  "vila_caicara": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "caixa_dagua",
+     "pos": [
+      -296,
+      -318
+     ],
+     "z_chao": 10.4,
+     "rot_deg": 35,
+     "altura_m": 20,
+     "motivo": "capela tem 9 m; caixa d'água branca e vermelha na entrada leste, visível da enseada e da ponte"
+    }
+   ]
+  },
+  "morro_cruzeiro": {
+   "existentes": [
+    {
+     "id": "morro_cruzeiro_24",
+     "tipo": "caixa_dagua",
+     "altura_m": 20,
+     "pos": [
+      -340,
+      68
+     ]
+    }
+   ],
+   "propostos": []
+  },
+  "usina_santa_cruz": {
+   "existentes": [
+    {
+     "id": "usina_santa_cruz_02",
+     "tipo": "chamine",
+     "altura_m": 40,
+     "pos": [
+      -266,
+      330
+     ]
+    },
+    {
+     "id": "usina_santa_cruz_05",
+     "tipo": "caixa_dagua",
+     "altura_m": 20,
+     "pos": [
+      -302,
+      348
+     ]
+    }
+   ],
+   "propostos": []
+  },
+  "farol_ponta_norte": {
+   "existentes": [
+    {
+     "id": "farol_ponta_norte_01",
+     "tipo": "farol_torre",
+     "altura_m": 22,
+     "pos": [
+      74,
+      512
+     ]
+    }
+   ],
+   "propostos": []
+  },
+  "quartel": {
+   "existentes": [
+    {
+     "id": "quartel_11",
+     "tipo": "caixa_dagua",
+     "altura_m": 20,
+     "pos": [
+      252,
+      360
+     ]
+    }
+   ],
+   "propostos": []
+  },
+  "pedreira": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "antena_celular",
+     "pos": [
+      305,
+      45
+     ],
+     "z_chao": 92.0,
+     "rot_deg": 0,
+     "altura_m": 25,
+     "motivo": "britador tem 14 m; repetidora na borda noroeste da cava, silhueta contra o céu vista do Pico"
+    }
+   ]
+  },
+  "pista_pouso": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "torre_vigia_madeira",
+     "pos": [
+      262,
+      -190
+     ],
+     "z_chao": 42.4,
+     "rot_deg": 15,
+     "altura_m": 18,
+     "motivo": "torre de controle tem 12 m; torre de vigia de madeira atrás do quebra-vento, marca a cabeceira 08"
+    }
+   ]
+  },
+  "represa": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "antena_celular",
+     "pos": [
+      -160,
+      -120
+     ],
+     "z_chao": 29.3,
+     "rot_deg": 45,
+     "altura_m": 25,
+     "motivo": "tomada d'água tem 14 m; repetidora junto à subestação, lê a jusante da barragem"
+    }
+   ]
+  },
+  "fazenda_boa_esperanca": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "cata_vento",
+     "pos": [
+      -40,
+      -240
+     ],
+     "z_chao": 31.1,
+     "rot_deg": 0,
+     "altura_m": 18,
+     "motivo": "casarão tem 9 m; cata-vento de fazenda ao lado do paiol, no alto do pasto"
+    }
+   ]
+  },
+  "praia_quiosques": {
+   "existentes": [],
+   "propostos": [
+    {
+     "tipo": "caixa_dagua",
+     "pos": [
+      140,
+      -445
+     ],
+     "z_chao": 7.3,
+     "rot_deg": 0,
+     "altura_m": 20,
+     "motivo": "quiosques têm 3,5 m; caixa d'água do coqueiral, vista do mar e da Pista"
+    }
+   ]
+  },
+  "pico_taua": {
+   "existentes": [
+    {
+     "id": "pico_taua_01",
+     "tipo": "antena",
+     "altura_m": 30,
+     "pos": [
+      80,
+      160
+     ]
+    }
+   ],
+   "propostos": []
+  }
+ },
+ "mirante_pico": {
+  "pos": [
+   88,
+   168
+  ],
+  "z_chao_m": 173.6,
+  "rot_deg": 0,
+  "tamanho_m": [
+   6,
+   6
+  ],
+  "altura_piso_m": 3.0,
+  "escada": "face -Y local, 1,2 m de largura, 5 m de projeção",
+  "guarda_corpo": "mureta de madeira 1,0 m nos 3 lados sem escada",
+  "acessos": [
+   "E11 Subida do Pico (estrada)",
+   "T1 Trilha da Cumeeira",
+   "T2 Trilha do Farol",
+   "T3 Trilha da Serra Leste"
+  ],
+  "loot": [
+   {
+    "id": "MIR1",
+    "pos": [
+     86.2,
+     166.2
+    ],
+    "z_abs_m": 176.71,
+    "tier": "alto"
+   },
+   {
+    "id": "MIR2",
+    "pos": [
+     89.8,
+     166.2
+    ],
+    "z_abs_m": 176.71,
+    "tier": "alto"
+   },
+   {
+    "id": "MIR3",
+    "pos": [
+     86.2,
+     169.8
+    ],
+    "z_abs_m": 176.71,
+    "tier": "alto"
+   },
+   {
+    "id": "MIR4",
+    "pos": [
+     89.8,
+     169.8
+    ],
+    "z_abs_m": 176.71,
+    "tier": "alto"
+   }
+  ]
+ }
+}

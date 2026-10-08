@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v10.0.0
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: House style
+        run: pnpm style
+      - name: Formatting (prettier)
+        run: pnpm format:check
+      - name: Shared agent commands
+        run: pnpm sync:agent-commands:check
+      - name: Skill supporting files
+        run: pnpm skill-files
+      - name: skills.sh.json grouping coverage
+        run: pnpm groupings
+      - name: Plugin marketplace manifest in sync
+        run: pnpm manifest:check
+      - name: README skills table coverage
+        run: pnpm readme
+      - name: project-words.txt sorted
+        run: pnpm words:check
+      - name: Spelling (cspell)
+        run: pnpm spell
+      - name: Spec validation (skills-ref, the Agent Skills reference validator)
+        run: pnpm spec
+
+  script-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: pnpm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Install per-suite Python dependencies
+        run: |
+          shopt -s nullglob
+          for req in tests/*/requirements.txt; do
+            pip install -r "$req"
+          done
+      - name: Run skill-script test suites
+        run: pnpm test
+
+  commitlint:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint commit messages
+        run: pnpm exec commitlint --from=origin/${{ github.event.pull_request.base.ref }} --verbose

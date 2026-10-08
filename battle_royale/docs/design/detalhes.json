@@ -1,0 +1,4776 @@
+{
+  "versao": 1,
+  "fonte": "tools/detalhes_src.py (kits por prédio + avulsos + linhas + cercas, tudo autoral)",
+  "convencoes": {
+    "coords": "metros; x leste, y norte; rot_deg em Z anti-horária",
+    "porta": "face -Y local do prédio",
+    "postes": "só aparecem em linhas_fiacao (não repetidos em props)",
+    "cercas": "polilinhas; dividir em segmentos de 3 m (muro_baixo/muro_alto também 3 m)"
+  },
+  "tipos_extra": {
+    "biruta": "não estava na lista de tipos — pedida no briefing da Pista; 1 instância"
+  },
+  "props": [
+    {
+      "tipo": "varal",
+      "x": -424.3,
+      "y": -323.86,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -414.89,
+      "y": -332.77,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -422.17,
+      "y": -334.57,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -415.62,
+      "y": -328.76,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -438.5,
+      "y": -293.94,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -430.03,
+      "y": -300.02,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -441.07,
+      "y": -294.5,
+      "rot_deg": 70,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -437.72,
+      "y": -303.88,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -414.37,
+      "y": -293.3,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -408.13,
+      "y": -289.7,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -410.1,
+      "y": -293.49,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -410.02,
+      "y": -284.43,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -410.72,
+      "y": -283.22,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -419.48,
+      "y": -286.43,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "orelhao",
+      "x": -417.26,
+      "y": -290.69,
+      "rot_deg": 120,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -408.17,
+      "y": -286.83,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -381.44,
+      "y": -277.09,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -377.1,
+      "y": -287.47,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -373.28,
+      "y": -284.56,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -373.25,
+      "y": -281.11,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -438.86,
+      "y": -348.76,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -439.55,
+      "y": -347.78,
+      "rot_deg": 55,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -442.72,
+      "y": -344.17,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -450.42,
+      "y": -351.94,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -451.45,
+      "y": -350.71,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -441.7,
+      "y": -360.94,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -434.8,
+      "y": -355.15,
+      "rot_deg": 135,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -450.46,
+      "y": -343.49,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -460.57,
+      "y": -264.95,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -453.78,
+      "y": -276.0,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -461.28,
+      "y": -275.85,
+      "rot_deg": 110,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -453.45,
+      "y": -271.94,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -342.66,
+      "y": -383.18,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -335.29,
+      "y": -378.02,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -344.34,
+      "y": -382.53,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "orelhao",
+      "x": -335.21,
+      "y": -375.52,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "placa_rua",
+      "x": -343.73,
+      "y": -385.15,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lona_barraca",
+      "x": -340.98,
+      "y": -389.94,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lona_barraca",
+      "x": -334.68,
+      "y": -386.74,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lona_barraca",
+      "x": -329.52,
+      "y": -381.91,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -336.52,
+      "y": -391.09,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -329.97,
+      "y": -386.5,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -326.32,
+      "y": -382.11,
+      "rot_deg": 65,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -344.75,
+      "y": -388.92,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -329.3,
+      "y": -345.86,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -327.62,
+      "y": -357.5,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -323.89,
+      "y": -359.16,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -315.5,
+      "y": -375.94,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -307.03,
+      "y": -382.02,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -318.07,
+      "y": -376.5,
+      "rot_deg": 70,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -314.72,
+      "y": -385.88,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -335.86,
+      "y": -418.76,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -336.55,
+      "y": -417.78,
+      "rot_deg": 55,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -339.72,
+      "y": -414.17,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -347.42,
+      "y": -421.94,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -348.45,
+      "y": -420.71,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -338.7,
+      "y": -430.94,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -331.8,
+      "y": -425.15,
+      "rot_deg": 135,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -347.46,
+      "y": -413.49,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -301.0,
+      "y": -346.8,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -297.58,
+      "y": -357.53,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -293.52,
+      "y": -354.96,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -293.19,
+      "y": -351.53,
+      "rot_deg": 120,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -291.17,
+      "y": -397.2,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -283.45,
+      "y": -407.61,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -290.93,
+      "y": -408.13,
+      "rot_deg": 115,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -283.47,
+      "y": -403.54,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -322.3,
+      "y": -299.86,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -320.62,
+      "y": -311.5,
+      "rot_deg": 125,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -316.89,
+      "y": -313.16,
+      "rot_deg": 35,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -270.39,
+      "y": -363.42,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -263.1,
+      "y": -370.88,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -273.02,
+      "y": -363.53,
+      "rot_deg": 60,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "barril",
+      "x": -271.36,
+      "y": -373.35,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -382.82,
+      "y": -402.25,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -372.67,
+      "y": -410.31,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -379.76,
+      "y": -412.74,
+      "rot_deg": 130,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -373.74,
+      "y": -406.39,
+      "rot_deg": 40,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -435.77,
+      "y": -249.13,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -436.86,
+      "y": -246.33,
+      "rot_deg": 115,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "varal",
+      "x": -442.75,
+      "y": -244.11,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -439.97,
+      "y": -255.5,
+      "rot_deg": 25,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -357.94,
+      "y": -6.27,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -366.55,
+      "y": -9.82,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -358.84,
+      "y": -12.11,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -363.01,
+      "y": -2.29,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -337.73,
+      "y": -14.63,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -337.79,
+      "y": -11.62,
+      "rot_deg": 95,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -342.57,
+      "y": -7.52,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -343.86,
+      "y": -19.18,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -315.7,
+      "y": -11.0,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -324.8,
+      "y": -13.0,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -317.6,
+      "y": -16.6,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -320.0,
+      "y": -6.2,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -294.04,
+      "y": -6.71,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -293.32,
+      "y": -3.79,
+      "rot_deg": 80,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -296.87,
+      "y": 1.4,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -301.13,
+      "y": -9.52,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -273.62,
+      "y": 5.47,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -282.85,
+      "y": 6.7,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -277.32,
+      "y": 0.86,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -276.02,
+      "y": 11.45,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -256.86,
+      "y": 21.03,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -255.19,
+      "y": 23.53,
+      "rot_deg": 60,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -256.75,
+      "y": 29.63,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -264.49,
+      "y": 20.82,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -368.11,
+      "y": 18.08,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -376.38,
+      "y": 13.79,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -368.49,
+      "y": 12.18,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -373.5,
+      "y": 21.6,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -347.69,
+      "y": 13.74,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -348.01,
+      "y": 16.73,
+      "rot_deg": 100,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -353.13,
+      "y": 20.4,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -353.4,
+      "y": 8.68,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -327.8,
+      "y": 17.37,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -336.69,
+      "y": 14.59,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -329.21,
+      "y": 11.63,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -332.51,
+      "y": 21.78,
+      "rot_deg": 5,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -305.63,
+      "y": 20.62,
+      "rot_deg": 355,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -314.87,
+      "y": 19.42,
+      "rot_deg": 355,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -308.01,
+      "y": 15.21,
+      "rot_deg": 355,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -309.49,
+      "y": 25.78,
+      "rot_deg": 355,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -286.2,
+      "y": 27.95,
+      "rot_deg": 345,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -285.23,
+      "y": 30.79,
+      "rot_deg": 75,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -288.32,
+      "y": 36.28,
+      "rot_deg": 345,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -293.52,
+      "y": 25.77,
+      "rot_deg": 345,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -269.78,
+      "y": 46.72,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -278.66,
+      "y": 49.53,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -274.22,
+      "y": 42.82,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -271.1,
+      "y": 53.02,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -264.07,
+      "y": 68.14,
+      "rot_deg": 310,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -261.64,
+      "y": 69.91,
+      "rot_deg": 40,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -261.02,
+      "y": 76.18,
+      "rot_deg": 310,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -271.31,
+      "y": 70.55,
+      "rot_deg": 310,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -352.11,
+      "y": 44.08,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -360.38,
+      "y": 39.79,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -352.49,
+      "y": 38.18,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -357.5,
+      "y": 47.6,
+      "rot_deg": 15,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -331.69,
+      "y": 39.74,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -332.01,
+      "y": 42.73,
+      "rot_deg": 100,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -337.13,
+      "y": 46.4,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -337.4,
+      "y": 34.68,
+      "rot_deg": 10,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -295.59,
+      "y": 44.24,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -304.9,
+      "y": 43.85,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -298.44,
+      "y": 39.05,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -298.99,
+      "y": 49.71,
+      "rot_deg": 350,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -282.86,
+      "y": 63.03,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -281.19,
+      "y": 65.53,
+      "rot_deg": 60,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -282.75,
+      "y": 71.63,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -290.49,
+      "y": 62.82,
+      "rot_deg": 330,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -278.98,
+      "y": 88.78,
+      "rot_deg": 300,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -285.27,
+      "y": 95.66,
+      "rot_deg": 300,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -284.78,
+      "y": 87.62,
+      "rot_deg": 300,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -276.98,
+      "y": 94.9,
+      "rot_deg": 300,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -341.86,
+      "y": 87.23,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -343.19,
+      "y": 89.93,
+      "rot_deg": 120,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -349.25,
+      "y": 91.63,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -345.49,
+      "y": 80.52,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -382.3,
+      "y": 52.41,
+      "rot_deg": 20,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -390.17,
+      "y": 47.42,
+      "rot_deg": 20,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -382.17,
+      "y": 46.5,
+      "rot_deg": 20,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -387.98,
+      "y": 55.45,
+      "rot_deg": 20,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -375.86,
+      "y": 81.23,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -377.19,
+      "y": 83.93,
+      "rot_deg": 120,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "varal",
+      "x": -383.25,
+      "y": 85.63,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -379.49,
+      "y": 74.52,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -310.95,
+      "y": 74.18,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -304.18,
+      "y": 71.72,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": -308.35,
+      "y": 70.79,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "barril",
+      "x": -301.36,
+      "y": 76.55,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "barril",
+      "x": -300.88,
+      "y": 77.86,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "tambor",
+      "x": -308.98,
+      "y": 82.51,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "orelhao",
+      "x": -310.81,
+      "y": 78.07,
+      "rot_deg": 70,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -302.01,
+      "y": 73.59,
+      "rot_deg": 340,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -243.22,
+      "y": 273.46,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -232.28,
+      "y": 296.6,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -250.37,
+      "y": 294.27,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -244.9,
+      "y": 279.23,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -309.83,
+      "y": 278.17,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -310.3,
+      "y": 279.49,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -310.78,
+      "y": 280.81,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "barril",
+      "x": -312.56,
+      "y": 285.69,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -333.83,
+      "y": 276.89,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -334.35,
+      "y": 278.3,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -330.75,
+      "y": 268.43,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -252.8,
+      "y": 337.06,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -242.27,
+      "y": 335.04,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -248.28,
+      "y": 332.53,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -340.58,
+      "y": 332.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -339.0,
+      "y": 323.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -346.21,
+      "y": 319.05,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -338.03,
+      "y": 316.17,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -352.5,
+      "y": 331.65,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -352.58,
+      "y": 356.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -351.0,
+      "y": 347.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -358.21,
+      "y": 343.05,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -350.03,
+      "y": 340.17,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -364.5,
+      "y": 355.65,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -320.58,
+      "y": 376.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -319.0,
+      "y": 367.8,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -326.21,
+      "y": 363.05,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -318.03,
+      "y": 360.17,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": -332.5,
+      "y": 375.65,
+      "rot_deg": 110,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "varal",
+      "x": 46.61,
+      "y": 507.88,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 52.08,
+      "y": 494.12,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": 43.23,
+      "y": 497.13,
+      "rot_deg": 100,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "tambor",
+      "x": 99.74,
+      "y": 506.66,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "tambor",
+      "x": 99.52,
+      "y": 507.94,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "tambor",
+      "x": 99.97,
+      "y": 505.38,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "tambor",
+      "x": 39.12,
+      "y": 480.9,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "tambor",
+      "x": 38.86,
+      "y": 482.38,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 28.53,
+      "y": 481.07,
+      "rot_deg": 100,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 282.0,
+      "y": 296.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 281.5,
+      "y": 304.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": 275.0,
+      "y": 292.8,
+      "rot_deg": 180,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 377.0,
+      "y": 296.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 376.5,
+      "y": 304.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": 370.0,
+      "y": 292.8,
+      "rot_deg": 180,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 370.0,
+      "y": 240.2,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 371.4,
+      "y": 240.2,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 390.0,
+      "y": 240.2,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 393.8,
+      "y": 253.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 255.2,
+      "y": 245.0,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 255.2,
+      "y": 246.5,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 244.8,
+      "y": 247.0,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 302.77,
+      "y": -43.19,
+      "rot_deg": 105,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": 304.06,
+      "y": -48.02,
+      "rot_deg": 105,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 320.77,
+      "y": -49.19,
+      "rot_deg": 105,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": 322.06,
+      "y": -54.02,
+      "rot_deg": 105,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 396.4,
+      "y": -41.85,
+      "rot_deg": 15,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 396.04,
+      "y": -40.5,
+      "rot_deg": 15,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 393.04,
+      "y": -29.3,
+      "rot_deg": 15,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 372.89,
+      "y": -42.98,
+      "rot_deg": 105,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 277.2,
+      "y": 20.0,
+      "rot_deg": 0,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 277.2,
+      "y": 21.5,
+      "rot_deg": 0,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 266.8,
+      "y": 22.0,
+      "rot_deg": 90,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 313.82,
+      "y": -236.4,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 313.45,
+      "y": -235.05,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "barril",
+      "x": 312.65,
+      "y": -232.06,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 286.96,
+      "y": -240.49,
+      "rot_deg": 105,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": 263.88,
+      "y": -228.17,
+      "rot_deg": 105,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 272.45,
+      "y": -230.02,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 266.32,
+      "y": -231.87,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 386.73,
+      "y": -221.28,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 386.35,
+      "y": -219.84,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 385.96,
+      "y": -218.39,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 377.65,
+      "y": -222.16,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 424.4,
+      "y": -216.85,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 424.04,
+      "y": -215.5,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 421.04,
+      "y": -204.3,
+      "rot_deg": 15,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 400.89,
+      "y": -217.98,
+      "rot_deg": 105,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": -91.87,
+      "y": -125.53,
+      "rot_deg": 45,
+      "poi": "represa"
+    },
+    {
+      "tipo": "tambor",
+      "x": -92.93,
+      "y": -124.46,
+      "rot_deg": 45,
+      "poi": "represa"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -107.42,
+      "y": -131.18,
+      "rot_deg": 135,
+      "poi": "represa"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -59.98,
+      "y": -126.81,
+      "rot_deg": 135,
+      "poi": "represa"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -51.78,
+      "y": -123.98,
+      "rot_deg": 45,
+      "poi": "represa"
+    },
+    {
+      "tipo": "varal",
+      "x": -32.57,
+      "y": 49.05,
+      "rot_deg": 20,
+      "poi": "represa"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -25.78,
+      "y": 38.0,
+      "rot_deg": 20,
+      "poi": "represa"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -33.28,
+      "y": 38.15,
+      "rot_deg": 110,
+      "poi": "represa"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -25.45,
+      "y": 42.06,
+      "rot_deg": 20,
+      "poi": "represa"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -119.0,
+      "y": -296.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -101.0,
+      "y": -296.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -95.5,
+      "y": -281.0,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -124.5,
+      "y": -288.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -124.5,
+      "y": -286.5,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "tambor",
+      "x": -95.5,
+      "y": -287.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "varal",
+      "x": -104.0,
+      "y": -273.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -124.6,
+      "y": -282.0,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -106.0,
+      "y": -295.5,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -154.5,
+      "y": -245.5,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -145.5,
+      "y": -245.5,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -155.5,
+      "y": -244.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -62.0,
+      "y": -296.2,
+      "rot_deg": 180,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -70.0,
+      "y": -296.8,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -71.5,
+      "y": -296.8,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -73.0,
+      "y": -307.8,
+      "rot_deg": 180,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "varal",
+      "x": -173.3,
+      "y": -312.61,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -168.54,
+      "y": -324.67,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -175.9,
+      "y": -323.23,
+      "rot_deg": 100,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -167.5,
+      "y": -320.73,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "varal",
+      "x": -163.22,
+      "y": -339.11,
+      "rot_deg": 20,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "tambor",
+      "x": -157.33,
+      "y": -347.72,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -165.82,
+      "y": -338.75,
+      "rot_deg": 50,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -165.89,
+      "y": -348.72,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "varal",
+      "x": -147.3,
+      "y": -364.61,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -142.54,
+      "y": -376.67,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -149.9,
+      "y": -375.23,
+      "rot_deg": 100,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -141.5,
+      "y": -372.73,
+      "rot_deg": 10,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "tambor",
+      "x": -54.8,
+      "y": -258.0,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "tambor",
+      "x": -54.8,
+      "y": -256.5,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -65.2,
+      "y": -256.0,
+      "rot_deg": 90,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 26.4,
+      "y": -487.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 33.6,
+      "y": -487.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 30.0,
+      "y": -490.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 33.6,
+      "y": -480.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 26.4,
+      "y": -480.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 61.4,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 68.6,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 65.0,
+      "y": -492.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 68.6,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 61.4,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 96.4,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 103.6,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 100.0,
+      "y": -492.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 103.6,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 96.4,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 131.4,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 138.6,
+      "y": -489.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 135.0,
+      "y": -492.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 138.6,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 131.4,
+      "y": -482.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 166.4,
+      "y": -487.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 173.6,
+      "y": -487.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 170.0,
+      "y": -490.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 173.6,
+      "y": -480.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 166.4,
+      "y": -480.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 104.2,
+      "y": -447.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 95.8,
+      "y": -447.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 54.5,
+      "y": -450.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 61.5,
+      "y": -450.5,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 54.5,
+      "y": -454.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "mesa_bar_cadeiras",
+      "x": 61.5,
+      "y": -454.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 64.2,
+      "y": -440.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "barril",
+      "x": 64.2,
+      "y": -438.6,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 51.8,
+      "y": -447.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 64.2,
+      "y": -437.0,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "tambor",
+      "x": 95.57,
+      "y": 151.3,
+      "rot_deg": 20,
+      "poi": "pico_taua"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -455,
+      "y": -368,
+      "rot_deg": 110,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -449,
+      "y": -377,
+      "rot_deg": 115,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -418,
+      "y": -397,
+      "rot_deg": 135,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -360,
+      "y": -432,
+      "rot_deg": 155,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -350,
+      "y": -437,
+      "rot_deg": 150,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -332,
+      "y": -441,
+      "rot_deg": 160,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": -318,
+      "y": -448,
+      "rot_deg": 155,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -356,
+      "y": -438,
+      "rot_deg": 20,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": -340,
+      "y": -444,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "tambor",
+      "x": -325,
+      "y": -446,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -434,
+      "y": -214,
+      "rot_deg": 90,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -240,
+      "y": -312,
+      "rot_deg": 190,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "placa_rua",
+      "x": -380,
+      "y": -298,
+      "rot_deg": 30,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -384,
+      "y": -322,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -350,
+      "y": -323,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "orelhao",
+      "x": -307,
+      "y": -325,
+      "rot_deg": 0,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": -304,
+      "y": -325,
+      "rot_deg": 90,
+      "poi": "vila_caicara"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -312,
+      "y": 60,
+      "rot_deg": 90,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": -326,
+      "y": 67,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -324,
+      "y": 52,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "orelhao",
+      "x": -337,
+      "y": -24,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -334,
+      "y": -26,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "placa_rua",
+      "x": -314,
+      "y": -22,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -303,
+      "y": -24,
+      "rot_deg": 0,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -300,
+      "y": -22,
+      "rot_deg": 30,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -364,
+      "y": -32,
+      "rot_deg": 45,
+      "poi": "morro_cruzeiro"
+    },
+    {
+      "tipo": "holofote",
+      "x": -222,
+      "y": 322,
+      "rot_deg": 200,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "holofote",
+      "x": -336,
+      "y": 247,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -259,
+      "y": 336,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": -258,
+      "y": 324,
+      "rot_deg": 90,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -160,
+      "y": 395,
+      "rot_deg": 200,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -345,
+      "y": 232,
+      "rot_deg": 20,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -205,
+      "y": 312,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "tambor",
+      "x": -205,
+      "y": 298,
+      "rot_deg": 0,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": 84,
+      "y": 470,
+      "rot_deg": 300,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 62,
+      "y": 530,
+      "rot_deg": 10,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 88,
+      "y": 526,
+      "rot_deg": 0,
+      "poi": "farol_ponta_norte"
+    },
+    {
+      "tipo": "holofote",
+      "x": 227,
+      "y": 227,
+      "rot_deg": 45,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 405,
+      "y": 227,
+      "rot_deg": 135,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 405,
+      "y": 371,
+      "rot_deg": 225,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 227,
+      "y": 371,
+      "rot_deg": 315,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 316,
+      "y": 371,
+      "rot_deg": 270,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 405,
+      "y": 300,
+      "rot_deg": 180,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 312,
+      "y": 227,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 330,
+      "y": 228,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "holofote",
+      "x": 212,
+      "y": 320,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "placa_identificacao_military",
+      "x": 318,
+      "y": 205,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 404,
+      "y": 242,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "tambor",
+      "x": 404,
+      "y": 244,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 300,
+      "y": 318,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "banco_praca",
+      "x": 324,
+      "y": 318,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": 340,
+      "y": -60,
+      "rot_deg": 160,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": 330,
+      "y": -8,
+      "rot_deg": 30,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "tambor",
+      "x": 352,
+      "y": 2,
+      "rot_deg": 0,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "pilha_tijolo",
+      "x": 322,
+      "y": 12,
+      "rot_deg": 30,
+      "poi": "pedreira"
+    },
+    {
+      "tipo": "biruta",
+      "x": 330,
+      "y": -331,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "placa_identificacao_runway",
+      "x": 222,
+      "y": -392,
+      "rot_deg": 35,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 386,
+      "y": -212,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "tambor",
+      "x": 388,
+      "y": -212,
+      "rot_deg": 0,
+      "poi": "pista_pouso"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": -135,
+      "y": -55,
+      "rot_deg": 350,
+      "poi": "represa"
+    },
+    {
+      "tipo": "lixeira",
+      "x": -66,
+      "y": -113,
+      "rot_deg": 0,
+      "poi": "represa"
+    },
+    {
+      "tipo": "holofote",
+      "x": -132,
+      "y": -70,
+      "rot_deg": 315,
+      "poi": "represa"
+    },
+    {
+      "tipo": "holofote",
+      "x": -70,
+      "y": -100,
+      "rot_deg": 135,
+      "poi": "represa"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -115,
+      "y": -318,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "carrinho_mao",
+      "x": -95,
+      "y": -326,
+      "rot_deg": 60,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "placa_identificacao_farm",
+      "x": -236,
+      "y": -306,
+      "rot_deg": 15,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "tambor",
+      "x": -52,
+      "y": -366,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "barril",
+      "x": -74,
+      "y": -366,
+      "rot_deg": 0,
+      "poi": "fazenda_boa_esperanca"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 10,
+      "y": -500,
+      "rot_deg": 5,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 47,
+      "y": -503,
+      "rot_deg": 355,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 82,
+      "y": -505,
+      "rot_deg": 10,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 118,
+      "y": -505,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 188,
+      "y": -498,
+      "rot_deg": 15,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "canoa_praia",
+      "x": 206,
+      "y": -494,
+      "rot_deg": 20,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "orelhao",
+      "x": 108,
+      "y": -440,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "placa_estrada",
+      "x": 100,
+      "y": -415,
+      "rot_deg": 180,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 15,
+      "y": -470,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 85,
+      "y": -470,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "lixeira",
+      "x": 155,
+      "y": -470,
+      "rot_deg": 0,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "caixote_peixe",
+      "x": 196,
+      "y": -490,
+      "rot_deg": 10,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "bicicleta",
+      "x": 120,
+      "y": -440,
+      "rot_deg": 90,
+      "poi": "praia_quiosques"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": 296.1,
+      "y": 222,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": 300.1,
+      "y": 222,
+      "rot_deg": 0,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": 222,
+      "y": 315.2,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": 222,
+      "y": 319.2,
+      "rot_deg": 90,
+      "poi": "quartel"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -230.1,
+      "y": 327.3,
+      "rot_deg": 339.4,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -233.9,
+      "y": 328.7,
+      "rot_deg": 339.4,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -328.9,
+      "y": 234.3,
+      "rot_deg": 311,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -331.5,
+      "y": 237.3,
+      "rot_deg": 311,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -222,
+      "y": 244.3,
+      "rot_deg": 46,
+      "poi": "usina_santa_cruz"
+    },
+    {
+      "tipo": "portao_ferro",
+      "x": -218,
+      "y": 248.6,
+      "rot_deg": 46,
+      "poi": "usina_santa_cruz"
+    }
+  ],
+  "linhas_fiacao": [
+    {
+      "nome": "Vila - rede principal (E9 -> ponte -> E1)",
+      "poi": "vila_caicara",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -424,
+          -172
+        ],
+        [
+          -420,
+          -205
+        ],
+        [
+          -419,
+          -238
+        ],
+        [
+          -405,
+          -262
+        ],
+        [
+          -386,
+          -294
+        ],
+        [
+          -366,
+          -316
+        ],
+        [
+          -352,
+          -340
+        ],
+        [
+          -322,
+          -326
+        ],
+        [
+          -290,
+          -326
+        ],
+        [
+          -258,
+          -318
+        ],
+        [
+          -228,
+          -310
+        ]
+      ]
+    },
+    {
+      "nome": "Vila - rua da praia (V1)",
+      "poi": "vila_caicara",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -386,
+          -294
+        ],
+        [
+          -418,
+          -296
+        ],
+        [
+          -437,
+          -318
+        ],
+        [
+          -452,
+          -338
+        ]
+      ]
+    },
+    {
+      "nome": "Vila - capela e ranchos",
+      "poi": "vila_caicara",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -352,
+          -340
+        ],
+        [
+          -362,
+          -362
+        ],
+        [
+          -372,
+          -392
+        ]
+      ]
+    },
+    {
+      "nome": "Vila - lado leste",
+      "poi": "vila_caicara",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -290,
+          -326
+        ],
+        [
+          -282,
+          -360
+        ],
+        [
+          -278,
+          -390
+        ]
+      ]
+    },
+    {
+      "nome": "Vila -> Fazenda (E1)",
+      "poi": "fazenda_boa_esperanca",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -228,
+          -310
+        ],
+        [
+          -209.5,
+          -295.4
+        ],
+        [
+          -185.4,
+          -277.6
+        ],
+        [
+          -148.8,
+          -256.8
+        ],
+        [
+          -125.8,
+          -247.2
+        ],
+        [
+          -112,
+          -236
+        ]
+      ]
+    },
+    {
+      "nome": "Fazenda - ramal do casarão",
+      "poi": "fazenda_boa_esperanca",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          -125.8,
+          -247.2
+        ],
+        [
+          -126,
+          -268
+        ]
+      ]
+    },
+    {
+      "nome": "Usina -> Morro (E8)",
+      "poi": "usina_santa_cruz",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          -250.2,
+          314.5
+        ],
+        [
+          -272.6,
+          294.5
+        ],
+        [
+          -295,
+          274.5
+        ],
+        [
+          -322.8,
+          250.1
+        ],
+        [
+          -352.9,
+          223.9
+        ],
+        [
+          -375.1,
+          195.6
+        ],
+        [
+          -395,
+          160.9
+        ],
+        [
+          -408.5,
+          120.9
+        ],
+        [
+          -396,
+          96
+        ],
+        [
+          -398,
+          64
+        ],
+        [
+          -392,
+          30
+        ],
+        [
+          -376,
+          -2
+        ],
+        [
+          -352,
+          -14
+        ],
+        [
+          -330,
+          -22
+        ]
+      ]
+    },
+    {
+      "nome": "Morro - escadaria (V2)",
+      "poi": "morro_cruzeiro",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          -330,
+          -22
+        ],
+        [
+          -304,
+          -12
+        ],
+        [
+          -315,
+          14
+        ],
+        [
+          -326,
+          44
+        ],
+        [
+          -312,
+          62
+        ]
+      ]
+    },
+    {
+      "nome": "Morro - fileira de baixo (E10)",
+      "poi": "morro_cruzeiro",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          -330,
+          -22
+        ],
+        [
+          -300,
+          -40
+        ],
+        [
+          -270,
+          -38
+        ],
+        [
+          -240,
+          -42
+        ]
+      ]
+    },
+    {
+      "nome": "Morro - ramal leste",
+      "poi": "morro_cruzeiro",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          -304,
+          -12
+        ],
+        [
+          -282,
+          -8
+        ],
+        [
+          -266,
+          6
+        ],
+        [
+          -252,
+          34
+        ]
+      ]
+    },
+    {
+      "nome": "Represa -> Morro (E10)",
+      "poi": "represa",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          -162,
+          -78
+        ],
+        [
+          -165,
+          -50
+        ],
+        [
+          -200,
+          -42
+        ],
+        [
+          -240,
+          -22
+        ],
+        [
+          -280,
+          -24
+        ],
+        [
+          -300,
+          -40
+        ]
+      ]
+    },
+    {
+      "nome": "Quartel - rede interna",
+      "poi": "quartel",
+      "tipo_poste": "poste_concreto",
+      "postes": [
+        [
+          306,
+          232
+        ],
+        [
+          326,
+          250
+        ],
+        [
+          330,
+          272
+        ],
+        [
+          333,
+          297
+        ],
+        [
+          335,
+          322
+        ],
+        [
+          290,
+          322
+        ],
+        [
+          255,
+          322
+        ]
+      ]
+    },
+    {
+      "nome": "Pista - pátio (E4)",
+      "poi": "pista_pouso",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          288.6,
+          -268
+        ],
+        [
+          327.6,
+          -259.2
+        ],
+        [
+          368.2,
+          -249.8
+        ],
+        [
+          407,
+          -240.1
+        ]
+      ]
+    },
+    {
+      "nome": "Farol - ramal (E6)",
+      "poi": "farol_ponta_norte",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          98.8,
+          451.6
+        ],
+        [
+          80.8,
+          475.6
+        ],
+        [
+          104,
+          498
+        ]
+      ]
+    },
+    {
+      "nome": "Pedreira - ramal (E5)",
+      "poi": "pedreira",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          345,
+          -35
+        ],
+        [
+          372,
+          -10
+        ]
+      ]
+    },
+    {
+      "nome": "Praia - orla (E2/E3)",
+      "poi": "praia_quiosques",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          36,
+          -404
+        ],
+        [
+          75,
+          -414
+        ],
+        [
+          110,
+          -416
+        ]
+      ]
+    },
+    {
+      "nome": "Praia - ramal do restaurante",
+      "poi": "praia_quiosques",
+      "tipo_poste": "poste_madeira",
+      "postes": [
+        [
+          75,
+          -414
+        ],
+        [
+          66,
+          -432
+        ]
+      ]
+    }
+  ],
+  "cercas": [
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -424.01,
+          -331.59
+        ],
+        [
+          -428.03,
+          -325.86
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 7.0,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -424.32,
+          -320.82
+        ],
+        [
+          -422.3,
+          -319.4
+        ],
+        [
+          -417.13,
+          -326.77
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 11.5,
+      "segmentos_3m": 4
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -438.14,
+          -302.97
+        ],
+        [
+          -443.39,
+          -293.87
+        ],
+        [
+          -436.11,
+          -289.67
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 18.9,
+      "segmentos_3m": 7
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -381.44,
+          -284.41
+        ],
+        [
+          -386.32,
+          -277.45
+        ],
+        [
+          -379.43,
+          -272.63
+        ],
+        [
+          -374.56,
+          -279.59
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 25.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -462.29,
+          -272.5
+        ],
+        [
+          -465.37,
+          -264.04
+        ],
+        [
+          -457.47,
+          -261.17
+        ],
+        [
+          -454.4,
+          -269.62
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -329.26,
+          -354.98
+        ],
+        [
+          -335.0,
+          -346.79
+        ],
+        [
+          -326.48,
+          -340.83
+        ],
+        [
+          -320.74,
+          -349.02
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 30.4,
+      "segmentos_3m": 11
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -315.14,
+          -384.97
+        ],
+        [
+          -320.39,
+          -375.87
+        ],
+        [
+          -313.11,
+          -371.67
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 18.9,
+      "segmentos_3m": 7
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -301.64,
+          -354.1
+        ],
+        [
+          -305.89,
+          -346.74
+        ],
+        [
+          -298.61,
+          -342.54
+        ],
+        [
+          -294.36,
+          -349.9
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 25.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -292.23,
+          -404.87
+        ],
+        [
+          -296.03,
+          -396.71
+        ],
+        [
+          -288.42,
+          -393.16
+        ],
+        [
+          -284.62,
+          -401.32
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -322.26,
+          -308.98
+        ],
+        [
+          -328.0,
+          -300.79
+        ],
+        [
+          -319.48,
+          -294.83
+        ],
+        [
+          -313.74,
+          -303.02
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 30.4,
+      "segmentos_3m": 11
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -271.6,
+          -372.38
+        ],
+        [
+          -275.2,
+          -362.51
+        ],
+        [
+          -267.3,
+          -359.64
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 18.9,
+      "segmentos_3m": 7
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -381.86,
+          -409.93
+        ],
+        [
+          -387.65,
+          -403.04
+        ],
+        [
+          -381.21,
+          -397.64
+        ],
+        [
+          -375.43,
+          -404.53
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -443.38,
+          -252.68
+        ],
+        [
+          -446.98,
+          -244.98
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -358.9,
+          -3.13
+        ],
+        [
+          -359.37,
+          -0.43
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -346.1,
+          -15.36
+        ],
+        [
+          -346.84,
+          -6.89
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -316.1,
+          -7.74
+        ],
+        [
+          -316.1,
+          -5.0
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -302.31,
+          -5.26
+        ],
+        [
+          -300.83,
+          3.12
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -272.88,
+          8.67
+        ],
+        [
+          -271.94,
+          11.24
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -264.14,
+          25.23
+        ],
+        [
+          -259.89,
+          32.6
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -369.33,
+          21.12
+        ],
+        [
+          -370.04,
+          23.77
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -355.96,
+          12.29
+        ],
+        [
+          -357.44,
+          20.66
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -328.49,
+          20.58
+        ],
+        [
+          -328.72,
+          23.31
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -305.74,
+          23.9
+        ],
+        [
+          -305.5,
+          26.63
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -294.32,
+          30.12
+        ],
+        [
+          -292.12,
+          38.33
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -268.49,
+          49.74
+        ],
+        [
+          -267.12,
+          52.11
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -269.47,
+          74.57
+        ],
+        [
+          -262.95,
+          80.04
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -353.33,
+          47.12
+        ],
+        [
+          -354.04,
+          49.77
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -339.96,
+          38.29
+        ],
+        [
+          -341.44,
+          46.66
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -295.42,
+          47.52
+        ],
+        [
+          -294.94,
+          50.22
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -290.14,
+          67.23
+        ],
+        [
+          -285.89,
+          74.6
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -276.36,
+          90.75
+        ],
+        [
+          -273.99,
+          92.12
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -349.14,
+          83.03
+        ],
+        [
+          -353.39,
+          90.4
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -383.79,
+          55.33
+        ],
+        [
+          -384.73,
+          57.91
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 2.7,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "muro_baixo",
+      "pontos": [
+        [
+          -383.14,
+          77.03
+        ],
+        [
+          -387.39,
+          84.4
+        ]
+      ],
+      "poi": "morro_cruzeiro",
+      "comprimento_m": 8.5,
+      "segmentos_3m": 3
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -34.29,
+          41.5
+        ],
+        [
+          -37.37,
+          49.96
+        ],
+        [
+          -29.47,
+          52.83
+        ],
+        [
+          -26.4,
+          44.38
+        ]
+      ],
+      "poi": "represa",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -124.5,
+          -276.0
+        ],
+        [
+          -124.5,
+          -269.0
+        ],
+        [
+          -95.5,
+          -269.0
+        ],
+        [
+          -95.5,
+          -276.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 43.0,
+      "segmentos_3m": 15
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -176.31,
+          -319.74
+        ],
+        [
+          -177.87,
+          -310.88
+        ],
+        [
+          -169.6,
+          -309.42
+        ],
+        [
+          -168.04,
+          -318.29
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -165.96,
+          -347.71
+        ],
+        [
+          -167.79,
+          -337.37
+        ],
+        [
+          -159.51,
+          -335.92
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 18.9,
+      "segmentos_3m": 7
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -150.31,
+          -371.74
+        ],
+        [
+          -151.87,
+          -362.88
+        ],
+        [
+          -143.6,
+          -361.42
+        ],
+        [
+          -142.04,
+          -370.29
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 26.4,
+      "segmentos_3m": 9
+    },
+    {
+      "tipo": "muro_alto",
+      "pontos": [
+        [
+          306.69,
+          222.0
+        ],
+        [
+          410.0,
+          222.0
+        ],
+        [
+          410.0,
+          376.0
+        ],
+        [
+          222.0,
+          376.0
+        ],
+        [
+          222.0,
+          326.0
+        ]
+      ],
+      "poi": "quartel",
+      "comprimento_m": 495.3,
+      "segmentos_3m": 166
+    },
+    {
+      "tipo": "muro_alto",
+      "pontos": [
+        [
+          222.0,
+          307.9
+        ],
+        [
+          222.0,
+          222.0
+        ],
+        [
+          292.0,
+          222.0
+        ]
+      ],
+      "poi": "quartel",
+      "comprimento_m": 155.9,
+      "segmentos_3m": 52
+    },
+    {
+      "tipo": "muro_alto",
+      "pontos": [
+        [
+          -228.1,
+          326.5
+        ],
+        [
+          -210.0,
+          318.0
+        ],
+        [
+          -200.0,
+          300.0
+        ],
+        [
+          -205.0,
+          262.0
+        ],
+        [
+          -215.5,
+          251.1
+        ]
+      ],
+      "poi": "usina_santa_cruz",
+      "comprimento_m": 94.1,
+      "segmentos_3m": 32
+    },
+    {
+      "tipo": "muro_alto",
+      "pontos": [
+        [
+          -224.0,
+          242.2
+        ],
+        [
+          -236.0,
+          246.0
+        ],
+        [
+          -290.0,
+          244.0
+        ],
+        [
+          -327.4,
+          232.6
+        ]
+      ],
+      "poi": "usina_santa_cruz",
+      "comprimento_m": 105.7,
+      "segmentos_3m": 36
+    },
+    {
+      "tipo": "muro_alto",
+      "pontos": [
+        [
+          -333.0,
+          239.0
+        ],
+        [
+          -364.0,
+          296.0
+        ],
+        [
+          -378.0,
+          330.0
+        ],
+        [
+          -384.0,
+          365.0
+        ],
+        [
+          -360.0,
+          385.0
+        ],
+        [
+          -300.0,
+          392.0
+        ],
+        [
+          -250.0,
+          378.0
+        ],
+        [
+          -238.0,
+          360.0
+        ],
+        [
+          -236.0,
+          340.0
+        ],
+        [
+          -235.9,
+          329.5
+        ]
+      ],
+      "poi": "usina_santa_cruz",
+      "comprimento_m": 333.0,
+      "segmentos_3m": 111
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          20.0,
+          522.0
+        ],
+        [
+          45.0,
+          538.0
+        ],
+        [
+          80.0,
+          542.0
+        ],
+        [
+          108.0,
+          528.0
+        ]
+      ],
+      "poi": "farol_ponta_norte",
+      "comprimento_m": 96.2,
+      "segmentos_3m": 33
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          296.0,
+          70.0
+        ],
+        [
+          330.0,
+          70.0
+        ],
+        [
+          372.0,
+          64.0
+        ],
+        [
+          398.0,
+          40.0
+        ],
+        [
+          405.29,
+          15.71
+        ]
+      ],
+      "poi": "pedreira",
+      "comprimento_m": 137.2,
+      "segmentos_3m": 46
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          409.14,
+          2.86
+        ],
+        [
+          410.0,
+          0.0
+        ]
+      ],
+      "poi": "pedreira",
+      "comprimento_m": 3.0,
+      "segmentos_3m": 1
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          240.0,
+          -290.0
+        ],
+        [
+          200.0,
+          -296.0
+        ],
+        [
+          185.0,
+          -320.0
+        ],
+        [
+          187.54,
+          -336.25
+        ]
+      ],
+      "poi": "pista_pouso",
+      "comprimento_m": 85.2,
+      "segmentos_3m": 29
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          189.31,
+          -347.57
+        ],
+        [
+          190.0,
+          -352.0
+        ],
+        [
+          207.5,
+          -369.0
+        ],
+        [
+          233.2,
+          -362.4
+        ]
+      ],
+      "poi": "pista_pouso",
+      "comprimento_m": 55.4,
+      "segmentos_3m": 19
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          243.8,
+          -359.6
+        ],
+        [
+          477.5,
+          -299.0
+        ],
+        [
+          488.0,
+          -270.0
+        ],
+        [
+          470.0,
+          -250.0
+        ]
+      ],
+      "poi": "pista_pouso",
+      "comprimento_m": 299.2,
+      "segmentos_3m": 100
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          -215.0,
+          -255.0
+        ],
+        [
+          -196.55,
+          -288.2
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 38.0,
+      "segmentos_3m": 13
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          -192.43,
+          -295.63
+        ],
+        [
+          -190.0,
+          -300.0
+        ],
+        [
+          -200.0,
+          -345.0
+        ],
+        [
+          -190.0,
+          -392.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 99.1,
+      "segmentos_3m": 34
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          -200.0,
+          -215.0
+        ],
+        [
+          -150.0,
+          -200.0
+        ],
+        [
+          -100.0,
+          -190.0
+        ],
+        [
+          -80.0,
+          -200.0
+        ],
+        [
+          -100.0,
+          -228.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 160.0,
+      "segmentos_3m": 54
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          -50.0,
+          -300.0
+        ],
+        [
+          -40.0,
+          -360.0
+        ],
+        [
+          -50.0,
+          -390.0
+        ],
+        [
+          -110.0,
+          -402.0
+        ],
+        [
+          -160.0,
+          -400.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 203.7,
+      "segmentos_3m": 68
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -64.0,
+          -353.0
+        ],
+        [
+          -64.0,
+          -363.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 10.0,
+      "segmentos_3m": 4
+    },
+    {
+      "tipo": "cerca_madeira",
+      "pontos": [
+        [
+          -56.0,
+          -353.0
+        ],
+        [
+          -56.0,
+          -363.0
+        ]
+      ],
+      "poi": "fazenda_boa_esperanca",
+      "comprimento_m": 10.0,
+      "segmentos_3m": 4
+    },
+    {
+      "tipo": "cerca_arame",
+      "pontos": [
+        [
+          -406.0,
+          -78.0
+        ],
+        [
+          -436.0,
+          -168.0
+        ],
+        [
+          -431.0,
+          -240.0
+        ]
+      ],
+      "poi": "vila_caicara",
+      "comprimento_m": 167.0,
+      "segmentos_3m": 56
+    }
+  ],
+  "resumo": {
+    "props_por_tipo": {
+      "varal": 47,
+      "lixeira": 51,
+      "bicicleta": 33,
+      "caixote_peixe": 20,
+      "tambor": 75,
+      "carrinho_mao": 37,
+      "barril": 27,
+      "mesa_bar_cadeiras": 25,
+      "orelhao": 6,
+      "pilha_tijolo": 21,
+      "canoa_praia": 17,
+      "banco_praca": 17,
+      "placa_rua": 3,
+      "lona_barraca": 3,
+      "placa_estrada": 12,
+      "holofote": 13,
+      "biruta": 1,
+      "portao_ferro": 10
+    },
+    "postes_por_tipo": {
+      "poste_madeira": 43,
+      "poste_concreto": 40
+    },
+    "segmentos_cerca_por_tipo": {
+      "cerca_madeira": 145,
+      "muro_baixo": 84,
+      "muro_alto": 397,
+      "cerca_arame": 420
+    },
+    "por_poi": {
+      "vila_caicara": {
+        "props": 99,
+        "postes": 21,
+        "segmentos_cerca": 154,
+        "tipos": {
+          "varal": 14,
+          "lixeira": 10,
+          "bicicleta": 9,
+          "caixote_peixe": 14,
+          "tambor": 8,
+          "carrinho_mao": 7,
+          "barril": 7,
+          "mesa_bar_cadeiras": 3,
+          "orelhao": 3,
+          "pilha_tijolo": 2,
+          "canoa_praia": 11,
+          "banco_praca": 4,
+          "placa_rua": 2,
+          "lona_barraca": 3,
+          "placa_estrada": 2
+        }
+      },
+      "morro_cruzeiro": {
+        "props": 101,
+        "postes": 13,
+        "segmentos_cerca": 41,
+        "tipos": {
+          "tambor": 22,
+          "pilha_tijolo": 12,
+          "lixeira": 14,
+          "varal": 21,
+          "carrinho_mao": 11,
+          "bicicleta": 10,
+          "mesa_bar_cadeiras": 3,
+          "barril": 2,
+          "orelhao": 2,
+          "banco_praca": 2,
+          "placa_rua": 1,
+          "placa_estrada": 1
+        }
+      },
+      "usina_santa_cruz": {
+        "props": 43,
+        "postes": 14,
+        "segmentos_cerca": 179,
+        "tipos": {
+          "carrinho_mao": 2,
+          "pilha_tijolo": 3,
+          "tambor": 8,
+          "caixote_peixe": 1,
+          "barril": 4,
+          "bicicleta": 4,
+          "lixeira": 4,
+          "banco_praca": 1,
+          "varal": 6,
+          "holofote": 2,
+          "placa_estrada": 2,
+          "portao_ferro": 6
+        }
+      },
+      "farol_ponta_norte": {
+        "props": 12,
+        "postes": 3,
+        "segmentos_cerca": 33,
+        "tipos": {
+          "varal": 1,
+          "lixeira": 2,
+          "bicicleta": 1,
+          "tambor": 5,
+          "carrinho_mao": 1,
+          "placa_estrada": 1,
+          "banco_praca": 1
+        }
+      },
+      "quartel": {
+        "props": 31,
+        "postes": 7,
+        "segmentos_cerca": 218,
+        "tipos": {
+          "banco_praca": 4,
+          "lixeira": 2,
+          "bicicleta": 2,
+          "tambor": 7,
+          "carrinho_mao": 2,
+          "holofote": 9,
+          "placa_estrada": 1,
+          "portao_ferro": 4
+        }
+      },
+      "pedreira": {
+        "props": 15,
+        "postes": 2,
+        "segmentos_cerca": 47,
+        "tipos": {
+          "carrinho_mao": 5,
+          "pilha_tijolo": 3,
+          "tambor": 6,
+          "placa_estrada": 1
+        }
+      },
+      "pista_pouso": {
+        "props": 19,
+        "postes": 4,
+        "segmentos_cerca": 148,
+        "tipos": {
+          "tambor": 11,
+          "barril": 1,
+          "carrinho_mao": 2,
+          "bicicleta": 1,
+          "lixeira": 1,
+          "banco_praca": 1,
+          "biruta": 1,
+          "placa_estrada": 1
+        }
+      },
+      "represa": {
+        "props": 13,
+        "postes": 6,
+        "segmentos_cerca": 9,
+        "tipos": {
+          "tambor": 2,
+          "carrinho_mao": 1,
+          "bicicleta": 2,
+          "lixeira": 3,
+          "varal": 1,
+          "caixote_peixe": 1,
+          "placa_estrada": 1,
+          "holofote": 2
+        }
+      },
+      "fazenda_boa_esperanca": {
+        "props": 36,
+        "postes": 8,
+        "segmentos_cerca": 217,
+        "tipos": {
+          "banco_praca": 4,
+          "carrinho_mao": 6,
+          "barril": 6,
+          "tambor": 5,
+          "varal": 4,
+          "bicicleta": 3,
+          "lixeira": 4,
+          "pilha_tijolo": 1,
+          "caixote_peixe": 2,
+          "placa_estrada": 1
+        }
+      },
+      "praia_quiosques": {
+        "props": 48,
+        "postes": 5,
+        "segmentos_cerca": 0,
+        "tipos": {
+          "mesa_bar_cadeiras": 19,
+          "barril": 7,
+          "lixeira": 11,
+          "caixote_peixe": 2,
+          "canoa_praia": 6,
+          "orelhao": 1,
+          "placa_estrada": 1,
+          "bicicleta": 1
+        }
+      },
+      "pico_taua": {
+        "props": 1,
+        "postes": 0,
+        "segmentos_cerca": 0,
+        "tipos": {
+          "tambor": 1
+        }
+      }
+    },
+    "descartes": {
+      "prop lixeira: prédio (1 m)": 2,
+      "cerca cerca_madeira: via (m)": 7.5,
+      "cerca muro_baixo: prédio (1 m) (m)": 5.5,
+      "cerca muro_alto: via (m)": 4.0,
+      "cerca cerca_arame: via (m)": 32.0
+    },
+    "props_encostando_em_tronco_de_vegetacao": 1
+  }
+}

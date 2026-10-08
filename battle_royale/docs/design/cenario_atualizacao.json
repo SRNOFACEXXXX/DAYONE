@@ -1,0 +1,1251 @@
+{
+ "fonte": "escrito à mão (subagente MUNDO, triagem raw/triagem/atualizacao.json); peças de tools/importar_pack_mundo.py",
+ "areas": [
+  {
+   "nome": "Quartel do 7º BIL — bases militares",
+   "intencao": "Pátio com viaturas (Tank, Hummer, Helicopter no heliponto), perímetro com HESCO/sacos de areia/ouriços e torres nos cantos, estande de tiro ao norte, rádio e gerador junto ao Comando. MGs/morteiro só decoração.",
+   "props": [
+    {
+     "tipo": "atualizacao/mundo/Helicopter_001",
+     "x": 389.5,
+     "y": 335.0,
+     "rot_deg": 0.0,
+     "alcance": 400,
+     "sombra": true,
+     "dy": 0.3
+    },
+    {
+     "tipo": "atualizacao/mundo/Tank_006",
+     "x": 372.0,
+     "y": 268.0,
+     "rot_deg": 90.0,
+     "alcance": 400,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Hummer_003",
+     "x": 245.0,
+     "y": 312.0,
+     "rot_deg": 90.0,
+     "alcance": 300,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Hummer_003",
+     "x": 386.0,
+     "y": 265.0,
+     "rot_deg": 0.0,
+     "alcance": 300,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 227.0,
+     "y": 308.4,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_015",
+     "x": 227.0,
+     "y": 309.7,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 227.0,
+     "y": 311.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 227.0,
+     "y": 323.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_015",
+     "x": 227.0,
+     "y": 324.3,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 227.0,
+     "y": 325.6,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_006",
+     "x": 231.0,
+     "y": 332.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Machine_gun_004",
+     "x": 231.0,
+     "y": 330.6,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Hedgehog_001",
+     "x": 212.0,
+     "y": 304.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Hedgehog_001",
+     "x": 212.0,
+     "y": 330.0,
+     "rot_deg": 65.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 289.5,
+     "y": 227.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_015",
+     "x": 290.8,
+     "y": 227.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_015",
+     "x": 308.2,
+     "y": 227.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_004",
+     "x": 309.5,
+     "y": 227.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 299.0,
+     "y": 233.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Hedgehog_001",
+     "x": 286.0,
+     "y": 215.0,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Hedgehog_001",
+     "x": 313.0,
+     "y": 211.0,
+     "rot_deg": 55.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tower_003",
+     "x": 399.0,
+     "y": 231.0,
+     "rot_deg": 0.0,
+     "alcance": 400,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Tower_003",
+     "x": 229.0,
+     "y": 358.0,
+     "rot_deg": 90.0,
+     "alcance": 400,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_006",
+     "x": 380.0,
+     "y": 357.0,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Target_001",
+     "x": 282.0,
+     "y": 372.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Target_002",
+     "x": 288.0,
+     "y": 372.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Target_001",
+     "x": 294.0,
+     "y": 372.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Target_002",
+     "x": 300.0,
+     "y": 372.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_008",
+     "x": 284.0,
+     "y": 358.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_009",
+     "x": 290.0,
+     "y": 358.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_008",
+     "x": 296.0,
+     "y": 358.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Machine_gun_005",
+     "x": 290.0,
+     "y": 356.8,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Table_002",
+     "x": 305.0,
+     "y": 359.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_003",
+     "x": 308.0,
+     "y": 361.5,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_005",
+     "x": 304.5,
+     "y": 362.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Radiostation_001",
+     "x": 334.0,
+     "y": 358.0,
+     "rot_deg": 0.0,
+     "alcance": 300,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": 328.0,
+     "y": 346.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 330.4,
+     "y": 349.6,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 331.1,
+     "y": 349.6,
+     "rot_deg": 40.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 330.75,
+     "y": 350.25,
+     "rot_deg": 80.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tent_002",
+     "x": 258.0,
+     "y": 333.0,
+     "rot_deg": 90.0,
+     "alcance": 300
+    },
+    {
+     "tipo": "atualizacao/mundo/Tent_010",
+     "x": 285.0,
+     "y": 276.0,
+     "rot_deg": 0.0,
+     "alcance": 300
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 263.5,
+     "y": 336.5,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_022",
+     "x": 259.0,
+     "y": 241.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_005",
+     "x": 259.0,
+     "y": 244.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_003",
+     "x": 262.0,
+     "y": 242.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Mortar_001",
+     "x": 371.0,
+     "y": 343.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_006",
+     "x": 371.0,
+     "y": 345.5,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": 397.0,
+     "y": 247.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tire_001",
+     "x": 398.2,
+     "y": 248.3,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 318.0,
+     "y": 292.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 345.0,
+     "y": 322.0,
+     "rot_deg": 90.0
+    }
+   ]
+  },
+  {
+   "nome": "Pista do Tauá — evacuação",
+   "intencao": "Props agrupados perto do hangar (helicóptero, combustível, gerador) e acampamento de evacuação na cabeceira oeste (tendas, sacos de areia, torre), placas e carro abandonado no acesso.",
+   "props": [
+    {
+     "tipo": "atualizacao/mundo/Helicopter_001",
+     "x": 335.0,
+     "y": -282.0,
+     "rot_deg": 105.0,
+     "alcance": 400,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": 324.0,
+     "y": -279.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": 324.6,
+     "y": -279.4,
+     "rot_deg": 40.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": 324.2,
+     "y": -280.1,
+     "rot_deg": 80.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 347.0,
+     "y": -277.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 347.7,
+     "y": -277.3,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 347.3,
+     "y": -277.9,
+     "rot_deg": 60.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 348.2,
+     "y": -278.4,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": 297.0,
+     "y": -257.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_022",
+     "x": 329.0,
+     "y": -272.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_005",
+     "x": 331.5,
+     "y": -272.5,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tent_010",
+     "x": 215.0,
+     "y": -305.0,
+     "rot_deg": 105.0,
+     "alcance": 300
+    },
+    {
+     "tipo": "atualizacao/mundo/Tent_002",
+     "x": 230.0,
+     "y": -304.0,
+     "rot_deg": 105.0,
+     "alcance": 300
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 210.0,
+     "y": -316.5,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 215.7,
+     "y": -315.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_007",
+     "x": 221.4,
+     "y": -313.6,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_008",
+     "x": 226.0,
+     "y": -312.4,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_009",
+     "x": 226.9,
+     "y": -312.15,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_008",
+     "x": 227.8,
+     "y": -311.9,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrier_009",
+     "x": 228.8,
+     "y": -311.65,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tower_003",
+     "x": 241.0,
+     "y": -300.0,
+     "rot_deg": 15.0,
+     "alcance": 400,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": 205.5,
+     "y": -306.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Hummer_003",
+     "x": 236.0,
+     "y": -314.0,
+     "rot_deg": 105.0,
+     "alcance": 300,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_022",
+     "x": 222.5,
+     "y": -297.5,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Box_005",
+     "x": 220.0,
+     "y": -298.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": 256.0,
+     "y": -305.0,
+     "rot_deg": 285.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": 288.0,
+     "y": -270.0,
+     "rot_deg": 195.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Apocalypse_Car",
+     "x": 274.5,
+     "y": -285.5,
+     "rot_deg": 150.0,
+     "alcance": 300,
+     "sombra": true
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": 311.0,
+     "y": -256.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tire_001",
+     "x": 312.2,
+     "y": -255.4,
+     "rot_deg": 20.0
+    }
+   ]
+  },
+  {
+   "nome": "Copas de outono nos vilarejos",
+   "intencao": "Árvores do pacote com copa laranja/amarela/vermelha (ref MOSIN_LOWPOLY) misturadas às verdes nas bordas de cada vilarejo; posições escolhidas à mão fora de prédios, estradas e casas.",
+   "props": [
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -340.0,
+     "y": -322.0,
+     "rot_deg": 0.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -367.0,
+     "y": -308.0,
+     "rot_deg": 40.0,
+     "escala": 1.9,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -398.0,
+     "y": -330.0,
+     "rot_deg": 110.0,
+     "escala": 2.1,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -325.0,
+     "y": -312.0,
+     "rot_deg": 200.0,
+     "escala": 1.8,
+     "copa": "vermelha",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -294.0,
+     "y": 75.0,
+     "rot_deg": 30.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -351.0,
+     "y": 70.0,
+     "rot_deg": 150.0,
+     "escala": 1.9,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -330.0,
+     "y": 80.0,
+     "rot_deg": 260.0,
+     "escala": 1.9,
+     "copa": "vermelha",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -308.0,
+     "y": 67.0,
+     "rot_deg": 90.0,
+     "escala": 1.7,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -255.0,
+     "y": 329.0,
+     "rot_deg": 10.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -305.0,
+     "y": 336.0,
+     "rot_deg": 120.0,
+     "escala": 1.9,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -265.0,
+     "y": 320.0,
+     "rot_deg": 230.0,
+     "escala": 1.7,
+     "copa": "vermelha",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 50.0,
+     "y": 524.0,
+     "rot_deg": 60.0,
+     "escala": 1.7,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": 85.0,
+     "y": 510.0,
+     "rot_deg": 300.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_b",
+     "x": -110.0,
+     "y": -45.0,
+     "rot_deg": 20.0,
+     "escala": 2.0,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -98.0,
+     "y": -45.0,
+     "rot_deg": 140.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -118.0,
+     "y": -37.0,
+     "rot_deg": 250.0,
+     "escala": 1.9,
+     "copa": "vermelha",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 318.0,
+     "y": 43.0,
+     "rot_deg": 70.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 310.0,
+     "y": 35.0,
+     "rot_deg": 180.0,
+     "escala": 1.7,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 302.0,
+     "y": 43.0,
+     "rot_deg": 290.0,
+     "escala": 1.7,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -85.0,
+     "y": -276.0,
+     "rot_deg": 50.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/arvore_d",
+     "x": -129.0,
+     "y": -268.0,
+     "rot_deg": 160.0,
+     "escala": 1.9,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": -100.0,
+     "y": -260.0,
+     "rot_deg": 270.0,
+     "escala": 1.7,
+     "copa": "vermelha",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/betula",
+     "x": 85.0,
+     "y": -434.0,
+     "rot_deg": 100.0,
+     "escala": 1.7,
+     "copa": "amarela",
+     "alcance": 300
+    },
+    {
+     "tipo": "cenario/natureza/carvalho",
+     "x": 125.0,
+     "y": -440.0,
+     "rot_deg": 210.0,
+     "escala": 1.8,
+     "copa": "laranja",
+     "alcance": 300
+    }
+   ]
+  },
+  {
+   "nome": "Vilas — pack atualização (triagem raw/triagem/atualizacao.json)",
+   "intencao": "Correções por vilarejo com peças do pack: carro abandonado, gerador/tambores/pneus/galões nos pátios, churrasqueira e fogareiro nos quintais, placas e barreiras nos acessos, animais estáticos (galinhas, cães, veados) e pinheiros/capim nas bordas do Farol.",
+   "props": [
+    {
+     "tipo": "atualizacao/mundo/Apocalypse_Car",
+     "x": -385.0,
+     "y": -298.0,
+     "rot_deg": 145.0,
+     "alcance": 220
+    },
+    {
+     "tipo": "atualizacao/mundo/Barbecue_Grill",
+     "x": -372.0,
+     "y": -276.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": -370.6,
+     "y": -277.6,
+     "rot_deg": 35.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": -370.1,
+     "y": -277.1,
+     "rot_deg": 80.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Concrete_Fence",
+     "x": -306.0,
+     "y": -300.0,
+     "rot_deg": 35.0,
+     "alcance": 200
+    },
+    {
+     "tipo": "atualizacao/mundo/Dog_001",
+     "x": -350.0,
+     "y": -340.0,
+     "rot_deg": 60.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -413.0,
+     "y": -338.0,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -416.0,
+     "y": -338.5,
+     "rot_deg": 130.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -414.5,
+     "y": -340.0,
+     "rot_deg": 250.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": -372.0,
+     "y": -318.0,
+     "rot_deg": 130.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": -333.0,
+     "y": 72.0,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -331.0,
+     "y": 75.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -330.3,
+     "y": 75.6,
+     "rot_deg": 40.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": -345.0,
+     "y": 74.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": -315.0,
+     "y": 30.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Concrete_Fence",
+     "x": -300.0,
+     "y": 58.0,
+     "rot_deg": 340.0,
+     "alcance": 200
+    },
+    {
+     "tipo": "atualizacao/mundo/Road_Barrier_01",
+     "x": -322.0,
+     "y": 52.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Dog_001",
+     "x": -325.0,
+     "y": 30.0,
+     "rot_deg": 200.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": -257.0,
+     "y": 286.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -254.0,
+     "y": 289.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -253.4,
+     "y": 289.6,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -254.6,
+     "y": 289.8,
+     "rot_deg": 60.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": -256.0,
+     "y": 290.5,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": -252.0,
+     "y": 298.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Apocalypse_Car",
+     "x": -306.0,
+     "y": 256.0,
+     "rot_deg": 20.0,
+     "alcance": 220
+    },
+    {
+     "tipo": "atualizacao/mundo/Barbecue_Grill",
+     "x": -338.0,
+     "y": 336.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Gas_Burner",
+     "x": -337.0,
+     "y": 338.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": 103.0,
+     "y": 500.0,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": 101.0,
+     "y": 497.0,
+     "rot_deg": 10.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": 101.6,
+     "y": 497.4,
+     "rot_deg": 60.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Pine_01",
+     "x": 40.0,
+     "y": 520.0,
+     "rot_deg": 0.0,
+     "alcance": 260
+    },
+    {
+     "tipo": "atualizacao/mundo/Pine_01",
+     "x": 100.0,
+     "y": 530.0,
+     "rot_deg": 70.0,
+     "alcance": 260
+    },
+    {
+     "tipo": "atualizacao/mundo/Pine_01",
+     "x": 30.0,
+     "y": 470.0,
+     "rot_deg": 140.0,
+     "alcance": 260
+    },
+    {
+     "tipo": "atualizacao/mundo/Grass_003",
+     "x": 78.0,
+     "y": 496.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Grass_008",
+     "x": 55.0,
+     "y": 488.0,
+     "rot_deg": 40.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Table_002",
+     "x": 308.0,
+     "y": -38.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": 380.0,
+     "y": 28.0,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": 376.0,
+     "y": 25.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 378.0,
+     "y": 32.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": 378.7,
+     "y": 32.5,
+     "rot_deg": 50.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Road_Barrier_01",
+     "x": 330.0,
+     "y": -60.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Road_Barrier_01",
+     "x": 395.0,
+     "y": -62.0,
+     "rot_deg": 15.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": 290.0,
+     "y": -30.0,
+     "rot_deg": 200.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Generator_004",
+     "x": -140.0,
+     "y": -100.0,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Conditioner_002",
+     "x": -143.0,
+     "y": -104.0,
+     "rot_deg": 45.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -138.0,
+     "y": -98.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -137.4,
+     "y": -98.6,
+     "rot_deg": 50.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -75.0,
+     "y": -330.0,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -76.0,
+     "y": -331.2,
+     "rot_deg": 150.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -74.6,
+     "y": -332.0,
+     "rot_deg": 280.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Chicken_001",
+     "x": -77.0,
+     "y": -329.5,
+     "rot_deg": 60.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Dog_001",
+     "x": -100.0,
+     "y": -300.0,
+     "rot_deg": 300.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Deer_001",
+     "x": -180.0,
+     "y": -280.0,
+     "rot_deg": 30.0,
+     "alcance": 160
+    },
+    {
+     "tipo": "atualizacao/mundo/Deer_001",
+     "x": -185.0,
+     "y": -276.0,
+     "rot_deg": 200.0,
+     "alcance": 160
+    },
+    {
+     "tipo": "atualizacao/mundo/Tires_001",
+     "x": -66.0,
+     "y": -292.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Fuel_Canister",
+     "x": -63.0,
+     "y": -292.5,
+     "rot_deg": 20.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -61.0,
+     "y": -292.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barrel_005",
+     "x": -60.4,
+     "y": -292.6,
+     "rot_deg": 50.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Barbecue_Grill",
+     "x": 65.0,
+     "y": -478.5,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Gas_Burner",
+     "x": 100.0,
+     "y": -478.5,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/First_Aid",
+     "x": 152.5,
+     "y": -497.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Walkie_talkie",
+     "x": 152.8,
+     "y": -497.4,
+     "rot_deg": 30.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Flashlight",
+     "x": 153.1,
+     "y": -497.0,
+     "rot_deg": 70.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Apocalypse_Car",
+     "x": 120.0,
+     "y": -430.0,
+     "rot_deg": 90.0,
+     "alcance": 220
+    },
+    {
+     "tipo": "atualizacao/mundo/Road_Barrier_01",
+     "x": 85.0,
+     "y": -428.0,
+     "rot_deg": 0.0
+    },
+    {
+     "tipo": "atualizacao/mundo/Signs_Shield",
+     "x": 60.0,
+     "y": -425.0,
+     "rot_deg": 180.0
+    }
+   ]
+  }
+ ],
+ "pontes": [
+  {
+   "nome": "Ponte da Vila",
+   "estrada": "E9/E1 (cruzamento com o Rio Tauá jusante em -367.1,-329.9; rio 10 m)",
+   "tipo": "concreto",
+   "centro": [
+    -367.0,
+    -330.0
+   ],
+   "direcao_deg": -48.0,
+   "comprimento_m": 24.0,
+   "largura_m": 7.0,
+   "z_cabeceiras": [
+    4.57,
+    5.08
+   ],
+   "agua_m": 1.95,
+   "vao_m": 17.0,
+   "pilares_x": [
+    -4.0,
+    4.0
+   ],
+   "guarda_corpo": "atualizacao/mundo/Road_Barrier_01"
+  },
+  {
+   "nome": "Passarela dos Pescadores",
+   "estrada": "a pé (layout.pontes; foz do Rio Tauá)",
+   "tipo": "madeira",
+   "centro": [
+    -400.0,
+    -367.0
+   ],
+   "direcao_deg": -41.6,
+   "comprimento_m": 24.0,
+   "largura_m": 2.4,
+   "z_cabeceiras": [
+    2.74,
+    2.34
+   ],
+   "agua_m": 1.1,
+   "vao_m": 16.0,
+   "pilares_x": [
+    -4.0,
+    4.0
+   ],
+   "guarda_corpo": "madeira"
+  },
+  {
+   "nome": "Pinguela do Vau",
+   "estrada": "T4 Trilha do Vau (cruzamento em -232.2,-195.8; o vau de pedras do layout vira pinguela de toras para não afundar o jogador no leito de 1,6 m)",
+   "tipo": "madeira",
+   "centro": [
+    -232.0,
+    -196.0
+   ],
+   "direcao_deg": -48.2,
+   "comprimento_m": 22.0,
+   "largura_m": 3.0,
+   "z_cabeceiras": [
+    7.41,
+    7.36
+   ],
+   "agua_m": 6.21,
+   "vao_m": 16.0,
+   "pilares_x": [
+    -3.0,
+    3.0
+   ],
+   "guarda_corpo": "madeira"
+  }
+ ],
+ "cruzamentos_sem_ponte": [
+  {
+   "estrada": "E10 Estrada da Represa (crista)",
+   "pos": [
+    -100.7,
+    -85.3
+   ],
+   "motivo": "passa sobre a crista da barragem (terreno a 17 m, água a 14,5 m); conferido em tests/pontes_check"
+  }
+ ]
+}

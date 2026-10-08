@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/models/weapons/mosin.glb" id="1"]
+[ext_resource type="PackedScene" path="res://assets/models/weapons/mosin_bracos.glb" id="2"]
+
+[node name="mosin_fp" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1")]
+position = Vector3(0.14, -0.17, -0.36)
+
+[node name="Bracos" parent="." instance=ExtResource("2")]
+position = Vector3(0.14, -0.17, -0.36)
+
+[node name="Muzzle" type="Marker3D" parent="."]
+position = Vector3(0.14, -0.136, -1.58)
+
+[node name="Eject" type="Marker3D" parent="."]
+position = Vector3(0.20, -0.07, -0.60)

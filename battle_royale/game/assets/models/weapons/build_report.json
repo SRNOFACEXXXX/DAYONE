@@ -1,0 +1,89 @@
+{
+ "ak47": {
+  "body": {
+   "steel_blued": 2198,
+   "steel_pin": 154,
+   "steel_mid": 401,
+   "steel_dark": 868,
+   "wood_dark": 352,
+   "wood_light": 389
+  },
+  "mag": {
+   "steel_dark": 213,
+   "steel_mag": 323
+  },
+  "length": 0.88,
+  "height": 0.195
+ },
+ "m4": {
+  "body": {
+   "anodized": 2882,
+   "polymer_black": 797,
+   "steel_pin": 202,
+   "steel_mid": 249,
+   "steel_dark": 346,
+   "polymer_black2": 196,
+   "steel_blued": 195
+  },
+  "mag": {
+   "steel_dark": 240,
+   "anodized_mag": 318
+  },
+  "length": 0.85,
+  "height": 0.217
+ },
+ "pistol": {
+  "body": {
+   "grip_black": 332,
+   "polymer_tan": 1005,
+   "steel_slide": 293
+  },
+  "mag": {
+   "polymer_black": 98,
+   "steel_pin": 10,
+   "steel_dark": 7
+  },
+  "length": 0.2,
+  "height": 0.138
+ },
+ "pistol_ct": {
+  "body": {
+   "grip_black": 332,
+   "polymer_black": 1005,
+   "steel_slide": 293
+  },
+  "mag": {
+   "polymer_black": 98,
+   "steel_pin": 10,
+   "steel_dark": 7
+  },
+  "length": 0.2,
+  "height": 0.138
+ },
+ "knife": {
+  "body": {
+   "steel_satin": 406,
+   "steel_bright": 46,
+   "grip_black": 60,
+   "rubber_black": 78,
+   "steel_dark": 36
+  }
+ },
+ "bomb": {
+  "body": {
+   "wire_blue": 64,
+   "plastic_dark": 251,
+   "bomb_tape": 21,
+   "pcb_green": 24,
+   "wire_yellow": 24,
+   "bomb_explosive2": 14,
+   "bomb_explosive": 178,
+   "wire_red": 380,
+   "keypad": 192,
+   "bomb_band": 6,
+   "steel_mid": 6,
+   "steel_pin": 4,
+   "lcd": 20
+  }
+ }
+}

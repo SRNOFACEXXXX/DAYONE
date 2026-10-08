@@ -1,0 +1,9 @@
+{
+  "added_trees": 306,
+  "added_understorey": 595,
+  "added_props": 10,
+  "minimum_tree_clearance_from_road_edge_m": 6.1,
+  "groves": 24,
+  "terrain_changes": "three local refuge pads only",
+  "existing_loot_preserved": true
+}

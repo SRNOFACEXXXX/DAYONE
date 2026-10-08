@@ -1,0 +1,20 @@
+# Godot
+battle_royale/game/.godot/
+battle_royale/game/.import/
+*.translation
+# Caches e temporários
+__pycache__/
+*.pyc
+*.blend1
+*.tmp
+*.log
+.claude/
+battle_royale/.claude/
+.tools/
+# Renders brutos e saídas pesadas de trabalho (regeráveis)
+battle_royale/raw/
+battle_royale/backup/
+battle_royale/Assets/_ext/
+*.avi
+# Cópias antigas
+teste GPT - Copia/

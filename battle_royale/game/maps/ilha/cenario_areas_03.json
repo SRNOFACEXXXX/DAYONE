@@ -1,0 +1,92 @@
+{
+ "areas": [
+  {
+   "nome": "Pomar abandonado",
+   "intencao": "Cobertura lateral na saída da Vila, caminho livre até a fazenda",
+   "props": [
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": -314,
+     "y": -357,
+     "rot_deg": 25,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/lenha",
+     "x": -306,
+     "y": -357,
+     "rot_deg": 12,
+     "escala": 1
+    }
+   ]
+  },
+  {
+   "nome": "Mata ciliar",
+   "intencao": "Abrigo baixo e clareiras que conservam a leitura do rio",
+   "props": [
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": -286,
+     "y": -280,
+     "rot_deg": 55,
+     "escala": 1.3
+    },
+    {
+     "tipo": "cenario/natureza/raiz",
+     "x": -295,
+     "y": -274,
+     "rot_deg": 12,
+     "escala": 1.1
+    },
+    {
+     "tipo": "cenario/natureza/rocha_media",
+     "x": -279,
+     "y": -276,
+     "rot_deg": 20,
+     "escala": 1.2
+    }
+   ]
+  },
+  {
+   "nome": "Vestígios de lenhadores",
+   "intencao": "Quebra a exposição da rota no campo central",
+   "props": [
+    {
+     "tipo": "cenario/natureza/pilha_troncos",
+     "x": 42,
+     "y": -216,
+     "rot_deg": 25,
+     "escala": 1.2
+    },
+    {
+     "tipo": "cenario/natureza/toco",
+     "x": 48,
+     "y": -208,
+     "rot_deg": 0,
+     "escala": 1
+    },
+    {
+     "tipo": "cenario/natureza/toco_baixo",
+     "x": 33,
+     "y": -218,
+     "rot_deg": 20,
+     "escala": 1
+    },
+    {
+     "tipo": "cenario/natureza/tronco_caido",
+     "x": 58,
+     "y": -219,
+     "rot_deg": 70,
+     "escala": 1.2
+    },
+    {
+     "tipo": "cenario/natureza/pilha_tabuas",
+     "x": 44,
+     "y": -223,
+     "rot_deg": 5,
+     "escala": 1
+    }
+   ]
+  }
+ ]
+}

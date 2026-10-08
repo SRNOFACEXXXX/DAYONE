@@ -1,0 +1,627 @@
+func _fps_cam(de: Vector3, olhar: Vector3, fov: float) -> void:
+	## câmera do jogador (leva o viewmodel junto): usada nas tomadas em 1ª pessoa
+	pc.camera.fov = fov
+	pc.camera.global_position = de
+	pc.camera.look_at(olhar, Vector3.UP)
+	if not pc.camera.current:
+		pc.camera.make_current()
+
+
+func _volta_cam() -> void:
+	cam.make_current()
+	if pc.viewmodel:
+		pc.viewmodel.visible = false
+	pc._set_third_person(true)
+	pc.camera.current = false
+	cam.make_current()
+
+
+func mira_zumbi(max_dist := 40.0) -> ZombieEnemy:
+	var melhor: ZombieEnemy = null
+	var dmin := max_dist
+	for z in get_tree().get_nodes_in_group("zombie"):
+		var zz := z as ZombieEnemy
+		if zz == null or zz.state == ZombieEnemy.State.DEAD:
+			continue
+		var d := zz.global_position.distance_to(s.global_position)
+		if d < dmin:
+			dmin = d
+			melhor = zz
+	return melhor
+
+
+func atira_no_mais_perto(cadencia := true) -> void:
+	var z := mira_zumbi()
+	if z == null:
+		s.in_fire = false
+		return
+	var alvo := z.global_position + Vector3(0, 1.45, 0)
+	var d := alvo - s.eye_position()
+	s.yaw = lerp_angle(s.yaw, atan2(-d.x, -d.z), 0.35)
+	s.pitch = lerpf(s.pitch, asin(clampf(d.y / maxf(d.length(), 0.01), -1.0, 1.0)), 0.35)
+	var ws := s.current()
+	if ws:
+		ws.mag = 30
+		ws.reserve = 90
+	s.in_fire = true if cadencia else false
+
+
+func armar(id: StringName) -> void:
+	for sl in s.inventory.keys():
+		s.remove_slot(sl)
+	var ws := s.give_weapon(id)
+	if ws:
+		ws.mag = ws.def.mag_size
+		ws.reserve = 120
+
+
+func desarmar() -> void:
+	s.in_fire = false
+	for sl in s.inventory.keys():
+		s.remove_slot(sl)
+
+
+# ---------------------------------------------------------------- ATO III — saque
+func _p_loot1() -> void:
+	clima(17.9, Clima.Estado.NUBLADO)
+	_achar_porta()
+	if porta and not porta.aberta:
+		porta.alternar()
+	h_pos(P(-337.0, 346.6), 2.2)
+	h_visivel(true)
+
+
+func _a_loot1(tl: float) -> void:
+	h_parado()
+	s.in_crouch = true
+	s.yaw = lerp_angle(s.yaw, 2.4 + 0.5 * sin(tl * 1.4), 0.05)
+
+
+func _c_loot1(tl: float) -> void:
+	var u := _suave(tl / 2.8)
+	cam_a(P(-334.9, 349.3, lerpf(1.5, 1.2, u)).lerp(P(-333.8, 348.6, 1.2), u), s.global_position + Vector3(0, 0.8, 0), lerpf(58.0, 48.0, u), 0.012)
+
+
+var _ui_estado := 0
+
+
+func _p_loot2() -> void:
+	clima(17.9, Clima.Estado.NUBLADO)
+	h_pos(P(-337.0, 346.6), 2.2)
+	h_visivel(true)
+	_ui_estado = 0
+	var fwd := Vector3(-sin(s.yaw), 0, -cos(s.yaw))
+	var lado := Vector3(fwd.z, 0, -fwd.x)
+	for it in [["bandagem", 1.0, -0.5], ["ammo_556", 1.0, 0.5], ["backpack_medium", 1.5, 0.0], ["m4", 1.4, 0.9], ["kit_medico", 1.2, -1.0]]:
+		var ex := {"mag": 30} if it[0] == "m4" else {}
+		m.criar_drop(String(it[0]), 30 if it[0] == "ammo_556" else 1, s.global_position + fwd * float(it[1]) + lado * float(it[2]), ex)
+	m.hud.visible = true
+	m.hud.root.visible = false
+	var ev := InputEventKey.new()
+	ev.physical_keycode = KEY_TAB
+	ev.pressed = true
+	m._unhandled_input(ev)
+
+
+func _mouse(pos: Vector2, pressed := false, motion := false) -> void:
+	if motion:
+		var e := InputEventMouseMotion.new()
+		e.position = pos
+		e.global_position = pos
+		Input.parse_input_event(e)
+	else:
+		var e2 := InputEventMouseButton.new()
+		e2.position = pos
+		e2.global_position = pos
+		e2.button_index = MOUSE_BUTTON_LEFT
+		e2.pressed = pressed
+		Input.parse_input_event(e2)
+
+
+func _item_prox(id: String) -> Vector2:
+	var ui: BRInventoryUI = m.br_ui
+	ui._atualizar()
+	var g = ui._grade_prox
+	for it in g.inv.items:
+		if String(it.id) == id:
+			var sz: Vector2i = BRInventory.definition(id).size
+			return g.get_global_rect().position + (Vector2(int(it.x), int(it.y)) + Vector2(sz) * 0.5) * BRInventoryUI.CELL
+	return Vector2(-1, -1)
+
+
+var _drag := {}
+
+
+func _a_loot2(tl: float) -> void:
+	h_parado()
+	s.in_crouch = true
+	var ui: BRInventoryUI = m.br_ui
+	# arrasta 3 itens para a mochila/roupa em sequência
+	var plano := [["backpack_medium", 0.35], ["bandagem", 1.0], ["m4", 1.6]]
+	for k in plano.size():
+		var id: String = plano[k][0]
+		var t0: float = plano[k][1]
+		if tl >= t0 and not _drag.has(id):
+			var de := _item_prox(id)
+			if de.x < 0:
+				_drag[id] = true
+				continue
+			var para: Vector2
+			if id == "backpack_medium":
+				para = ui._slot_mochila.get_global_rect().get_center()
+			elif id == "m4":
+				para = ui._maos[0].get_global_rect().get_center()
+			else:
+				para = ui._grade_roupa.get_global_rect().position + Vector2(2.5, 1.5) * BRInventoryUI.CELL
+			_drag[id] = [de, para, tl]
+			_mouse(de, true)
+	for id in _drag.keys():
+		var d = _drag[id]
+		if d is Array:
+			var u := clampf((tl - float(d[2])) / 0.45, 0.0, 1.0)
+			_mouse((d[0] as Vector2).lerp(d[1], _suave(u)), false, true)
+			if u >= 1.0:
+				_mouse(d[1], false, false)
+				_drag[id] = true
+
+
+func _c_loot2(tl: float) -> void:
+	cam_a(s.global_position + Vector3(2.0, 1.3, 1.0), s.global_position + Vector3(0, 1.0, 0), 50.0, 0.004)
+
+
+func _p_loot3() -> void:
+	m.hud.visible = false
+	var ev := InputEventKey.new()
+	ev.physical_keycode = KEY_TAB
+	ev.pressed = true
+	if m.br_ui and m.br_ui.visible:
+		m._unhandled_input(ev)
+	for c in get_tree().root.find_children("*", "CanvasLayer", true, false):
+		(c as CanvasLayer).visible = false
+	clima(17.9, Clima.Estado.NUBLADO)
+	h_pos(P(-336.0, 345.0), 2.8)
+	h_visivel(true)
+
+
+func _a_loot3(tl: float) -> void:
+	h_parado()
+	s.in_crouch = tl < 1.2
+
+
+func _c_loot3(tl: float) -> void:
+	var u := _suave(tl / 2.6)
+	var h := cabeca()
+	var f := Vector3(-sin(s.yaw), 0.0, -cos(s.yaw))
+	cam_a(h + f * lerpf(2.4, 1.9, u) + Vector3(0.0, 0.05, 0.0), h + Vector3(0, -0.05, 0), lerpf(36.0, 30.0, u), 0.008)
+
+
+# ---------------------------------------------------------------- ATO III — base
+var _base_c := Vector3.ZERO
+var _base_pecas: Array = []
+var _base_idx := 0
+
+
+func _achar_plano() -> Vector3:
+	var melhor := Vector3(-300, 0, 300)
+	var vmin := 1e9
+	for x in range(-340, -240, 6):
+		for z in range(250, 330, 6):
+			var h0 := _chao(x, z)
+			if h0 < 3.0:
+				continue
+			var lo := 1e9
+			var hi := -1e9
+			for dx in [-6, 0, 6, 10]:
+				for dz in [-6, 0, 6, 10]:
+					var h := _chao(x + dx, z + dz)
+					lo = minf(lo, h)
+					hi = maxf(hi, h)
+			var d := hi - lo + 0.02 * absf(float(x) + 300.0)
+			if d < vmin:
+				vmin = d
+				melhor = Vector3(x, h0, z)
+	return melhor
+
+
+func _construir(idx: int, p: Vector3, yaw_graus: float) -> Node3D:
+	var cs: ConstructionSystem = m.construction_system
+	cs.current_piece = idx
+	cs.candidate_transform = Transform3D(Basis(Vector3.UP, deg_to_rad(yaw_graus)), p)
+	cs.candidate_valid = true
+	var antes := cs.world_root.get_child_count()
+	cs.place_current()
+	if cs.world_root.get_child_count() > antes:
+		var n := cs.world_root.get_child(cs.world_root.get_child_count() - 1) as Node3D
+		return n
+	return null
+
+
+func _p_base() -> void:
+	clima(9.0, Clima.Estado.LIMPO)
+	_base_c = _achar_plano()
+	h_pos(Vector3(_base_c.x + 3.5, 0, _base_c.z - 6.5), PI)
+	h_visivel(true)
+	_base_pecas.clear()
+	_base_idx = 0
+	var c := _base_c
+	var y0 := c.y + 0.02
+	var plano := []     # [tempo local, idx peça, x, y, z, yaw]
+	var t_ := 0.6
+	for f in [Vector2(0, 0), Vector2(4, 0), Vector2(0, 4), Vector2(4, 4)]:
+		plano.append([t_, 0, c.x + f.x, y0, c.z + f.y, 0.0]); t_ += 0.28
+	var ytop := y0 + 0.24
+	t_ = 1.9
+	for seg in [[-2, 0, 90.0, 4], [-2, 4, 90.0, 2], [6, 0, 90.0, 2], [6, 4, 90.0, 3]]:
+		plano.append([t_, seg[3], c.x + seg[0], ytop, c.z + seg[1], seg[2]]); t_ += 0.3
+	for seg in [[0, -2, 0.0, 4], [4, -2, 0.0, 2], [0, 6, 0.0, 3], [4, 6, 0.0, 2]]:
+		plano.append([t_, seg[3], c.x + seg[0], ytop, c.z + seg[1], seg[2]]); t_ += 0.3
+	t_ = 4.4
+	for f in [Vector2(0, 0), Vector2(4, 0), Vector2(0, 4), Vector2(4, 4)]:
+		plano.append([t_, 5, c.x + f.x, ytop + 3.0, c.z + f.y, 0.0]); t_ += 0.3
+	plano.append([6.0, 8, c.x + 2.0, ytop, c.z + 2.0, 20.0])
+	for item in plano:
+		_base_pecas.append(item)
+
+
+func _a_base(tl: float) -> void:
+	h_parado()
+	while _base_idx < _base_pecas.size() and tl >= float(_base_pecas[_base_idx][0]):
+		var it: Array = _base_pecas[_base_idx]
+		var n := _construir(int(it[1]), Vector3(it[2], it[3], it[4]), float(it[5]))
+		if n:
+			var fim := n.scale
+			n.scale = Vector3(fim.x, 0.02, fim.z) if int(it[1]) in [2, 3, 4] else fim * 0.05
+			var tw := create_tween()
+			tw.tween_property(n, "scale", fim, 0.32).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+			_extras.append(n)
+		_base_idx += 1
+	# a hora corre: dia -> noite -> amanhecer (time-lapse)
+	var h := 9.0 + tl * 2.9
+	Clima.set_hora(fmod(h, 24.0))
+
+
+func _c_base(tl: float) -> void:
+	var u := tl / 9.5
+	var c := _base_c + Vector3(2.0, 0.0, 2.0)
+	var ang := lerpf(-0.9, 1.2, _suave(u))
+	var raio := lerpf(17.0, 11.0, u)
+	var de := c + Vector3(sin(ang) * raio, lerpf(5.0, 3.0, u), cos(ang) * raio)
+	cam_a(de, c + Vector3(0, 1.8, 0), 52.0, 0.004)
+
+
+# ---------------------------------------------------------------- ATO III — caça
+var _arco: Node3D
+var _cervo: Node3D
+var _flecha: Node3D
+var _caca_solto := false
+var _caca_pos := Vector3.ZERO
+
+
+func _malha_arco() -> ArrayMesh:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var n := 14
+	var lados := 5
+	var anel: Array = []
+	for i in n + 1:
+		var u := float(i) / float(n)
+		var y := (u - 0.5) * 1.15
+		var z := -0.20 * (1.0 - 4.0 * (u - 0.5) * (u - 0.5))      # barriga do arco
+		var r := lerpf(0.026, 0.016, absf(u - 0.5) * 2.0)
+		var anel_i := []
+		for j in lados:
+			var a := TAU * float(j) / float(lados)
+			anel_i.append(Vector3(cos(a) * r, y, z + sin(a) * r))
+		anel.append(anel_i)
+	for i in n:
+		for j in lados:
+			var j2 := (j + 1) % lados
+			var a0: Vector3 = anel[i][j]
+			var a1: Vector3 = anel[i][j2]
+			var b0: Vector3 = anel[i + 1][j]
+			var b1: Vector3 = anel[i + 1][j2]
+			for v in [a0, b0, a1, a1, b0, b1]:
+				st.add_vertex(v)
+	st.generate_normals()
+	return st.commit()
+
+
+func _faz_arco() -> Node3D:
+	var raiz := Node3D.new()
+	var mi := MeshInstance3D.new()
+	mi.mesh = _malha_arco()
+	var mt := StandardMaterial3D.new()
+	mt.albedo_color = Color(0.35, 0.2, 0.1)
+	mt.roughness = 0.8
+	mi.material_override = mt
+	raiz.add_child(mi)
+	# corda
+	var corda := MeshInstance3D.new()
+	var cm := CylinderMesh.new()
+	cm.top_radius = 0.004
+	cm.bottom_radius = 0.004
+	cm.height = 1.15
+	corda.mesh = cm
+	var mc := StandardMaterial3D.new()
+	mc.albedo_color = Color(0.85, 0.8, 0.7)
+	corda.material_override = mc
+	raiz.add_child(corda)
+	return raiz
+
+
+func _faz_flecha() -> Node3D:
+	var f := Node3D.new()
+	var haste := MeshInstance3D.new()
+	var cm := CylinderMesh.new()
+	cm.top_radius = 0.008
+	cm.bottom_radius = 0.008
+	cm.height = 0.85
+	haste.mesh = cm
+	haste.rotation_degrees.x = 90.0
+	var mh := StandardMaterial3D.new()
+	mh.albedo_color = Color(0.6, 0.45, 0.25)
+	haste.material_override = mh
+	f.add_child(haste)
+	var ponta := MeshInstance3D.new()
+	var pm := CylinderMesh.new()
+	pm.top_radius = 0.0
+	pm.bottom_radius = 0.022
+	pm.height = 0.09
+	ponta.mesh = pm
+	ponta.rotation_degrees.x = -90.0
+	ponta.position = Vector3(0, 0, -0.45)
+	var mp := StandardMaterial3D.new()
+	mp.albedo_color = Color(0.7, 0.7, 0.72)
+	ponta.material_override = mp
+	f.add_child(ponta)
+	return f
+
+
+func _p_caca() -> void:
+	clima(18.3, Clima.Estado.LIMPO)
+	_caca_solto = false
+	var base := P(-170.0, 270.0)
+	h_pos(base, -PI * 0.5 + 0.3)
+	h_visivel(true)
+	MxRetarget.tocar(bm, "Shooting_Arrow", false, 1.0)
+	var ba := BoneAttachment3D.new()
+	ba.bone_name = "LeftHandProp"
+	bm.skeleton.add_child(ba)
+	_arco = _faz_arco()
+	_arco.rotation_degrees = Vector3(0, 90, 0)
+	ba.add_child(_arco)
+	_extras.append(ba)
+	_cervo = prop("res://assets/models/atualizacao/mundo/Deer_001.glb", Vector3(-196.0, 0.0, 279.0), 60.0, 1.0)
+	_caca_pos = P(-196.0, 279.0, 1.1)
+	_flecha = _faz_flecha()
+	_flecha.visible = false
+	add_child(_flecha)
+	_extras.append(_flecha)
+
+
+func _a_caca(tl: float) -> void:
+	var ap: AnimationPlayer = bm.get_meta(MxRetarget.META)[2]
+	if absf(ap.speed_scale - 1.0) > 0.01:
+		ap.speed_scale = 1.0
+	if tl > 2.8 and not _caca_solto:
+		_caca_solto = true
+		_flecha.visible = true
+		_flecha.global_position = s.global_position + Vector3(0, 1.35, 0)
+		_flecha.look_at(_caca_pos, Vector3.UP)
+		var tw := create_tween()
+		tw.tween_property(_flecha, "global_position", _caca_pos, 0.35)
+		tw.tween_callback(func() -> void:
+			if _cervo:
+				var tw2 := create_tween()
+				tw2.tween_property(_cervo, "rotation_degrees:z", 82.0, 0.5).set_trans(Tween.TRANS_QUAD))
+
+
+func _c_caca(tl: float) -> void:
+	var sp := s.global_position
+	if tl < 3.0:
+		var u := _suave(tl / 3.0)
+		cam_a(sp + Vector3(-2.8, 1.5, 2.0).rotated(Vector3.UP, s.yaw - 0.3), sp + Vector3(0, 1.4, 0) + Vector3(-1, 0, 0).rotated(Vector3.UP, s.yaw) * 0.5, lerpf(48.0, 38.0, u), 0.006)
+	else:
+		var u2 := _suave((tl - 3.0) / 3.0)
+		cam_a(_caca_pos + Vector3(3.0, 0.4, 2.0), _caca_pos, lerpf(40.0, 30.0, u2), 0.005)
+
+
+# ---------------------------------------------------------------- ATO III — combate
+func _enxame(n: int, dmin: float, dmax: float, dir: Vector3, arco := 1.2) -> void:
+	for i in n:
+		var a := randf_range(-arco, arco)
+		var d := randf_range(dmin, dmax)
+		var v := dir.rotated(Vector3.UP, a) * d
+		var z := z_novo(s.global_position + v, atan2(-v.x, -v.z) + PI, &"", i % 5)
+		z.target = s
+		z._set_state(ZombieEnemy.State.CHASE)
+
+
+func _p_tiro1() -> void:
+	clima(21.8, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	h_visivel(true)
+	armar(&"m4")
+	_enxame(7, 16.0, 30.0, Vector3(-1, 0, 0), 0.5)
+
+
+var _dbg_k := -1
+
+
+func _a_tiro1(tl: float) -> void:
+	h_parado()
+	atira_no_mais_perto()
+	if int(tl * 2.0) != _dbg_k:
+		_dbg_k = int(tl * 2.0)
+		print("TIRO t=%.1f arma=%s node=%s vis=%s mag=%s fire=%s zumbis=%d" % [tl, s.current_def().id if s.current_def() else "-", bm.weapon_node != null, (bm.weapon_node.is_visible_in_tree() if bm.weapon_node else false), s.current().mag if s.current() else -1, s.in_fire, get_tree().get_nodes_in_group("zombie").size()])
+
+
+func _c_tiro1(tl: float) -> void:
+	var u := _suave(tl / 3.0)
+	var sp := s.global_position
+	cam_a(sp + Vector3(-3.4 + 0.6 * u, 1.5 - 0.25 * u, 3.4 - 0.6 * u), sp + Vector3(-1.2, 1.3, 0.0), 46.0, 0.012)
+
+
+func _p_tiro2() -> void:
+	clima(21.8, Clima.Estado.NUBLADO)
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	s.visible = true
+	bm.visible = false
+	armar(&"m4")
+	pc._set_third_person(false)
+	pc.camera.make_current()
+	if pc.viewmodel:
+		pc.viewmodel.visible = true
+	_enxame(7, 10.0, 22.0, Vector3(-1, 0, 0), 0.45)
+
+
+func _a_tiro2(tl: float) -> void:
+	h_parado()
+	atira_no_mais_perto()
+
+
+func _c_tiro2(tl: float) -> void:
+	_fps_cam(s.eye_position(), s.eye_position() + Vector3(-sin(s.yaw) * cos(s.pitch), sin(s.pitch), -cos(s.yaw) * cos(s.pitch)) * 5.0, 72.0)
+
+
+func _p_horda() -> void:
+	if pc.viewmodel:
+		pc.viewmodel.visible = false
+	_volta_cam()
+	clima(21.6, Clima.Estado.NEVOEIRO)
+	desarmar()
+	h_pos(P(-318.0, 331.5), PI * 0.5)
+	h_visivel(true)
+	_prepara_carro()
+	for i in 14:
+		var v := Vector3(-14.0 - randf_range(0, 30), 0, randf_range(-6, 6))
+		var z := z_novo(s.global_position + v, PI * 0.5, &"", i % 5)
+		z.target = s
+		z._set_state(ZombieEnemy.State.CHASE)
+
+
+func _a_horda(tl: float) -> void:
+	h_parado()
+
+
+func _c_horda(tl: float) -> void:
+	var u := _suave(tl / 2.5)
+	var sp := s.global_position
+	cam_a(sp + Vector3(lerpf(-5.0, -8.0, u), 0.45, 1.5), sp + Vector3(-20.0, 1.2, 0.0), lerpf(30.0, 38.0, u), 0.01)
+
+
+var _carro: DrivableVehicle
+const ROTA_CARRO := [Vector2(-352.0, 334.0), Vector2(-335.0, 333.4), Vector2(-318.0, 332.6), Vector2(-309.0, 332.0), Vector2(-295.0, 331.2), Vector2(-280.0, 330.2), Vector2(-262.0, 329.0), Vector2(-240.0, 327.5)]
+
+
+func _prepara_carro() -> void:
+	var melhor: DrivableVehicle = null
+	var dmin := 1e9
+	for c in get_tree().get_nodes_in_group("drivable_vehicle"):
+		var d := (c as Node3D).global_position.distance_to(Vector3(-300, 6, 330))
+		if d < dmin:
+			dmin = d
+			melhor = c
+	_carro = melhor
+	if _carro:
+		var a: Vector2 = ROTA_CARRO[0]
+		var b: Vector2 = ROTA_CARRO[1]
+		var yaw := atan2(b.x - a.x, b.y - a.y)         # a frente do carro é +Z local
+		_carro.global_position = P(a.x, a.y, 0.45)
+		_carro.global_rotation = Vector3(0, yaw, 0)
+		_carro.linear_velocity = Vector3.ZERO
+		_carro.angular_velocity = Vector3.ZERO
+		_carro.freeze = false
+
+
+func _p_carro() -> void:
+	clima(21.3, Clima.Estado.NUBLADO)
+	desarmar()
+	h_pos(P(-290.0, 328.0), PI * 0.5)
+	if _carro == null:
+		_prepara_carro()
+	if _carro:
+		_carro.enter_vehicle(s)
+	for i in 9:
+		var z := z_novo(P(-361.0 - randf_range(0, 12), 332.6 + randf_range(-3, 3)), PI * 0.5, &"", i % 5)
+		z.target = _carro
+		z._set_state(ZombieEnemy.State.CHASE)
+
+
+func _alvo_rota(cp: Vector3, adiante := 9.0) -> Vector3:
+	# ponto da rota a `adiante` metros à frente da posição mais próxima do carro
+	var melhor_i := 0
+	var dmin := 1e9
+	for k in ROTA_CARRO.size():
+		var q: Vector2 = ROTA_CARRO[k]
+		var d := Vector2(cp.x, cp.z).distance_to(q)
+		if d < dmin:
+			dmin = d
+			melhor_i = k
+	var q2: Vector2 = ROTA_CARRO[mini(melhor_i + 1, ROTA_CARRO.size() - 1)]
+	var q3: Vector2 = ROTA_CARRO[mini(melhor_i + 2, ROTA_CARRO.size() - 1)]
+	var alvo := q2 if Vector2(cp.x, cp.z).distance_to(q2) > adiante else q3
+	return Vector3(alvo.x, 0.0, alvo.y)
+
+
+func _a_carro(tl: float) -> void:
+	if _carro == null:
+		return
+	Input.action_press("move_forward")
+	var al := _alvo_rota(_carro.global_position)
+	var d := al - _carro.global_position
+	d.y = 0.0
+	var f := _carro.global_basis.z
+	f.y = 0.0
+	var ang := f.normalized().signed_angle_to(d.normalized(), Vector3.UP)
+	Input.action_release("move_left")
+	Input.action_release("move_right")
+	if ang > 0.05:
+		Input.action_press("move_left")
+	elif ang < -0.05:
+		Input.action_press("move_right")
+	if int(tl * 2.0) != _dbg_k:
+		_dbg_k = int(tl * 2.0)
+		print("CARRO t=%.1f v=%.1f x=%.1f z=%.1f ang=%.2f" % [tl, _carro.linear_velocity.length(), _carro.global_position.x, _carro.global_position.z, ang])
+
+
+func _c_carro(tl: float) -> void:
+	if _carro == null:
+		return
+	var cp := _carro.global_position
+	var f := _carro.global_basis.z
+	var lado := Vector3(f.z, 0.0, -f.x)
+	if tl < 2.1:
+		# à frente e ao lado do carro, olhando para trás: a horda correndo atrás
+		cam_a(cp + f * 6.5 + lado * 3.2 + Vector3(0, 1.2, 0), cp - f * 13.0 + Vector3(0, 1.0, 0), lerpf(52.0, 46.0, tl / 2.1), 0.02)
+	else:
+		var u := _suave((tl - 2.1) / 2.3)
+		cam_a(cp - f * lerpf(6.0, 8.5, u) + lado * lerpf(2.2, -1.2, u) + Vector3(0, lerpf(1.4, 2.4, u), 0), cp + f * 3.0 + Vector3(0, 0.9, 0), 58.0, 0.02)
+
+
+# ---------------------------------------------------------------- ATO IV — amanhecer
+func _p_cruz() -> void:
+	Input.action_release("move_forward")
+	Input.action_release("move_left")
+	Input.action_release("move_right")
+	if _carro:
+		_carro.exit_vehicle()
+	clima(6.3, Clima.Estado.NUBLADO)
+	desarmar()
+	h_pos(P(-316.0, -52.0), -PI * 0.25)
+	h_visivel(true)
+	for p in [Vector3(-390, 0, -120), Vector3(-300, 0, -130), Vector3(-345, 0, -150)]:
+		fogueira(P(p.x, p.z, 0.5), 2.0, true)
+
+
+func _a_cruz(tl: float) -> void:
+	pass
+
+
+func _c_cruz(tl: float) -> void:
+	var u := _suave(tl / 10.0)
+	var sp := s.global_position
+	var de := sp + Vector3(lerpf(-2.8, -2.4, u), lerpf(0.45, 0.75, u), lerpf(4.0, 3.5, u))
+	cam_a(de, sp + Vector3(0.5, lerpf(1.7, 2.1, u), -0.8), lerpf(42.0, 38.0, u), 0.004)
+
+

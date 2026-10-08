@@ -1,0 +1,13 @@
+{
+ "size_px": 601,
+ "step_m": 2.0,
+ "origin_m": [
+  -600,
+  -600
+ ],
+ "h_min": -20.0,
+ "h_max": 220.0,
+ "row0": "norte (y=+600)",
+ "agua_mar_m": 0.0,
+ "represa_nivel_m": 15
+}

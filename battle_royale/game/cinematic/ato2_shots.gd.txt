@@ -1,0 +1,244 @@
+func _a_nada(_tl: float) -> void:
+	pass
+
+
+# ---------------------------------------------------------------- ATO II — montagem
+func _p_mont1() -> void:
+	clima(17.4, Clima.Estado.NUBLADO)
+	h_visivel(false)
+	fx_fumaca(P(-352, 352, 0.5), 1.0, 0.1, 1.0)
+	fx_fumaca(P(-318, 360, 0.5), 0.9, 0.12, 1.0)
+	z_novo(P(-352, 331.5), -PI * 0.5, &"idle")
+
+
+func _c_mont1(tl: float) -> void:
+	var u := _suave(tl / 2.0)
+	cam_a(P(-290.0, 326.5, lerpf(1.1, 1.3, u)).lerp(P(-297.0, 327.5, 1.3), u), P(-340.0, 334.0, 2.4), lerpf(46.0, 42.0, u), 0.01)
+
+
+func _p_mont2() -> void:
+	clima(17.8, Clima.Estado.NUBLADO)
+	h_visivel(false)
+	fogueira(P(322.0, 285.5, 0.3), 1.5, true)
+	z_novo(P(311.0, 281.0), PI * 0.5, &"idle", 2)
+
+
+func _c_mont2(tl: float) -> void:
+	var u := _suave(tl / 2.0)
+	cam_a(P(300.0, 285.0, lerpf(0.9, 1.5, u)), P(330.0, 285.0, 3.0), lerpf(50.0, 44.0, u), 0.008)
+
+
+func _p_mont3() -> void:
+	clima(17.8, Clima.Estado.NUBLADO)
+	h_visivel(false)
+	fx_fumaca(P(262.0, 296.0, 0.3), 1.2, 0.1, 1.2)
+
+
+func _c_mont3(tl: float) -> void:
+	var u := _suave(tl / 2.0)
+	cam_a(P(235.0, 326.0, 1.4).lerp(P(240.0, 322.0, 1.4), u), P(290.0, 265.0, 3.0), 46.0, 0.01)
+
+
+func _p_mont4() -> void:
+	clima(17.2, Clima.Estado.NEVOEIRO)
+	h_visivel(false)
+	for i in 5:
+		z_novo(P(-352.0 - i * 6.0, 331.0 + sin(float(i) * 2.1) * 2.4), -PI * 0.5 + 0.2 * sin(float(i)), &"idle", i % 4)
+
+
+func _c_mont4(tl: float) -> void:
+	var u := _suave(tl / 2.0)
+	cam_a(P(-300.0 + 6.0 * u, 331.2, 1.35), P(-372.0, 331.5, 1.6), lerpf(24.0, 19.0, u), 0.004)
+
+
+func _p_mont5() -> void:
+	clima(17.6, Clima.Estado.NUBLADO)
+	h_visivel(false)
+	fogueira(P(-338.0, 344.0, 1.2), 1.7, true)
+	fogueira(P(-333.0, 342.0, 1.0), 1.2, false)
+
+
+func _c_mont5(tl: float) -> void:
+	var u := _suave(tl / 2.0)
+	cam_a(P(-347.0, 328.0, lerpf(0.8, 1.1, u)), P(-336.0, 343.0, 2.0), lerpf(44.0, 38.0, u), 0.01)
+
+
+# ---------------------------------------------------------------- ATO II — a rua
+const P_PARA := Vector3(-326.0, 0.0, 331.9)
+const P_PORTA_FORA := Vector3(-334.7, 0.0, 338.2)
+const P_DENTRO := Vector3(-334.8, 0.0, 345.2)
+const Z_INICIO := Vector3(-350.0, 0.0, 331.2)
+var porta: PortaCasa
+var _porta_aberta := false
+var zumbi: ZombieEnemy
+
+
+func _achar_porta() -> void:
+	var melhor := 1e9
+	for pp in get_tree().get_nodes_in_group("porta"):
+		var d := (pp as Node3D).global_position.distance_to(Vector3(-334.9, 6.5, 341.0))
+		if d < melhor:
+			melhor = d
+			porta = pp
+
+
+func _fecha_porta() -> void:
+	if porta and porta.aberta:
+		porta.alternar()
+
+
+func _zumbi_x(x: float) -> void:
+	zumbi.global_position = Vector3(x, _chao(x, Z_INICIO.z) + 0.08, Z_INICIO.z)
+	zumbi.rotation.y = -PI * 0.5
+	zumbi.set_demo_state(&"walk")
+	zumbi._demo_locomotion_speed = 0.95
+
+
+func _p_rua() -> void:
+	clima(17.45, Clima.Estado.NUBLADO)
+	_achar_porta()
+	_fecha_porta()
+	h_pos(P(-309.0, 330.3), PI * 0.5)
+	h_visivel(true)
+	zumbi = z_novo(Z_INICIO, -PI * 0.5, &"idle")
+
+
+func _a_rua_anda(tl: float) -> void:
+	h_andar([P(-309.0, 330.3), P(-317.0, 331.2), P_PARA], tl, 5.6, 6.35)
+
+
+func _c_rua_anda(tl: float) -> void:
+	var u := tl / 6.0
+	var sp := s.global_position
+	var lado := lerpf(2.4, -1.6, _suave(u))
+	var de := sp + Vector3(4.2, 0.0, lado)
+	de.y = _chao(de.x, de.z) + lerpf(0.75, 1.25, u)
+	cam_a(de, sp + Vector3(-1.5, 1.15, 0.0), 46.0, 0.012)
+
+
+func _p_rua2() -> void:
+	clima(17.45, Clima.Estado.NUBLADO)
+	_achar_porta()
+	_fecha_porta()
+	h_pos(P_PARA, PI * 0.5)
+	h_visivel(true)
+	zumbi = z_novo(Z_INICIO, -PI * 0.5, &"idle")
+
+
+func _a_rua_parado(_tl: float) -> void:
+	h_parado()
+	s.yaw = lerp_angle(s.yaw, PI * 0.5, 0.06)
+
+
+func _c_rua_close(tl: float) -> void:
+	var u := _suave(tl / 2.6)
+	var h := cabeca()
+	cam_a(h + Vector3(-2.7 + 0.5 * u, 0.15, -0.55), h, lerpf(36.0, 30.0, u), 0.008)
+
+
+func _c_rua_zumbi(tl: float) -> void:
+	var u := _suave(tl / 2.4)
+	var h := cabeca()
+	cam_a(h + Vector3(1.4, -0.18, 0.62), Vector3(Z_INICIO.x, _chao(Z_INICIO.x, Z_INICIO.z) + 1.35, Z_INICIO.z), lerpf(22.0, 14.0, u), 0.003)
+
+
+func _c_rua_olhos(tl: float) -> void:
+	var u := _suave(tl / 1.6)
+	var h := cabeca()
+	cam_a(h + Vector3(-0.85 + 0.12 * u, 0.04, -0.62), h + Vector3(0, 0.02, 0), lerpf(22.0, 18.0, u), 0.006)
+
+
+func _p_rua3() -> void:
+	clima(17.45, Clima.Estado.NUBLADO)
+	_achar_porta()
+	_fecha_porta()
+	h_pos(P(-330.0, 335.2), 2.3)
+	h_visivel(true)
+	zumbi = z_novo(Z_INICIO + Vector3(1.5, 0, 0), -PI * 0.5, &"walk")
+
+
+func _a_corre_casa(tl: float) -> void:
+	h_andar([P(-330.0, 335.2), P(-332.4, 336.9), P_PORTA_FORA], tl, 3.2, 6.35, true)
+	_zumbi_x(Z_INICIO.x + 1.5 + tl * 0.95)
+
+
+func _c_corre_casa(tl: float) -> void:
+	var u := tl / 3.4
+	var dir := (P_PORTA_FORA - P_PARA).normalized()
+	var perp := Vector3(-dir.z, 0.0, dir.x)
+	var sp := s.global_position
+	var de := sp + perp * 3.3 + dir * lerpf(0.0, 1.5, u)
+	de.y = _chao(de.x, de.z) + 0.5
+	cam_a(de, sp + Vector3(0.0, 0.85, 0.0) + dir * 0.6, 42.0, 0.01)
+
+
+func _p_porta() -> void:
+	clima(17.45, Clima.Estado.NUBLADO)
+	_achar_porta()
+	_fecha_porta()
+	_porta_aberta = false
+	h_pos(P_PORTA_FORA, PI)
+	h_visivel(true)
+	zumbi = z_novo(Vector3(-346.0, 0.0, 331.2), -PI * 0.5, &"walk")
+
+
+func _a_porta(tl: float) -> void:
+	if tl > 0.2 and not _porta_aberta and porta:
+		porta.alternar()
+		_porta_aberta = true
+	if tl > 0.7:
+		h_andar([P_PORTA_FORA, P(-334.8, 341.4), P_DENTRO], tl - 0.7, 1.6, 6.35)
+	_zumbi_x(Z_INICIO.x + 12.0 + tl * 0.95)
+
+
+func _c_porta(tl: float) -> void:
+	var u := _suave(tl / 2.2)
+	var de := P(-331.4, 336.6, 1.25)
+	cam_a(de, P(-334.8, 341.4, 1.15).lerp(s.global_position + Vector3(0, 1.1, 0), 0.6 * u), 44.0, 0.008)
+
+
+func _p_interior() -> void:
+	clima(17.45, Clima.Estado.NUBLADO)
+	_achar_porta()
+	if porta and not porta.aberta:
+		porta.alternar()
+	h_pos(P(-334.8, 343.2), PI)
+	h_visivel(true)
+	zumbi = z_novo(Vector3(-336.0, 0.0, 331.2), -PI * 0.5, &"walk")
+
+
+func _a_interior(tl: float) -> void:
+	h_parado()
+	s.in_crouch = true
+	s.yaw = lerp_angle(s.yaw, 0.0, 0.1)
+	if tl > 0.5 and porta and porta.aberta:
+		porta.alternar()
+	_zumbi_x(Z_INICIO.x + 15.0 + tl * 0.95)
+
+
+func _c_interior(tl: float) -> void:
+	var u := _suave(tl / 1.3)
+	var de := P(-334.9, 349.4, lerpf(1.35, 1.2, u))
+	cam_a(de, P(-334.9, 341.0, 1.3).lerp(s.global_position + Vector3(0, 1.1, 0), 0.5), 52.0, 0.01)
+
+
+func _p_janela() -> void:
+	clima(17.45, Clima.Estado.NEVOEIRO)
+	_achar_porta()
+	_fecha_porta()
+	h_pos(P(-334.8, 346.0), 0.0)
+	h_visivel(true)
+	zumbi = z_novo(Vector3(-340.0, 0.0, 331.2), -PI * 0.5, &"walk")
+
+
+func _a_janela(tl: float) -> void:
+	h_parado()
+	s.in_crouch = true
+	_zumbi_x(Z_INICIO.x + 17.0 + tl * 1.2)
+
+
+func _c_janela(tl: float) -> void:
+	var u := _suave(tl / 0.5)
+	cam_a(P(-331.5, 342.3, 1.25), P(-331.3, 331.2, 1.3).lerp(zumbi.global_position + Vector3(0, 1.3, 0), 0.45), lerpf(40.0, 32.0, u), 0.004)
+
+

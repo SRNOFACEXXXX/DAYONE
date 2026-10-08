@@ -1,0 +1,123 @@
+{
+ "_doc": "Armas extras do pacote Weapons FREE/Meshes (medidas nas vistas de tools/vista_arma.py, cm -> m, espaço da arma: x=0, y para cima, z para trás; frente = -z). Gera cenas FP/mundo, miras.json, mãos e pegas de 3ª pessoa (tools/nova_arma.py).",
+ "uzi": {
+  "id": "uzi",
+  "modelo": "uzi",
+  "cabo": [
+   0,
+   -0.085,
+   0.065
+  ],
+  "eixo_cabo": [
+   0,
+   -1,
+   0.25
+  ],
+  "apoio": [
+   0,
+   0.0,
+   -0.081
+  ],
+  "alca": [
+   0,
+   0.06,
+   0.184
+  ],
+  "massa": [
+   0,
+   0.054,
+   -0.129
+  ],
+  "cano": [
+   0,
+   0.005,
+   -0.239
+  ],
+  "eject": [
+   0.02,
+   0.03,
+   -0.02
+  ],
+  "alivio": 0.26
+ },
+ "m249": {
+  "id": "m249",
+  "modelo": "m249",
+  "cabo": [
+   0,
+   -0.129,
+   0.196
+  ],
+  "eixo_cabo": [
+   0,
+   -1,
+   0.45
+  ],
+  "apoio": [
+   0,
+   -0.02,
+   -0.133
+  ],
+  "alca": [
+   -0.0095,
+   0.053,
+   0.224
+  ],
+  "massa": [
+   -0.0095,
+   0.0605,
+   -0.3
+  ],
+  "cano": [
+   0,
+   0.005,
+   -0.519
+  ],
+  "eject": [
+   0.04,
+   0.03,
+   0.05
+  ],
+  "alivio": 0.4
+ },
+ "m107": {
+  "id": "m107",
+  "modelo": "m107",
+  "cabo": [
+   0,
+   -0.144,
+   0.324
+  ],
+  "eixo_cabo": [
+   0,
+   -1,
+   0.45
+  ],
+  "apoio": [
+   0,
+   0.0,
+   -0.284
+  ],
+  "alca": [
+   -0.025,
+   0.066,
+   0.235
+  ],
+  "massa": [
+   -0.025,
+   0.066,
+   -0.43
+  ],
+  "cano": [
+   0,
+   -0.001,
+   -0.725
+  ],
+  "eject": [
+   0.04,
+   0.03,
+   0.1
+  ],
+  "alivio": 0.3
+ }
+}

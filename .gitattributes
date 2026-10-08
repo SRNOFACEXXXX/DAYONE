@@ -1,0 +1,15 @@
+battle_royale/Assets/animações/Jump[[:space:]]Forward.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Prone[[:space:]]Left[[:space:]]Turn.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Prone[[:space:]]Right[[:space:]]Turn.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Rifle[[:space:]]Idle.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Shooting[[:space:]](1).fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Shooting[[:space:]]Arrow.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Shooting.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/animações/Sprint[[:space:]]To[[:space:]]Wall[[:space:]]Climb.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/atualização/construcao_casa/houseshop_mod.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/atualização/zombies/Scary[[:space:]]Zombie[[:space:]]Pack.zip filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/modelos[[:space:]]das[[:space:]]armas/Climbing[[:space:]]Up[[:space:]]Wall.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/Assets/modelos[[:space:]]das[[:space:]]armas/Gunplay.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/game/assets/anim_mixamo/Rifle_Idle.fbx filter=lfs diff=lfs merge=lfs -text
+battle_royale/game/assets/models/zombies/scary_zombie_pack/Ch35_nonPBR.fbx filter=lfs diff=lfs merge=lfs -text
+catcine/DAYONE_trailer.mp4 filter=lfs diff=lfs merge=lfs -text

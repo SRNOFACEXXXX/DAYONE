@@ -1,0 +1,18 @@
+# Generated files
+pnpm-lock.yaml
+skills-lock.json
+.claude-plugin/marketplace.json
+.husky/_/
+
+# Rewritten by release-please, which emits `*` bullets prettier would rewrite.
+# .release-please-manifest.json needs no exemption: release-please reuses that
+# file's existing indent and trailing newline, so it stays prettier-clean.
+CHANGELOG.md
+
+# Vendored dev skills, kept byte-identical to their published source
+.claude/skills/
+.agents/skills/skill-creator/
+.agents/skills/skill-development/
+
+# Contributor Covenant 2.1, kept byte-identical to its published source
+CODE_OF_CONDUCT.md

@@ -1,0 +1,320 @@
+{
+ "extra_0": {
+  "dx": 3.8,
+  "dy": -9.2,
+  "yaw_deg": -166.3,
+  "custo": 7.2
+ },
+ "extra_1": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 0.0,
+  "custo": 0.5
+ },
+ "extra_2": {
+  "dx": 5.7,
+  "dy": -5.7,
+  "yaw_deg": -138.3,
+  "custo": 6.6
+ },
+ "extra_3": {
+  "dx": 5.5,
+  "dy": 2.3,
+  "yaw_deg": -53.1,
+  "custo": 6.2
+ },
+ "extra_4": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": -40.6,
+  "custo": 0.4
+ },
+ "extra_5": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 0.0,
+  "custo": 0.3
+ },
+ "extra_6": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 0.0,
+  "custo": 0.4
+ },
+ "extra_7": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 0.0,
+  "custo": 0.9
+ },
+ "extra_8": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": -45.9,
+  "custo": 0.6
+ },
+ "farol_ponta_norte_02": {
+  "dx": 11.3,
+  "dy": -11.3,
+  "yaw_deg": 38.7,
+  "custo": 17.5
+ },
+ "fazenda_boa_esperanca_01": {
+  "dx": -0.0,
+  "dy": 16.0,
+  "yaw_deg": 0.0,
+  "custo": 26.1
+ },
+ "fazenda_boa_esperanca_05": {
+  "dx": -14.0,
+  "dy": -0.0,
+  "yaw_deg": -143.6,
+  "custo": 11.2
+ },
+ "fazenda_boa_esperanca_06": {
+  "dx": -12.0,
+  "dy": -0.0,
+  "yaw_deg": 123.6,
+  "custo": 11.2
+ },
+ "fazenda_boa_esperanca_07": {
+  "dx": -14.0,
+  "dy": -0.0,
+  "yaw_deg": 145.7,
+  "custo": 10.1
+ },
+ "morro_cruzeiro_01": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": -45.0,
+  "custo": 20.1
+ },
+ "morro_cruzeiro_02": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 9.7,
+  "custo": 17.1
+ },
+ "morro_cruzeiro_03": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 90.0,
+  "custo": 16.3
+ },
+ "morro_cruzeiro_04": {
+  "dx": 14.8,
+  "dy": -6.1,
+  "yaw_deg": 2.9,
+  "custo": 15.1
+ },
+ "morro_cruzeiro_05": {
+  "dx": 14.8,
+  "dy": -6.1,
+  "yaw_deg": -123.8,
+  "custo": 14.1
+ },
+ "morro_cruzeiro_06": {
+  "dx": 14.0,
+  "dy": -0.0,
+  "yaw_deg": -100.8,
+  "custo": 13.5
+ },
+ "morro_cruzeiro_07": {
+  "dx": -0.0,
+  "dy": 12.0,
+  "yaw_deg": -67.4,
+  "custo": 17.4
+ },
+ "morro_cruzeiro_08": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 127.6,
+  "custo": 18.1
+ },
+ "morro_cruzeiro_09": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 90.0,
+  "custo": 17.8
+ },
+ "morro_cruzeiro_10": {
+  "dx": 14.8,
+  "dy": -6.1,
+  "yaw_deg": -49.2,
+  "custo": 16.7
+ },
+ "morro_cruzeiro_11": {
+  "dx": 14.0,
+  "dy": -0.0,
+  "yaw_deg": -100.4,
+  "custo": 16.3
+ },
+ "morro_cruzeiro_12": {
+  "dx": 16.0,
+  "dy": -0.0,
+  "yaw_deg": -81.1,
+  "custo": 14.6
+ },
+ "morro_cruzeiro_13": {
+  "dx": 4.6,
+  "dy": 11.1,
+  "yaw_deg": -52.8,
+  "custo": 11.7
+ },
+ "morro_cruzeiro_14": {
+  "dx": -0.0,
+  "dy": 14.0,
+  "yaw_deg": 63.4,
+  "custo": 16.3
+ },
+ "morro_cruzeiro_15": {
+  "dx": -0.0,
+  "dy": 12.0,
+  "yaw_deg": 90.0,
+  "custo": 15.2
+ },
+ "morro_cruzeiro_16": {
+  "dx": -0.0,
+  "dy": 14.0,
+  "yaw_deg": -77.5,
+  "custo": 13.0
+ },
+ "morro_cruzeiro_17": {
+  "dx": -0.0,
+  "dy": 6.0,
+  "yaw_deg": -45.6,
+  "custo": 14.5
+ },
+ "morro_cruzeiro_18": {
+  "dx": -8.5,
+  "dy": 8.5,
+  "yaw_deg": -25.8,
+  "custo": 14.5
+ },
+ "morro_cruzeiro_19": {
+  "dx": -11.1,
+  "dy": -4.6,
+  "yaw_deg": 40.2,
+  "custo": 16.3
+ },
+ "morro_cruzeiro_20": {
+  "dx": -0.0,
+  "dy": 12.0,
+  "yaw_deg": -67.4,
+  "custo": 16.0
+ },
+ "morro_cruzeiro_21": {
+  "dx": -4.6,
+  "dy": 11.1,
+  "yaw_deg": -97.1,
+  "custo": 15.8
+ },
+ "pista_pouso_03": {
+  "dx": -12.9,
+  "dy": -5.4,
+  "yaw_deg": -41.4,
+  "custo": 14.8
+ },
+ "represa_02": {
+  "dx": -0.0,
+  "dy": 14.0,
+  "yaw_deg": -56.3,
+  "custo": 14.3
+ },
+ "represa_05": {
+  "dx": -12.9,
+  "dy": 5.4,
+  "yaw_deg": -19.0,
+  "custo": 19.6
+ },
+ "usina_santa_cruz_07": {
+  "dx": 14.8,
+  "dy": 6.1,
+  "yaw_deg": 110.0,
+  "custo": 18.0
+ },
+ "usina_santa_cruz_08": {
+  "dx": -11.3,
+  "dy": -11.3,
+  "yaw_deg": 110.0,
+  "custo": 25.4
+ },
+ "usina_santa_cruz_09": {
+  "dx": 16.0,
+  "dy": -0.0,
+  "yaw_deg": 110.0,
+  "custo": 22.0
+ },
+ "vila_caicara_01": {
+  "dx": 16.0,
+  "dy": -0.0,
+  "yaw_deg": -132.0,
+  "custo": 13.2
+ },
+ "vila_caicara_02": {
+  "dx": -0.0,
+  "dy": 14.0,
+  "yaw_deg": 48.0,
+  "custo": 11.9
+ },
+ "vila_caicara_04": {
+  "dx": -7.1,
+  "dy": 7.1,
+  "yaw_deg": -59.0,
+  "custo": 13.7
+ },
+ "vila_caicara_06": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 53.5,
+  "custo": 10.9
+ },
+ "vila_caicara_08": {
+  "dx": -12.9,
+  "dy": 5.4,
+  "yaw_deg": 175.7,
+  "custo": 14.2
+ },
+ "vila_caicara_09": {
+  "dx": -11.1,
+  "dy": -4.6,
+  "yaw_deg": -137.2,
+  "custo": 13.4
+ },
+ "vila_caicara_11": {
+  "dx": 16.0,
+  "dy": -0.0,
+  "yaw_deg": -166.3,
+  "custo": 12.0
+ },
+ "vila_caicara_12": {
+  "dx": -12.0,
+  "dy": -0.0,
+  "yaw_deg": -134.0,
+  "custo": 12.6
+ },
+ "vila_caicara_13": {
+  "dx": -5.4,
+  "dy": -12.9,
+  "yaw_deg": -4.3,
+  "custo": 15.0
+ },
+ "vila_caicara_14": {
+  "dx": 16.0,
+  "dy": -0.0,
+  "yaw_deg": -104.8,
+  "custo": 11.4
+ },
+ "vila_caicara_15": {
+  "dx": 0.0,
+  "dy": -0.0,
+  "yaw_deg": 170.5,
+  "custo": 1000000000.0
+ },
+ "vila_caicara_16": {
+  "dx": 0.0,
+  "dy": -14.0,
+  "yaw_deg": 121.0,
+  "custo": 13.0
+ }
+}
