@@ -76,13 +76,50 @@ func _setup_input() -> void:
 			InputMap.action_add_event(action, ev)
 
 
+## Faixas aceitas para valores numéricos lidos do disco (um settings.cfg editado à mão não pode quebrar o jogo).
+const LIMITES := {
+	"sensitivity": Vector2(0.2, 8.0), "fov": Vector2(60.0, 120.0), "viewmodel_fov": Vector2(40.0, 90.0),
+	"viewmodel_bob": Vector2(0.0, 2.0), "camera_bob": Vector2(0.0, 2.0),
+	"master_volume": Vector2(0.0, 1.0), "sfx_volume": Vector2(0.0, 1.0),
+	"music_volume": Vector2(0.0, 1.0), "voice_volume": Vector2(0.0, 1.0),
+	"quality": Vector2(0.0, 2.0), "render_scale": Vector2(0.5, 1.0), "max_fps": Vector2(0.0, 500.0),
+	"crosshair_size": Vector2(0.0, 40.0), "crosshair_gap": Vector2(0.0, 40.0), "crosshair_thickness": Vector2(0.0, 20.0),
+}
+const NOME_MAX := 24
+
+
 func load_settings() -> void:
 	var cf := ConfigFile.new()
 	if cf.load(PATH) != OK:
 		return
 	for key in _keys():
 		if cf.has_section_key("s", key):
-			set(key, cf.get_value("s", key))
+			var v: Variant = valor_seguro(key, cf.get_value("s", key))
+			if v != null:
+				set(key, v)
+
+
+## Devolve o valor lido do disco já validado: mesmo tipo do padrão (int/float convertidos entre si), sem NaN/infinito,
+## limitado à faixa de LIMITES e nome com até NOME_MAX caracteres. Tipo errado (objeto, texto onde há número...) -> null.
+func valor_seguro(key: String, v: Variant) -> Variant:
+	if v == null:
+		return null
+	var tipo := typeof(get(key))
+	if tipo == TYPE_FLOAT and typeof(v) == TYPE_INT:
+		v = float(v)
+	elif tipo == TYPE_INT and typeof(v) == TYPE_FLOAT:
+		v = int(v)
+	if typeof(v) != tipo:
+		return null
+	if tipo == TYPE_FLOAT and (is_nan(v) or is_inf(v)):
+		return null
+	if tipo == TYPE_STRING:
+		return String(v).substr(0, NOME_MAX) if key == "player_name" else v
+	if LIMITES.has(key):
+		var lim: Vector2 = LIMITES[key]
+		var c := clampf(float(v), lim.x, lim.y)
+		return int(c) if tipo == TYPE_INT else c
+	return v
 
 
 func save_settings() -> void:
@@ -162,8 +199,17 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func take_screenshot(path: String = "") -> String:
 	var img := get_viewport().get_texture().get_image()
-	if path == "":
+	path = caminho_captura(path)
+	if path.get_base_dir() == "user://capturas":
 		DirAccess.make_dir_recursive_absolute("user://capturas")
-		path = "user://capturas/%s.png" % Time.get_datetime_string_from_system().replace(":", "-")
 	img.save_png(path)
 	return path
+
+
+## Caminho seguro da captura: vazio ou fora de user:// (ex.: res://, caminho absoluto, ../) cai na pasta padrão.
+func caminho_captura(path: String = "") -> String:
+	if path != "" and path.begins_with("user://") and not path.contains(".."):
+		return path
+	if path != "":
+		push_warning("Captura fora de user:// ignorada: %s" % path)
+	return "user://capturas/%s.png" % Time.get_datetime_string_from_system().replace(":", "-")

@@ -52,13 +52,20 @@ const BOT_NAMES_CT := ["Sargento Lima", "Falcão", "Rocha", "Tenente Vidal", "Br
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_migrar_dados_antigos()
-	var args := OS.get_cmdline_user_args()
+	aplicar_argumentos(OS.get_cmdline_user_args())
+
+
+## Lê --chave=valor (modo teste). Mapa desconhecido é ignorado: senão a partida quebrava ao procurar a cena.
+func aplicar_argumentos(args: Array) -> void:
 	for a in args:
-		if a.begins_with("--"):
-			var kv := a.substr(2).split("=", true, 1)
+		if String(a).begins_with("--"):
+			var kv := String(a).substr(2).split("=", true, 1)
 			test_args[kv[0]] = kv[1] if kv.size() > 1 else "1"
 	if test_args.has("map"):
-		config["map"] = test_args["map"]
+		if MAPS.has(String(test_args["map"])):
+			config["map"] = String(test_args["map"])
+		else:
+			push_warning("Mapa desconhecido ignorado: %s" % test_args["map"])
 	if test_args.has("team"):
 		config["team"] = int(test_args["team"])
 	if test_args.has("bots"):

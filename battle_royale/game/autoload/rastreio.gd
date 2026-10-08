@@ -155,6 +155,9 @@ func gravar() -> String:
 	var txt := "user://rastreio/rastreio_%s.txt" % carimbo
 	var mem := memoria()
 	var f := FileAccess.open(txt, FileAccess.WRITE)
+	if f == null:   # pasta sem permissão / disco cheio: não derruba o jogo (F9 só registra o erro)
+		push_error("Rastreio: não foi possível gravar %s (erro %d)" % [txt, FileAccess.get_open_error()])
+		return ""
 	f.store_line("RASTREIO DE RECURSOS EM MEMÓRIA — %s" % carimbo)
 	f.store_line("RAM estática: %s (pico %s) | VRAM texturas: %s | buffers: %s | nós: %d | recursos: %d" % [
 		_mb(mem.estatica), _mb(mem.estatica_pico), _mb(mem.textura_vram), _mb(mem.buffer_vram), mem.nos, mem.recursos])
@@ -165,6 +168,9 @@ func gravar() -> String:
 		f.store_line("%-12s %-14s %-6d  %s  ->  %s  %s" % [_mb(e.bytes), e.tipo, e.usos, e.origem, e.importado, str(e.nos)])
 	f.close()
 	var j := FileAccess.open("user://rastreio/rastreio_%s.json" % carimbo, FileAccess.WRITE)
+	if j == null:
+		push_error("Rastreio: não foi possível gravar o .json do relatório")
+		return txt
 	j.store_string(JSON.stringify({"memoria": mem, "recursos": lista}, "  "))
 	j.close()
 	return txt
