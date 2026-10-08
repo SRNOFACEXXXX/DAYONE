@@ -135,20 +135,26 @@ func _fase(nome: String, frames: int, teclas: Array, parar_quando := "") -> void
 		var partes := parar_quando.split(":")
 		abaixo = partes[0] == "abaixo"
 		limite = float(partes[1])
-	for f in frames:
+	var t0 := Engine.get_physics_frames()
+	var f := 0
+	while Engine.get_physics_frames() - t0 < frames:
 		await get_tree().physics_frame
+		f += 1
 		_medir()
-		if f % 60 == 59:
-			seg += 1
+		# tempo de física real (as capturas consomem quadros fora do laço)
+		var seg_atual := int((Engine.get_physics_frames() - t0) / 60)
+		if seg_atual > seg:
+			seg = seg_atual
 			print("CARRO fase=%s t=%ds km/h=%.1f marcha=%d rpm=%d vida=%.1f rolagem_max=%.1f deriva_max=%.1f up_min=%.2f" % [
 				nome, seg, _kmh(), _marcha(), _rpm(), _vida(), _seg_roll, _seg_slip, _car.global_basis.y.dot(Vector3.UP)])
 			_seg_roll = 0.0
 			_seg_slip = 0.0
-			await _shot("%02d_%s_%ds" % [seg, nome, seg])
+			if limite < 0.0:
+				await _shot("%02d_%s_%ds" % [seg, nome, seg])
 		if limite >= 0.0 and f > 30:
 			var k := _kmh()
 			if (abaixo and k < limite) or (not abaixo and k > limite):
-				print("CARRO fase=%s condicao_atingida em %d quadros (km/h=%.1f)" % [nome, f, k])
+				print("CARRO fase=%s condicao_atingida em %.2f s (km/h=%.1f)" % [nome, (Engine.get_physics_frames() - t0) / 60.0, k])
 				break
 	_soltar()
 
@@ -199,6 +205,7 @@ func _ready() -> void:
 	await _fase("reduz_50", 240, ["move_back"], "abaixo:52")
 	await _fase("curva_D_50", 150, ["move_right"])
 	await _fase("drift_freio_mao_50", 120, ["jump", "move_left"])
+	await _fase("reacelera_40", 300, ["move_forward"], "acima:40")
 	await _fase("freia", 480, ["move_back"], "abaixo:3")
 	print("CARRO_RESULT vmax_kmh=%.1f marcha_max=%d rpm_max=%d rolagem_max=%.1f up_min=%.3f deriva_max=%.1f vida_min=%.1f vida_final=%.1f trecho_amp=%.2f" % [
 		_max_kmh, _max_marcha, _max_rpm, _max_roll, _min_up, _max_slip, _vida_min, _vida(), _trecho_amp])
