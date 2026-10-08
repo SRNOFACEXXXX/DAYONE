@@ -4,6 +4,7 @@ extends Control
 
 var progresso := 0.0
 var texto := ""
+var redibujos := 0   # pedidos de redesenho feitos (teste de desempenho)
 
 
 func _ready() -> void:
@@ -13,9 +14,13 @@ func _ready() -> void:
 
 
 func mostrar(p: float, t: String) -> void:
+	var visivel := p > 0.0
+	if p == progresso and t == texto and visivel == visible:
+		return   # nada mudou: sem redesenho (antes pedia um a cada quadro, mesmo oculto)
 	progresso = p
 	texto = t
-	visible = p > 0.0
+	visible = visivel
+	redibujos += 1
 	queue_redraw()
 
 

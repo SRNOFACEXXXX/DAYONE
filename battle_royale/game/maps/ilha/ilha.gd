@@ -22,6 +22,9 @@ func _collision_for(mesh: Mesh, convex: bool) -> Shape3D:
 
 
 const FOG_CHAO := 0.0007
+## Sombra do sol (GT 730, ortogonal 1 estágio: sem splits; o custo é o nº de objetos na caixa de sombra).
+const SOMBRA_DISTANCIA := 50.0   # antes 70.0; o atlas (4096) fica igual para não perder nitidez perto do jogador
+const SOMBRA_FADE := 0.8         # fração da distância em que a sombra começa a sumir (padrão do Godot)
 var FOG_ATUAL := FOG_CHAO
 var _env: Environment
 
@@ -217,7 +220,8 @@ func _environment() -> void:
 	sun.light_energy = 1.35
 	sun.light_color = Color("FFDEB3")
 	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 70.0
+	sun.directional_shadow_max_distance = SOMBRA_DISTANCIA
+	sun.directional_shadow_fade_start = SOMBRA_FADE
 	sun.shadow_blur = 1.5
 	sun.shadow_opacity = 0.8   # crítica 04: sombra não chapada em preto
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL   # 1 estágio: metade dos passes de sombra (GT 730)

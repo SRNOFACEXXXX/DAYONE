@@ -11,6 +11,7 @@ signal hit_taken(zone: StringName, amount: int, attacker: Node3D)
 enum State { IDLE, PATROL, ALERT, INVESTIGATE, CHASE, ATTACK, DEAD }
 
 const ANIMATION_SCENE := "res://assets/models/zombies/free_animated_pack/scene.gltf"
+const ANIMATION_SCENE_RES: PackedScene = preload("res://assets/models/zombies/free_animated_pack/scene.gltf")
 const POSE_COPY_SCRIPT := preload("res://core/zombie_pose_copy.gd")
 const POLYART_VARIANTS := [
 	"res://assets/models/zombies/polyart_pack/variants/zombie_00.tscn",
@@ -23,6 +24,19 @@ const POLYART_VARIANTS := [
 	"res://assets/models/zombies/polyart_pack/variants/zombie_07.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_08.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_09.tscn",
+]
+## cenas das variantes pré-carregadas (antes load() a cada zumbi criado)
+const POLYART_SCENES := [
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_00.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_01.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_02.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_03.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_04.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_05.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_06.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_07.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_08.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_09.tscn"),
 ]
 const HUMANOID_MAP := {
 	"mixamorig_Hips": "Hips", "mixamorig_Spine": "Spine", "mixamorig_Spine1": "Chest",
@@ -211,7 +225,7 @@ func _build_rig() -> void:
 	_visual_root = Node3D.new()
 	_visual_root.name = "VisualRoot"
 	add_child(_visual_root)
-	var animation_scene := load(ANIMATION_SCENE) as PackedScene
+	var animation_scene := ANIMATION_SCENE_RES
 	if animation_scene == null:
 		push_error("Free animated zombie rig failed to import")
 		return
@@ -231,7 +245,7 @@ func _build_rig() -> void:
 	_build_animation_controller()
 	if _variant_index < 0:
 		_variant_index = randi_range(0, POLYART_VARIANTS.size() - 1)
-	var model_scene := load(POLYART_VARIANTS[_variant_index]) as PackedScene
+	var model_scene := POLYART_SCENES[_variant_index] as PackedScene
 	if model_scene == null:
 		push_error("Polyart zombie appearance failed to load: " + POLYART_VARIANTS[_variant_index])
 		return

@@ -1,6 +1,9 @@
 extends Node3D
 ## One-shot C4 explosion: fireball, debris, smoke column, light flash. Frees itself.
 
+const TEX_FOGO := preload("res://fx/textures/fireball.png")
+const TEX_FUMACA := preload("res://fx/textures/smoke_puff.png")
+
 var _life := 0.0
 var _light: OmniLight3D
 
@@ -18,7 +21,7 @@ func _ready() -> void:
 	add_child(_debris())
 
 
-func _mat(tex: String, add: bool) -> StandardMaterial3D:
+func _mat(tex: Texture2D, add: bool) -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
@@ -26,8 +29,7 @@ func _mat(tex: String, add: bool) -> StandardMaterial3D:
 		m.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
 	m.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
 	m.vertex_color_use_as_albedo = true
-	var p := "res://fx/textures/" + tex
-	m.albedo_texture = load(p) if ResourceLoader.exists(p) else null
+	m.albedo_texture = tex
 	return m
 
 
@@ -37,7 +39,7 @@ func _fire() -> CPUParticles3D:
 	p.lifetime = 1.1
 	p.one_shot = true
 	p.explosiveness = 0.92
-	var qm := QuadMesh.new(); qm.size = Vector2(3.2, 3.2); qm.material = _mat("fireball.png", true)
+	var qm := QuadMesh.new(); qm.size = Vector2(3.2, 3.2); qm.material = _mat(TEX_FOGO, true)
 	p.mesh = qm
 	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
 	p.emission_sphere_radius = 1.2
@@ -66,7 +68,7 @@ func _smoke() -> CPUParticles3D:
 	p.lifetime = 5.5
 	p.one_shot = true
 	p.explosiveness = 0.7
-	var qm := QuadMesh.new(); qm.size = Vector2(4.5, 4.5); qm.material = _mat("smoke_puff.png", false)
+	var qm := QuadMesh.new(); qm.size = Vector2(4.5, 4.5); qm.material = _mat(TEX_FUMACA, false)
 	p.mesh = qm
 	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
 	p.emission_sphere_radius = 1.8

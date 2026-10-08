@@ -25,6 +25,7 @@ const DIA_REAL_S := 1440.0          # 1 dia = 24 min reais com escala 1
 const SOL_MAX_ELEV := 58.0          # graus ao meio-dia
 const NASCER := 6.0
 const POENTE := 18.0
+const CHUVA_PARTICULAS := 220        # antes 380 (~40% menos gotas); o quad ficou mais comprido para manter o risco
 
 var hora := HORA_INICIAL
 var dia := 1
@@ -218,7 +219,7 @@ func _montar_chuva() -> void:
 	_raiz_fx.top_level = true
 	_ilha.add_child(_raiz_fx)
 	var p := CPUParticles3D.new()
-	p.amount = 380
+	p.amount = CHUVA_PARTICULAS
 	p.lifetime = 0.9
 	p.local_coords = false
 	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_BOX
@@ -231,7 +232,7 @@ func _montar_chuva() -> void:
 	p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	p.visibility_aabb = AABB(Vector3(-14, -30, -14), Vector3(28, 40, 28))
 	var q := QuadMesh.new()
-	q.size = Vector2(0.03, 0.45)
+	q.size = Vector2(0.034, 0.5)
 	var m := StandardMaterial3D.new()
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA

@@ -4,6 +4,7 @@ extends Node3D
 
 const MAX_MARKS := 160
 const TEX := "res://fx/textures/"
+const EXPLOSAO := preload("res://fx/explosion.gd")
 
 var _marks: MultiMeshInstance3D
 var _blood_marks: MultiMeshInstance3D
@@ -554,7 +555,7 @@ func _basis_from_normal(n: Vector3) -> Basis:
 
 
 func explosion(pos: Vector3) -> void:
-	var boom: Node3D = load("res://fx/explosion.gd").new()
+	var boom: Node3D = EXPLOSAO.new()
 	add_child(boom)
 	boom.global_position = pos
 	Audio.play_at("bomb_explode", pos, {"volume_db": 8.0, "unit_size": 40.0, "max_distance": 400.0, "pitch_var": 0.0})

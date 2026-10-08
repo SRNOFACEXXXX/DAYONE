@@ -17,6 +17,7 @@ const PARA_ALTURA := 110.0     # abre o paraquedas a esta altura do chão
 const PARA_V := 7.0
 const PARA_H := 11.0
 const OLHO_VOO := Vector3(-26.0, 6.0, 0.0)   # no avião o jogador vê de fora, atrás e acima da cauda (câmera de perseguição)
+const AVIAO_CENA := preload("res://assets/models/veiculos/aviao_salto.glb")
 const RAMPA := Vector3(-6.0, -2.5, 0.0)      # ponto de saída do salto: abaixo da rampa aberta (local do avião, frente = +X)
 
 var ilha: Node3D
@@ -951,7 +952,7 @@ func _preparar_voo() -> void:
 				ini = voo_dur * i / n
 			fim = voo_dur * i / n
 	voo_terra = Vector2(ini, fim) if ini >= 0.0 else Vector2(0.0, voo_dur)
-	aviao = load("res://assets/models/veiculos/aviao_salto.glb").instantiate()
+	aviao = AVIAO_CENA.instantiate()
 	aviao.name = "AviaoSalto"
 	add_child(aviao)
 	_posicionar_aviao()
