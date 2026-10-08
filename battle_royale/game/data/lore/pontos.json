@@ -1,0 +1,132 @@
+{
+	"versao": 1,
+	"fonte": "autoral, pt-BR, sessão de cenário (rodada 2). Um bilhete por ponto de interesse; id = campo 'lore' da área em maps/ilha/cenario_pontos.json. Só dados: a UI ainda não lê este arquivo.",
+	"entradas": [
+		{
+			"id": "acampamento",
+			"titulo": "Diário de Renata — 3 de outubro",
+			"corpo": "Ouvi no rádio que a linha de contenção caiu no continente. Montei a barraca aqui porque ninguém sobe este morro à noite. A fogueira fica acesa para afastar os cães. Se alguém achar isto, o galão é meu, mas o remédio é de quem precisar.",
+			"onde": "Acampamento do sobrevivente (interior, mata)",
+			"area": "Acampamento do sobrevivente (interior, mata)"
+		},
+		{
+			"id": "carros_estrada",
+			"titulo": "Bilhete no para-brisa",
+			"corpo": "Comboio C-4 segue para o Quartel. Ninguém para. Quem ficar, fica por conta própria. — Sgt. Almeida",
+			"onde": "Carros abandonados na estrada (planície)",
+			"area": "Carros abandonados na estrada (planície)"
+		},
+		{
+			"id": "caixotes_encosta",
+			"titulo": "Etiqueta de caixote",
+			"corpo": "Armazém do Tauá — remédios para a vila. NÃO ABRIR sem ordem do posto. Lote 27. Um dos caixotes está arrombado e a tampa foi puxada para fora.",
+			"onde": "Caixotes e postes caídos (encosta)",
+			"area": "Caixotes e postes caídos (encosta)"
+		},
+		{
+			"id": "sentinela",
+			"titulo": "Transcrição de rádio",
+			"corpo": "Posto Vigia, aqui é Sentinela Dois. Os de fora estão tentando passar pela cerca. Ordem: atirar nas pernas. Não há ordem para os que estão do lado de dentro.",
+			"onde": "Posto de sentinela abandonado (planalto)",
+			"area": "Posto de sentinela abandonado (planalto)"
+		},
+		{
+			"id": "pasto",
+			"titulo": "Caderno de criação",
+			"corpo": "Depois do dia 2 soltei os cavalos. Os cães ainda tentam pastorear a cerca à noite. Deixei feno para quem vier. Água no cocho até o fim do mês.",
+			"onde": "Pasto cercado (interior sul)",
+			"area": "Pasto cercado (interior sul)"
+		},
+		{
+			"id": "costa_barcos",
+			"titulo": "Diário do barco Anita",
+			"corpo": "Maré alta, vento de sul. Vi o barco afundar atrás da barra. Quem achar este caderno na cabine, leve à vila. As páginas do fim estão molhadas demais para ler.",
+			"onde": "Barcos encalhados e canoas na costa",
+			"area": "Barcos encalhados e canoas na costa"
+		},
+		{
+			"id": "farol_cais",
+			"titulo": "Último registro do faroleiro",
+			"corpo": "A luz gira sem ninguém para olhar. Os de fora subiram pelo cais no sábado. Desliguei o gerador para não atrair mais. Se o farol apagar, é porque eu desci.",
+			"onde": "Farol e cais de pedra (costa oeste)",
+			"area": "Farol e cais de pedra (costa oeste)"
+		},
+		{
+			"id": "pesca_leste",
+			"titulo": "Etiqueta da cooperativa",
+			"corpo": "Pesca de sábado: 212 kg. Congelado no galpão, mas a energia caiu no meio da noite. Não coma o peixe da caixa 3. — Cooperativa do Tauá",
+			"onde": "Área de pesca e redes (leste)",
+			"area": "Área de pesca e redes (leste)"
+		},
+		{
+			"id": "cais_sul",
+			"titulo": "Mapa no verso de uma nota",
+			"corpo": "Barco rápido para o continente. Quem tiver combustível, leve pelo cais sul. Ninguém precisa de passagem, só de sorte.",
+			"onde": "Cais de pesca do sul",
+			"area": "Cais de pesca do sul"
+		},
+		{
+			"id": "fazenda",
+			"titulo": "Caderno da família Matos",
+			"corpo": "Dia 4: a vizinha pediu abrigo. Dissemos não. Ela ainda está na estrada. Feno para trinta dias. Carne só se não for ao galpão.",
+			"onde": "Fazenda abandonada (planalto)",
+			"area": "Fazenda abandonada (planalto)"
+		},
+		{
+			"id": "posto_militar",
+			"titulo": "Relatório de baixa",
+			"corpo": "Quartel do 7º BIL: o posto caiu na madrugada. A torre de vigia tombou com a explosão. Equipamento abandonado. Não restou ninguém para dar ordem.",
+			"onde": "Posto militar caído (planalto)",
+			"area": "Posto militar caído (planalto)"
+		},
+		{
+			"id": "igreja",
+			"titulo": "Recado na porta da capela",
+			"corpo": "Abrigo para quem tiver fé e não tiver fome. Não há comida, só o sino. Ele toca quando os mortos se aproximam. — Pe. Otávio",
+			"onde": "Igreja e cruzeiro no morro",
+			"area": "Igreja e cruzeiro no morro"
+		},
+		{
+			"id": "galpao_caminhao",
+			"titulo": "Ordem de carga",
+			"corpo": "Pneus e combustível para a base. O motorista largou o caminhão no galpão quando as hordas chegaram. O tanque ainda tem diesel.",
+			"onde": "Galpão com caminhão e pneus",
+			"area": "Galpão com caminhão e pneus"
+		},
+		{
+			"id": "estrada_batida",
+			"titulo": "Bilhete no para-choque",
+			"corpo": "Batemos aqui fugindo de Dez. Os que vinham atrás não pararam. Cones amarelos são da prefeitura: deixem a estrada livre.",
+			"onde": "Estrada com carros batidos e cones",
+			"area": "Estrada com carros batidos e cones"
+		},
+		{
+			"id": "clareira_troncos",
+			"titulo": "Marca de machado",
+			"corpo": "Madeira para a fogueira da turma até o inverno. Foi o último corte antes do pedido de evacuação. — J.",
+			"onde": "Clareira de troncos (mata)",
+			"area": "Clareira de troncos (mata)"
+		},
+		{
+			"id": "clareira_tocos",
+			"titulo": "Riscos num toco",
+			"corpo": "Dia 1, 7, 12, 19... Contei os dias sem rádio. Quando passar de trinta, paro de contar e sigo para o leste.",
+			"onde": "Clareira de tocos e fogueira",
+			"area": "Clareira de tocos e fogueira"
+		},
+		{
+			"id": "entulho_norte",
+			"titulo": "Cartaz rasgado da prefeitura",
+			"corpo": "FIQUEM EM CASA. Não abram para estranhos. A contenção é responsabilidade de todos. Escutem a rádio às 19h.",
+			"onde": "Entulho da vila (norte)",
+			"area": "Entulho da vila (norte)"
+		},
+		{
+			"id": "entulho_sul",
+			"titulo": "Carta sem selo",
+			"corpo": "Meu filho, fui ao posto buscar remédio e não voltei. Se encontrar isto, procure a sra. Lúcia na igreja do morro.",
+			"onde": "Entulho da vila (sul)",
+			"area": "Entulho da vila (sul)"
+		}
+	]
+}
