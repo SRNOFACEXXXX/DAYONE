@@ -60,15 +60,17 @@ func _kmh() -> float:
 	return _car.linear_velocity.length() * 3.6
 
 
-## Trecho plano (amplitude do quadrado de 60 m) e sem obstáculo à frente (raio de 60 m) para cada direção.
+## Melhor trecho: maior distância livre à frente (sem obstáculo e sem água, até 150 m) menos a
+## amplitude do relevo (quadrado de 60 m). Direções: 0, 90, 180, 270 graus.
 func _achar_trecho(terrain: IlhaTerrain, space: PhysicsDirectSpaceState3D, centro: Vector3) -> Dictionary:
-	var melhor := {"pos": centro, "yaw": 0.0, "amp": INF}
+	var melhor := {"pos": centro, "yaw": 0.0, "amp": 99.0, "livre": -1.0}
+	var melhor_score := -INF
 	for ix in range(-20, 21):
 		for iz in range(-20, 21):
 			var x := centro.x + ix * 15.0
 			var z := centro.z + iz * 15.0
 			var h0 := terrain.height_world(x, z)
-			if h0 < 1.5:
+			if h0 < 2.5:
 				continue
 			var lo := INF
 			var hi := -INF
@@ -78,17 +80,25 @@ func _achar_trecho(terrain: IlhaTerrain, space: PhysicsDirectSpaceState3D, centr
 					lo = minf(lo, h)
 					hi = maxf(hi, h)
 			var amp := hi - lo
-			if amp >= 1.5 or amp >= float(melhor.amp):
+			if amp >= 1.5:
 				continue
 			for yaw_deg in [0.0, 90.0, 180.0, 270.0]:
 				var yaw := deg_to_rad(yaw_deg)
 				var frente := Basis(Vector3.UP, yaw).z
 				var a := Vector3(x, h0 + 0.8, z)
-				var q := PhysicsRayQueryParameters3D.create(a, a + frente * 60.0, LAYER_WORLD)
-				var hit := space.intersect_ray(q)
-				if hit.is_empty() or float(hit.normal.y) > 0.5:
-					melhor = {"pos": Vector3(x, h0, z), "yaw": yaw, "amp": amp}
-					break
+				var livre := 150.0
+				var hit := space.intersect_ray(PhysicsRayQueryParameters3D.create(a, a + frente * 150.0, LAYER_WORLD))
+				if not hit.is_empty() and float(hit.normal.y) <= 0.5:
+					livre = a.distance_to(hit.position)
+				for k in range(1, 16):
+					var p := a + frente * (k * 10.0)
+					if terrain.height_world(p.x, p.z) < 2.0:
+						livre = minf(livre, k * 10.0)
+						break
+				var score := livre - 20.0 * amp
+				if score > melhor_score:
+					melhor_score = score
+					melhor = {"pos": Vector3(x, h0, z), "yaw": yaw, "amp": amp, "livre": livre}
 	return melhor
 
 
@@ -161,7 +171,7 @@ func _ready() -> void:
 	var trecho := _achar_trecho(terrain, m.get_world_3d().direct_space_state, _car.global_position)
 	_trecho_amp = float(trecho.amp)
 	var pos: Vector3 = trecho.pos
-	print("CARRO trecho pos=(%.1f, %.1f, %.1f) yaw=%.0f amplitude=%.2f m" % [pos.x, pos.y, pos.z, rad_to_deg(float(trecho.yaw)), _trecho_amp])
+	print("CARRO trecho pos=(%.1f, %.1f, %.1f) yaw=%.0f amplitude=%.2f m livre=%.0f m" % [pos.x, pos.y, pos.z, rad_to_deg(float(trecho.yaw)), _trecho_amp, float(trecho.livre)])
 	_car.freeze = false
 	_car.sleeping = false
 	_car.global_transform = Transform3D(Basis(Vector3.UP, float(trecho.yaw)), pos + Vector3.UP * 0.9)
@@ -183,6 +193,7 @@ func _ready() -> void:
 	var hud := get_tree().root.find_child("VeiculoHud", true, false) as Control
 	print("CARRO contatos_roda=%d" % _car.get_children().filter(func(n): return n is VehicleWheel3D and n.is_in_contact()).size())
 	if hud:
+		print("CARRO hud_anchor=%s offset=%s parent=%s" % [hud.anchor_left, hud.offset_left, str(hud.get_parent().size)])
 		print("CARRO hud_pos=(%.0f, %.0f) tamanho=(%.0f, %.0f) viewport=%s" % [hud.global_position.x, hud.global_position.y, hud.size.x, hud.size.y, str(get_viewport().get_visible_rect().size)])
 	await _fase("acelera", 300, ["move_forward"])
 	await _fase("reduz_50", 240, ["move_back"], "abaixo:50")
