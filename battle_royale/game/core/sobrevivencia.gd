@@ -31,6 +31,14 @@ var molhado := 0.0                     # 0..1
 var escala := 1.0                      # multiplicador de tempo (testes)
 var perto_fogueira := false
 var ambiente_c := 20.0                 # leitura da temperatura ambiente (depuração/HUD)
+var doente_s := 0.0                    # > 0: intoxicado (carne crua, água suja ou salgada): perde vida devagar
+const DOENCA_S := 90.0
+const DOENCA_DANO_S := 6.0             # s por 1 ponto de vida enquanto doente
+const AGUA_DOCE_CHANCE_DOENCA := 0.35
+const AGUA_DOCE_VALOR := 30.0
+const AGUA_SALGADA_VALOR := -8.0
+var _dano_d := 0.0
+var _t_dica_agua := 0.0
 var isolamento := 0.0                  # 0..1 reservado para roupas (reduz o frio)
 
 var _t_fogo := 0.0
@@ -48,6 +56,18 @@ func setup(s: Soldier) -> void:
 
 
 func _physics_process(dt: float) -> void:
+	if soldier != null and soldier.alive and InputMap.has_action("beber") and Input.is_action_just_pressed("beber"):
+		var bebeu := beber_do_mundo()
+		if bebeu == "":
+			aviso.emit("Não há água por perto")
+	_t_dica_agua -= dt
+	if _t_dica_agua <= 0.0 and soldier != null and soldier.alive:
+		_t_dica_agua = 4.0
+		var ag := agua_ao_alcance()
+		if ag == "doce" and hidratacao < 85.0:
+			aviso.emit("[T] beber água do lago (pode fazer mal)")
+		elif ag == "salgada" and hidratacao < 40.0:
+			aviso.emit("Água do mar não mata a sede")
 	if soldier == null or not soldier.alive:
 		return
 	dt *= escala
@@ -99,6 +119,11 @@ func _ambiente(dt: float, correndo: bool) -> void:
 
 
 func _dano(dt: float) -> void:
+	if doente_s > 0.0:
+		doente_s = maxf(doente_s - dt, 0.0)
+		_dano_d = _acumula(_dano_d, dt, true, DOENCA_DANO_S)
+		if doente_s <= 0.0:
+			aviso.emit("Você se sente melhor")
 	_dano_f = _acumula(_dano_f, dt, energia <= 0.0, DANO_INTERVALO)
 	_dano_s = _acumula(_dano_s, dt, hidratacao <= 0.0, DANO_INTERVALO / 1.5)
 	var hipo := temperatura < TEMP_HIPO
@@ -142,8 +167,60 @@ func _checa(chave: String, v: float, msg_baixo: String, _msg_critico: String, ms
 func comer(valor: float, cru := false) -> void:
 	energia = clampf(energia + valor, 0.0, 100.0)
 	if cru:
-		aviso.emit("Carne crua... pode fazer mal. Cozinhe na fogueira.")
+		adoecer("Carne crua... você está passando mal. Cozinhe na fogueira.")
 	mudou.emit()
+
+
+## Intoxicação: DOENCA_S segundos tirando 1 de vida a cada DOENCA_DANO_S. Antibiótico (ou o tempo) cura.
+func adoecer(texto := "Você está passando mal") -> void:
+	if doente_s <= 0.0:
+		aviso.emit(texto)
+	doente_s = DOENCA_S
+	mudou.emit()
+
+
+func curar_doenca() -> void:
+	if doente_s > 0.0:
+		doente_s = 0.0
+		_dano_d = 0.0
+		aviso.emit("Você se sente melhor")
+		mudou.emit()
+
+
+## "" = sem água ao alcance; "doce" (lago/represa) ou "salgada" (mar). Água à frente dos pés, a até ALCANCE_AGUA m.
+const ALCANCE_AGUA := 2.2
+func agua_ao_alcance() -> String:
+	if soldier == null or soldier.match_ref == null or not Soldier.agua_fn.is_valid():
+		return ""
+	var ilha = soldier.match_ref.get("ilha")
+	var terr = ilha.get("terrain") if ilha != null else null
+	if terr == null:
+		return ""
+	var f := Vector3(-sin(soldier.yaw), 0.0, -cos(soldier.yaw))
+	for d in [0.0, 0.8, 1.5, ALCANCE_AGUA]:
+		var q := soldier.global_position + f * float(d)
+		var nivel: float = Soldier.agua_fn.call(q.x, q.z)
+		if nivel < -1e8:
+			continue
+		var chao: float = terr.height_world(q.x, q.z)
+		if chao < nivel - 0.05:
+			return "doce" if nivel > 0.5 else "salgada"
+	return ""
+
+
+## Bebe da água à frente (tecla T). Devolve o tipo bebido ou "".
+func beber_do_mundo() -> String:
+	var tipo := agua_ao_alcance()
+	if tipo == "":
+		return ""
+	if tipo == "doce":
+		beber(AGUA_DOCE_VALOR)
+		if randf() < AGUA_DOCE_CHANCE_DOENCA:
+			adoecer("A água estava suja... você está passando mal")
+	else:
+		beber(AGUA_SALGADA_VALOR)
+		adoecer("Água salgada! Isso piora a sede e enjoa")
+	return tipo
 
 
 func beber(valor: float) -> void:
@@ -187,4 +264,4 @@ func precisa(item_id: String) -> bool:
 func estado() -> Dictionary:
 	return {"energia": energia, "hidratacao": hidratacao, "temperatura": temperatura, "molhado": molhado,
 		"perto_fogueira": perto_fogueira, "ambiente_c": ambiente_c, "com_frio": temperatura < TEMP_FRIO,
-		"fome": energia < BAIXO, "sede": hidratacao < BAIXO}
+		"fome": energia < BAIXO, "sede": hidratacao < BAIXO, "doente": doente_s > 0.0}

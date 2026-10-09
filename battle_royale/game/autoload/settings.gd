@@ -44,6 +44,7 @@ const BINDINGS := {
 	"jump": [KEY_SPACE], "crouch": [KEY_CTRL], "walk": [KEY_ALT], "sprint": [KEY_SHIFT],
 	"fire": [MOUSE_BUTTON_LEFT], "alt_fire": [MOUSE_BUTTON_RIGHT],
 	"reload": [KEY_R], "use": [KEY_E], "drop": [KEY_G], "inspect": [KEY_F],
+	"beber": [KEY_T],   # T: bebe da água à frente (lago = doce, pode fazer mal; mar = salgada)
 	"heal": [KEY_H],   # H: usa a melhor cura (bandagem 2,5 s / kit médico 5 s); só interrompe ao atirar ou trocar de arma
 	"slot_1": [KEY_1], "slot_2": [KEY_2], "slot_3": [KEY_3], "slot_4": [KEY_4], "slot_5": [KEY_5],
 	"next_weapon": [MOUSE_BUTTON_WHEEL_DOWN], "prev_weapon": [MOUSE_BUTTON_WHEEL_UP],

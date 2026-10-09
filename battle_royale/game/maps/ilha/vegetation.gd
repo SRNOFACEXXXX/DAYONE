@@ -55,6 +55,9 @@ static func raio_tronco(me: Mesh, s: float, xf := Transform3D.IDENTITY) -> float
 ## Árvores cortáveis (arvore_mata_a/b, coqueiro): {pos, tipo, mesh, escala, xf, raio, refs:[[chave,indice]], col, viva}.
 ## `derrubar(i)` esconde a instância dos MultiMesh (transform zerado) e remove a colisão; só quem corta mexe nisto (nada por quadro).
 var arvores: Array = []
+## Pedras pequenas mineráveis com picareta (cada uma rende PEDRAS_POR_ROCHA pedras e fica esgotada; o modelo continua como cenário).
+const PEDRAS_POR_ROCHA := 3
+var pedras: Array = []
 var _mm_chave := {}            # chave do grupo -> MultiMesh
 var _mm_copa := {}             # chave da copa -> MultiMesh
 var auditoria: Array = []     # tests/props_andar.gd (--audit_props): pontos sólidos de cada instância não-rasteira
@@ -176,6 +179,8 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 				i += passo
 			auditoria.append({"tipo": tipo_base + ("" if tipo == tipo_base else "|" + tipo), "pos": xf.origin, "pts": pts,
 				"basis": Basis(Vector3.UP, deg_to_rad(float(it.get("rot_deg", 0.0))))})
+		if tipo_base == "pedra_pequena":
+			pedras.append({"pos": Vector3(x, y, z), "restante": PEDRAS_POR_ROCHA})
 		if tipo_base == "pedra_pequena" and not Game.test_args.has("colisao_antiga"):
 			# pedras do pacote: casco convexo da malha (antes só o docstring dizia "colisão nos troncos/pedras": não havia)
 			if not _col_pedra.has(tipo):
@@ -337,6 +342,31 @@ func _copas_longe(xfs: Array, tipo: String, chave := "") -> void:
 	mmi.visibility_range_end = 1600.0
 	mmi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(mmi)
+
+
+## Índice da pedra mineravel (com pedras sobrando) mais próxima de `p` dentro de `raio` m, ou -1.
+func pedra_mais_proxima(p: Vector3, raio: float) -> int:
+	var melhor := -1
+	var dmin := raio * raio
+	for i in pedras.size():
+		var a: Dictionary = pedras[i]
+		if int(a.restante) <= 0:
+			continue
+		var d: Vector3 = (a.pos as Vector3) - p
+		var d2 := d.x * d.x + d.z * d.z
+		if d2 < dmin:
+			dmin = d2
+			melhor = i
+	return melhor
+
+
+## Tem alguma pedra (esgotada ou não) por perto? Para a dica "esgotada".
+func ha_pedra_perto(p: Vector3, raio: float) -> bool:
+	for a in pedras:
+		var d: Vector3 = (a.pos as Vector3) - p
+		if d.x * d.x + d.z * d.z < raio * raio:
+			return true
+	return false
 
 
 ## Índice da árvore viva mais próxima de `p` (plano XZ) dentro de `raio` m, ou -1. Só é chamado ao golpear (varredura linear, ~1,5 mil árvores).

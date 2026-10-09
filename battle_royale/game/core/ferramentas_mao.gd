@@ -268,7 +268,39 @@ func _impacto() -> void:
 		else:
 			m.hud_message.emit("Chegue perto de uma árvore", 1.0)
 	elif em_id == "picareta":
-		m.hud_message.emit("Sem pedras para minerar aqui", 1.0)
+		_minerar(s)
+
+
+## Picareta: a pedra pequena mais próxima à frente rende 1 pedra a cada GOLPES_PEDRA golpes (3 pedras por rocha).
+const GOLPES_PEDRA := 3
+var _golpes_pedra := {}
+
+
+func _minerar(s: Soldier) -> void:
+	var ilha = m.get("ilha")
+	var veg: IlhaVegetation = ilha.get_node_or_null("Vegetacao") if ilha != null else null
+	if veg == null:
+		return
+	var f := s.aim_dir()
+	f.y = 0.0
+	f = f.normalized() if f.length() > 0.01 else Vector3.FORWARD
+	var i := veg.pedra_mais_proxima(s.global_position + f * 1.2, 2.0)
+	if i < 0:
+		m.hud_message.emit("Pedra esgotada" if veg.ha_pedra_perto(s.global_position + f * 1.2, 2.0) else "Chegue perto de uma pedra", 1.0)
+		return
+	var r: Dictionary = veg.pedras[i]
+	var n: int = int(_golpes_pedra.get(i, 0)) + 1
+	var som := "impact_stone" if Audio.has_sound("impact_stone") else "impact_metal"
+	Audio.play_at(som, r.pos, {"volume_db": 2.0, "pitch": 0.9 + 0.05 * (n % 3), "max_distance": 50.0})
+	Audio.emitir_barulho(r.pos, 22.0, null)
+	pc.shake(0.2)
+	if n >= GOLPES_PEDRA:
+		_golpes_pedra.erase(i)
+		r.restante = int(r.restante) - 1
+		m.criar_drop("pedra", 1, s.global_position + f * 1.0 + Vector3(randf_range(-0.3, 0.3), 0.0, randf_range(-0.3, 0.3)))
+		m.hud_message.emit("+1 pedra", 1.0)
+	else:
+		_golpes_pedra[i] = n
 
 
 # ------------------------------------------------------------------ fogueira

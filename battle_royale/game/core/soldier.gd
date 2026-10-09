@@ -450,6 +450,11 @@ func _cura_contar(item_id: String) -> int:
 
 
 ## Nó core/sobrevivencia.gd (fome/sede/frio) do jogador local; null em bots.
+func _doente() -> bool:
+	var sv := sobrevivencia()
+	return sv != null and float(sv.doente_s) > 0.0
+
+
 func sobrevivencia() -> Node:
 	return get_node_or_null("Sobrevivencia")
 
@@ -468,7 +473,7 @@ func usar_cura(item_id: String) -> bool:
 		var sv := sobrevivencia()
 		if sv == null or not sv.precisa(item_id):
 			return false
-	elif health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))):
+	elif health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))) and not (bool(def.get("cura_doenca", false)) and _doente()):
 		return false
 	if _cura_contar(item_id) < 1:
 		return false
@@ -543,6 +548,10 @@ func _cura_tick(dt: float) -> void:
 	health = mini(MAX_HEALTH, health + int(def.get("heal", 0)))
 	if bool(def.get("stop_bleed", false)):
 		sangrando = false
+	if bool(def.get("cura_doenca", false)):
+		var sv2 := sobrevivencia()
+		if sv2 != null:
+			sv2.curar_doenca()
 	Audio.play_at("heal_done", eye_position(), {"volume_db": -6.0, "max_distance": 14.0})
 	cura_finished.emit(id, health - antes)
 
