@@ -35,9 +35,9 @@ var _alvos_cache: Array = []
 ## dentro do raio da cidade. Cidade que fica a mais de CIDADE_SOLTA m perde os zumbis que não estão caçando (memória/CPU:
 ## no máximo umas 2-3 cidades ativas ao mesmo tempo). Mortos voltam aos poucos (1 a cada RESPAWN_S s por cidade).
 @export_range(0, 60, 1) var por_cidade := 20
-@export_range(10, 200, 1) var max_vivos := 70
+@export_range(10, 200, 1) var max_vivos := 90
 const CIDADE_ATIVA := 210.0
-const CIDADE_SOLTA := 330.0
+const CIDADE_SOLTA := 260.0
 const SPAWN_INTERVALO := 0.22
 const RESPAWN_S := 120.0
 var city_radii: Array[float] = []
@@ -263,9 +263,10 @@ func _atualizar_cidades(dt: float) -> void:
 		if d > CIDADE_ATIVA + city_radii[i]:
 			continue
 		var alvo := por_cidade - int(floor(_mortos[i]))
-		if por_cid[i] < alvo and vivos_total < max_vivos and _spawn_t <= 0.0:
+		for k in 2:   # até 2 por atualização (0,5 s): a cidade enche em ~5 s, sem engasgo de 20 instâncias de uma vez
+			if por_cid[i] >= alvo or vivos_total >= max_vivos:
+				break
 			if _spawn_na_cidade(i):
-				_spawn_t = SPAWN_INTERVALO
 				vivos_total += 1
 				por_cid[i] += 1
 

@@ -18,7 +18,7 @@ func _ready() -> void:
 		p.global_position = c + Vector3(0, 2, 0)
 		p.velocity = Vector3.ZERO
 		p.reset_physics_interpolation()
-		for f in 60 * 12:
+		for f in 60 * 20:
 			await get_tree().physics_frame
 		var n := 0
 		for z in zd.get_children():
