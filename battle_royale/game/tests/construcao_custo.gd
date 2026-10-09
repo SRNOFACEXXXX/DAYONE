@@ -8,6 +8,8 @@ func _ready() -> void:
 	await m.match_initialized
 	while m.br_loot_root == null:
 		await get_tree().process_frame
+	while m.construction_system == null:
+		await get_tree().process_frame
 	var cs: ConstructionSystem = m.construction_system
 	var bag: BRInventory = m.br_bag
 	var fund: Dictionary = ConstructionSystem.PIECES[0]

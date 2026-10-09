@@ -120,7 +120,7 @@ func _ready() -> void:
 	print("COZIDA=", _contar(bag, "carne_cozida"), " CRUA=", _contar(bag, "carne_crua"))
 	_ok(_contar(bag, "carne_cozida") >= 1 and _contar(bag, "carne_crua") <= 1, "carne crua virou carne cozida")
 	# lenha
-	var antes := f.minutos()
+	var antes: float = f.minutos()
 	await _tecla(KEY_V)
 	_ok(f.minutos() > antes and _contar(bag, "graveto") == 3, "V pôs graveto (+%.1f min)" % (f.minutos() - antes))
 	# apaga quando acaba

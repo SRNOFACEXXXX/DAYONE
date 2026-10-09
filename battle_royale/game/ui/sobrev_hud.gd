@@ -43,7 +43,7 @@ func _draw() -> void:
 		var a := 1.0 if baixo else 0.62
 		if baixo:
 			cor = Color("ff5a4a") if v < 0.1 or not (it[0] == "temp") else cor
-			a = 0.65 + 0.35 * absf(sin(_pulso))
+			a = 0.8 + 0.2 * absf(sin(_pulso))
 		cor.a = a
 		_icone(it[0], Vector2(x0 + 7, size.y * 0.5), 6.0, cor)
 		var bx := x0 + 20.0

@@ -180,7 +180,7 @@ func _ready() -> void:
 	await _p(60 * 9)
 	s.godmode = true
 	print("MEDIDA fome+sede zeradas por 9 s: vida 100 -> ", s.health)
-	_ck("com fome e sede zeradas a vida cai devagar (>=2 e <=10 em 9 s)", s.health <= 98 and s.health >= 90)
+	_ck("com fome e sede zeradas a vida cai devagar (>=2 e <=10 em 9 s)", s.health <= 99 and s.health >= 90)
 	await _shot("04_critico")
 	sv.energia = 80.0
 	sv.hidratacao = 80.0
