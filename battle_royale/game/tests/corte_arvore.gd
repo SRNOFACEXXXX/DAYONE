@@ -27,7 +27,8 @@ func _tecla(kc: int) -> void:
 	e.pressed = true
 	Input.parse_input_event(e)
 	await get_tree().physics_frame
-	await get_tree().physics_frame
+	await get_tree().process_frame
+	await get_tree().process_frame
 	var e2 := InputEventKey.new()
 	e2.physical_keycode = kc as Key
 	e2.keycode = kc as Key

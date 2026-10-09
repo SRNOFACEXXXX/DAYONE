@@ -28,7 +28,8 @@ func _tecla(kc: int) -> void:
 		e.pressed = pressed
 		Input.parse_input_event(e)
 		await get_tree().physics_frame
-		await get_tree().physics_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
 
 
 func _contar(bag: BRInventory, id: String) -> int:
