@@ -81,3 +81,9 @@ Regra: item só sai da lista com medição/captura que prove. Cada volta grava d
 - [x] Loot: 10ª coluna "utilidades" nos móveis (ferramentas na oficina, remédios no banheiro/criado-mudo, miudezas nas casas) e itens médicos/peças.
 - [x] Zumbis por cidade (VERIFICADO tests/zumbis_cidade): 3 cidades visitadas com 20 vivos cada (nascem em ~5 s, fora da vista); o jogador de teste precisa de godmode ou morre cercado.
 - [x] Combustível e fuga (VERIFICADO tests/combustivel_barco): galão + F perto do carro enche 20 L (7%→57%), consumo ligado em todos os carros da partida; o barco MARÉ MANSA só foge com galão x2, bateria, kit de reparo x2, corda x2 e tora x4.
+
+## 2026-10-09 — água, doença e mineração
+- **Picareta minera pedras** (3 golpes → 1 pedra, 3 por rocha; `ferramentas_mao._minerar`, `vegetation.pedra_mais_proxima`). 409 pedras mineráveis no mapa.
+- **Beber do mundo (T)**: lago/represa = suja (adoece), mar = salgada (piora a sede, enjoa). Carne crua adoece; **antibiótico** cura (`cura_doenca`). Estado "doente" no HUD/`Sobrevivencia.estado()`.
+- Teste: `tests/agua_doenca_pedra` (falhas=0, capturas `00_mar`/`01_pedra`). Regressão ok: inventario_real, troca_armas, base_bau_cura, sobrevivencia_real.
+- Lição: `ver.sh` já usa flock; não envolver em outro flock (deadlock).

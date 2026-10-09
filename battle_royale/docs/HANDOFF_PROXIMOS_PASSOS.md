@@ -12,7 +12,7 @@ Falta o **loop de sobrevivência de verdade**: coletar recursos, craftar, caçar
 - **Zumbis:** 20 por cidade perto do jogador (`ZombieDirector`); morte com pedaços/membros (`fx/pedacos.gd`, `core/zumbi_desmembrar.gd`); sons refeitos (`tools/gen_zumbi_audio.py`), grilos "de sino" desligados.
 - **Carro:** marchas/RPM, dano por batida, HUD, combustível com galão (F perto do carro). **Objetivo final:** consertar o barco MARÉ MANSA (praia sul) com galão x2, bateria, kit x2, corda x2, tora x4 → tela de fuga (`core/barco_fuga.gd`).
 - **Itens por dados:** `game/data/itens/*.json` (28 modelos em `assets/models/itens/`, gerados por `tools/blender/gerar_itens.py`).
-- **PENDENTE:** colisão da cerca de arame (não colide nem na versão estável); raízes/galhos baixos de árvores atravessáveis; carne crua não adoece; água do mar/rio; som de fogueira; picareta/mineração; pesca; roupas/isolamento; salvar progresso (fogueira, fome); medir FPS na GT 730 (aqui o render é por CPU).
+- **PENDENTE:** colisão da cerca de arame (não colide nem na versão estável); raízes/galhos baixos de árvores atravessáveis; som de fogueira; pesca; roupas/isolamento; salvar progresso (fogueira, fome); medir FPS na GT 730 (aqui o render é por CPU).
 
 ## Missão (em ordem de prioridade) — cada item: implementar → teste no jogo real → captura → medir FPS → registrar
 > Sem HUD feio e sem animação feia. Animações: Mixamo (`Assets/animações`) via retarget (`cinematic/mx_retarget.gd`, `core/zombie_pose_copy.gd`) ou clipes do pack. UI: reutilize `ui/ui_style.gd`, `ui/yui.gd` e o padrão do inventário BR.
