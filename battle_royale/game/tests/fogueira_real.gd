@@ -121,11 +121,13 @@ func _ready() -> void:
 	_ok(_contar(bag, "carne_cozida") >= 1 and _contar(bag, "carne_crua") <= 1, "carne crua virou carne cozida")
 	# lenha
 	var antes: float = f.minutos()
+	print("DBG antes=", antes, " graveto=", _contar(bag, "graveto"), " livre=", pc.ferramentas._livre(), " acesa=", f.acesa, " proc=", f.is_processing())
 	await _tecla(KEY_V)
 	_ok(f.minutos() > antes and _contar(bag, "graveto") == 3, "V pôs graveto (+%.1f min)" % (f.minutos() - antes))
 	# apaga quando acaba
 	f.combustivel_s = 2.0
 	await get_tree().create_timer(3.0).timeout
+	print("DBG depois comb=", f.combustivel_s, " acesa=", f.acesa)
 	_ok(not f.acesa and get_tree().get_nodes_in_group("fogueira_acesa").is_empty(), "apagou ao acabar a lenha")
 	await _shot("07_apagada_fim")
 	print("RESULT fogueira_real ", "PASSOU" if falhas == 0 else "FALHOU %d" % falhas)

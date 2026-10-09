@@ -23,6 +23,7 @@ var _cd := 0.0
 var _dica: Label
 var _barra: Control
 var _barra_fill: ColorRect
+var _bloqueio := false   # clique ainda apertado depois de largar o item: não deixa a arma atirar
 var _prog := 0.0
 var _modo := ""
 var _t_dica := 0.0
@@ -103,7 +104,7 @@ func consumir(id: String, qtd: int) -> bool:
 
 
 func ocupa_mao() -> bool:
-	return em_id != ""
+	return em_id != "" or _bloqueio
 
 
 func _livre() -> bool:
@@ -141,6 +142,7 @@ func desequipar() -> void:
 		return
 	em_id = ""
 	em_uid = -1
+	_bloqueio = Input.is_action_pressed("fire")
 	_swing = -1.0
 	if _mao != null and is_instance_valid(_mao):
 		_mao.queue_free()
@@ -212,6 +214,8 @@ func _physics_process(dt: float) -> void:
 	if pc == null or pc.soldier == null:
 		return
 	_cd = maxf(0.0, _cd - dt)
+	if _bloqueio and not Input.is_action_pressed("fire"):
+		_bloqueio = false
 	var b := _bag()
 	if em_id != "":
 		if b == null or b.get_item(em_uid).is_empty() or not pc.soldier.alive or pc.active_vehicle != null:

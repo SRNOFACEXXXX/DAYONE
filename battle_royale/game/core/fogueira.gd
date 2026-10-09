@@ -67,14 +67,25 @@ func _ready() -> void:
 	_luz = OmniLight3D.new()
 	_luz.light_color = Color("ff9a3c")
 	_luz.light_energy = 0.0
-	_luz.omni_range = 9.0
+	_luz.omni_range = 8.0
 	_luz.shadow_enabled = false
 	_luz.distance_fade_enabled = true
 	_luz.distance_fade_begin = 45.0
 	_luz.distance_fade_length = 15.0
 	_luz.position = Vector3(0, 0.8, 0)
 	add_child(_luz)
+	var gt := GradientTexture2D.new()   # bolinha macia (sem isso as partículas viram retângulos)
+	gt.fill = GradientTexture2D.FILL_RADIAL
+	gt.fill_from = Vector2(0.5, 0.5)
+	gt.fill_to = Vector2(0.5, 0.0)
+	gt.width = 64
+	gt.height = 64
+	var gg := Gradient.new()
+	gg.set_color(0, Color(1, 1, 1, 1))
+	gg.set_color(1, Color(1, 1, 1, 0))
+	gt.gradient = gg
 	var mat := StandardMaterial3D.new()
+	mat.albedo_texture = gt
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat.blend_mode = BaseMaterial3D.BLEND_MODE_ADD
@@ -82,9 +93,9 @@ func _ready() -> void:
 	mat.billboard_mode = BaseMaterial3D.BILLBOARD_ENABLED
 	mat.albedo_color = Color(1, 1, 1, 1)
 	var quad := QuadMesh.new()
-	quad.size = Vector2(0.38, 0.38)
+	quad.size = Vector2(0.5, 0.5)
 	_fogo = CPUParticles3D.new()
-	_fogo.amount = 14
+	_fogo.amount = 12
 	_fogo.lifetime = 0.7
 	_fogo.direction = Vector3.UP
 	_fogo.spread = 12.0
@@ -109,6 +120,7 @@ func _ready() -> void:
 	_fogo.emitting = false
 	add_child(_fogo)
 	var mat2 := StandardMaterial3D.new()
+	mat2.albedo_texture = gt
 	mat2.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mat2.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mat2.vertex_color_use_as_albedo = true
@@ -116,7 +128,7 @@ func _ready() -> void:
 	var quad2 := QuadMesh.new()
 	quad2.size = Vector2(0.5, 0.5)
 	_fumaca = CPUParticles3D.new()
-	_fumaca.amount = 8
+	_fumaca.amount = 6
 	_fumaca.lifetime = 2.6
 	_fumaca.direction = Vector3.UP
 	_fumaca.spread = 10.0
@@ -148,7 +160,7 @@ func acender() -> bool:
 	add_to_group("fogueira_acesa")
 	_fogo.emitting = true
 	_fumaca.emitting = true
-	_luz.light_energy = 1.6
+	_luz.light_energy = 1.2
 	set_process(true)
 	return true
 
@@ -180,4 +192,4 @@ func _process(dt: float) -> void:
 		return
 	# luz bruxuleante e fraca no fim da lenha
 	var fim := clampf(combustivel_s / 20.0, 0.25, 1.0)
-	_luz.light_energy = (1.5 + 0.25 * sin(_t * 11.0) + 0.15 * sin(_t * 23.0 + 1.3)) * fim
+	_luz.light_energy = (1.1 + 0.2 * sin(_t * 11.0) + 0.1 * sin(_t * 23.0 + 1.3)) * fim
