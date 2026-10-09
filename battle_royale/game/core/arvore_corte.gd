@@ -207,11 +207,11 @@ func _respawn(i: int) -> void:
 ## 5 toras em leque em volta do toco, do lado de onde o lenhador cortou (ao alcance dos 3 m de PROXIMIDADE).
 func _spawn_toras(base: Vector3, dir: Vector3) -> Array:
 	var out: Array = []
-	var voltar := -dir
+	# em volta do toco, nos flancos e atrás (vistas de quem corta, a ≤ 3 m dele); ângulos medidos a partir da direção da queda
+	var angs := [-105.0, -80.0, 80.0, 105.0, 180.0]
 	for k in TORAS_POR_ARVORE:
-		var ang := deg_to_rad((float(k) - 2.0) * 38.0)
-		var d := voltar.rotated(Vector3.UP, ang)
-		var pos := base + d * (1.35 + 0.15 * float(k % 2))
+		var d := dir.rotated(Vector3.UP, deg_to_rad(float(angs[k])))
+		var pos := base + d * (1.15 + 0.12 * float(k % 2))
 		out.append(drop_com_modelo(match_ref, "tora", 1, pos, randf() * TAU))
 	return out
 

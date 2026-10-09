@@ -126,6 +126,7 @@ func equipar(uid: int) -> bool:
 	var path := String(BRInventory.definition(em_id).get("model_path", ""))
 	if path != "" and ResourceLoader.exists(path):
 		var sc: Node3D = (load(path) as PackedScene).instantiate()
+		sc.scale = Vector3.ONE * 0.65
 		_mao.add_child(sc)
 		for g in sc.find_children("*", "GeometryInstance3D", true, false):
 			(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

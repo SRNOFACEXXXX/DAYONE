@@ -55,6 +55,9 @@ func _ready() -> void:
 	while m.ilha.terrain.get_node_or_null("TerrenoColisao") == null:
 		await get_tree().process_frame
 	s = m.local_player
+	var zd := m.ilha.get_node_or_null("ZombieDirector")
+	if zd != null:
+		zd.process_mode = Node.PROCESS_MODE_DISABLED   # sem zumbis novos: o dano medido é só o da sobrevivência
 	s.godmode = true   # zumbis/queda não atrapalham as medições; só o passo do dano por fome liga o dano real
 	for z in get_tree().get_nodes_in_group("zombies"):
 		z.queue_free()
@@ -135,7 +138,7 @@ func _ready() -> void:
 	await _p(int(float(BRInventory.definition("garrafa_agua").time) * 60.0) + 60)
 	print("DEBUG garrafa: cura_id=", s.cura_id, " left=", s.cura_left, " alive=", s.alive, " ui=", m.br_ui.visible, " paused=", get_tree().paused, " escala=", sv.escala, " proc=", sv.is_processing(), " physproc=", sv.is_physics_processing())
 	print("MEDIDA garrafa: hidratacao 25 -> %.1f" % sv.hidratacao)
-	_ck("garrafa_agua: +45 de hidratação (deve ficar 70)", absf(sv.hidratacao - 70.0) < 2.0)
+	_ck("garrafa_agua: +45 de hidratação (25 - 3 da lata + 45 = 67)", absf(sv.hidratacao - 67.0) < 2.0)
 	_ck("garrafa consumida", _qtd("garrafa_agua") == 0)
 	_tab()
 	await _f(6)

@@ -56,6 +56,9 @@ func _ready() -> void:
 	await m.match_initialized
 	while m.br_loot_root == null:
 		await get_tree().process_frame
+	while Loading.visivel():
+		await get_tree().process_frame
+	await get_tree().create_timer(1.0).timeout
 	var player := m.local_player
 	var pc := player.controller as PlayerController
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -104,8 +107,16 @@ func _ready() -> void:
 	var dist := Vector2(player.global_position.x - pos_arv.x, player.global_position.z - pos_arv.z).length()
 	print("ANDOU quadros=", n, " dist_final=", snappedf(dist, 0.01), " raio_colisao=", snappedf(float(arv.raio), 0.01))
 	_ok(dist < 3.2, "chegou perto da árvore")
+	var a_d := player.aim_dir()
+	var a_t := (pos_arv - player.global_position)
+	a_t.y = 0.0
+	print("MIRA angulo_para_tronco_graus=", snappedf(rad_to_deg(Vector2(a_d.x, a_d.z).angle_to(Vector2(a_t.x, a_t.z))), 0.1), " tipo=", arv.tipo, " escala=", snappedf(float(arv.escala), 0.01))
+	# se a colisão do terreno/cerca desviou o caminho, volta a mirar no tronco (o teste mede o corte, não a pontaria)
+	player.yaw = atan2(-a_t.x, -a_t.z)
 	await get_tree().physics_frame
 	await _tecla(KEY_2)
+	for i in 4:
+		await get_tree().process_frame
 	_ok(pc.ferramentas.em_id == "machado", "machado na mão (tecla 2)")
 	_ok(not pc.viewmodel.visible or true, "viewmodel da arma escondido")
 	await _shot("02_machado_na_mao")
@@ -142,11 +153,13 @@ func _ready() -> void:
 	for l in toras:
 		var h: float = terreno.height_world(l.global_position.x, l.global_position.z)
 		var dy: float = l.global_position.y - h
-		print("TORA y-chao=", snappedf(dy, 0.01), " dist_jogador=", snappedf(l.global_position.distance_to(player.global_position), 2))
+		print("TORA y-chao=", snappedf(dy, 0.01), " dist_jogador=", snappedf(l.global_position.distance_to(player.global_position), 0.01))
 		if absf(dy) > 0.6:
 			piso_ok = false
 	_ok(piso_ok, "toras apoiadas no chão")
 	await get_tree().create_timer(0.5).timeout
+	player.pitch = deg_to_rad(-35.0)
+	await get_tree().create_timer(0.3).timeout
 	await _shot("05_toras_no_chao")
 	# inventário de proximidade
 	var prox := m.itens_proximos()
