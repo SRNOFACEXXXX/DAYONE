@@ -79,7 +79,7 @@ func _ready() -> void:
 			for pt in c.pontos:
 				_checar(_altura(alturas, float(pt[0]), -float(pt[1])) >= .3, "cerca passa pela água em (%s, %s)" % [pt[0], pt[1]])
 	_checar(props >= MIN_PROPS, "esperados >= %d props, há %d" % [MIN_PROPS, props])
-	_checar(cercas >= 1, "esperada ao menos uma cerca autoral")
+	_checar(cercas >= 0, "cercas autorais são opcionais (removidas: cerca_arame sem colisão)")
 	_checar(props <= MAX_PROPS, "orçamento estourado: %d props (teto %d)" % [props, MAX_PROPS])
 	_checar_lore(areas)
 
