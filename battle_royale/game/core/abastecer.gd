@@ -3,6 +3,7 @@ extends Node
 ## (F perto do carro, +20 L, gasta o galão). Sem class_name (preload em maps/ilha/ilha.gd).
 const LITROS_GALAO := 20.0
 const ALCANCE := 3.6
+const PONTOS_KIT := 50.0
 var _dica: Label3D
 var _t := 0.0
 
@@ -40,10 +41,31 @@ func _process(dt: float) -> void:
 		return
 	var tem := _galoes(bag) > 0
 	var cheio: bool = alvo.combustivel_frac() > 0.97
+	var kit := _contar(bag, "kit_reparo") > 0
+	var batido: bool = alvo.vida_frac() < 0.98
 	_dica.global_position = alvo.global_position + Vector3.UP * 1.8
-	_dica.text = ("Tanque cheio" if cheio else "[F] Abastecer (galão)") if tem else "Tanque %d%% — precisa de um GALÃO" % int(alvo.combustivel_frac() * 100.0)
-	if tem and not cheio and Input.is_action_just_pressed("inspect"):
-		abastecer(alvo, bag)
+	var linhas: PackedStringArray = []
+	linhas.append(("Tanque cheio" if cheio else "[F] Abastecer (galão)") if tem else "Tanque %d%% — precisa de um GALÃO" % int(alvo.combustivel_frac() * 100.0))
+	if batido:
+		linhas.append("[F] Consertar (kit de reparo)" if kit else "Lataria %d%% — precisa de um KIT DE REPARO" % int(alvo.vida_frac() * 100.0))
+	_dica.text = "\n".join(linhas)
+	if Input.is_action_just_pressed("inspect"):
+		if tem and not cheio:
+			abastecer(alvo, bag)
+		elif kit and batido:
+			consertar(alvo, bag)
+
+
+## Gasta 1 kit de reparo e devolve PONTOS_KIT de vida ao carro. Devolve true se consertou.
+func consertar(carro: Node, bag: BRInventory) -> bool:
+	for it in bag.items:
+		if String(it.id) == "kit_reparo":
+			bag.remove_item(int(it.uid), 1)
+			carro.reparar(PONTOS_KIT)
+			if Audio.has_sound("loot_open"):
+				Audio.play("loot_open", {"volume_db": -3.0})
+			return true
+	return false
 
 
 ## Gasta 1 galão da mochila e põe LITROS_GALAO no tanque. Devolve true se abasteceu.
@@ -59,8 +81,12 @@ func abastecer(carro: Node, bag: BRInventory) -> bool:
 
 
 static func _galoes(bag: BRInventory) -> int:
+	return _contar(bag, "galao")
+
+
+static func _contar(bag: BRInventory, id: String) -> int:
 	var n := 0
 	for it in bag.items:
-		if String(it.id) == "galao":
+		if String(it.id) == id:
 			n += int(it.qty)
 	return n

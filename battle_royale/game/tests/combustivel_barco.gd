@@ -35,6 +35,24 @@ func _ready() -> void:
 	print("COMB antes=%.2f depois=%.2f galoes_restantes=%d consumo_ligado=%s" % [antes, depois, galoes, car.usar_combustivel])
 	if depois <= antes + 0.3 or galoes != 0 or not car.usar_combustivel:
 		falhas += 1
+	# kit de reparo: F com o carro batido repara e gasta o kit
+	car.vida = 30.0
+	m.br_bag.add_item("kit_reparo", 1)
+	for i in 40:
+		await get_tree().physics_frame
+	Input.action_press("inspect")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	Input.action_release("inspect")
+	for i in 20:
+		await get_tree().physics_frame
+	var kits := 0
+	for it in m.br_bag.items:
+		if String(it.id) == "kit_reparo":
+			kits += int(it.qty)
+	print("REPARO vida=%.0f kits_restantes=%d" % [car.vida, kits])
+	if car.vida < 79.0 or kits != 0:
+		falhas += 1
 	# barco de fuga
 	var barco := get_tree().get_first_node_in_group("barco_fuga")
 	print("BARCO existe=%s faltando=%s" % [barco != null, str(barco.faltando()) if barco else "-"])
