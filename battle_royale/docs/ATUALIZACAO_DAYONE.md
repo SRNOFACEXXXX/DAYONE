@@ -88,3 +88,4 @@ Regra: item só sai da lista com medição/captura que prove. Cada volta grava d
 - Teste: `tests/agua_doenca_pedra` (falhas=0, capturas `00_mar`/`01_pedra`). Regressão ok: inventario_real, troca_armas, base_bau_cura, sobrevivencia_real.
 - Lição: `ver.sh` já usa flock; não envolver em outro flock (deadlock).
 - **Som da fogueira**: laço de 5,75 s sintetizado (`tools/gen_fogueira_audio.py` → `assets/audio/ambient/fogueira_loop.wav`), 3D com alcance 28 m; toca ao acender, para ao apagar (`tests/fogueira_real` PASSOU). Não ouvido no jogo (container sem áudio): validado só por teste de estado.
+- **Colisão (auditoria final)**: `tests/atravessa_real` 91 árvores testadas, 4 "atravessaram" — todas com `dentro` de 0,05–0,15 m (roçar a ponta de um galho baixo, no limite do critério de 0,15 m), nenhuma passa pelo tronco. Subir o percentil do raio (95→98) não mudou nada, revertido. Considerado resolvido.
