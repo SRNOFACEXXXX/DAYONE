@@ -4,6 +4,16 @@
 Temos um jogo de sobrevivência jogável: **zumbis** (IA, sentidos, LOD, variantes, mortes variadas), **armas** realistas (AK, M4, Mosin, M107, M249, Uzi, pistolas; ADS, miras holográfica/ACOG/luneta, balística, coice, som em camadas), **dano** por zona (cabeça ≈50%, corpo ≈20%), **itens/inventário** (grade estilo DayZ, mochila, baús, proximidade), **construção** de base (`ConstructionSystem`), **carros** dirigíveis, **clima/dia-noite**, **água**, **portas/escadas**, **criador de personagem**, trailer de 2 min e cutscene de abertura.
 Falta o **loop de sobrevivência de verdade**: coletar recursos, craftar, caçar, evoluir a base. É a missão das próximas IAs.
 
+## Estado em 2026-10-09 (o que ENTROU nesta volta, verificado no Godot — detalhes em `ATUALIZACAO_DAYONE.md`)
+- **Sobrevivência:** fome/sede/temperatura (`core/sobrevivencia.gd`), comida e bebida consumíveis, HUD fina.
+- **Madeira e construção:** machado na mão derruba árvore (6 golpes, tomba, 5 toras no chão → inventário de proximidade → mochila); construção custa **toras** (5 = fundação, 3 = parede) (`core/arvore_corte.gd`, `core/construction_system.gd`).
+- **Fogueira:** kit/gravetos + fósforos, queima por tempo, cozinha carne, aquece (`core/fogueira.gd`).
+- **Animais:** cervo, galinha, cachorro, lobo à noite (`core/animal.gd`, `animal_director.gd`); tiro, esfola com faca → carne, pele, gordura, osso. Modelos gerados por script: `tools/blender/animar_animais.py`.
+- **Zumbis:** 20 por cidade perto do jogador (`ZombieDirector`); morte com pedaços/membros (`fx/pedacos.gd`, `core/zumbi_desmembrar.gd`); sons refeitos (`tools/gen_zumbi_audio.py`), grilos "de sino" desligados.
+- **Carro:** marchas/RPM, dano por batida, HUD, combustível com galão (F perto do carro). **Objetivo final:** consertar o barco MARÉ MANSA (praia sul) com galão x2, bateria, kit x2, corda x2, tora x4 → tela de fuga (`core/barco_fuga.gd`).
+- **Itens por dados:** `game/data/itens/*.json` (28 modelos em `assets/models/itens/`, gerados por `tools/blender/gerar_itens.py`).
+- **PENDENTE:** colisão da cerca de arame (não colide nem na versão estável); raízes/galhos baixos de árvores atravessáveis; carne crua não adoece; água do mar/rio; som de fogueira; picareta/mineração; pesca; roupas/isolamento; salvar progresso (fogueira, fome); medir FPS na GT 730 (aqui o render é por CPU).
+
 ## Missão (em ordem de prioridade) — cada item: implementar → teste no jogo real → captura → medir FPS → registrar
 > Sem HUD feio e sem animação feia. Animações: Mixamo (`Assets/animações`) via retarget (`cinematic/mx_retarget.gd`, `core/zombie_pose_copy.gd`) ou clipes do pack. UI: reutilize `ui/ui_style.gd`, `ui/yui.gd` e o padrão do inventário BR.
 

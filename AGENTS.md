@@ -13,10 +13,12 @@ PC-alvo fraco: i7-3770 + GeForce GT 730 → meta 60 FPS em 1024×768. Projeto Go
 3. `battle_royale/docs/ACERTOS_E_ERROS.md` — o que funcionou e o que deu errado (não repita).
 4. `battle_royale/docs/ECONOMIA_DE_TOKENS.md` — como trabalhar rápido e barato (estudo de dev).
 5. `battle_royale/docs/ATUALIZACAO_DAYONE.md` — backlog histórico e "Volta 2026-10-07".
-6. `battle_royale/docs/HANDOFF_PROMPT.md`, `NOITE_PLANO.md`, `SOBREVIVENCIA_PLANO.md` — contexto antigo (BR → sobrevivência).
+6. `battle_royale/docs/TESTE_VISUAL.md` — **como rodar o jogo de verdade e VER (capturas) antes de dizer "feito"**. Obrigatório.
+7. `battle_royale/docs/HANDOFF_PROMPT.md`, `NOITE_PLANO.md`, `SOBREVIVENCIA_PLANO.md` — contexto antigo (BR → sobrevivência).
 
 ## Regras do dono (obrigatórias)
 - **Nunca faça perguntas** ao dono: decida com bom senso e siga trabalhando.
+- **Código "revisado à mão" que quebra o jogo é o erro nº 1 (carro que não virava, barraca de 474 m).** Rode o Godot (há build Linux em `/tmp/godot_dl` quando existir; senão baixe o 4.7.1 de github.com/godotengine/godot-builds) e abra a folha de contato (`tools/visual/ver.sh`).
 - **Testar o jogo REAL** (partida `BRMatch` com `Soldier`/inputs reais), olhar capturas PNG e medir. Só diga "resolvido" com medição + captura.
 - Rodar o Godot **um processo por vez** (processos órfãos travam tudo e deixam a janela cinza).
 - No máximo **1 subagente de apoio**; nunca modelos baratos para tarefas visuais/de física; nada de enxame de agentes.
