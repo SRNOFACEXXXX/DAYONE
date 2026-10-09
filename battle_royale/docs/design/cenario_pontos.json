@@ -312,7 +312,34 @@
 					"alcance": 150
 				}
 			],
-			"lore": "pasto"
+			"lore": "pasto",
+			"cercas": [
+				{
+					"tipo": "cerca_madeira",
+					"pontos": [
+						[
+							-170.0,
+							332.0
+						],
+						[
+							-134.0,
+							332.0
+						],
+						[
+							-134.0,
+							356.0
+						],
+						[
+							-170.0,
+							356.0
+						],
+						[
+							-170.0,
+							332.0
+						]
+					]
+				}
+			]
 		},
 		{
 			"nome": "Barcos encalhados e canoas na costa",
@@ -702,6 +729,25 @@
 					"rot_deg": 10,
 					"alcance": 150
 				}
+			],
+			"cercas": [
+				{
+					"tipo": "cerca_madeira",
+					"pontos": [
+						[
+							66,
+							-320
+						],
+						[
+							104,
+							-320
+						],
+						[
+							104,
+							-354
+						]
+					]
+				}
 			]
 		},
 		{
@@ -798,6 +844,25 @@
 					"rot_deg": 120,
 					"alcance": 150
 				}
+			],
+			"cercas": [
+				{
+					"tipo": "cerca_arame",
+					"pontos": [
+						[
+							-198,
+							260
+						],
+						[
+							-154,
+							260
+						],
+						[
+							-154,
+							304
+						]
+					]
+				}
 			]
 		},
 		{
@@ -861,6 +926,21 @@
 					"y": -334,
 					"rot_deg": 90,
 					"alcance": 150
+				}
+			],
+			"cercas": [
+				{
+					"tipo": "muro_baixo",
+					"pontos": [
+						[
+							-90,
+							-324
+						],
+						[
+							-54,
+							-324
+						]
+					]
 				}
 			]
 		},
