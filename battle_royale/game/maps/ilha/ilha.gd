@@ -138,6 +138,9 @@ func _build_map_async() -> void:
 		animais.name = "Animais"
 		add_child(animais)
 		animais.setup(terrain, _zombie_settlement_centers())
+	var abast: Node = load("res://core/abastecer.gd").new()
+	abast.name = "Abastecer"
+	add_child(abast)
 	# objetivo final: o barco do Pescador encalhado na praia sul (design -26, 468 -> mundo x=-26, z=-468)
 	var barco: Node3D = load("res://core/barco_fuga.gd").new()
 	barco.name = "BarcoFuga"

@@ -80,3 +80,4 @@ Regra: item só sai da lista com medição/captura que prove. Cada volta grava d
 - [x] Construção em toras (VERIFICADO tests/construcao_custo): 5 toras = fundação, 3 = parede; sem toras não constrói; menu mostra TORA 5/5.
 - [x] Loot: 10ª coluna "utilidades" nos móveis (ferramentas na oficina, remédios no banheiro/criado-mudo, miudezas nas casas) e itens médicos/peças.
 - [x] Zumbis por cidade (VERIFICADO tests/zumbis_cidade): 3 cidades visitadas com 20 vivos cada (nascem em ~5 s, fora da vista); o jogador de teste precisa de godmode ou morre cercado.
+- [x] Combustível e fuga (VERIFICADO tests/combustivel_barco): galão + F perto do carro enche 20 L (7%→57%), consumo ligado em todos os carros da partida; o barco MARÉ MANSA só foge com galão x2, bateria, kit de reparo x2, corda x2 e tora x4.
