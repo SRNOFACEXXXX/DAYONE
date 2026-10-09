@@ -87,3 +87,4 @@ Regra: item só sai da lista com medição/captura que prove. Cada volta grava d
 - **Beber do mundo (T)**: lago/represa = suja (adoece), mar = salgada (piora a sede, enjoa). Carne crua adoece; **antibiótico** cura (`cura_doenca`). Estado "doente" no HUD/`Sobrevivencia.estado()`.
 - Teste: `tests/agua_doenca_pedra` (falhas=0, capturas `00_mar`/`01_pedra`). Regressão ok: inventario_real, troca_armas, base_bau_cura, sobrevivencia_real.
 - Lição: `ver.sh` já usa flock; não envolver em outro flock (deadlock).
+- **Som da fogueira**: laço de 5,75 s sintetizado (`tools/gen_fogueira_audio.py` → `assets/audio/ambient/fogueira_loop.wav`), 3D com alcance 28 m; toca ao acender, para ao apagar (`tests/fogueira_real` PASSOU). Não ouvido no jogo (container sem áudio): validado só por teste de estado.

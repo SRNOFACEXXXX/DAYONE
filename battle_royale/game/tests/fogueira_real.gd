@@ -100,6 +100,7 @@ func _ready() -> void:
 		await get_tree().physics_frame
 	Input.action_release("use")
 	_ok(f.acesa and get_tree().get_nodes_in_group("fogueira_acesa").size() == 1, "acendeu com E + fósforos (grupo fogueira_acesa)")
+	_ok(f._som != null and f._som.playing, "crepitar da fogueira tocando ao acender")
 	_ok(_contar(bag, "fosforos") == 2, "gastou 1 fósforo (%d)" % _contar(bag, "fosforos"))
 	Clima.congelado = true
 	Clima.hora = 21.8
@@ -130,6 +131,7 @@ func _ready() -> void:
 	await get_tree().create_timer(3.0).timeout
 	print("DBG depois comb=", f.combustivel_s, " acesa=", f.acesa)
 	_ok(not f.acesa and get_tree().get_nodes_in_group("fogueira_acesa").is_empty(), "apagou ao acabar a lenha")
+	_ok(f._som == null or not f._som.playing, "crepitar para ao apagar")
 	await _shot("07_apagada_fim")
 	print("RESULT fogueira_real ", "PASSOU" if falhas == 0 else "FALHOU %d" % falhas)
 	get_tree().quit()

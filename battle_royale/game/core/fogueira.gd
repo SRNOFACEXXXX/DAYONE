@@ -15,6 +15,7 @@ var _luz: OmniLight3D
 var _fogo: CPUParticles3D
 var _fumaca: CPUParticles3D
 var _brasa: MeshInstance3D
+var _som: AudioStreamPlayer3D
 var _t := 0.0
 
 
@@ -161,6 +162,7 @@ func acender() -> bool:
 	_fogo.emitting = true
 	_fumaca.emitting = true
 	_luz.light_energy = 1.2
+	_tocar_som(true)
 	set_process(true)
 	return true
 
@@ -173,7 +175,24 @@ func apagar() -> void:
 	_fogo.emitting = false
 	_fumaca.emitting = false
 	_luz.light_energy = 0.0
+	_tocar_som(false)
 	set_process(false)
+
+
+## Crepitar em laço (sintetizado, tools/gen_fogueira_audio.py); alcance curto para não pesar no mix.
+func _tocar_som(ligar: bool) -> void:
+	if ligar:
+		if _som == null:
+			_som = Audio.loop_player_3d("fogueira_loop")
+			if _som == null:
+				return
+			_som.volume_db = -6.0
+			_som.max_distance = 28.0
+			_som.unit_size = 4.0
+			add_child(_som)
+		_som.play()
+	elif _som != null:
+		_som.stop()
 
 
 ## Mais lenha (minutos). Em chamas ou apagada. Devolve os minutos realmente adicionados (teto de MAX_MIN).
