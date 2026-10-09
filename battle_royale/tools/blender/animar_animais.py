@@ -173,6 +173,11 @@ def criar(id_, arq, quad, perna_frac, escala, tinta):
         for b in pb:
             b.rotation_euler = (0, 0, 0)
             b.location = (0, 0, 0)
+        # TODO clipe fixa TODOS os ossos no quadro 1: o AnimationPlayer do Godot não zera trilhas que o clipe novo não
+        # tem (a perna ficava presa na pose do clipe anterior); os quadros seguintes sobrescrevem o que o clipe anima.
+        for b in pb:
+            b.keyframe_insert("rotation_euler", frame=1)
+        pb["raiz"].keyframe_insert("location", frame=1)
         return act
 
     def ciclo(nome, dur, amp_cima, amp_baixo, bob, cab_amp):
@@ -208,6 +213,11 @@ def criar(id_, arq, quad, perna_frac, escala, tinta):
         chave(pb["pescoco"], f, rot=(-perna * 0.5, 0, 0))
     acts.append(act)
     ad.action = None
+    # pose neutra antes de exportar: o exportador grava a pose ATUAL como repouso (o último clipe, "morrer", deitava o bicho)
+    for b in pb:
+        b.rotation_euler = (0, 0, 0)
+        b.location = (0, 0, 0)
+    bpy.context.view_layer.update()
     for a in acts:
         tr = ad.nla_tracks.new()
         tr.name = a.name

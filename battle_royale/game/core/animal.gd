@@ -77,8 +77,9 @@ func _ready() -> void:
 	if cena:
 		var m := cena.instantiate()
 		add_child(m)
-		for g in m.find_children("*", "GeometryInstance3D", true, false):
-			(g as GeometryInstance3D).visibility_range_end = 140.0
+		# (sem visibility_range: com malha esquelética a distância usava um volume errado e o bicho sumia a poucos metros;
+		#  o AnimalDirector esconde os animais além de 140 m)
+		_pintar(m)
 		_anim = m.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	_rumo = Vector3(_rng.randf_range(-1, 1), 0, _rng.randf_range(-1, 1)).normalized()
 	_t_modo = _rng.randf_range(2.0, 6.0)
@@ -87,7 +88,30 @@ func _ready() -> void:
 	_tocar("parado")
 
 
+## Paleta de cores dos animais (mundo/tex/Animais.png, a mesma que o cenário aplica por código ao material "ani_paleta").
+## O lobo é a mesma malha do cachorro com pelagem cinza (multiplica a cor).
+static var _mat_paleta: StandardMaterial3D
+static var _mat_lobo: StandardMaterial3D
+
+
+func _pintar(raiz: Node) -> void:
+	if _mat_paleta == null:
+		_mat_paleta = StandardMaterial3D.new()
+		_mat_paleta.albedo_texture = load("res://assets/models/atualizacao/mundo/tex/Animais.png")
+		_mat_paleta.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST_WITH_MIPMAPS
+		_mat_paleta.roughness = 0.9
+		_mat_lobo = _mat_paleta.duplicate()
+		_mat_lobo.albedo_color = Color(0.62, 0.64, 0.7)
+	var mat := _mat_lobo if especie == "lobo" else _mat_paleta
+	for mi in raiz.find_children("*", "MeshInstance3D", true, false):
+		(mi as MeshInstance3D).material_override = mat
+		# LODs gerados na importação sumiam com a malha esquelética a partir de ~5 m: força o nível mais detalhado
+		(mi as MeshInstance3D).lod_bias = 128.0
+
+
 func _tocar(clip: String, vel := 1.0) -> void:
+	if Game.test_args.has("sem_anim"):
+		return
 	if _anim == null or _clip == clip:
 		if _anim:
 			_anim.speed_scale = vel
