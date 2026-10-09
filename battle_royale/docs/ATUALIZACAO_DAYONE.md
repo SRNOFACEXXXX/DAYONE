@@ -79,4 +79,4 @@ Regra: item só sai da lista com medição/captura que prove. Cada volta grava d
 - [x] Animais (VERIFICADO no jogo + vitrine): cervo, cachorro, lobo (cinza), galinha com paleta Animais.png e 5 clipes (parado, andar, correr, comer, morrer); nascem perto do jogador, fogem/caçam, levam tiro e esfolam (tests/animais_real: 10 nasceram, cervo morreu, 4 itens ao esfolar). Bugs achados pela imagem: pose deitada gravada como repouso (script Blender), clipes sem trilhas dos outros ossos, e o _ready religa set_physics_process(false) feito antes do add_child.
 - [x] Construção em toras (VERIFICADO tests/construcao_custo): 5 toras = fundação, 3 = parede; sem toras não constrói; menu mostra TORA 5/5.
 - [x] Loot: 10ª coluna "utilidades" nos móveis (ferramentas na oficina, remédios no banheiro/criado-mudo, miudezas nas casas) e itens médicos/peças.
-- [ ] Zumbis por cidade: cidades 0 e 1 chegam a 20; a 3ª ficou com 2 (investigar).
+- [x] Zumbis por cidade (VERIFICADO tests/zumbis_cidade): 3 cidades visitadas com 20 vivos cada (nascem em ~5 s, fora da vista); o jogador de teste precisa de godmode ou morre cercado.
