@@ -131,6 +131,18 @@ func _build_map_async() -> void:
 		_zumbis_adiados = true
 	else:
 		zombie_director.setup(terrain, p, _zombie_settlement_centers())
+		zombie_director.definir_raios(_zombie_settlement_radii())
+	# animais vivos (cervo, galinha, lobo à noite) perto do jogador — core/animal_director.gd
+	if not Game.test_args.has("sem_animais"):
+		var animais: Node3D = load("res://core/animal_director.gd").new()
+		animais.name = "Animais"
+		add_child(animais)
+		animais.setup(terrain, _zombie_settlement_centers())
+	# objetivo final: o barco do Pescador encalhado na praia sul (design -26, 468 -> mundo x=-26, z=-468)
+	var barco: Node3D = load("res://core/barco_fuga.gd").new()
+	barco.name = "BarcoFuga"
+	add_child(barco)
+	barco.global_position = Vector3(-26.0, terrain.height_world(-26.0, -468.0), -468.0)
 	map_ready.emit()
 	if Game.current_match == null:
 		Loading.hide_after_render()
@@ -150,6 +162,24 @@ func _zombie_settlement_centers() -> Array[Vector3]:
 		var world_z := -map_center.y
 		centers.append(Vector3(world_x, terrain.height_world(world_x, world_z), world_z))
 	return centers
+
+
+## Raio de cada assentamento (mesma ordem de _zombie_settlement_centers): prédio mais distante do centro + 12 m.
+func _zombie_settlement_radii() -> Array:
+	var raios: Array = []
+	for poi in layout.get("pois", []):
+		var buildings: Array = poi.get("predios", [])
+		if buildings.is_empty():
+			continue
+		var centro := Vector2.ZERO
+		for building in buildings:
+			centro += Vector2(float(building.pos[0]), float(building.pos[1]))
+		centro /= buildings.size()
+		var r := 0.0
+		for building in buildings:
+			r = maxf(r, centro.distance_to(Vector2(float(building.pos[0]), float(building.pos[1]))))
+		raios.append(r + 12.0)
+	return raios
 
 
 var _we_adiado: WorldEnvironment
@@ -173,6 +203,7 @@ func ativar_ambiente(jogador: Node3D = null) -> void:
 			zd.process_mode = Node.PROCESS_MODE_INHERIT
 			if jogador:
 				zd.setup(terrain, jogador, _zombie_settlement_centers())
+				zd.definir_raios(_zombie_settlement_radii())
 
 
 func _environment() -> void:

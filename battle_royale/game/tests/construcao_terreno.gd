@@ -10,6 +10,7 @@ class MockMatch extends Node3D:
 
 
 func _ready() -> void:
+	Game.test_args["construcao_livre"] = "1"   # teste da mecânica de encaixe, não do custo em toras
 	Game.test_mode = true
 	DisplayServer.window_set_size(Vector2i(1280, 720))
 	var m := MockMatch.new()
