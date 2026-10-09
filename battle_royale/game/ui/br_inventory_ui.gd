@@ -836,12 +836,12 @@ func _acao_item(s: Dictionary) -> void:
 			_info.text = "Nenhuma arma compatível."
 		"grenade":
 			_info.text = "Arraste para um atalho (1–5) e use a tecla, ou G."
-		"heal":
+		"heal", "comida", "bebida":
 			var pm := _partida()
 			if pm != null and pm.local_player.usar_cura(String(it.id)):
 				_info.text = "Usando %s... (H usa a melhor cura; atirar ou trocar de arma interrompe)" % String(def.name)
 			else:
-				_info.text = "Nada a curar ou já curando."
+				_info.text = "Nada a curar ou já curando." if String(def.get("kind", "")) == "heal" else "Você não precisa disso agora (ou já está usando algo)."
 		_:
 			_info.text = "Arraste para mover."
 	_atualizar()

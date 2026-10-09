@@ -33,6 +33,7 @@ var _vehicle_use_block_until := 0
 const VEHICLE_HOLD_TIME := 0.72
 var _vehicle_hold := 0.0
 var _vehicle_hold_triggered := false
+var ferramentas: Node   # core/ferramentas_mao.gd
 
 
 func setup(s: Soldier, m: Match) -> void:
@@ -65,6 +66,9 @@ func setup(s: Soldier, m: Match) -> void:
 		# pulo normal ~2,5 cm; queda grande até 8 cm; volta por mola (~0,22–0,4 s)
 		_land_vel -= clampf((impact - 3.0) * 0.13, 0.0, 1.7))
 	_build_agua_fx()
+	ferramentas = preload("res://core/ferramentas_mao.gd").new()   # machado/kit de fogueira na mão, cortar árvore, fogueira
+	add_child(ferramentas)
+	ferramentas.setup(self, m)
 	if not Game.test_mode:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -355,6 +359,10 @@ func _physics_process(_dt: float) -> void:
 		soldier.in_fire = Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 		soldier.in_alt = Input.is_action_pressed("alt_fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 		soldier.in_reload = Input.is_action_pressed("reload")
+		if ferramentas != null and ferramentas.ocupa_mao():   # ferramenta na mão: o clique corta, não atira
+			soldier.in_fire = false
+			soldier.in_alt = false
+			soldier.in_reload = false
 		soldier.in_use = Input.is_action_pressed("use")
 	else:
 		soldier.in_move = Vector2.ZERO

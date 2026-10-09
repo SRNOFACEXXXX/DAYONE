@@ -838,6 +838,12 @@ func modo_sobrevivencia() -> void:
 		vital_bar = VitalBar.new()
 		vital_bar.vincular(match_ref.local_player)
 		_place(vital_bar, Control.PRESET_BOTTOM_LEFT, 16, -80, 330, -16)
+		var sv := match_ref.local_player.get_node_or_null("Sobrevivencia")
+		if sv != null:   # fome / sede / temperatura (core/sobrevivencia.gd): faixa fina acima da saúde
+			var sh: Control = preload("res://ui/sobrev_hud.gd").new()
+			sh.name = "SobrevHud"
+			sh.call("vincular", sv)
+			_place(sh, Control.PRESET_BOTTOM_LEFT, 16, -100, 330, -83)
 
 
 func _on_plate_started(seconds: float) -> void:

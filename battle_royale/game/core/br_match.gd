@@ -94,9 +94,7 @@ func _setup_survival_async() -> void:
 		br_bag.add_item("ammo_9mm", 45)
 		# Kit inicial de construção só quando a construção é paga por material; no modo livre (testes) ele só
 		# ocupava 8 kg dos 12 kg do bolso e impedia pegar qualquer arma.
-		if not ConstructionSystem.FREE_BUILD_MODE:
-			br_bag.add_item("wood", 120)
-			br_bag.add_item("stone", 40)
+		# (sem kit de madeira/pedra: a construção custa TORAS, que o jogador consegue cortando árvores com machado)
 		if starter.br_uid >= 0:
 			br_bag.assign_quick_slot(0, starter.br_uid)
 	br_bag.changed.connect(_sync_br_reserve)
@@ -331,9 +329,9 @@ func use_quick_slot(slot: int) -> bool:
 			_equip_br_weapon(int(item.uid))
 		"grenade":
 			_lancar_granada()
-		"heal":
+		"heal", "comida", "bebida":
 			if not local_player.usar_cura(String(item.id)):
-				hud_message.emit("%s: nada a curar ou já curando" % String(def.get("name", item.id)), 1.5)
+				hud_message.emit("%s: nada a consumir agora ou já em uso" % String(def.get("name", item.id)), 1.5)
 		_:
 			hud_message.emit("%s: abra o inventário (TAB) para usar" % String(def.get("name", item.id)), 1.5)
 	return true
@@ -732,6 +730,9 @@ func spawns_for(_team: int) -> Array[Node3D]:
 
 func _spawn_soldiers_async() -> void:
 	local_player = _make_soldier(0, Settings.player_name, false)
+	var sv: Node = preload("res://core/sobrevivencia.gd").new()   # fome/sede/frio do jogador local
+	sv.call("setup", local_player)
+	sv.connect("aviso", func(t: String) -> void: hud_message.emit(t, 3.0))
 	var pc := local_player.controller as PlayerController
 	if pc and pc.camera:
 		pc.camera.far = 6000.0   # mar/céu até o horizonte (ilha usa 6 km)

@@ -52,6 +52,11 @@ static func raio_tronco(me: Mesh, s: float, xf := Transform3D.IDENTITY) -> float
 		r = clampf(rs[int(rs.size() * 0.95)], 0.12, 1.6)
 	_raio_cache[chave] = r
 	return r
+## Árvores cortáveis (arvore_mata_a/b, coqueiro): {pos, tipo, mesh, escala, xf, raio, refs:[[chave,indice]], col, viva}.
+## `derrubar(i)` esconde a instância dos MultiMesh (transform zerado) e remove a colisão; só quem corta mexe nisto (nada por quadro).
+var arvores: Array = []
+var _mm_chave := {}            # chave do grupo -> MultiMesh
+var _mm_copa := {}             # chave da copa -> MultiMesh
 var auditoria: Array = []     # tests/props_andar.gd (--audit_props): pontos sólidos de cada instância não-rasteira
 var _col_pedra := {}          # tipo -> ConvexPolygonShape3D (casco da malha)
 const SEM_COLISAO_VEG := ["cana", "capim_alto", "arbusto"]   # rasteiros: atravessáveis por design
@@ -122,17 +127,22 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 		var bl: float = BLOCO_TIPO.get(tipo_base, BLOCO)   # capim/cana: blocos menores para o corte por distância ser justo
 		var sb := float(it.get("escala", 1.0)) * float(ESCALA_TIPO.get(tipo_base, 1.0))
 		var xb := Transform3D(Basis(Vector3.UP, deg_to_rad(float(it.get("rot_deg", 0.0)))).scaled(Vector3(sb, sb, sb)), Vector3(x, y - 0.05, z))
+		var arv := {}
 		if DIVIDE_LONGE.has(tipo_base):
+			arv = {"pos": Vector3(x, y, z), "tipo": tipo_base, "mesh": meshes[tipo], "escala": s, "xf": xf, "raio": 0.3, "refs": [], "col": null, "viva": true}
+			arvores.append(arv)
 			# perto (até PERTO_VARIANTE): modelo do pacote ou original, com sombra, bloco de 120 m
 			var kp := "%s|%d|%d|%s|perto" % [tipo, int(floor(x / bl)), int(floor(z / bl)), tipo_base]
 			if not grupos.has(kp):
 				grupos[kp] = []
 			grupos[kp].append(xf)
+			arv.refs.append([kp, grupos[kp].size() - 1])
 			# longe (PERTO_VARIANTE..ALCANCE): modelo original leve, sem sombra, bloco de 240 m (1/4 dos draws)
 			var kl := "%s|%d|%d|%s|longe" % [tipo_base, int(floor(x / BLOCO_LONGE)), int(floor(z / BLOCO_LONGE)), tipo_base]
 			if not grupos.has(kl):
 				grupos[kl] = []
 			grupos[kl].append(xb)
+			arv.refs.append([kl, grupos[kl].size() - 1])
 			if not meshes.has(tipo_base):
 				meshes[tipo_base] = _mesh_of(tipo_base)
 			if tipo_base.begins_with("arvore"):
@@ -140,6 +150,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 				if not copas.has(kc):
 					copas[kc] = []
 				copas[kc].append(xb)
+				arv.refs.append(["copa|" + kc, copas[kc].size() - 1])
 		else:
 			var key := "%s|%d|%d|%s" % [tipo, int(floor(x / bl)), int(floor(z / bl)), tipo_base]
 			if not grupos.has(key):
@@ -184,6 +195,9 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 			cs.shape = cyl
 			cs.position = Vector3(x, y + 3.0 * s, z)
 			corpo.add_child(cs)
+			if not arv.is_empty():
+				arv.col = cs
+				arv.raio = cyl.radius
 		if index > 0 and Loading.ceder():
 			Loading.set_progress("Distribuindo vegetação e colisões...", 25.0 + 20.0 * float(index) / maxf(1.0, float(lista.size())))
 			await get_tree().process_frame
@@ -202,6 +216,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 			mm.set_instance_transform(i, xfs[i])
 		var mmi := MultiMeshInstance3D.new()
 		mmi.multimesh = mm
+		_mm_chave[key] = mm
 		var alcance: float = ALCANCE.get(base, 300.0)
 		mmi.visibility_range_end_margin = 20.0
 		if faixa == "longe":
@@ -218,7 +233,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 		if Loading.ceder():
 			await get_tree().process_frame
 	for kc in copas:
-		_copas_longe(copas[kc], String(kc).split("|")[0])
+		_copas_longe(copas[kc], String(kc).split("|")[0], "copa|" + String(kc))
 	return lista.size()
 
 
@@ -293,7 +308,7 @@ static var _copa_mesh: Mesh
 static var _copa_mat: StandardMaterial3D
 
 
-func _copas_longe(xfs: Array, tipo: String) -> void:
+func _copas_longe(xfs: Array, tipo: String, chave := "") -> void:
 	if _copa_mesh == null:
 		var sm := SphereMesh.new()
 		sm.radial_segments = 6
@@ -315,8 +330,73 @@ func _copas_longe(xfs: Array, tipo: String) -> void:
 		mm.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3(4.6, 2.6, 4.6) * s), t.origin + Vector3.UP * alto * s))
 	var mmi := MultiMeshInstance3D.new()
 	mmi.multimesh = mm
+	if chave != "":
+		_mm_chave[chave] = mm
 	mmi.material_override = _copa_mat
 	mmi.visibility_range_begin = float(ALCANCE.get(tipo, 500.0)) - 20.0
 	mmi.visibility_range_end = 1600.0
 	mmi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(mmi)
+
+
+## Índice da árvore viva mais próxima de `p` (plano XZ) dentro de `raio` m, ou -1. Só é chamado ao golpear (varredura linear, ~1,5 mil árvores).
+func arvore_mais_proxima(p: Vector3, raio: float) -> int:
+	var melhor := -1
+	var dmin := raio * raio
+	for i in arvores.size():
+		var a: Dictionary = arvores[i]
+		if not a.viva:
+			continue
+		var d: Vector3 = (a.pos as Vector3) - p
+		var d2 := d.x * d.x + d.z * d.z
+		if d2 < dmin:
+			dmin = d2
+			melhor = i
+	return melhor
+
+
+## Tira a árvore `i` do mundo estático: zera a instância em cada MultiMesh (perto/longe/copa) e apaga o cilindro de colisão.
+## Devolve o registro (pos, mesh, escala, xf, raio) para quem for animar a queda. {} se já derrubada.
+func derrubar(i: int) -> Dictionary:
+	if i < 0 or i >= arvores.size() or not arvores[i].viva:
+		return {}
+	var a: Dictionary = arvores[i]
+	a.viva = false
+	var zero := Transform3D(Basis.from_scale(Vector3.ZERO), a.pos)
+	var orig: Array = []
+	for r in a.refs:
+		var mm: MultiMesh = _mm_chave.get(r[0])
+		if mm != null and int(r[1]) < mm.instance_count:
+			orig.append(mm.get_instance_transform(int(r[1])))
+			mm.set_instance_transform(int(r[1]), zero)
+		else:
+			orig.append(zero)
+	a["orig"] = orig
+	if a.col != null and is_instance_valid(a.col):
+		(a.col as Node).queue_free()
+	a.col = null
+	return a
+
+
+## Respawn (ou desfazer): devolve a árvore `i` ao mundo. Colisão recriada com o mesmo raio.
+func restaurar(i: int) -> void:
+	if i < 0 or i >= arvores.size() or arvores[i].viva:
+		return
+	var a: Dictionary = arvores[i]
+	a.viva = true
+	var orig: Array = a.get("orig", [])
+	for k in a.refs.size():
+		var r: Array = a.refs[k]
+		var mm: MultiMesh = _mm_chave.get(r[0])
+		if mm != null and int(r[1]) < mm.instance_count and k < orig.size():
+			mm.set_instance_transform(int(r[1]), orig[k])
+	var corpo := get_node_or_null("VegetacaoColisao") as StaticBody3D
+	if corpo != null:
+		var cs := CollisionShape3D.new()
+		var cyl := CylinderShape3D.new()
+		cyl.radius = a.raio
+		cyl.height = 6.0 * float(a.escala)
+		cs.shape = cyl
+		cs.position = (a.pos as Vector3) + Vector3(0, 3.0 * float(a.escala), 0)
+		corpo.add_child(cs)
+		a.col = cs

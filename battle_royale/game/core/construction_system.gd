@@ -3,15 +3,15 @@ extends Node
 ## Wheel menu, resource-backed modular placement and translucent world blueprint.
 
 const PIECES := [
-	{"id":"foundation", "name":"Fundação quadrada", "icon":"◇", "size":Vector3(4.0, .24, 4.0), "grid":4.0, "center":.12, "cost":{"wood":50,"stone":10}, "profile":"slab"},
-	{"id":"floor", "name":"Piso de madeira", "icon":"▱", "size":Vector3(4.0, .16, 4.0), "grid":4.0, "center":.08, "cost":{"wood":35,"stone":0}, "profile":"slab"},
-	{"id":"wall", "name":"Parede de madeira", "icon":"▤", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"wood":40,"stone":5}, "profile":"wall"},
-	{"id":"window", "name":"Parede com janela", "icon":"▣", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"wood":45,"stone":5}, "profile":"window"},
-	{"id":"door", "name":"Batente de porta", "icon":"▧", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"wood":35,"stone":5}, "profile":"door"},
-	{"id":"roof", "name":"Telhado modular", "icon":"⌂", "size":Vector3(4.0, .18, 4.0), "grid":4.0, "center":.09, "cost":{"wood":45,"stone":8}, "profile":"slab"},
-	{"id":"stairs", "name":"Escada de madeira", "icon":"▰", "size":Vector3(2.0, 1.5, 2.0), "grid":2.0, "center":.75, "cost":{"wood":30,"stone":0}, "profile":"stairs"},
-	{"id":"pillar", "name":"Pilar de madeira", "icon":"┃", "size":Vector3(.38, 3.0, .38), "grid":2.0, "center":1.5, "cost":{"wood":18,"stone":0}, "profile":"pillar"},
-	{"id":"chest", "name":"Baú de base", "icon":"▭", "size":Vector3(.9, .58, .55), "grid":.5, "center":.29, "cost":{"wood":25,"stone":0}, "profile":"chest"},
+	{"id":"foundation", "name":"Fundação quadrada", "icon":"◇", "size":Vector3(4.0, .24, 4.0), "grid":4.0, "center":.12, "cost":{"tora":5}, "profile":"slab"},
+	{"id":"floor", "name":"Piso de madeira", "icon":"▱", "size":Vector3(4.0, .16, 4.0), "grid":4.0, "center":.08, "cost":{"tora":3}, "profile":"slab"},
+	{"id":"wall", "name":"Parede de madeira", "icon":"▤", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"tora":3}, "profile":"wall"},
+	{"id":"window", "name":"Parede com janela", "icon":"▣", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"tora":3}, "profile":"window"},
+	{"id":"door", "name":"Batente de porta", "icon":"▧", "size":Vector3(4.0, 3.0, .18), "grid":4.0, "center":1.5, "cost":{"tora":3}, "profile":"door"},
+	{"id":"roof", "name":"Telhado modular", "icon":"⌂", "size":Vector3(4.0, .18, 4.0), "grid":4.0, "center":.09, "cost":{"tora":3}, "profile":"slab"},
+	{"id":"stairs", "name":"Escada de madeira", "icon":"▰", "size":Vector3(2.0, 1.5, 2.0), "grid":2.0, "center":.75, "cost":{"tora":2}, "profile":"stairs"},
+	{"id":"pillar", "name":"Pilar de madeira", "icon":"┃", "size":Vector3(.38, 3.0, .38), "grid":2.0, "center":1.5, "cost":{"tora":1}, "profile":"pillar"},
+	{"id":"chest", "name":"Baú de base", "icon":"▭", "size":Vector3(.9, .58, .55), "grid":.5, "center":.29, "cost":{"tora":2}, "profile":"chest"},
 ]
 
 const WOOD_MAT := Color("#9a6336")
@@ -26,7 +26,13 @@ const HP_PECA := {"foundation": 600.0, "floor": 300.0, "wall": 400.0, "window": 
 ## Fração do custo devolvida ao demolir (só com FREE_BUILD_MODE desligado).
 const REEMBOLSO := .5
 const GRID_MAJOR := 4.0
-const FREE_BUILD_MODE := true
+## Construção custa TORAS (mini troncos da árvore cortada com machado; pedido do dono: 5 toras = 1 fundação).
+## Modo livre só para testes antigos/demonstração: --construcao_livre.
+const FREE_BUILD_MODE := false
+
+
+static func livre() -> bool:
+	return FREE_BUILD_MODE or Game.test_args.has("construcao_livre")
 var match_ref
 var wheel_ui: RadialWheel
 var world_root: Node3D
@@ -663,7 +669,7 @@ func _definicao(id: String) -> Dictionary:
 
 ## Demolição com modo pago: devolve parte do custo ao inventário (no modo livre não há custo, então não há reembolso).
 func _reembolsar(id: String) -> void:
-	if FREE_BUILD_MODE or match_ref.br_bag == null:
+	if livre() or match_ref.br_bag == null:
 		return
 	var definicao := _definicao(id)
 	if definicao.is_empty():
@@ -904,7 +910,7 @@ func _build_material(piece_id: String) -> StandardMaterial3D:
 
 
 func _has_cost(piece: Dictionary) -> bool:
-	if FREE_BUILD_MODE:
+	if livre():
 		return true
 	if match_ref.br_bag == null:
 		return false
@@ -915,7 +921,7 @@ func _has_cost(piece: Dictionary) -> bool:
 
 
 func _consume_cost(piece: Dictionary) -> void:
-	if FREE_BUILD_MODE:
+	if livre():
 		return
 	for id in piece.cost:
 		var remaining := int(piece.cost[id])
@@ -941,14 +947,17 @@ func _material_count(id: String) -> int:
 
 
 func _cost_text(piece: Dictionary) -> String:
-	if FREE_BUILD_MODE:
+	if livre():
 		return "GRÁTIS"
-	var cost: Dictionary = piece.cost
-	return "MADEIRA %d   •   PEDRA %d" % [int(cost.get("wood", 0)), int(cost.get("stone", 0))]
+	var partes: PackedStringArray = []
+	for id in piece.cost:
+		var nome := String(BRInventory.definition(String(id)).get("name", id)).to_upper()
+		partes.append("%s %d/%d" % [nome, _material_count(String(id)), int(piece.cost[id])])
+	return "   •   ".join(partes)
 
 
 func _stock_text() -> String:
-	return "Madeira %d   •   Pedra %d" % [_material_count("wood"), _material_count("stone")]
+	return "Toras %d   •   Tábuas %d   •   Pregos %d" % [_material_count("tora"), _material_count("tabua"), _material_count("pregos")]
 
 
 func _overlaps_constructed(pos: Vector3, piece: Dictionary) -> bool:

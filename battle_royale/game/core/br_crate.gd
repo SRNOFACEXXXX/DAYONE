@@ -5,8 +5,8 @@ extends BRLoot
 
 const SORTEIO := {
 	"alto": {"armas": [&"ak47", &"mosin", &"m4", &"m249", &"m107", &"uzi"], "extra": ["grenade", "ammo", "acog", "reddot", "backpack_medium", "kit_medico", "bandagem"]},
-	"medio": {"armas": [&"ak47", &"m4", &"glock", &"usp", &"mosin", &"uzi"], "extra": ["grenade", "ammo", "reddot", "backpack_small", "bandagem", "bandagem"]},
-	"baixo": {"armas": [&"glock", &"usp"], "extra": ["grenade", "ammo", "ammo", "bandagem"]},
+	"medio": {"armas": [&"ak47", &"m4", &"glock", &"usp", &"mosin", &"uzi"], "extra": ["grenade", "ammo", "reddot", "backpack_small", "bandagem", "bandagem", "comida"]},
+	"baixo": {"armas": [&"glock", &"usp"], "extra": ["grenade", "ammo", "ammo", "bandagem", "comida"]},
 }
 const MUNICAO := {"762": ["ammo_762", 30], "556": ["ammo_556", 30], "9mm": ["ammo_9mm", 36], "127": ["ammo_127", 10]}
 # caixa de armamento do pacote do usuário (Assets/caixa de armamentos): corpo e tampa separados
@@ -58,6 +58,9 @@ func _sortear() -> void:
 		contents.add_item(String(m[0]), int(m[1]))
 	elif extra == "grenade":
 		contents.add_item("grenade", 1 + randi() % 2)
+	elif extra == "comida":   # ração de campo: algo de comer e de beber
+		contents.add_item(["lata_comida", "feijao_lata", "barra_cereal"][randi() % 3], 1 + randi() % 2)
+		contents.add_item(["garrafa_agua", "cantil"][randi() % 2], 1)
 	elif extra == "bandagem":
 		contents.add_item("bandagem", 1 + randi() % 3)
 	elif extra == "kit_medico":

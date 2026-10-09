@@ -449,6 +449,11 @@ func _cura_contar(item_id: String) -> int:
 	return n
 
 
+## Nó core/sobrevivencia.gd (fome/sede/frio) do jogador local; null em bots.
+func sobrevivencia() -> Node:
+	return get_node_or_null("Sobrevivencia")
+
+
 func iniciar_sangramento() -> void:
 	sangrando = true
 
@@ -456,9 +461,14 @@ func iniciar_sangramento() -> void:
 ## Começa a usar uma cura. false se: item inválido, morto, já curando, sem o item, ou nada a curar (vida cheia e sem sangramento).
 func usar_cura(item_id: String) -> bool:
 	var def := BRInventory.definition(item_id)
-	if not alive or cura_id != "" or String(def.get("kind", "")) != "heal":
+	var kind := String(def.get("kind", ""))
+	if not alive or cura_id != "" or not kind in ["heal", "comida", "bebida"]:
 		return false
-	if health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))):
+	if kind != "heal":   # comida/bebida: usa o nó de sobrevivência (só jogador local) e não gasta se já está saciado
+		var sv := sobrevivencia()
+		if sv == null or not sv.precisa(item_id):
+			return false
+	elif health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))):
 		return false
 	if _cura_contar(item_id) < 1:
 		return false
@@ -523,6 +533,13 @@ func _cura_tick(dt: float) -> void:
 	cura_left = 0.0
 	cura_total = 0.0
 	var antes := health
+	if String(def.get("kind", "")) != "heal":
+		var sv := sobrevivencia()
+		if sv != null:
+			sv.consumir_item(id)
+		Audio.play_at("heal_done", eye_position(), {"volume_db": -6.0, "max_distance": 14.0})
+		cura_finished.emit(id, 0)
+		return
 	health = mini(MAX_HEALTH, health + int(def.get("heal", 0)))
 	if bool(def.get("stop_bleed", false)):
 		sangrando = false

@@ -1,0 +1,7 @@
+{
+	"machado": {"name": "Machado", "kind": "ferramenta", "ferramenta": "corte", "size": [1, 3], "kg": 1.8, "stack": 1, "model_path": "res://assets/models/itens/machado.glb", "golpes_arvore": 6},
+	"picareta": {"name": "Picareta", "kind": "ferramenta", "ferramenta": "mineracao", "size": [1, 3], "kg": 2.4, "stack": 1, "model_path": "res://assets/models/itens/picareta.glb"},
+	"faca": {"name": "Faca de caça", "kind": "ferramenta", "ferramenta": "faca", "size": [1, 2], "kg": 0.3, "stack": 1, "model_path": "res://assets/models/itens/faca.glb"},
+	"martelo": {"name": "Martelo", "kind": "ferramenta", "ferramenta": "construcao", "size": [1, 2], "kg": 0.9, "stack": 1, "model_path": "res://assets/models/itens/martelo.glb"},
+	"serrote": {"name": "Serrote", "kind": "ferramenta", "ferramenta": "serra", "size": [1, 3], "kg": 0.7, "stack": 1, "model_path": "res://assets/models/itens/serrote.glb"}
+}

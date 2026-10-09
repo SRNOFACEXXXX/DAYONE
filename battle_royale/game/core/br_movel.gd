@@ -27,6 +27,12 @@ const TABELA := {
 	"Work_Table": [30, 32, 16, 8, 4, 6, 4, 8],
 	"Wash_Basin": [60, 30, 10, 0, 0, 0, 0, 20],
 }
+## Peso extra do saque de comida/bebida por móvel (9ª coluna da tabela): cozinha e geladeira têm muito mais.
+const PESO_COMIDA := {"Fridge": 70, "geladeira": 70, "Kitchen_D_01": 55, "Kitchen_D": 50, "armario_alto": 30, "armario_baixo": 30,
+	"cristaleira": 30, "Work_Table": 12, "Nightstand": 14, "comoda": 8, "estante": 6, "Closet_01": 6, "guarda_roupa": 4, "Closet_02": 4, "Wash_Basin": 4}
+## [id, peso] do que sai quando o móvel dá comida; geladeira/cozinha favorecem refeição e bebida.
+const COMIDAS := [["lata_comida", 16], ["feijao_lata", 12], ["sardinha", 12], ["frutas", 12], ["barra_cereal", 10], ["chocolate", 6],
+	["garrafa_agua", 16], ["refrigerante", 10], ["carne_crua", 3], ["carne_cozida", 3], ["cantil", 3]]
 const PISTOLAS := [&"glock", &"usp"]
 const RIFLES := [&"ak47", &"m4", &"mosin", &"uzi", &"m249", &"m107"]
 const MOCHILAS := ["backpack_small", "backpack_small", "backpack_medium"]
@@ -46,7 +52,8 @@ func setup_movel(t: String) -> void:
 
 ## Sorteio do conteúdo (chamado ao abrir). Máximo 2 itens.
 func sortear() -> void:
-	var w: Array = TABELA.get(tipo, TABELA.get(Moveis.familia(tipo), TABELA["armario_baixo"]))
+	var w: Array = (TABELA.get(tipo, TABELA.get(Moveis.familia(tipo), TABELA["armario_baixo"])) as Array).duplicate()
+	w.append(int(PESO_COMIDA.get(tipo, PESO_COMIDA.get(Moveis.familia(tipo), 8))))   # índice 8 = comida/bebida
 	var total := 0
 	for x in w:
 		total += int(x)
@@ -82,6 +89,16 @@ func sortear() -> void:
 				contents.add_item("kit_medico", 1)
 			else:
 				contents.add_item("bandagem", 1 + randi() % 3)
+		8:
+			var tot := 0
+			for c in COMIDAS:
+				tot += int(c[1])
+			var r2 := randi() % tot
+			for c in COMIDAS:
+				r2 -= int(c[1])
+				if r2 < 0:
+					contents.add_item(String(c[0]), 1 + (randi() % 2 if c[0] in ["lata_comida", "feijao_lata", "sardinha", "barra_cereal", "frutas"] else 0))
+					break
 
 
 ## Abre: sorteia, tenta passar tudo para a mochila e devolve a lista de nomes achados (vazia = móvel vazio).

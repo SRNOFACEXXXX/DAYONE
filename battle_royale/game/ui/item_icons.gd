@@ -171,10 +171,62 @@ static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 			_backpack(ci, c, u, id)
 		"knife":
 			_knife(ci, c, u)
+		"lata_comida", "feijao_lata", "sardinha", "refrigerante":
+			_lata(ci, c, u, id)
+		"garrafa_agua", "cantil":
+			_garrafa(ci, c, u, id)
+		"frutas", "carne_cozida", "carne_crua", "barra_cereal", "chocolate":
+			_comida(ci, c, u, id)
 		"mosin":
 			_mosin(ci, r)
 		_:
 			_generic_gun(ci, c, u, r.size.x)
+
+
+## Comida e bebida (sobrevivência): ícones simples em código, como as curas.
+static func _lata(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	var rot := Color("b8412f") if id == "lata_comida" else Color("9a6b2f") if id == "feijao_lata" else Color("3f7fa8") if id == "sardinha" else Color("c9302c")
+	var w := u * 0.34
+	var h := u * 0.46
+	ci.draw_rect(Rect2(c.x - w, c.y - h, w * 2.0, h * 2.0), Color("c8ccd0"))
+	ci.draw_rect(Rect2(c.x - w, c.y - h * 0.55, w * 2.0, h * 1.1), rot)
+	ci.draw_rect(Rect2(c.x - w, c.y - h, w * 2.0, h * 0.14), Color("8d9298"))
+	ci.draw_rect(Rect2(c.x - w, c.y + h * 0.86, w * 2.0, h * 0.14), Color("8d9298"))
+	ci.draw_rect(Rect2(c.x - w * 0.55, c.y - h * 0.2, w * 1.1, h * 0.4), Color("f0e6c8"))
+
+
+static func _garrafa(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	if id == "cantil":
+		var k := Color("5f6b3a")
+		ci.draw_rect(Rect2(c.x - u * 0.2, c.y - u * 0.34, u * 0.4, u * 0.7), k)
+		ci.draw_rect(Rect2(c.x - u * 0.2, c.y - u * 0.05, u * 0.4, u * 0.3), Color("78854a"))
+		ci.draw_rect(Rect2(c.x - u * 0.08, c.y - u * 0.46, u * 0.16, u * 0.12), Color("2d2d2d"))
+		return
+	_p(ci, [c + Vector2(-u * 0.16, -u * 0.2), c + Vector2(u * 0.16, -u * 0.2), c + Vector2(u * 0.2, u * 0.42), c + Vector2(-u * 0.2, u * 0.42)], Color(0.55, 0.78, 0.95, 0.9))
+	_p(ci, [c + Vector2(-u * 0.17, u * 0.1), c + Vector2(u * 0.18, u * 0.1), c + Vector2(u * 0.2, u * 0.42), c + Vector2(-u * 0.2, u * 0.42)], Color("2f7fc0"))
+	ci.draw_rect(Rect2(c.x - u * 0.07, c.y - u * 0.4, u * 0.14, u * 0.2), Color("dfe6ea"))
+	ci.draw_rect(Rect2(c.x - u * 0.09, c.y - u * 0.46, u * 0.18, u * 0.07), Color("2f7fc0"))
+
+
+static func _comida(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	match id:
+		"frutas":
+			ci.draw_circle(c + Vector2(-u * 0.12, u * 0.04), u * 0.2, Color("d8432f"))
+			ci.draw_circle(c + Vector2(u * 0.14, u * 0.1), u * 0.18, Color("e8b72e"))
+			ci.draw_line(c + Vector2(-u * 0.12, -u * 0.15), c + Vector2(-u * 0.06, -u * 0.27), Color("4f7a2a"), 2.0)
+		"carne_cozida", "carne_crua":
+			var cor := Color("8a4a2a") if id == "carne_cozida" else Color("d0626a")
+			ci.draw_circle(c + Vector2(-u * 0.1, -u * 0.05), u * 0.24, cor)
+			ci.draw_line(c + Vector2(u * 0.05, u * 0.1), c + Vector2(u * 0.3, u * 0.32), Color("e9e6dc"), 4.0)
+			ci.draw_circle(c + Vector2(u * 0.34, u * 0.3), u * 0.07, Color("e9e6dc"))
+		"barra_cereal":
+			ci.draw_rect(Rect2(c.x - u * 0.32, c.y - u * 0.1, u * 0.64, u * 0.2), Color("c89a4a"))
+			ci.draw_rect(Rect2(c.x - u * 0.32, c.y - u * 0.02, u * 0.64, u * 0.06), Color("8a5a1c"))
+		_:   # chocolate
+			ci.draw_rect(Rect2(c.x - u * 0.24, c.y - u * 0.3, u * 0.48, u * 0.6), Color("5a3320"))
+			ci.draw_rect(Rect2(c.x - u * 0.24, c.y - u * 0.3, u * 0.48, u * 0.16), Color("d9a441"))
+			for i in 3:
+				ci.draw_line(Vector2(c.x - u * 0.24, c.y - u * 0.05 + i * u * 0.14), Vector2(c.x + u * 0.24, c.y - u * 0.05 + i * u * 0.14), Color("3c2114"), 1.5)
 
 
 static func _p(ci: CanvasItem, pts: Array, col: Color) -> void:
