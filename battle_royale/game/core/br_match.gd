@@ -545,6 +545,12 @@ func abrir_inventario() -> void:
 func _update_br_loot_hint() -> void:
 	if br_loot_hint == null or local_player == null:
 		return
+	# dentro do carro a dica de saque ficava por cima da dica do veículo (dois textos no mesmo lugar, piscando)
+	if local_player.controller != null and local_player.controller.get("active_vehicle") != null:
+		br_loot_hint.text = ""
+		if hold_circle != null:
+			hold_circle.mostrar(0.0, "")
+		return
 	if hold_circle == null:
 		hold_circle = HoldCircle.new()
 		hud.add_child(hold_circle)

@@ -80,6 +80,7 @@ func _ready() -> void:
 		# (sem visibility_range: com malha esquelética a distância usava um volume errado e o bicho sumia a poucos metros;
 		#  o AnimalDirector esconde os animais além de 140 m)
 		_pintar(m)
+		_modelo = m
 		_anim = m.find_child("AnimationPlayer", true, false) as AnimationPlayer
 	_rumo = Vector3(_rng.randf_range(-1, 1), 0, _rng.randf_range(-1, 1)).normalized()
 	_t_modo = _rng.randf_range(2.0, 6.0)
@@ -261,13 +262,34 @@ func _morrer() -> void:
 	state = DEAD
 	vida = 0
 	velocity = Vector3.ZERO
-	_tocar("morrer")
+	_cair()
 	var hit := get_node_or_null("HitArea")
 	if hit:
 		hit.collision_layer = 0
 	collision_layer = 0
 	add_to_group("carcaca")
 	set_meta("interacao", "Esfolar (faca)")
+
+
+## Morte: o clipe "morrer" do Blender empinava o bicho nas patas de trás; agora ele congela a pose e TOMBA DE LADO (rola 90° em
+## torno do eixo do corpo, com um quique no chão), como um animal abatido.
+var _modelo: Node3D
+
+
+func _cair() -> void:
+	if _anim != null:
+		_tocar("parado")
+		_anim.pause()
+	if _modelo == null:
+		return
+	var lado := 1.0 if _rng.randf() < 0.5 else -1.0
+	var alvo := Vector3(0.0, _modelo.rotation.y + _rng.randf_range(-0.35, 0.35), lado * deg_to_rad(_rng.randf_range(84.0, 94.0)))
+	var tw := create_tween()
+	tw.tween_property(_modelo, "rotation:z", alvo.z * 1.06, 0.34).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tw.tween_property(_modelo, "rotation:z", alvo.z, 0.22).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+	tw.parallel().tween_property(_modelo, "rotation:y", alvo.y, 0.5)
+	# o pivô do modelo está nos pés: deitado, o corpo fica a meia largura do chão; sobe um pouco para não afundar
+	tw.parallel().tween_property(_modelo, "position:y", float(_cfg.altura) * 0.12, 0.5)
 
 
 ## Esfolar a carcaça (precisa de faca). Devolve o que caiu (id -> qtd); o chamador põe no chão/inventário.
