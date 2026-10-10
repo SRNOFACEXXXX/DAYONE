@@ -19,6 +19,7 @@ const WEAPON_MODELS := {
 }
 const DARK_MODELS := ["m4", "glock", "usp"]
 const ICON_SIZE := Vector2i(384, 192)
+const DIR_MODELOS := "res://assets/models/itens/"
 
 static var textures: Dictionary = {}
 static var _renderer: Node
@@ -72,6 +73,21 @@ class IconRenderer extends Node:
 			var tex := await _render(path)
 			if tex != null:
 				ItemIcons.textures[id] = tex
+		# itens de sobrevivência (data/itens/*.json) com modelo próprio: miniatura renderizada do próprio .glb. Modelos que servem a
+		# vários itens (as latas) ficam com o ícone de código, para não virarem todos iguais.
+		var usos := {}
+		var ids := BRInventory.todos_ids()
+		for id in ids:
+			var cam_path := String(BRInventory.definition(String(id)).get("model_path", ""))
+			if cam_path.begins_with(ItemIcons.DIR_MODELOS):
+				usos[cam_path] = int(usos.get(cam_path, 0)) + 1
+		for id in ids:
+			var caminho := String(BRInventory.definition(String(id)).get("model_path", ""))
+			if not caminho.begins_with(ItemIcons.DIR_MODELOS) or int(usos.get(caminho, 0)) != 1 or not ResourceLoader.exists(caminho):
+				continue
+			var tex2 := await _render(caminho)
+			if tex2 != null:
+				ItemIcons.textures[String(id)] = tex2
 		ItemIcons._notify_ready()
 		queue_free()
 
@@ -87,20 +103,28 @@ class IconRenderer extends Node:
 		env.background_mode = Environment.BG_CLEAR_COLOR
 		env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 		env.ambient_light_color = Color(0.78, 0.8, 0.85)
-		env.ambient_light_energy = 1.3
+		env.ambient_light_energy = 0.8 if path.begins_with(ItemIcons.DIR_MODELOS) else 1.3   # itens têm cores claras: sem estourar
 		var we := WorldEnvironment.new()
 		we.environment = env
 		vp.add_child(we)
 		var sun := DirectionalLight3D.new()
 		sun.rotation_degrees = Vector3(-35, 35, 0)
-		sun.light_energy = 1.3
+		sun.light_energy = 0.9 if path.begins_with(ItemIcons.DIR_MODELOS) else 1.3
 		vp.add_child(sun)
 		var model: Node3D = (load(path) as PackedScene).instantiate()
 		var holder := Node3D.new()
 		vp.add_child(holder)
 		holder.add_child(model)
 		var box := _aabb(model, Transform3D.IDENTITY)
-		if box.size.z > box.size.x:
+		if path.begins_with(ItemIcons.DIR_MODELOS):
+			# itens de sobrevivência: deitados (carne, pele) vistos de cima inclinados; compridos em pé (ferramentas) na diagonal
+			if box.size.y < box.size.x * 0.5 and box.size.y < box.size.z * 0.7:
+				holder.rotation.x = deg_to_rad(66.0)
+				box = holder.transform * box
+			elif box.size.y > box.size.x * 1.35:
+				holder.rotation.z = deg_to_rad(-48.0)
+				box = holder.transform * box
+		elif box.size.z > box.size.x:
 			holder.rotation.y = PI * 0.5
 			box = holder.transform * box
 		var c := box.get_center()
@@ -138,6 +162,10 @@ class IconRenderer extends Node:
 		return out
 
 
+static func _e_item(id: String) -> bool:
+	return String(BRInventory.definition(id).get("model_path", "")).begins_with(DIR_MODELOS)
+
+
 ## Desenha o ícone de `id` dentro de `r` (o ícone se ajusta ao menor lado).
 static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 	var tex := texture_for(id)
@@ -146,7 +174,8 @@ static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 		var ts := tex.get_size()
 		var k := minf(inner.size.x / ts.x, inner.size.y / ts.y)
 		var sz := ts * k
-		ci.draw_texture_rect(tex, Rect2(inner.get_center() - sz * 0.5, sz), false, Color(2.3, 2.3, 2.3, 1.0) if id in DARK_MODELS else Color(1.45, 1.45, 1.45, 1.0))
+		var ganho := 1.0 if _e_item(id) else (2.3 if id in DARK_MODELS else 1.45)
+		ci.draw_texture_rect(tex, Rect2(inner.get_center() - sz * 0.5, sz), false, Color(ganho, ganho, ganho, 1.0))
 		return
 	var c := r.get_center()
 	var u := minf(r.size.x, r.size.y)

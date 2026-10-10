@@ -12,7 +12,8 @@
 		"time": 2.0,
 		"stop_bleed": true,
 		"rarity": "comum",
-		"lore": "Tira de camiseta fervida. Para o sangue; não faz milagre."
+		"lore": "Tira de camiseta fervida. Para o sangue; não faz milagre.",
+		"model_path": "res://assets/models/itens/curativo.glb"
 	},
 	"analgesico": {
 		"name": "Analgésico",
@@ -25,7 +26,8 @@
 		"stack": 4,
 		"heal": 12,
 		"time": 1.5,
-		"rarity": "comum"
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/analgesico.glb"
 	},
 	"soro": {
 		"name": "Soro fisiológico",
@@ -39,7 +41,8 @@
 		"heal": 35,
 		"time": 6.0,
 		"rarity": "incomum",
-		"lore": "Bolsa de 500 ml do posto de saúde. Validade vencida em 2 meses — serve."
+		"lore": "Bolsa de 500 ml do posto de saúde. Validade vencida em 2 meses — serve.",
+		"model_path": "res://assets/models/itens/soro.glb"
 	},
 	"antibiotico": {
 		"name": "Antibiótico",
@@ -54,7 +57,8 @@
 		"time": 3.0,
 		"rarity": "raro",
 		"lore": "Amoxicilina. Cura intoxicação (carne crua, água suja). Alguém riscou 'NÃO CURA O 27' na caixa.",
-		"cura_doenca": true
+		"cura_doenca": true,
+		"model_path": "res://assets/models/itens/antibiotico.glb"
 	},
 	"tala": {
 		"name": "Tala",
@@ -68,6 +72,7 @@
 		"heal": 15,
 		"time": 4.0,
 		"stop_bleed": true,
-		"rarity": "incomum"
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/tala.glb"
 	}
 }
