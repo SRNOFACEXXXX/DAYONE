@@ -135,12 +135,14 @@ func equipar(uid: int) -> bool:
 		_mao.add_child(sc)
 		if MAOS.has(em_id):
 			_por_maos(sc, MAOS[em_id])
-		elif String(BRInventory.definition(em_id).get("acao", "")) != "":
+		elif String(BRInventory.definition(em_id).get("acao", "")) not in ["", "arco"]:
 			_por_maos(sc, [_centro_y(sc) / maxf(sc.scale.y, 0.001)])   # props: uma mão fechada no meio do objeto
 		for g in sc.find_children("*", "GeometryInstance3D", true, false):
 			(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	var acao_i := String(BRInventory.definition(em_id).get("acao", ""))
-	_ajuste = Vector3(-0.07, 0.12, 0.02) if acao_i != "" and acao_i != "golpe" and acao_i != "melee" else Vector3.ZERO
+	if acao_i == "arco":
+		_montar_arco()
+	_ajuste = Vector3(-0.07, 0.12, 0.02) if acao_i != "" and acao_i != "golpe" and acao_i != "melee" and acao_i != "arco" else Vector3.ZERO
 	pc.camera.add_child(_mao)
 	if String(BRInventory.definition(em_id).get("acao", "")) == "luz":
 		_ligar_lanterna(true)
@@ -160,6 +162,11 @@ func desequipar() -> void:
 	if bm != null and bm.has_meta(MxRetarget.META):
 		MxRetarget.parar(bm)
 	_ligar_lanterna(false)
+	_punhos.clear()
+	_bracos.clear()
+	_ombro_de.clear()
+	_puxando = false
+	_flecha_vis = null
 	if _mao != null and is_instance_valid(_mao):
 		_mao.queue_free()
 	_mao = null
@@ -191,13 +198,16 @@ const GOLPE := [
 ## `alturas` = onde cada mão agarra (m, no modelo); a mão de baixo é a direita.
 const OMBROS := [Vector3(0.34, -0.70, 0.30), Vector3(-0.30, -0.72, 0.28)]   # no espaço da câmera (z>0 = atrás do plano de visão)
 var _ajuste := Vector3.ZERO   # props (garrafa, dinamite...) ficam mais para dentro da tela que as ferramentas
+var _ombro_de: Array[int] = []   # qual ombro (OMBROS[i]) puxa cada antebraço
 var _punhos: Array[Node3D] = []
 var _bracos: Array[MeshInstance3D] = []
 
 
-func _por_maos(modelo: Node3D, alturas: Array) -> void:
-	_punhos.clear()
-	_bracos.clear()
+func _por_maos(modelo: Node3D, alturas: Array, ombros: Array = [0, 1], limpar := true) -> void:
+	if limpar:
+		_punhos.clear()
+		_bracos.clear()
+		_ombro_de.clear()
 	var pele := StandardMaterial3D.new()
 	pele.albedo_color = COR_PELE
 	pele.roughness = 1.0
@@ -227,17 +237,18 @@ func _por_maos(modelo: Node3D, alturas: Array) -> void:
 		braco.top_level = true   # transformação em mundo: calculada da mão ao ombro
 		_mao.add_child(braco)
 		_bracos.append(braco)
+		_ombro_de.append(int(ombros[i % ombros.size()]))
 
 
 func _esticar_bracos() -> void:
-	if _bracos.is_empty() or pc == null or pc.camera == null:
+	if _bracos.is_empty() or pc == null or pc.camera == null or _mao == null or not _mao.is_inside_tree():
 		return
 	var cam := pc.camera.global_transform
 	for i in _bracos.size():
 		if not is_instance_valid(_punhos[i]):
 			continue
 		var mao_w: Vector3 = _punhos[i].global_position
-		var ombro_w: Vector3 = cam * (OMBROS[i % 2] as Vector3)
+		var ombro_w: Vector3 = cam * (OMBROS[_ombro_de[i] % 2] as Vector3)
 		var v := ombro_w - mao_w
 		var L := v.length()
 		if L < 0.01:
@@ -253,6 +264,9 @@ func _esticar_bracos() -> void:
 ## suavização (aceleração na descida, parada seca no impacto).
 func _pose(k: float) -> void:
 	if _mao == null:
+		return
+	if em_id != "" and String(BRInventory.definition(em_id).get("acao", "")) == "arco":
+		_arco_pose(_puxo_t / PUXAR_S if _puxando else 0.0)
 		return
 	k = clampf(k, 0.0, 1.0)
 	var a: Array = GOLPE[0]
@@ -326,6 +340,8 @@ func _physics_process(dt: float) -> void:
 	if em_id != "":
 		if b == null or b.get_item(em_uid).is_empty() or not pc.soldier.alive or pc.active_vehicle != null:
 			desequipar()
+		elif String(BRInventory.definition(em_id).get("acao", "")) == "arco":
+			_arco_tick(dt)
 		elif _livre() and Input.is_action_pressed("fire") and _cd <= 0.0 and _swing < 0.0:
 			_acao_principal()
 	_fogueira_hold(dt)
@@ -383,6 +399,7 @@ func _iniciar_golpe() -> void:
 
 ## Terceira pessoa: se o clipe Mixamo da ferramenta existir (assets/anim_mixamo/leve/<Clipe>.glb), o corpo toca o golpe real
 ## (retarget MxRetarget); sem o arquivo, só o item balança. Clipes: Axe_Chop.glb (machado) e Pickaxe_Mine.glb (picareta).
+const FlechaProjScript := preload("res://core/flecha_proj.gd")
 const CLIPES := {"machado": "Axe_Chop", "picareta": "Pickaxe_Mine"}
 
 
@@ -396,6 +413,64 @@ func _anim_corpo(ligar: bool) -> void:
 			MxRetarget.tocar(bm, nome, false, 1.0)
 	elif bm.has_meta(MxRetarget.META):
 		MxRetarget.parar(bm)
+
+
+# ------------------------------------------------------------------ arco e flecha
+const PUXAR_S := 0.9
+var _puxando := false
+var _puxo_t := 0.0
+var _flecha_vis: Node3D
+
+
+## Arco na mão esquerda (vertical, à frente) e flecha encaixada puxada pela mão direita; as duas mãos usam os antebraços de ombro.
+func _montar_arco() -> void:
+	var sc := _mao.get_child(0) as Node3D   # o modelo do arco
+	sc.rotation_degrees = Vector3(0, 90, 0)  # o plano do arco passa a ser o da visão (curva para o lado)
+	_por_maos(sc, [0.5], [1])
+	var fl_cena := load(String(BRInventory.definition("flecha").get("model_path", ""))) as PackedScene
+	if fl_cena != null:
+		_flecha_vis = fl_cena.instantiate()
+		_mao.add_child(_flecha_vis)
+		_flecha_vis.rotation_degrees = Vector3(-90, 0, 0)   # +Y do modelo (ponta) passa a apontar para -Z (para a frente)
+		for g in _flecha_vis.find_children("*", "GeometryInstance3D", true, false):
+			(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_por_maos(_flecha_vis, [0.0], [0], false)
+	_arco_pose(0.0)
+
+
+## frac 0..1 = quanto a corda foi puxada. O arco fica à esquerda e levemente inclinado; a flecha recua junto da mão direita.
+func _arco_pose(frac: float) -> void:
+	_mao.position = Vector3(-0.17, -0.30, -0.78) + Vector3(0.0, 0.0, 0.03 * frac)
+	_mao.rotation_degrees = Vector3(-4.0, -8.0 + 6.0 * frac, 0.0)
+	if _flecha_vis != null:
+		_flecha_vis.position = Vector3(0.0, 0.0, 0.10 + 0.22 * frac)
+		_flecha_vis.visible = contar("flecha") > 0 or _puxando
+	_esticar_bracos()
+
+
+func _arco_tick(dt: float) -> void:
+	var fogo := Input.is_action_pressed("fire") and _livre()
+	if not _puxando:
+		if fogo and _cd <= 0.0 and contar("flecha") > 0:
+			_puxando = true
+			_puxo_t = 0.0
+		_arco_pose(0.0)
+		return
+	_puxo_t += dt
+	var f := clampf(_puxo_t / PUXAR_S, 0.0, 1.0)
+	_arco_pose(f)
+	if not fogo:
+		_puxando = false
+		if f >= 0.15 and consumir("flecha", 1):
+			var cam := pc.camera
+			var dir := -cam.global_transform.basis.z
+			var fl_cena := load(String(BRInventory.definition("flecha").get("model_path", ""))) as PackedScene
+			FlechaProjScript.disparar(m, pc.soldier, cam.global_position + dir * 0.6 + Vector3(0.12, -0.12, 0.0), dir, f, fl_cena)
+			pc.shake(0.12 + 0.1 * f)
+			if Audio.has_sound("knife_swing"):
+				Audio.play_at("knife_swing", cam.global_position, {"volume_db": -2.0, "max_distance": 30.0, "pitch": 1.4})
+			_cd = 0.45
+		_arco_pose(0.0)
 
 
 # ------------------------------------------------------------------ props: arremesso, mina, cofrinho, luz, melee
@@ -756,5 +831,8 @@ func _atualizar_dica() -> void:
 			txt = "Clique: cortar árvore" if j >= 0 else "Machado na mão: chegue perto de uma árvore"
 		elif em_id == "kit_fogueira" or em_id == "graveto" or em_id == "tora":
 			txt = "Clique: montar fogueira"
+		elif em_id == "arco":
+			var nf := contar("flecha")
+			txt = ("Segure o clique para puxar, solte para atirar  ·  %d flecha(s)" % nf) if nf > 0 else "Sem flechas"
 	_dica.text = txt
 	_dica.visible = txt != ""

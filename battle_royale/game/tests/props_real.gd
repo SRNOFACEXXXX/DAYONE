@@ -300,5 +300,40 @@ func _ready() -> void:
 			await _shot("escada_cima")
 			print("ESCADA y %.2f -> máx %.2f (topo %.2f)" % [y_ini, ymax, esc.topo_world().y])
 			_ok(ymax > y_ini + 2.5, "subiu a escada (+%.1f m)" % (ymax - y_ini))
+	# ---- 11) arco e flecha: puxa 0,9 s e solta; flecha acerta zumbi parado a 14 m
+	p.global_position = Vector3(plano.x, 400.0, plano.z)
+	p.velocity = Vector3.ZERO
+	var laje2 := StaticBody3D.new()
+	laje2.collision_layer = Soldier.LAYER_WORLD
+	var cs3 := CollisionShape3D.new()
+	var bx3 := BoxShape3D.new()
+	bx3.size = Vector3(60, 2, 60)
+	cs3.shape = bx3
+	laje2.add_child(cs3)
+	m.add_child(laje2)
+	laje2.global_position = Vector3(plano.x, 399.0, plano.z)
+	p.global_position = Vector3(plano.x, 400.1, plano.z)
+	p.reset_physics_interpolation()
+	p.pitch = 0.0
+	for i in 20:
+		await get_tree().physics_frame
+	m.br_bag.add_item("arco", 1)
+	m.br_bag.add_item("flecha", 6)
+	_ok(fm.equipar(_uid("arco")), "arco na mão")
+	await _shot("mao_arco_repouso")
+	var zarco := _zumbi_em(p.global_position + f2 * 14.0 + Vector3(0, 0.1, 0))
+	zarco.set_physics_process(false)
+	var hp1: int = zarco.health
+	var fl0 := _qtd("flecha")
+	Input.action_press("fire")
+	for i in 40:
+		await get_tree().physics_frame
+	await _shot("mao_arco_puxado")
+	Input.action_release("fire")
+	for i in 90:
+		await get_tree().physics_frame
+	_ok(_qtd("flecha") == fl0 - 1, "atirar gastou 1 flecha (%d → %d)" % [fl0, _qtd("flecha")])
+	_ok(zarco.health < hp1 or zarco.state == ZombieEnemy.State.DEAD, "flecha feriu o zumbi a 14 m (%d → %d)" % [hp1, zarco.health])
+	fm.desequipar()
 	print("PROPS_RESULT falhas=%d" % falhas)
 	get_tree().quit(0 if falhas == 0 else 1)

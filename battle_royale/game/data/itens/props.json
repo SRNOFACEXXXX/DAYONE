@@ -525,5 +525,35 @@
 		"rarity": "incomum",
 		"model_path": "res://assets/models/itens/props/tower_ruler.glb",
 		"lore": "Poste de medição da torre meteorológica. Sucata de bom aço."
+	},
+	"arco": {
+		"name": "Arco",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			3
+		],
+		"kg": 0.9,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/arco.glb",
+		"acao": "arco",
+		"mao": {
+			"escala": 0.55
+		},
+		"lore": "Arco de madeira dobrada. Silencioso: o melhor amigo de quem caça sem acordar a ilha. Segure para puxar, solte para atirar."
+	},
+	"flecha": {
+		"name": "Flecha",
+		"kind": "material",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.05,
+		"stack": 20,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/flecha.glb",
+		"lore": "Haste de madeira com penas e ponta de aço. Recuperável se não quebrar... às vezes."
 	}
 }
