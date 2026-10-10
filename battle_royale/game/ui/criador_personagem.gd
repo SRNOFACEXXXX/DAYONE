@@ -71,16 +71,31 @@ func dados() -> Dictionary:
 func _carregar() -> void:
 	if not FileAccess.file_exists(ARQUIVO):
 		return
-	var d = JSON.parse_string(FileAccess.get_file_as_string(ARQUIVO))
-	if not d is Dictionary:
-		return
+	var d: Variant = JSON.parse_string(FileAccess.get_file_as_string(ARQUIVO))
+	if d is Dictionary:
+		escolha.merge(validar_escolhas(d), true)
+
+
+## Escolhas válidas de um personagem.json: slot -> índice da opção, "pele" -> índice do tom.
+## Valor de tipo errado (lista, texto onde é número, opção desconhecida) é ignorado, não quebra o menu.
+static func validar_escolhas(d: Dictionary) -> Dictionary:
+	var out := {}
 	for s in SLOTS:
-		if d.has(s[0]):
+		var v: Variant = d.get(s[0])
+		if v is String:
 			for i in (s[2] as Array).size():
-				if String(s[2][i][0]) == String(d[s[0]]):
-					escolha[s[0]] = i
-	if d.has("pele"):
-		escolha["pele"] = clampi(int(d["pele"]), 0, TONS.size() - 1)
+				if String(s[2][i][0]) == v:
+					out[s[0]] = i
+	var p: Variant = d.get("pele")
+	if p is float or p is int:
+		out["pele"] = clampi(int(p), 0, TONS.size() - 1)
+	return out
+
+
+## Texto de uma chave do personagem.json, ou o padrão se não for String.
+static func texto_de(d: Dictionary, chave: String, padrao: String) -> String:
+	var v: Variant = d.get(chave)
+	return v if v is String else padrao
 
 
 func salvar() -> void:
@@ -107,10 +122,10 @@ static func instanciar_base() -> Node3D:
 static func aplicar_dados(n: Node3D, d: Dictionary) -> void:
 	var visiveis := {"Body_010": true}
 	for s in SLOTS:
-		var m := String(d.get(s[0], String(s[2][0][0])))
+		var m := texto_de(d, s[0], String(s[2][0][0]))
 		if m != "":
 			visiveis[m] = true
-	if String(d.get("pernas", "")) == "Shorts_003":
+	if texto_de(d, "pernas", "") == "Shorts_003":
 		visiveis["Socks_008"] = true
 	for mi in n.find_children("*", "MeshInstance3D", true, false):
 		(mi as MeshInstance3D).visible = visiveis.has(String(mi.name))

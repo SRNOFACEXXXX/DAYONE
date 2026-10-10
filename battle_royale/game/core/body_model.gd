@@ -8,6 +8,7 @@ const OFFSET_PATHS := ["res://assets/models/characters/terrorist_weapon_offsets.
 ## PONTO DE CONFIGURAÇÃO do modelo: no modo sobrevivência todos (jogador e bots) usam o soldado de docs/ref/personagem.jpg
 ## (tools/build_soldado.py). Para voltar aos modelos por time (CS), ponha SOLDIER_FOR_ALL = false.
 const SOLDIER_PATH := "res://assets/models/characters/soldado.glb"
+const BLOOD_SPLAT := preload("res://fx/textures/blood_splat.png")   # ferida por tiro: antes load() a cada ferida
 const SOLDIER_OFFSETS := "res://assets/models/characters/soldado_weapon_offsets.json"
 static var SOLDIER_FOR_ALL := true
 const UPPER_BONES := ["Spine", "Spine1", "Neck", "Head", "LeftShoulder", "LeftArm", "LeftForeArm", "LeftHand",
@@ -77,6 +78,12 @@ var _hold_yaw_target := 0.0
 var _upper_tracks: Array[NodePath] = []
 
 
+## Offsets de arma (JSON): só Dictionary é aceito; texto inválido ou null vira {} em vez de quebrar _offsets (tipado).
+static func ler_offsets(texto: String) -> Dictionary:
+	var j: Variant = JSON.parse_string(texto)
+	return j if j is Dictionary else {}
+
+
 func setup(s: Soldier) -> void:
 	soldier = s
 	s.weapon_switched.connect(_on_weapon)
@@ -120,7 +127,7 @@ func rebuild(s: Soldier) -> void:
 		_offsets = {}
 		var op: String = OFFSET_PATHS[s.team]
 		if FileAccess.file_exists(op):
-			_offsets = JSON.parse_string(FileAccess.get_file_as_string(op))
+			_offsets = ler_offsets(FileAccess.get_file_as_string(op))
 		if skeleton and skeleton.find_bone("RightHandProp") >= 0:
 			var ba := BoneAttachment3D.new()
 			ba.name = "RightHandAttach"
@@ -1044,7 +1051,7 @@ func add_wound(world_pos: Vector3, normal: Vector3) -> void:
 		_wound_mat = StandardMaterial3D.new()
 		_wound_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_SCISSOR
 		_wound_mat.alpha_scissor_threshold = 0.4
-		_wound_mat.albedo_texture = load("res://fx/textures/blood_splat.png")
+		_wound_mat.albedo_texture = BLOOD_SPLAT
 		_wound_mat.roughness = 0.35
 		_wound_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
 	var mi := MeshInstance3D.new()

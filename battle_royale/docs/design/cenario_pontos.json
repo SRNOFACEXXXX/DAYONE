@@ -1,0 +1,2306 @@
+{
+	"fonte": "autoral, escrito à mão (sessão de cenário mais cheio). Coordenadas de design: x leste, y norte (mundo: x, z = -y). Sítios escolhidos com tools de altura (terreno plano, longe de casas, refúgios e de outros props). Só assets já existentes em game/assets. Carros abandonados são carcaças estáticas (sem VehicleBody). Postes caídos usam tombamento (campo 'tomba', graus em torno do eixo Z local, pivô na base).",
+	"convencoes": {
+		"alcance": "distância de desenho (m). Pequenos 150; carros, barcos e estruturas grandes 220.",
+		"tomba": "graus de tombamento (poste caído). dy levanta a base para não afundar na terra.",
+		"ruido": "pequenos grupos de 2 a 4 props ao longo das estradas, margens das casas e da costa (ruído autoral, rodada 3). Teto global: 300 props."
+	},
+	"areas": [
+		{
+			"nome": "Acampamento do sobrevivente (interior, mata)",
+			"intencao": "barraca, fogueira com lenha, churrasqueira e galão: alguém viveu aqui e saiu às pressas",
+			"props": [
+				{
+					"tipo": "atualizacao/mundo/Tent_002",
+					"x": -352.0,
+					"y": -127.0,
+					"rot_deg": 35,
+					"alcance": 150,
+					"escala": 0.6
+				},
+				{
+					"tipo": "atualizacao/mundo/Tent_010",
+					"x": -362.0,
+					"y": -124.0,
+					"rot_deg": 110,
+					"alcance": 150,
+					"escala": 0.6
+				},
+				{
+					"tipo": "cenario/natureza/fogueira",
+					"x": -356.0,
+					"y": -132.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/lenha",
+					"x": -353.5,
+					"y": -136.5,
+					"rot_deg": 70,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barbecue_Grill",
+					"x": -359.0,
+					"y": -133.0,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Fuel_Canister",
+					"x": -364.5,
+					"y": -129.5,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_003",
+					"x": -348.5,
+					"y": -123.0,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/First_Aid",
+					"x": -355.0,
+					"y": -121.0,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			],
+			"lore": "acampamento"
+		},
+		{
+			"nome": "Carros abandonados na estrada (planície)",
+			"intencao": "um comboio parado às pressas: fusca, caminhão, teco-teco e pneus empilhados",
+			"props": [
+				{
+					"tipo": "cobertura/carcaca_fusca",
+					"x": 366.0,
+					"y": -318.0,
+					"rot_deg": 15,
+					"alcance": 220
+				},
+				{
+					"tipo": "atualizacao/mundo/Apocalypse_Car",
+					"x": 376.0,
+					"y": -327.0,
+					"rot_deg": 100,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/caminhao_abandonado",
+					"x": 361.0,
+					"y": -331.0,
+					"rot_deg": 160,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/carcaca_teco_teco",
+					"x": 383.0,
+					"y": -315.0,
+					"rot_deg": 250,
+					"alcance": 220,
+					"escala": 0.5
+				},
+				{
+					"tipo": "cobertura/pilha_pneus",
+					"x": 357.0,
+					"y": -315.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Tire_001",
+					"x": 371.0,
+					"y": -312.0,
+					"rot_deg": 20,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Road_Barrier_01",
+					"x": 370.0,
+					"y": -340.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_007",
+					"x": 352.0,
+					"y": -325.0,
+					"rot_deg": 90,
+					"alcance": 150
+				}
+			],
+			"lore": "carros_estrada"
+		},
+		{
+			"nome": "Caixotes e postes caídos (encosta)",
+			"intencao": "depósito de um armazém saqueado: caixotes, tambor e dois postes derrubados pelo vento",
+			"props": [
+				{
+					"tipo": "cenario/rua/rua_box_01",
+					"x": 116.0,
+					"y": -58.0,
+					"rot_deg": 10,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_box_02",
+					"x": 124.0,
+					"y": -66.0,
+					"rot_deg": 75,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/caixas/caixa_2_corpo",
+					"x": 119.0,
+					"y": -70.0,
+					"rot_deg": 40,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_022",
+					"x": 111.0,
+					"y": -60.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrel_005",
+					"x": 128.0,
+					"y": -54.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "poste_madeira",
+					"x": 110.0,
+					"y": -72.0,
+					"rot_deg": 60,
+					"tomba": 86,
+					"dy": 0.3,
+					"alcance": 150
+				},
+				{
+					"tipo": "poste_concreto",
+					"x": 126.0,
+					"y": -80.0,
+					"rot_deg": 150,
+					"tomba": 88,
+					"dy": 0.3,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/tronco_caido",
+					"x": 104.0,
+					"y": -64.0,
+					"rot_deg": 20,
+					"alcance": 150
+				}
+			],
+			"lore": "caixotes_encosta"
+		},
+		{
+			"nome": "Posto de sentinela abandonado (planalto)",
+			"intencao": "barreira de sacos, muretas e geradores de um posto que foi evacuado",
+			"props": [
+				{
+					"tipo": "cobertura/sacos_areia",
+					"x": -58.0,
+					"y": -46.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/mureta_concreto",
+					"x": -50.0,
+					"y": -58.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Concrete_Fence",
+					"x": -62.0,
+					"y": -54.0,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_007",
+					"x": -46.0,
+					"y": -44.0,
+					"rot_deg": 45,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Generator_004",
+					"x": -56.0,
+					"y": -40.0,
+					"rot_deg": 170,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Signs_Shield",
+					"x": -64.0,
+					"y": -46.0,
+					"rot_deg": 80,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Walkie_talkie",
+					"x": -52.0,
+					"y": -41.0,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			],
+			"lore": "sentinela"
+		},
+		{
+			"nome": "Pasto cercado (interior sul)",
+			"intencao": "fardos, cocho e carreta de cana num pasto de cerca de madeira",
+			"props": [
+				{
+					"tipo": "cobertura/fardo_feno_x3",
+					"x": -158.0,
+					"y": 340.0,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/fardo_feno_x3",
+					"x": -146.0,
+					"y": 350.0,
+					"rot_deg": 100,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/cocho",
+					"x": -140.0,
+					"y": 338.0,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/carreta_cana",
+					"x": -164.0,
+					"y": 352.0,
+					"rot_deg": 0,
+					"alcance": 220
+				},
+				{
+					"tipo": "cenario/natureza/pilha_troncos",
+					"x": -134.0,
+					"y": 350.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrel_005",
+					"x": -150.0,
+					"y": 336.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/tambor_x4",
+					"x": -156.0,
+					"y": 348.0,
+					"rot_deg": 45,
+					"alcance": 150
+				}
+			],
+			"lore": "pasto",
+			"cercas": [
+				{
+					"tipo": "cerca_madeira",
+					"pontos": [
+						[
+							-170.0,
+							332.0
+						],
+						[
+							-134.0,
+							332.0
+						],
+						[
+							-134.0,
+							356.0
+						],
+						[
+							-170.0,
+							356.0
+						],
+						[
+							-170.0,
+							332.0
+						]
+					]
+				}
+			]
+		},
+		{
+			"nome": "Barcos encalhados e canoas na costa",
+			"intencao": "barcos de pesca encalhados na maré baixa; alguns já sem remo (dispersa de propósito: pontos isolados ao longo da costa)",
+			"props": [
+				{
+					"tipo": "cobertura/barco_encalhado",
+					"x": -26.0,
+					"y": 468.0,
+					"rot_deg": 20,
+					"dy": 0.2,
+					"alcance": 220
+				},
+				{
+					"tipo": "canoa_praia",
+					"x": 484.0,
+					"y": -304.0,
+					"rot_deg": 60,
+					"alcance": 150
+				},
+				{
+					"tipo": "canoa_praia",
+					"x": 487.0,
+					"y": -312.0,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/barco_encalhado",
+					"x": -278.0,
+					"y": 422.0,
+					"rot_deg": 140,
+					"dy": 0.15,
+					"alcance": 220
+				},
+				{
+					"tipo": "canoa_praia",
+					"x": -494.0,
+					"y": 104.0,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/barco_encalhado",
+					"x": 502.0,
+					"y": -96.0,
+					"rot_deg": 250,
+					"dy": 0.3,
+					"alcance": 220
+				},
+				{
+					"tipo": "canoa_praia",
+					"x": 446.0,
+					"y": 310.0,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": 441.0,
+					"y": 306.0,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/barco_encalhado",
+					"x": -484.0,
+					"y": -294.0,
+					"rot_deg": 315,
+					"dy": 0.3,
+					"alcance": 220
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrel_005",
+					"x": -478.0,
+					"y": -289.0,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "canoa_praia",
+					"x": 202.0,
+					"y": -490.0,
+					"rot_deg": 10,
+					"alcance": 150
+				}
+			],
+			"lore": "costa_barcos",
+			"disperso": true
+		},
+		{
+			"nome": "Farol e cais de pedra (costa oeste)",
+			"lore": "farol_cais",
+			"intencao": "farol de torre com a luz ainda girando; rochas, caixotes e um barco de apoio na pedra",
+			"props": [
+				{
+					"tipo": "predios/farol_torre_a",
+					"x": -52,
+					"y": -498,
+					"rot_deg": 0,
+					"alcance": 300
+				},
+				{
+					"tipo": "cenario/pedras/pedra_03",
+					"x": -58,
+					"y": -510,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/pedras/pedra_07",
+					"x": -45,
+					"y": -512,
+					"rot_deg": 110,
+					"alcance": 150,
+					"escala": 1.2
+				},
+				{
+					"tipo": "cenario/pedras/pedra_09",
+					"x": -55,
+					"y": -500,
+					"rot_deg": 200,
+					"alcance": 150,
+					"escala": 0.8
+				},
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": -43,
+					"y": -504,
+					"rot_deg": 40,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": -61,
+					"y": -509,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/tambor",
+					"x": -47,
+					"y": -515,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/canoa_praia",
+					"x": -48,
+					"y": -510,
+					"rot_deg": 200,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Área de pesca e redes (leste)",
+			"lore": "pesca_leste",
+			"intencao": "caixotes de peixe, barris e uma canoa na areia: a cooperativa parou no meio da safra",
+			"props": [
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": 350,
+					"y": -428,
+					"rot_deg": 20,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": 357,
+					"y": -420,
+					"rot_deg": 130,
+					"alcance": 150,
+					"escala": 1.1
+				},
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": 353,
+					"y": -416,
+					"rot_deg": 300,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": 346,
+					"y": -424,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": 360,
+					"y": -430,
+					"rot_deg": 50,
+					"alcance": 150,
+					"escala": 0.9
+				},
+				{
+					"tipo": "detalhes/canoa_praia",
+					"x": 349,
+					"y": -414,
+					"rot_deg": 75,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/carrinho_mao",
+					"x": 356,
+					"y": -431,
+					"rot_deg": 160,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/tambor",
+					"x": 361,
+					"y": -418,
+					"rot_deg": 10,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": 344,
+					"y": -426,
+					"rot_deg": 40,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": 358,
+					"y": -426,
+					"rot_deg": 210,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": 354,
+					"y": -434,
+					"rot_deg": 0,
+					"alcance": 120
+				}
+			]
+		},
+		{
+			"nome": "Cais de pesca do sul",
+			"lore": "cais_sul",
+			"intencao": "cais curto com um barco de apoio e caixotes; a maré deixou tudo para trás",
+			"props": [
+				{
+					"tipo": "detalhes/canoa_praia",
+					"x": -217,
+					"y": 440,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": -210,
+					"y": 438,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/caixote_peixe",
+					"x": -218,
+					"y": 446,
+					"rot_deg": 25,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/barco_encalhado",
+					"x": -206,
+					"y": 444,
+					"rot_deg": 160,
+					"alcance": 220,
+					"dy": 0.25
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": -213,
+					"y": 434,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": -220,
+					"y": 436,
+					"rot_deg": 80,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrel_005",
+					"x": -224,
+					"y": 440,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": -210,
+					"y": 450,
+					"rot_deg": 0,
+					"alcance": 120
+				}
+			]
+		},
+		{
+			"nome": "Fazenda abandonada (planalto)",
+			"lore": "fazenda",
+			"intencao": "celeiro aberto, feno e cocho; a cerca de madeira ainda segura o pasto",
+			"props": [
+				{
+					"tipo": "cobertura/fardo_feno_x3",
+					"x": 80,
+					"y": -330,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/fardo_feno_x3",
+					"x": 94,
+					"y": -342,
+					"rot_deg": 100,
+					"alcance": 150,
+					"escala": 1.05
+				},
+				{
+					"tipo": "cobertura/fardo_feno_x3",
+					"x": 88,
+					"y": -324,
+					"rot_deg": 60,
+					"alcance": 150,
+					"escala": 0.95
+				},
+				{
+					"tipo": "cobertura/cocho",
+					"x": 92,
+					"y": -330,
+					"rot_deg": 85,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/carreta_cana",
+					"x": 74,
+					"y": -344,
+					"rot_deg": 30,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/tambor_x4",
+					"x": 98,
+					"y": -336,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/carrinho_mao",
+					"x": 84,
+					"y": -350,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": 78,
+					"y": -336,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/barril",
+					"x": 100,
+					"y": -326,
+					"rot_deg": 70,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pilha_tabuas",
+					"x": 90,
+					"y": -318,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/lenha",
+					"x": 82,
+					"y": -358,
+					"rot_deg": 10,
+					"alcance": 150
+				}
+			],
+			"cercas": [
+				{
+					"tipo": "cerca_madeira",
+					"pontos": [
+						[
+							66,
+							-320
+						],
+						[
+							104,
+							-320
+						],
+						[
+							104,
+							-354
+						]
+					]
+				}
+			]
+		},
+		{
+			"nome": "Posto militar caído (planalto)",
+			"lore": "posto_militar",
+			"intencao": "posto de vigia derrubado: torre tombada, barreiras de concreto, tenda e um morteiro abandonado",
+			"props": [
+				{
+					"tipo": "atualizacao/mundo/Tower_003",
+					"x": -178,
+					"y": 286,
+					"rot_deg": 20,
+					"alcance": 260,
+					"tomba": 84,
+					"dy": 0.4
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_004",
+					"x": -168,
+					"y": 276,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_006",
+					"x": -182,
+					"y": 274,
+					"rot_deg": 60,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_008",
+					"x": -170,
+					"y": 292,
+					"rot_deg": 110,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Tent_010",
+					"x": -166,
+					"y": 288,
+					"rot_deg": 30,
+					"alcance": 150,
+					"escala": 0.6
+				},
+				{
+					"tipo": "detalhes/barraca_militar",
+					"x": -186,
+					"y": 290,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/holofote",
+					"x": -172,
+					"y": 268,
+					"rot_deg": 0,
+					"alcance": 150,
+					"tomba": 75,
+					"dy": 0.2
+				},
+				{
+					"tipo": "detalhes/placa_identificacao_military",
+					"x": -164,
+					"y": 280,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Machine_gun_004",
+					"x": -176,
+					"y": 286,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Mortar_001",
+					"x": -180,
+					"y": 298,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Fuel_Canister",
+					"x": -160,
+					"y": 280,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Fuel_Canister",
+					"x": -188,
+					"y": 284,
+					"rot_deg": 120,
+					"alcance": 150
+				}
+			],
+			"cercas": [
+				{
+					"tipo": "cerca_arame",
+					"pontos": [
+						[
+							-198,
+							260
+						],
+						[
+							-154,
+							260
+						],
+						[
+							-154,
+							304
+						]
+					]
+				}
+			]
+		},
+		{
+			"nome": "Igreja e cruzeiro no morro",
+			"lore": "igreja",
+			"intencao": "capela de torre no alto do morro, cruzeiro de pedra e um banco; abrigo que virou tumba",
+			"props": [
+				{
+					"tipo": "predios/torre_igreja_a",
+					"x": -68,
+					"y": -352,
+					"rot_deg": 0,
+					"alcance": 300
+				},
+				{
+					"tipo": "predios/cruzeiro_a",
+					"x": -60,
+					"y": -336,
+					"rot_deg": 0,
+					"alcance": 220
+				},
+				{
+					"tipo": "cenario/pedras/pedra_05",
+					"x": -76,
+					"y": -340,
+					"rot_deg": 40,
+					"alcance": 150,
+					"escala": 1.1
+				},
+				{
+					"tipo": "cenario/pedras/pedra_09",
+					"x": -62,
+					"y": -362,
+					"rot_deg": 160,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/banco_praca",
+					"x": -74,
+					"y": -362,
+					"rot_deg": 180,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": -80,
+					"y": -350,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco_baixo",
+					"x": -56,
+					"y": -360,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/orelhao",
+					"x": -70,
+					"y": -334,
+					"rot_deg": 90,
+					"alcance": 150
+				}
+			],
+			"cercas": [
+				{
+					"tipo": "muro_baixo",
+					"pontos": [
+						[
+							-90,
+							-324
+						],
+						[
+							-54,
+							-324
+						]
+					]
+				}
+			]
+		},
+		{
+			"nome": "Galpão com caminhão e pneus",
+			"lore": "galpao_caminhao",
+			"intencao": "galpão com caminhão de carga, pneus empilhados e caixas de óleo; combustível ainda no tanque",
+			"props": [
+				{
+					"tipo": "predios/galpao_a",
+					"x": -144,
+					"y": -12,
+					"rot_deg": 0,
+					"alcance": 300
+				},
+				{
+					"tipo": "cobertura/caminhao_abandonado",
+					"x": -140,
+					"y": -26,
+					"rot_deg": 40,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/pilha_pneus",
+					"x": -160,
+					"y": -24,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Tire_001",
+					"x": -138,
+					"y": -16,
+					"rot_deg": 20,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Tires_001",
+					"x": -164,
+					"y": -6,
+					"rot_deg": 100,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_003",
+					"x": -146,
+					"y": -6,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_005",
+					"x": -136,
+					"y": -4,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_022",
+					"x": -156,
+					"y": -34,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Generator_004",
+					"x": -132,
+					"y": -18,
+					"rot_deg": 90,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Gas_Burner",
+					"x": -168,
+					"y": -14,
+					"rot_deg": 10,
+					"alcance": 150,
+					"escala": 2.5
+				},
+				{
+					"tipo": "cobertura/tambor_x4",
+					"x": -148,
+					"y": -38,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Estrada com carros batidos e cones",
+			"lore": "estrada_batida",
+			"intencao": "trecho de estrada com dois carros batidos, barreiras e cones espalhados como se alguém tentasse desviar",
+			"props": [
+				{
+					"tipo": "cobertura/carcaca_fusca",
+					"x": 300,
+					"y": 312,
+					"rot_deg": 90,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/carcaca_teco_teco",
+					"x": 314,
+					"y": 318,
+					"rot_deg": 20,
+					"alcance": 220,
+					"escala": 0.5
+				},
+				{
+					"tipo": "atualizacao/mundo/Apocalypse_Car",
+					"x": 322,
+					"y": 310,
+					"rot_deg": 70,
+					"alcance": 220
+				},
+				{
+					"tipo": "cobertura/carcaca_fusca",
+					"x": 290,
+					"y": 320,
+					"rot_deg": 170,
+					"alcance": 220,
+					"escala": 0.95
+				},
+				{
+					"tipo": "cenario/rua/rua_roadcone_01",
+					"x": 294,
+					"y": 308,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_roadcone_02",
+					"x": 301,
+					"y": 306,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_roadcone_01",
+					"x": 306,
+					"y": 304,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_roadcone_02",
+					"x": 328,
+					"y": 304,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_roadcone_01",
+					"x": 336,
+					"y": 312,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Road_Barrier_01",
+					"x": 312,
+					"y": 300,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrier_009",
+					"x": 326,
+					"y": 324,
+					"rot_deg": 10,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/placa_estrada",
+					"x": 286,
+					"y": 316,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Clareira de troncos (mata)",
+			"lore": "clareira_troncos",
+			"intencao": "clareira aberta a machado: troncos caídos, lenha empilhada e tocos; alguém cortava para fogueira",
+			"props": [
+				{
+					"tipo": "cenario/natureza/tronco_caido",
+					"x": -150,
+					"y": -386,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/tronco_caido",
+					"x": -162,
+					"y": -396,
+					"rot_deg": 110,
+					"alcance": 150,
+					"escala": 0.9
+				},
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": -146,
+					"y": -390,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": -166,
+					"y": -384,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco_baixo",
+					"x": -154,
+					"y": -400,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco_baixo",
+					"x": -168,
+					"y": -384,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pilha_troncos",
+					"x": -140,
+					"y": -396,
+					"rot_deg": 45,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/lenha",
+					"x": -164,
+					"y": -404,
+					"rot_deg": 70,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": -150,
+					"y": -404,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/galho",
+					"x": -170,
+					"y": -380,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/raiz",
+					"x": -158,
+					"y": -382,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pedrisco_a",
+					"x": -152,
+					"y": -384,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/arbusto_a",
+					"x": -142,
+					"y": -378,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Clareira de tocos e fogueira",
+			"lore": "clareira_tocos",
+			"intencao": "clareira alta com tocos em círculo e uma fogueira apagada; contagem de dias riscada num toco",
+			"props": [
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": 200,
+					"y": -36,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": 212,
+					"y": -40,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco",
+					"x": 210,
+					"y": -26,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco_baixo",
+					"x": 218,
+					"y": -32,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/toco_baixo",
+					"x": 194,
+					"y": -38,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/tronco_caido",
+					"x": 204,
+					"y": -48,
+					"rot_deg": 60,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/tronco_caido",
+					"x": 214,
+					"y": -20,
+					"rot_deg": 150,
+					"alcance": 150,
+					"escala": 1.1
+				},
+				{
+					"tipo": "cenario/natureza/lenha",
+					"x": 208,
+					"y": -44,
+					"rot_deg": 20,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/fogueira",
+					"x": 206,
+					"y": -34,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pilha_troncos",
+					"x": 190,
+					"y": -26,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/raiz",
+					"x": 200,
+					"y": -22,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pedrisco_a",
+					"x": 216,
+					"y": -24,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/pedrisco_b",
+					"x": 196,
+					"y": -24,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Entulho da vila (norte)",
+			"lore": "entulho_norte",
+			"intencao": "lixo e entulho em volta da vila: lixeiras viradas, sacos, jornais e um muro arruinado",
+			"props": [
+				{
+					"tipo": "cenario/natureza/entulho",
+					"x": 246,
+					"y": -338,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/entulho",
+					"x": 256,
+					"y": -348,
+					"rot_deg": 90,
+					"alcance": 150,
+					"escala": 0.9
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": 244,
+					"y": -346,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": 262,
+					"y": -336,
+					"rot_deg": 40,
+					"alcance": 150,
+					"tomba": 70,
+					"dy": 0.15
+				},
+				{
+					"tipo": "cenario/rua/rua_newspaper",
+					"x": 248,
+					"y": -344,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_envelope_01",
+					"x": 254,
+					"y": -344,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/sacos_areia",
+					"x": 236,
+					"y": -352,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/monte_terra",
+					"x": 266,
+					"y": -346,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Box_005",
+					"x": 246,
+					"y": -356,
+					"rot_deg": 15,
+					"alcance": 150
+				},
+				{
+					"tipo": "atualizacao/mundo/Barrel_005",
+					"x": 260,
+					"y": -356,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/muro_ruina",
+					"x": 248,
+					"y": -328,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		},
+		{
+			"nome": "Entulho da vila (sul)",
+			"lore": "entulho_sul",
+			"intencao": "resto de feira na beira da vila: sacos, tambores, pneus e um muro de pedra caído",
+			"props": [
+				{
+					"tipo": "cenario/natureza/entulho",
+					"x": -326,
+					"y": 286,
+					"rot_deg": 20,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/entulho",
+					"x": -336,
+					"y": 278,
+					"rot_deg": 110,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": -322,
+					"y": 276,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/lixeira",
+					"x": -338,
+					"y": 290,
+					"rot_deg": 200,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/rua/rua_envelope_02",
+					"x": -330,
+					"y": 282,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/pilha_tijolo",
+					"x": -344,
+					"y": 284,
+					"rot_deg": 30,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/tambor",
+					"x": -318,
+					"y": 292,
+					"rot_deg": 70,
+					"alcance": 150
+				},
+				{
+					"tipo": "detalhes/tambor",
+					"x": -342,
+					"y": 272,
+					"rot_deg": 0,
+					"alcance": 150,
+					"tomba": 0
+				},
+				{
+					"tipo": "cenario/natureza/monte_terra",
+					"x": -312,
+					"y": 282,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cenario/natureza/muro_ruina",
+					"x": -332,
+					"y": 298,
+					"rot_deg": 0,
+					"alcance": 150
+				},
+				{
+					"tipo": "cobertura/pilha_pneus",
+					"x": -348,
+					"y": 292,
+					"rot_deg": 0,
+					"alcance": 150
+				}
+			]
+		}
+	],
+	"ruido": [
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": -243.3,
+			"y": -35.3,
+			"rot_deg": 210,
+			"alcance": 110,
+			"escala": 0.93
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": -246.8,
+			"y": -36.1,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": -244.8,
+			"y": -41.2,
+			"rot_deg": 165,
+			"alcance": 110,
+			"escala": 1.2
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": -244.1,
+			"y": -37.5,
+			"rot_deg": 315,
+			"alcance": 110,
+			"escala": 1.15
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": 168.6,
+			"y": 462.6,
+			"rot_deg": 285,
+			"alcance": 110,
+			"escala": 1.08
+		},
+		{
+			"tipo": "cenario/pedras/pedra_03",
+			"x": 171.5,
+			"y": 463.0,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 1.07
+		},
+		{
+			"tipo": "cenario/natureza/toco",
+			"x": -176.2,
+			"y": -67.5,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 0.99
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -181.4,
+			"y": -71.1,
+			"rot_deg": 180,
+			"alcance": 110,
+			"escala": 1.04
+		},
+		{
+			"tipo": "cenario/natureza/toco",
+			"x": -176.7,
+			"y": -64.4,
+			"rot_deg": 225,
+			"alcance": 110,
+			"escala": 1.15
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": -180.8,
+			"y": -67.5,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 1.14
+		},
+		{
+			"tipo": "detalhes/tambor",
+			"x": 509.3,
+			"y": -175.6,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 1.18
+		},
+		{
+			"tipo": "cenario/pedras/pedra_03",
+			"x": 511.5,
+			"y": -176.2,
+			"rot_deg": 135,
+			"alcance": 110,
+			"escala": 1.11
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": 416.0,
+			"y": -191.0,
+			"rot_deg": 330,
+			"alcance": 110,
+			"escala": 1.01
+		},
+		{
+			"tipo": "cenario/natureza/pedrisco_b",
+			"x": 421.1,
+			"y": -190.1,
+			"rot_deg": 45,
+			"alcance": 110,
+			"escala": 0.87
+		},
+		{
+			"tipo": "cenario/natureza/toco",
+			"x": 3.4,
+			"y": -391.2,
+			"rot_deg": 60,
+			"alcance": 110,
+			"escala": 1.01
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": 8.8,
+			"y": -385.4,
+			"rot_deg": 60,
+			"alcance": 110,
+			"escala": 0.88
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": 6.9,
+			"y": -388.9,
+			"rot_deg": 210,
+			"alcance": 110,
+			"escala": 1.02
+		},
+		{
+			"tipo": "cobertura/sacos_areia",
+			"x": 3.4,
+			"y": -387.3,
+			"rot_deg": 330,
+			"alcance": 110,
+			"escala": 1.04
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": -276.1,
+			"y": 293.6,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 1.15
+		},
+		{
+			"tipo": "cobertura/sacos_areia",
+			"x": -273.6,
+			"y": 298.4,
+			"rot_deg": 195,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": -273.0,
+			"y": 295.4,
+			"rot_deg": 195,
+			"alcance": 110,
+			"escala": 1.16
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": 89.3,
+			"y": 485.3,
+			"rot_deg": 345,
+			"alcance": 110,
+			"escala": 1.14
+		},
+		{
+			"tipo": "detalhes/barril",
+			"x": 87.2,
+			"y": 483.2,
+			"rot_deg": 285,
+			"alcance": 110,
+			"escala": 0.94
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 311.8,
+			"y": 424.8,
+			"rot_deg": 165,
+			"alcance": 110,
+			"escala": 0.99
+		},
+		{
+			"tipo": "cenario/natureza/pedrisco_b",
+			"x": 284.8,
+			"y": -290.5,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 0.98
+		},
+		{
+			"tipo": "cobertura/sacos_areia",
+			"x": 285.7,
+			"y": -288.0,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 1.19
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": 287.9,
+			"y": -291.5,
+			"rot_deg": 195,
+			"alcance": 110,
+			"escala": 0.94
+		},
+		{
+			"tipo": "cobertura/sacos_areia",
+			"x": 284.5,
+			"y": -286.2,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": 71.2,
+			"y": -116.1,
+			"rot_deg": 330,
+			"alcance": 110,
+			"escala": 0.98
+		},
+		{
+			"tipo": "cenario/natureza/pedrisco_b",
+			"x": 76.8,
+			"y": -113.4,
+			"rot_deg": 45,
+			"alcance": 110,
+			"escala": 1.09
+		},
+		{
+			"tipo": "cenario/pedras/pedra_03",
+			"x": -486.7,
+			"y": 152.9,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 0.86
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": -485.1,
+			"y": 151.6,
+			"rot_deg": 90,
+			"alcance": 110,
+			"escala": 1.11
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": -484.9,
+			"y": 148.8,
+			"rot_deg": 15,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "cenario/natureza/pedrisco_b",
+			"x": 20.4,
+			"y": -413.6,
+			"rot_deg": 210,
+			"alcance": 110,
+			"escala": 1.09
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": 23.1,
+			"y": -419.8,
+			"rot_deg": 330,
+			"alcance": 110,
+			"escala": 0.99
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": 18.8,
+			"y": -419.8,
+			"rot_deg": 105,
+			"alcance": 110,
+			"escala": 0.97
+		},
+		{
+			"tipo": "cenario/pedras/pedra_07",
+			"x": -151.3,
+			"y": 453.5,
+			"rot_deg": 90,
+			"alcance": 110,
+			"escala": 0.91
+		},
+		{
+			"tipo": "cenario/natureza/raiz",
+			"x": -156.8,
+			"y": 452.5,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 1.0
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": 215.6,
+			"y": -374.5,
+			"rot_deg": 165,
+			"alcance": 110,
+			"escala": 1.14
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": 219.1,
+			"y": -378.5,
+			"rot_deg": 0,
+			"alcance": 110,
+			"escala": 1.01
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": 217.3,
+			"y": -377.2,
+			"rot_deg": 135,
+			"alcance": 110,
+			"escala": 1.04
+		},
+		{
+			"tipo": "cenario/natureza/toco",
+			"x": 222.2,
+			"y": -380.0,
+			"rot_deg": 30,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": -407.3,
+			"y": 155.4,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 1.1
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": -408.6,
+			"y": 158.3,
+			"rot_deg": 285,
+			"alcance": 110,
+			"escala": 0.97
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -405.4,
+			"y": 160.0,
+			"rot_deg": 30,
+			"alcance": 110,
+			"escala": 1.17
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": -409.8,
+			"y": 155.5,
+			"rot_deg": 330,
+			"alcance": 110,
+			"escala": 1.17
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": 137.3,
+			"y": 130.6,
+			"rot_deg": 225,
+			"alcance": 110,
+			"escala": 0.97
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": 139.3,
+			"y": 132.3,
+			"rot_deg": 30,
+			"alcance": 110,
+			"escala": 0.87
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": 140.6,
+			"y": 128.3,
+			"rot_deg": 300,
+			"alcance": 110,
+			"escala": 1.14
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -406.0,
+			"y": -139.9,
+			"rot_deg": 300,
+			"alcance": 110,
+			"escala": 1.05
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": -403.5,
+			"y": -138.5,
+			"rot_deg": 135,
+			"alcance": 110,
+			"escala": 0.9
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_02",
+			"x": -227.5,
+			"y": 254.6,
+			"rot_deg": 150,
+			"alcance": 110,
+			"escala": 1.05
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -223.9,
+			"y": 256.2,
+			"rot_deg": 165,
+			"alcance": 110,
+			"escala": 0.98
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": -224.8,
+			"y": 259.1,
+			"rot_deg": 150,
+			"alcance": 110,
+			"escala": 0.91
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -15.4,
+			"y": -112.3,
+			"rot_deg": 30,
+			"alcance": 110,
+			"escala": 1.2
+		},
+		{
+			"tipo": "cenario/natureza/toco",
+			"x": -11.7,
+			"y": -116.2,
+			"rot_deg": 120,
+			"alcance": 110,
+			"escala": 0.86
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": -212.6,
+			"y": 90.3,
+			"rot_deg": 225,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cobertura/pilha_pneus",
+			"x": -214.9,
+			"y": 93.8,
+			"rot_deg": 75,
+			"alcance": 110,
+			"escala": 1.0
+		},
+		{
+			"tipo": "detalhes/barril",
+			"x": -212.4,
+			"y": 94.1,
+			"rot_deg": 300,
+			"alcance": 110,
+			"escala": 0.96
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": -432.5,
+			"y": 80.9,
+			"rot_deg": 120,
+			"alcance": 110,
+			"escala": 0.93
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -430.8,
+			"y": 83.0,
+			"rot_deg": 300,
+			"alcance": 110,
+			"escala": 1.05
+		},
+		{
+			"tipo": "cenario/pedras/pedra_04",
+			"x": -428.4,
+			"y": 85.2,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 1.0
+		},
+		{
+			"tipo": "cobertura/sacos_areia",
+			"x": -433.5,
+			"y": 86.1,
+			"rot_deg": 15,
+			"alcance": 110,
+			"escala": 1.19
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 147.8,
+			"y": -378.6,
+			"rot_deg": 195,
+			"alcance": 110,
+			"escala": 1.18
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 142.7,
+			"y": -381.0,
+			"rot_deg": 120,
+			"alcance": 110,
+			"escala": 1.11
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": 44.7,
+			"y": 440.6,
+			"rot_deg": 180,
+			"alcance": 110,
+			"escala": 1.0
+		},
+		{
+			"tipo": "atualizacao/mundo/Tire_001",
+			"x": 47.0,
+			"y": 439.6,
+			"rot_deg": 60,
+			"alcance": 110,
+			"escala": 1.2
+		},
+		{
+			"tipo": "atualizacao/mundo/Concrete_Fence",
+			"x": 46.6,
+			"y": 442.2,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 0.86
+		},
+		{
+			"tipo": "cenario/natureza/pedrisco_b",
+			"x": 48.6,
+			"y": 442.9,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 0.87
+		},
+		{
+			"tipo": "detalhes/tambor",
+			"x": -425.0,
+			"y": 314.2,
+			"rot_deg": 150,
+			"alcance": 110,
+			"escala": 1.02
+		},
+		{
+			"tipo": "detalhes/tambor",
+			"x": -426.2,
+			"y": 310.5,
+			"rot_deg": 165,
+			"alcance": 110,
+			"escala": 1.19
+		},
+		{
+			"tipo": "cenario/natureza/raiz",
+			"x": -427.1,
+			"y": 314.1,
+			"rot_deg": 225,
+			"alcance": 110,
+			"escala": 0.87
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 291.0,
+			"y": 96.5,
+			"rot_deg": 90,
+			"alcance": 110,
+			"escala": 0.87
+		},
+		{
+			"tipo": "cobertura/pilha_pneus",
+			"x": 293.4,
+			"y": 94.9,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 1.01
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": 291.6,
+			"y": 93.4,
+			"rot_deg": 60,
+			"alcance": 110,
+			"escala": 0.85
+		},
+		{
+			"tipo": "cenario/natureza/toco_baixo",
+			"x": 125.2,
+			"y": -381.7,
+			"rot_deg": 90,
+			"alcance": 110,
+			"escala": 0.85
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_01",
+			"x": 122.5,
+			"y": -384.0,
+			"rot_deg": 240,
+			"alcance": 110,
+			"escala": 0.85
+		},
+		{
+			"tipo": "detalhes/barril",
+			"x": 121.1,
+			"y": -381.4,
+			"rot_deg": 315,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": 500.6,
+			"y": -6.0,
+			"rot_deg": 90,
+			"alcance": 110,
+			"escala": 0.86
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 500.6,
+			"y": -1.8,
+			"rot_deg": 120,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 83.4,
+			"y": 454.2,
+			"rot_deg": 345,
+			"alcance": 110,
+			"escala": 1.19
+		},
+		{
+			"tipo": "cobertura/pilha_pneus",
+			"x": 85.3,
+			"y": 452.6,
+			"rot_deg": 225,
+			"alcance": 110,
+			"escala": 0.9
+		},
+		{
+			"tipo": "atualizacao/mundo/Box_022",
+			"x": 88.9,
+			"y": 452.7,
+			"rot_deg": 180,
+			"alcance": 110,
+			"escala": 0.99
+		},
+		{
+			"tipo": "cenario/natureza/raiz",
+			"x": 475.7,
+			"y": -341.5,
+			"rot_deg": 15,
+			"alcance": 110,
+			"escala": 1.02
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": 474.0,
+			"y": -338.0,
+			"rot_deg": 135,
+			"alcance": 110,
+			"escala": 1.01
+		},
+		{
+			"tipo": "cenario/natureza/raiz",
+			"x": 477.0,
+			"y": -336.0,
+			"rot_deg": 30,
+			"alcance": 110,
+			"escala": 1.1
+		},
+		{
+			"tipo": "detalhes/barril",
+			"x": -210.2,
+			"y": -359.3,
+			"rot_deg": 180,
+			"alcance": 110,
+			"escala": 0.91
+		},
+		{
+			"tipo": "atualizacao/mundo/Box_022",
+			"x": -209.3,
+			"y": -362.2,
+			"rot_deg": 45,
+			"alcance": 110,
+			"escala": 1.08
+		},
+		{
+			"tipo": "atualizacao/mundo/Box_022",
+			"x": -212.4,
+			"y": -359.5,
+			"rot_deg": 255,
+			"alcance": 110,
+			"escala": 1.08
+		},
+		{
+			"tipo": "detalhes/caixote_peixe",
+			"x": -303.3,
+			"y": 417.9,
+			"rot_deg": 120,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": -308.0,
+			"y": 415.5,
+			"rot_deg": 60,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cenario/natureza/galho",
+			"x": -507.8,
+			"y": -15.6,
+			"rot_deg": 345,
+			"alcance": 110,
+			"escala": 1.1
+		},
+		{
+			"tipo": "cenario/pedras/pedra_03",
+			"x": -509.6,
+			"y": -18.3,
+			"rot_deg": 15,
+			"alcance": 110,
+			"escala": 0.86
+		},
+		{
+			"tipo": "cenario/natureza/toco_baixo",
+			"x": -292.1,
+			"y": 281.3,
+			"rot_deg": 285,
+			"alcance": 110,
+			"escala": 1.15
+		},
+		{
+			"tipo": "detalhes/barril",
+			"x": -289.7,
+			"y": 282.7,
+			"rot_deg": 210,
+			"alcance": 110,
+			"escala": 0.91
+		},
+		{
+			"tipo": "cobertura/pilha_pneus",
+			"x": -290.8,
+			"y": 278.7,
+			"rot_deg": 270,
+			"alcance": 110,
+			"escala": 1.16
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_01",
+			"x": 281.5,
+			"y": 86.3,
+			"rot_deg": 45,
+			"alcance": 110,
+			"escala": 0.92
+		},
+		{
+			"tipo": "cenario/rua/rua_roadcone_01",
+			"x": 287.0,
+			"y": 87.8,
+			"rot_deg": 300,
+			"alcance": 110,
+			"escala": 0.97
+		},
+		{
+			"tipo": "cenario/natureza/toco_baixo",
+			"x": -277.5,
+			"y": 290.5,
+			"rot_deg": 150,
+			"alcance": 110,
+			"escala": 1.13
+		},
+		{
+			"tipo": "cenario/natureza/entulho",
+			"x": -274.6,
+			"y": 284.9,
+			"rot_deg": 135,
+			"alcance": 110,
+			"escala": 0.98
+		},
+		{
+			"tipo": "cenario/natureza/toco_baixo",
+			"x": -274.4,
+			"y": 287.0,
+			"rot_deg": 150,
+			"alcance": 110,
+			"escala": 0.86
+		}
+	]
+}

@@ -14,10 +14,12 @@ var _shake := 0.0
 var _eye := Soldier.EYE_STAND
 var _step_smooth := 0.0
 var _fov_kick := 0.0
+var _sprint_fov := 0.0           # graus somados ao FOV ao correr (suave; zero se Settings.sprint_fov = false)
 var _ads_amount := 0.0
 var _ads_acog := false
 var _mira := ""                  # mira instalada na arma da mão: "", "acog" (4x, só luneta) ou "reddot" (holográfica); trocar = retirar a atual no inventário
 var _ads_indicator: Control
+var cosmeticos: Node = null      # core/cosmeticos.gd (jogador local)
 var _prefer_third_person := false
 var _third_person := false
 var _air_camera_blend := 0.0
@@ -32,6 +34,7 @@ var _vehicle_use_block_until := 0
 const VEHICLE_HOLD_TIME := 0.72
 var _vehicle_hold := 0.0
 var _vehicle_hold_triggered := false
+var ferramentas: Node   # core/ferramentas_mao.gd
 
 
 func setup(s: Soldier, m: Match) -> void:
@@ -64,6 +67,12 @@ func setup(s: Soldier, m: Match) -> void:
 		# pulo normal ~2,5 cm; queda grande até 8 cm; volta por mola (~0,22–0,4 s)
 		_land_vel -= clampf((impact - 3.0) * 0.13, 0.0, 1.7))
 	_build_agua_fx()
+	ferramentas = preload("res://core/ferramentas_mao.gd").new()   # machado/kit de fogueira na mão, cortar árvore, fogueira
+	add_child(ferramentas)
+	ferramentas.setup(self, m)
+	cosmeticos = preload("res://core/cosmeticos.gd").new()   # chapéu, fones, coroa, máscara, chuteira, amuleto
+	add_child(cosmeticos)
+	cosmeticos.setup(self, m)
 	if not Game.test_mode:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -354,6 +363,10 @@ func _physics_process(_dt: float) -> void:
 		soldier.in_fire = Input.is_action_pressed("fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 		soldier.in_alt = Input.is_action_pressed("alt_fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 		soldier.in_reload = Input.is_action_pressed("reload")
+		if ferramentas != null and ferramentas.ocupa_mao():   # ferramenta na mão: o clique corta, não atira
+			soldier.in_fire = false
+			soldier.in_alt = false
+			soldier.in_reload = false
 		soldier.in_use = Input.is_action_pressed("use")
 	else:
 		soldier.in_move = Vector2.ZERO
@@ -390,7 +403,10 @@ func _process(dt: float) -> void:
 	var target_ads := 1.0 if not _third_person and can_ads and Input.is_action_pressed("alt_fire") and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else 0.0
 	var transition := maxf(def.ads_transition, 0.05) if def else 0.16
 	_ads_amount = move_toward(_ads_amount, target_ads, dt / transition)
-	var base_fov := (minf(Settings.vertical_fov(), 66.0) if _third_person else Settings.vertical_fov()) + _fov_kick + soldier.mantle_fx.z
+	# correr no chão abre o FOV ~4° (suave); interruptor próprio em Ajustes (Settings.sprint_fov)
+	var sprint_alvo := 4.0 if Settings.sprint_fov and soldier.alive and soldier.is_sprinting and soldier.is_on_floor() else 0.0
+	_sprint_fov = lerpf(_sprint_fov, sprint_alvo, 1.0 - exp(-dt * 5.0))
+	var base_fov := (minf(Settings.vertical_fov(), 66.0) if _third_person else Settings.vertical_fov()) + _fov_kick + _sprint_fov + soldier.mantle_fx.z
 	var aim_fov := base_fov
 	if def and def.ads_iron_fov > 0.0:
 		aim_fov = def.ads_acog_fov if _ads_acog and def.ads_acog_fov > 0.0 else def.ads_iron_fov
@@ -522,7 +538,7 @@ func _update_vehicle_prompt() -> void:
 	var text := ""
 	if active_vehicle:
 		var hold_exit := "  ·  Segure E %.0f%%" % [clampf(_vehicle_hold / VEHICLE_HOLD_TIME, 0.0, 1.0) * 100.0] if _vehicle_hold > 0.0 else ""
-		text = "%s  ·  %d km/h%s\nW/S acelerar/frear · A/D virar · C câmera · 1–4 portas · H capô · T porta-malas · Segure E sair" % [active_vehicle.display_name(), active_vehicle.speed_kmh(), hold_exit]
+		text = "%s%s\nW/S · A/D · C câmera · 1–4 portas · Segure E sair" % [active_vehicle.display_name(), hold_exit]   # km/h, marcha, RPM e vida ficam no painel do carro (hud.gd)
 	elif soldier.alive and not ui_blocking:
 		var near := _nearest_vehicle()
 		if near:

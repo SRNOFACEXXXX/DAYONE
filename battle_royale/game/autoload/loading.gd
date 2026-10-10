@@ -198,17 +198,18 @@ func _lista_recursos() -> Array[String]:
 	var vistos := {}
 	if FileAccess.file_exists(LISTA_AQUECIMENTO):
 		var data = JSON.parse_string(FileAccess.get_file_as_string(LISTA_AQUECIMENTO))
-		if data is Dictionary:
-			for p in data.get("recursos", []):
-				if not String(p).ends_with(".tscn"):   # cenas com script (partida/HUD/ilha) não carregam em thread
-					_add(out, vistos, String(p))
+		if data is Dictionary and data.get("recursos") is Array:
+			for p in data["recursos"]:
+				if p is String and not p.ends_with(".tscn"):   # cenas com script (partida/HUD/ilha) não carregam em thread
+					_add(out, vistos, p)
 	for d in PASTAS_SEMPRE:
 		_varrer(d, out, vistos)
 	return out
 
 
 func _add(out: Array[String], vistos: Dictionary, p: String) -> void:
-	if vistos.has(p) or not ResourceLoader.exists(p):
+	# só recursos do próprio jogo: caminho externo (user://, absoluto, ..) na lista não é carregado
+	if not p.begins_with("res://") or p.contains("..") or vistos.has(p) or not ResourceLoader.exists(p):
 		return
 	vistos[p] = true
 	out.append(p)
@@ -224,6 +225,14 @@ func _varrer(dir: String, out: Array[String], vistos: Dictionary) -> void:
 			_add(out, vistos, dir.path_join(nome))
 	for sub in da.get_directories():
 		_varrer(dir.path_join(sub), out, vistos)
+
+
+## Ao voltar ao menu: solta só as CENAS da partida (br_match, HUD...) do _cache. GLB e shaders ficam: são o aquecimento
+## que evita travar a próxima partida (o aquecimento não roda de novo nesta execução).
+func soltar_cenas() -> void:
+	for p in _cache.keys():
+		if String(p).ends_with(".tscn"):
+			_cache.erase(p)
 
 
 func _criar_viewport() -> void:

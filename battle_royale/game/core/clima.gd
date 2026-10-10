@@ -25,6 +25,7 @@ const DIA_REAL_S := 1440.0          # 1 dia = 24 min reais com escala 1
 const SOL_MAX_ELEV := 58.0          # graus ao meio-dia
 const NASCER := 6.0
 const POENTE := 18.0
+const CHUVA_PARTICULAS := 220        # antes 380 (~40% menos gotas); o quad ficou mais comprido para manter o risco
 
 var hora := HORA_INICIAL
 var dia := 1
@@ -86,6 +87,8 @@ var _flash_t := 99.0
 var _prox_raio := 8.0
 var _acc_ceu := 0.0
 var _acc_raio_cobertura := 0.0
+var _acc_luz := 0.0                 # luz/névoa/céu aplicados a 10 Hz (a cada quadro só durante relâmpago)
+var _acc_hud := 0.0                 # texto e ícone do HUD a 5 Hz
 var _pausa_visual := false
 var _fog_base := 0.0006
 var _parado_teste := false   # --semclima: só aplica a hora inicial (medir custo do sistema)
@@ -216,7 +219,7 @@ func _montar_chuva() -> void:
 	_raiz_fx.top_level = true
 	_ilha.add_child(_raiz_fx)
 	var p := CPUParticles3D.new()
-	p.amount = 380
+	p.amount = CHUVA_PARTICULAS
 	p.lifetime = 0.9
 	p.local_coords = false
 	p.emission_shape = CPUParticles3D.EMISSION_SHAPE_BOX
@@ -229,7 +232,7 @@ func _montar_chuva() -> void:
 	p.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	p.visibility_aabb = AABB(Vector3(-14, -30, -14), Vector3(28, 40, 28))
 	var q := QuadMesh.new()
-	q.size = Vector2(0.03, 0.45)
+	q.size = Vector2(0.034, 0.5)
 	var m := StandardMaterial3D.new()
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
@@ -364,7 +367,10 @@ func _process(dt: float) -> void:
 			forcar_clima(sortear_proximo(), false, _rng.randf_range(30.0, 60.0))
 	_atualizar_raio(dt)
 	_acc_ceu += dt
-	_aplicar(false)
+	_acc_luz += dt
+	if _flash > 0.0 or _acc_luz >= 0.1:
+		_acc_luz = 0.0
+		_aplicar(false)
 	_atualizar_fx(dt)
 
 
@@ -560,9 +566,13 @@ func _atualizar_fx(dt: float) -> void:
 	var dia_f := smoothstep(-4.0, 12.0, elevacao_sol)
 	_camada(_a_chuva, chuva * (0.35 if coberto else 1.0), -7.0, dt)
 	_camada(_a_vento, clampf(vento * 0.8 + 0.1, 0.0, 1.0) * (0.5 if coberto else 1.0), -14.0, dt)
-	_camada(_a_grilos, (1.0 - dia_f) * (1.0 - chuva), -38.0, dt)   # grilos bem baixos (-22 dB incomodavam)
-	# HUD
-	if is_instance_valid(_hud):
+	# grilos DESLIGADOS: grilos_loop.wav era síntese de 3 tons puros 4,4–5,3 kHz (soava como sinos agudos, reclamação do dono).
+	# Volta só com gravação real de grilo (CC0) no lugar do arquivo gerado por tools/gen_clima_audio.py.
+	_camada(_a_grilos, 0.0, -38.0, dt)
+	# HUD (5 Hz: o texto e o ícone mudam devagar; redesenhar a cada quadro custava à toa)
+	_acc_hud += dt
+	if is_instance_valid(_hud) and _acc_hud >= 0.2:
+		_acc_hud = 0.0
 		var ic: _IconeCeu = _hud.get_meta("icone")
 		ic.noite = e_noite()
 		ic.chuva = chuva

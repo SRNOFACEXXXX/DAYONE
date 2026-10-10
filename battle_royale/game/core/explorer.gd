@@ -4,6 +4,12 @@ extends CharacterBody3D
 const WALK := 4.5
 const RUN := 7.5
 const FLY := 40.0
+const JUMP_BUFFER := 0.12       # s: aperto de espaço no ar vale ao pousar
+const COYOTE_TIME := 0.10       # s: ainda pula logo após sair da beirada
+var _t := 0.0
+var _t_chao := -10.0
+var _t_pulo := -10.0
+var _pulo_antes := false
 var cam: Camera3D
 var yaw := 0.0
 var pitch := 0.0
@@ -78,6 +84,11 @@ func _unhandled_input(e: InputEvent) -> void:
 func _physics_process(dt: float) -> void:
 	rotation.y = yaw
 	cam.rotation.x = pitch
+	_t += dt
+	var espaco := Input.is_key_pressed(KEY_SPACE)
+	if espaco and not _pulo_antes:
+		_t_pulo = _t
+	_pulo_antes = espaco
 	var inp := Vector2(float(Input.is_key_pressed(KEY_D)) - float(Input.is_key_pressed(KEY_A)),
 		float(Input.is_key_pressed(KEY_S)) - float(Input.is_key_pressed(KEY_W)))
 	if flying:
@@ -90,8 +101,11 @@ func _physics_process(dt: float) -> void:
 	velocity.x = move_toward(velocity.x, wish.x, 40.0 * dt)
 	velocity.z = move_toward(velocity.z, wish.z, 40.0 * dt)
 	if is_on_floor():
-		if Input.is_key_pressed(KEY_SPACE):
-			velocity.y = 6.5
-	else:
+		_t_chao = _t
+	if (_t - _t_pulo) <= JUMP_BUFFER and (_t - _t_chao) <= COYOTE_TIME:
+		velocity.y = 6.5
+		_t_pulo = -10.0
+		_t_chao = -10.0
+	elif not is_on_floor():
 		velocity.y -= 20.0 * dt
 	move_and_slide()

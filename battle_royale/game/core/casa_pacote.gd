@@ -150,10 +150,9 @@ static func ajustes() -> Dictionary:
 	if not _aj_lido:
 		_aj_lido = true
 		var arq := "res://maps/ilha/casas_ajuste.json"
-		if FileAccess.file_exists(arq):
-			var d = JSON.parse_string(FileAccess.get_file_as_string(arq))
-			if d is Dictionary:
-				_aj_cache = d
+		var d = JsonSeguro.ler(arq, TYPE_DICTIONARY)
+		if d != null:
+			_aj_cache = d
 	return _aj_cache
 
 

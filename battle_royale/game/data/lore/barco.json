@@ -1,0 +1,12 @@
+{
+	"barco_tauá": {
+		"titulo": "O barco do Pescador",
+		"corpo": "Casco aberto no costado, motor de popa afogado, cabo de amarra partido. O nome pintado na proa ainda se lê: MARÉ MANSA. Dá para consertar — se a ilha deixar.",
+		"onde": "praia sul, barco encalhado (core/barco_fuga.gd)"
+	},
+	"radio_coordenadas": {
+		"titulo": "Sinal no rádio",
+		"corpo": "Entre o chiado, uma voz repete coordenadas a cada hora cheia: um navio-hospital fundeado além da arrebentação. 'Barcos pequenos serão recebidos. Tragam só o que conseguem carregar.'",
+		"onde": "tela de fuga (core/barco_fuga.gd)"
+	}
+}

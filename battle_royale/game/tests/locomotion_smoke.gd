@@ -4,6 +4,7 @@ extends Node3D
 var out_dir := ""
 
 func _ready() -> void:
+	Game.test_args["construcao_livre"] = "1"   # teste da mecânica de encaixe, não do custo em toras
 	Game.test_mode = true
 	out_dir = Game.test_args.get("out", OS.get_user_data_dir())
 	DirAccess.make_dir_recursive_absolute(out_dir)

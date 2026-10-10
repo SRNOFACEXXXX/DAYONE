@@ -110,8 +110,8 @@ func setup(m: BRMatch) -> void:
 	_caixa.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_caixa)
 	var nomes := []
-	for id in BRInventory.DEFINITIONS:
-		nomes.append([String(BRInventory.DEFINITIONS[id].name), String(id)])
+	for id in BRInventory.todos_ids():
+		nomes.append([String(BRInventory.definition(String(id)).get("name", id)), String(id)])
 	nomes.sort_custom(func(a, b) -> bool: return String(a[0]).naturalnocasecmp_to(String(b[0])) < 0)
 	for par in nomes:
 		var b := _botao(String(par[0]))

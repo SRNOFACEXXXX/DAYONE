@@ -42,6 +42,11 @@ const CROUCH_MULT := 0.34
 const SPRINT_MULT := 1.25           # Shift: corrida rápida (arma baixa, sem tiro/ADS)
 const SPRINT_BLOCK := 0.22          # s sem atirar/mirar depois de parar de correr
 const ADS_SPEED_MULT := 0.55        # mirando pela alça anda a 55%
+const COYOTE_TIME := 0.10           # s: ainda pode pular logo após sair da beirada (sem ter pulado)
+const JUMP_BUFFER := 0.12           # s: um aperto de pulo feito no ar vale ao pousar
+const STAMINA_DRENO := 0.11         # por s correndo (cheio -> zero em ~9 s)
+const STAMINA_RECARGA := 0.16       # por s sem correr (zero -> cheio em ~6 s)
+const STAMINA_RETORNO := 0.20       # zerada, só volta a correr com 20%
 const PLANT_TIME := 3.2
 const DEFUSE_TIME := 10.0
 const DEFUSE_TIME_KIT := 5.0
@@ -92,6 +97,11 @@ var in_walk := false
 var in_sprint := false
 var is_sprinting := false            # leitura para viewmodel/corpo: arma abaixada enquanto corre
 var sprint_block_until := 0.0        # relógio t até quando tiro/ADS seguem bloqueados após o sprint
+var stamina := 1.0                   # 0..1 fôlego de corrida (Shift); zerada, só volta a correr com STAMINA_RETORNO
+var _stamina_cansado := false
+var _t_chao := -1000.0               # último t em que tocou o chão (coyote time)
+var _t_pulo_pedido := -1000.0        # t do último aperto de pulo (borda; segurar não conta). Vale JUMP_BUFFER s
+var _pulo_antes := false
 var in_fire := false
 var in_alt := false
 var in_reload := false
@@ -278,17 +288,51 @@ func sprint_bloqueado() -> bool:
 	return is_sprinting or t < sprint_block_until
 
 
-func _update_sprint() -> void:
+func _update_sprint(dt: float) -> void:
 	if nadando:
 		# nadando: arma abaixada, sem tiro/ADS/faca (mesmo bloqueio do sprint)
 		is_sprinting = true
 		sprint_block_until = t + SPRINT_BLOCK
+		_stamina_tick(false, dt)
 		return
-	var quer := in_sprint and not in_walk and not frozen and crouch < 0.5 and in_move.y > 0.3 and escada == null
+	var quer := in_sprint and not in_walk and not frozen and crouch < 0.5 and in_move.y > 0.3 and escada == null and not _stamina_cansado
 	if is_on_floor() or not quer:
 		is_sprinting = quer
 	if is_sprinting:
 		sprint_block_until = t + SPRINT_BLOCK
+	_stamina_tick(is_sprinting, dt)
+
+
+## Fôlego de corrida: gasta correndo (inclusive no ar após um sprint) e recupera sem correr.
+func _stamina_tick(correndo: bool, dt: float) -> void:
+	if not stamina_ligada():
+		stamina = 1.0
+		_stamina_cansado = false
+		return
+	if correndo:
+		stamina = maxf(stamina - STAMINA_DRENO * dt, 0.0)
+	else:
+		stamina = minf(stamina + STAMINA_RECARGA * dt, 1.0)
+	if stamina <= 0.0:
+		_stamina_cansado = true
+	elif _stamina_cansado and stamina >= STAMINA_RETORNO:
+		_stamina_cansado = false
+
+
+## Ajuste do jogador (Ajustes > Fôlego de corrida) ou teste com --sem_stamina: sem fôlego, corre sempre.
+func stamina_ligada() -> bool:
+	return Settings.stamina_ativa and not Game.test_args.has("sem_stamina")
+
+
+func stamina_cansado() -> bool:
+	return _stamina_cansado
+
+
+## Borda do aperto de pulo: o momento em que `in_jump` passa a verdadeiro (não enquanto segura).
+func _registra_pulo() -> void:
+	if in_jump and not _pulo_antes:
+		_t_pulo_pedido = t
+	_pulo_antes = in_jump
 
 
 func horizontal_speed() -> float:
@@ -302,6 +346,7 @@ func is_reloading() -> bool:
 # ------------------------------------------------------------------ simulação
 func _physics_process(dt: float) -> void:
 	t += dt
+	_registra_pulo()
 	_cura_tick(dt)
 	_sim(dt)
 	_balas_passo(dt)
@@ -332,7 +377,7 @@ func _sim(dt: float) -> void:
 			body_model.sync_pose(self, dt)
 		return
 	_update_crouch(dt)
-	_update_sprint()
+	_update_sprint(dt)
 	_move(dt)
 	_update_hitboxes()
 	_update_weapon(dt)
@@ -404,6 +449,16 @@ func _cura_contar(item_id: String) -> int:
 	return n
 
 
+## Nó core/sobrevivencia.gd (fome/sede/frio) do jogador local; null em bots.
+func _doente() -> bool:
+	var sv := sobrevivencia()
+	return sv != null and float(sv.doente_s) > 0.0
+
+
+func sobrevivencia() -> Node:
+	return get_node_or_null("Sobrevivencia")
+
+
 func iniciar_sangramento() -> void:
 	sangrando = true
 
@@ -411,9 +466,14 @@ func iniciar_sangramento() -> void:
 ## Começa a usar uma cura. false se: item inválido, morto, já curando, sem o item, ou nada a curar (vida cheia e sem sangramento).
 func usar_cura(item_id: String) -> bool:
 	var def := BRInventory.definition(item_id)
-	if not alive or cura_id != "" or String(def.get("kind", "")) != "heal":
+	var kind := String(def.get("kind", ""))
+	if not alive or cura_id != "" or not kind in ["heal", "comida", "bebida"]:
 		return false
-	if health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))):
+	if kind != "heal":   # comida/bebida: usa o nó de sobrevivência (só jogador local) e não gasta se já está saciado
+		var sv := sobrevivencia()
+		if sv == null or not sv.precisa(item_id):
+			return false
+	elif health >= MAX_HEALTH and not (sangrando and bool(def.get("stop_bleed", false))) and not (bool(def.get("cura_doenca", false)) and _doente()):
 		return false
 	if _cura_contar(item_id) < 1:
 		return false
@@ -478,9 +538,20 @@ func _cura_tick(dt: float) -> void:
 	cura_left = 0.0
 	cura_total = 0.0
 	var antes := health
+	if String(def.get("kind", "")) != "heal":
+		var sv := sobrevivencia()
+		if sv != null:
+			sv.consumir_item(id)
+		Audio.play_at("heal_done", eye_position(), {"volume_db": -6.0, "max_distance": 14.0})
+		cura_finished.emit(id, 0)
+		return
 	health = mini(MAX_HEALTH, health + int(def.get("heal", 0)))
 	if bool(def.get("stop_bleed", false)):
 		sangrando = false
+	if bool(def.get("cura_doenca", false)):
+		var sv2 := sobrevivencia()
+		if sv2 != null:
+			sv2.curar_doenca()
 	Audio.play_at("heal_done", eye_position(), {"volume_db": -6.0, "max_distance": 14.0})
 	cura_finished.emit(id, health - antes)
 
@@ -553,6 +624,8 @@ func _move(dt: float) -> void:
 		_nado_mover(dt)
 		return
 	var on_floor := is_on_floor()
+	if on_floor:
+		_t_chao = t
 	var locked := frozen or planting > 0.0 or defusing > 0.0
 	var move := Vector2.ZERO if locked else in_move
 	var b := Basis(Vector3.UP, yaw)
@@ -567,18 +640,23 @@ func _move(dt: float) -> void:
 	if in_jump and not locked and _mantle_cool <= 0.0 and wish_len > 0.1 and ((on_floor and jump_released) or (not on_floor and velocity.y < 3.0)):
 		if _tentar_mantle(wish / wish_len):
 			jump_released = false
+			_t_pulo_pedido = -1000.0
 			return
-	if on_floor:
-		if in_jump and jump_released and not locked:
-			velocity.y = JUMP_VELOCITY
-			jump_released = false
-			jump_penalty = minf(jump_penalty + 0.45, 1.0)
-			on_floor = false
-			_emit_jump_sound()
-		else:
-			_friction(dt)
-			_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, ACCEL, dt)
-			velocity.y = minf(velocity.y, 0.0)
+	# pulo do chão: aperto recente (buffer) e no chão ou ainda dentro do coyote time; o aperto é consumido,
+	# então segurar a tecla não repete o pulo ao pousar
+	var pulo := not locked and (t - _t_pulo_pedido) <= JUMP_BUFFER and (on_floor or (t - _t_chao) <= COYOTE_TIME)
+	if pulo:
+		velocity.y = JUMP_VELOCITY
+		jump_released = false
+		jump_penalty = minf(jump_penalty + 0.45, 1.0)
+		_t_pulo_pedido = -1000.0
+		_t_chao = -1000.0
+		on_floor = false
+		_emit_jump_sound()
+	elif on_floor:
+		_friction(dt)
+		_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, ACCEL, dt)
+		velocity.y = minf(velocity.y, 0.0)
 	if not on_floor:
 		_air_accelerate(wish.normalized() if wish_len > 0.0 else Vector3.ZERO, wish_speed, dt)
 		velocity.y -= GRAVITY * dt
@@ -605,11 +683,17 @@ func _move(dt: float) -> void:
 				Audio.play_at("land", global_position, {"volume_db": lv + 6.0, "unit_size": 4.0, "max_distance": 34.0, "pitch_var": 0.06})
 		if fall_speed > 11.0 and match_ref:
 			# dano de queda (CS: acima de ~580 u/s)
-			var dmg := int((fall_speed - 11.0) * 9.0)
+			var dmg := int((fall_speed - 11.0) * 9.0 * efeito_cosmetico("queda"))
 			if dmg > 0:
 				take_damage(dmg, null, null, "legs", Vector3.DOWN)
 	was_on_floor = now_floor
 	_update_footsteps(dt, now_floor)
+
+
+## Multiplicador de efeito dos cosméticos vestidos (chuva, folego, queda); 1.0 sem nenhum (bots e NPCs não têm).
+func efeito_cosmetico(chave: String) -> float:
+	var c = controller.get("cosmeticos") if controller != null else null
+	return float(c.efeito(chave)) if c != null else 1.0
 
 
 # ------------------------------------------------------------------ nado e fôlego
@@ -648,7 +732,7 @@ func _agua_estado(dt: float) -> void:
 		_nado_parar()
 	submerso = nadando and eye_position().y < agua_y - 0.03
 	if submerso:
-		folego = maxf(folego - dt, 0.0)
+		folego = maxf(folego - dt / efeito_cosmetico("folego"), 0.0)
 		if folego <= 0.0:
 			_afogar_acc += dt
 			var passo := 1.0 / AFOGAR_HPS
@@ -851,6 +935,18 @@ func _raio(de: Vector3, ate: Vector3) -> Dictionary:
 	return get_world_3d().direct_space_state.intersect_ray(q)
 
 
+## O topo aguenta o corpo? Quatro raios a 0,3 m do ponto de pouso: com menos de 3 apoios (±0,15 m do topo) é trilho/ripa/aresta
+## e o jogador não pode ficar em pé ali (antes ficava equilibrado em cima da cerca e de raízes).
+func _topo_largo(xz: Vector3, topo: float) -> bool:
+	var apoios := 0
+	for off in [Vector3(0.3, 0, 0), Vector3(-0.3, 0, 0), Vector3(0, 0, 0.3), Vector3(0, 0, -0.3)]:
+		var q: Vector3 = xz + off
+		var r := _raio(q + Vector3(0, topo + 0.4, 0), q + Vector3(0, topo - 0.4, 0))
+		if not r.is_empty() and absf(float(r.position.y) - topo) <= 0.15:
+			apoios += 1
+	return apoios >= 3
+
+
 ## Procura um obstáculo à frente entre MANTLE_MIN e MANTLE_MAX de altura e um pouso livre (em cima ou do outro lado).
 func _tentar_mantle(dir: Vector3) -> bool:
 	var pos := global_position
@@ -895,8 +991,8 @@ func _tentar_mantle(dir: Vector3) -> bool:
 		var g := _raio(xz + Vector3(0, topo + 0.6, 0), xz + Vector3(0, -2.5, 0))
 		if g.is_empty() or g.normal.y < cos(floor_max_angle) or not _cap_livre(g.position + Vector3(0, 0.02, 0)):
 			continue
-		if i == 0 and absf(g.position.y - topo) > 0.12:
-			continue                      # o primeiro candidato só vale se for o topo do obstáculo
+		if i == 0 and (absf(g.position.y - topo) > 0.12 or not _topo_largo(xz, topo)):
+			continue                      # o primeiro candidato só vale se for o topo LARGO do obstáculo (cerca/trilho fino: pula por cima)
 		var p3: Vector3 = g.position + Vector3(0, 0.02, 0)
 		var p2 := Vector3(p3.x, topo + 0.04, p3.z)
 		if test_move(Transform3D(Basis(), p1), p2 - p1):
@@ -986,6 +1082,8 @@ func iniciar_escada(e: Node) -> void:
 	var de_cima: bool = global_position.y > meio
 	escada = e
 	climb_v = 0.0
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	velocity = Vector3.ZERO
 	_esc_de = global_position
 	_esc_para = e.linha_world(e.topo_world().y if de_cima else e.base_world().y)
@@ -1004,6 +1102,8 @@ func soltar_escada(queda := true) -> void:
 	escada = null
 	_esc_estado = 0
 	climb_v = 0.0
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	if queda:
 		velocity = -f * 2.0
 	was_on_floor = false
@@ -1225,6 +1325,10 @@ func reset_for_round(keep_weapons: bool) -> void:
 	reload_end = 0.0
 	is_sprinting = false
 	sprint_block_until = 0.0
+	stamina = 1.0
+	_stamina_cansado = false
+	_t_chao = -1000.0
+	_t_pulo_pedido = -1000.0
 	_balas.clear()
 	if not keep_weapons:
 		inventory.clear()

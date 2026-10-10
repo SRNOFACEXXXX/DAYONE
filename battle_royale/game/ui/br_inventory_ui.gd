@@ -461,7 +461,10 @@ func desenhar_item(ci: Control, it: Dictionary, origem: Vector2, prox: bool) -> 
 			ci.draw_string(f, rect.position + Vector2(0, rect.size.y - 3), canto, HORIZONTAL_ALIGNMENT_RIGHT, rect.size.x - 4, 12, YUI.TEXT)
 		if kind == "weapon" and (bool(it.get("acog", false)) or bool(it.get("reddot", false))):
 			ci.draw_string(f, rect.position + Vector2(4, 12), "ACOG" if bool(it.get("acog", false)) else "HOLO", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, YUI.YELLOW)
-		if not prox and equipado(it):
+		if not prox and bool(it.get("vestido", false)):
+			ci.draw_rect(rect, YUI.YELLOW, false, 2.0)
+			ci.draw_string(f, rect.position + Vector2(4, 13), "VESTIDO", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, YUI.YELLOW)
+		elif not prox and equipado(it):
 			ci.draw_rect(rect, YUI.YELLOW, false, 2.0)
 			ci.draw_string(f, rect.position + Vector2(4, 13), "NA MÃO", HORIZONTAL_ALIGNMENT_LEFT, -1, 10, YUI.YELLOW)
 
@@ -836,12 +839,24 @@ func _acao_item(s: Dictionary) -> void:
 			_info.text = "Nenhuma arma compatível."
 		"grenade":
 			_info.text = "Arraste para um atalho (1–5) e use a tecla, ou G."
-		"heal":
+		"cosmetico":
+			var pm0 := _partida()
+			var pc0 = pm0.local_player.controller if pm0 != null else null
+			var msg: String = String(pc0.cosmeticos.alternar(uid)) if pc0 != null and pc0.get("cosmeticos") != null else ""
+			_info.text = msg if msg != "" else "Não dá para vestir isso agora."
+		"ferramenta":
+			var pm1 := _partida()
+			var pc1 = pm1.local_player.controller if pm1 != null else null
+			if pc1 != null and pc1.get("ferramentas") != null and pc1.ferramentas.equipar(uid):
+				_info.text = "%s na mão (feche o inventário e clique)." % String(def.name)
+			else:
+				_info.text = "Não dá para segurar isso agora."
+		"heal", "comida", "bebida":
 			var pm := _partida()
 			if pm != null and pm.local_player.usar_cura(String(it.id)):
 				_info.text = "Usando %s... (H usa a melhor cura; atirar ou trocar de arma interrompe)" % String(def.name)
 			else:
-				_info.text = "Nada a curar ou já curando."
+				_info.text = "Nada a curar ou já curando." if String(def.get("kind", "")) == "heal" else "Você não precisa disso agora (ou já está usando algo)."
 		_:
 			_info.text = "Arraste para mover."
 	_atualizar()

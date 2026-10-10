@@ -11,7 +11,10 @@ signal hit_taken(zone: StringName, amount: int, attacker: Node3D)
 enum State { IDLE, PATROL, ALERT, INVESTIGATE, CHASE, ATTACK, DEAD }
 
 const ANIMATION_SCENE := "res://assets/models/zombies/free_animated_pack/scene.gltf"
+const ANIMATION_SCENE_RES: PackedScene = preload("res://assets/models/zombies/free_animated_pack/scene.gltf")
 const POSE_COPY_SCRIPT := preload("res://core/zombie_pose_copy.gd")
+const DESMEMBRAR_SCRIPT := preload("res://core/zumbi_desmembrar.gd")
+const PEDACOS := preload("res://fx/pedacos.gd")
 const POLYART_VARIANTS := [
 	"res://assets/models/zombies/polyart_pack/variants/zombie_00.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_01.tscn",
@@ -23,6 +26,19 @@ const POLYART_VARIANTS := [
 	"res://assets/models/zombies/polyart_pack/variants/zombie_07.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_08.tscn",
 	"res://assets/models/zombies/polyart_pack/variants/zombie_09.tscn",
+]
+## cenas das variantes pré-carregadas (antes load() a cada zumbi criado)
+const POLYART_SCENES := [
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_00.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_01.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_02.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_03.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_04.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_05.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_06.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_07.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_08.tscn"),
+	preload("res://assets/models/zombies/polyart_pack/variants/zombie_09.tscn"),
 ]
 const HUMANOID_MAP := {
 	"mixamorig_Hips": "Hips", "mixamorig_Spine": "Spine", "mixamorig_Spine1": "Chest",
@@ -98,6 +114,7 @@ var _animation_player: AnimationPlayer
 var _animation_tree: AnimationTree
 var _source_skeleton: Skeleton3D
 var _target_skeleton: Skeleton3D
+var _desmembrar: Node
 var _navigation: NavigationAgent3D
 var _state_time := 0.0
 var _attack_time := 0.0
@@ -211,7 +228,7 @@ func _build_rig() -> void:
 	_visual_root = Node3D.new()
 	_visual_root.name = "VisualRoot"
 	add_child(_visual_root)
-	var animation_scene := load(ANIMATION_SCENE) as PackedScene
+	var animation_scene := ANIMATION_SCENE_RES
 	if animation_scene == null:
 		push_error("Free animated zombie rig failed to import")
 		return
@@ -231,7 +248,7 @@ func _build_rig() -> void:
 	_build_animation_controller()
 	if _variant_index < 0:
 		_variant_index = randi_range(0, POLYART_VARIANTS.size() - 1)
-	var model_scene := load(POLYART_VARIANTS[_variant_index]) as PackedScene
+	var model_scene := POLYART_SCENES[_variant_index] as PackedScene
 	if model_scene == null:
 		push_error("Polyart zombie appearance failed to load: " + POLYART_VARIANTS[_variant_index])
 		return
@@ -249,6 +266,9 @@ func _build_rig() -> void:
 	pose_copy.source_skeleton = _source_skeleton
 	_target_skeleton.add_child(pose_copy)
 	_pose_copy = pose_copy
+	_desmembrar = DESMEMBRAR_SCRIPT.new()
+	_desmembrar.name = "Desmembrar"
+	_target_skeleton.add_child(_desmembrar)   # depois da cópia de pose: encolhe os ossos arrancados
 	# longe do jogador o zumbi some (a IA continua no LOD do diretor); sombra só perto
 	for g in model_root.find_children("*", "GeometryInstance3D", true, false):
 		(g as GeometryInstance3D).visibility_range_end = VISIVEL_ATE
@@ -483,7 +503,30 @@ func hit_by_bullet(pos: Vector3, dir: Vector3, def: WeaponDef, escala := 1.0, at
 		fx.blood(pos, dir, zona == &"head", float(dano))
 		if morreu:
 			fx.blood_kill(global_position, pos, dir, zona == &"head")
+	if morreu:
+		# tiro forte: cabeça estoura (fuzil/sniper na cabeça) ou braço é arrancado (chance com dano alto no corpo)
+		if zona == &"head" and dano >= int(max_health * 0.6):
+			arrancar(&"Head", dir)
+		elif zona == &"body" and dano >= int(max_health * 0.55) and randf() < 0.4:
+			arrancar(&"LeftUpperArm" if randf() < 0.5 else &"RightUpperArm", dir)
 	return {"zone": zona, "damage": dano, "killed": morreu}
+
+
+## Arranca um membro (osso do Polyart: Head, LeftUpperArm, RightUpperArm, LeftUpperLeg, RightUpperLeg): o osso some do
+## modelo e pedaços low poly voam dele (fx/pedacos.gd). Só visual; a IA já está morta ou continua igual.
+func arrancar(osso: StringName, dir := Vector3.UP) -> void:
+	if _target_skeleton == null or _desmembrar == null:
+		return
+	var i := _target_skeleton.find_bone(osso)
+	if i < 0 or (_desmembrar.ocultos as PackedInt32Array).has(i):
+		return
+	var pos := (_target_skeleton.global_transform * _target_skeleton.get_bone_global_pose(i)).origin
+	_desmembrar.ocultar(i)
+	var tipo := &"cabeca" if osso == &"Head" else (&"perna" if String(osso).contains("Leg") else &"braco")
+	var pai := get_parent() if get_parent() else self
+	PEDACOS.soltar(pai, pos, dir, tipo)
+	if FxManager.shared:
+		FxManager.shared.blood(pos, dir if dir.length_squared() > 0.0001 else Vector3.UP, true, 80.0)
 
 
 ## Explosão (granada/C4): dano em pontos por distância; raio/linha de visada decididos por quem chama.
@@ -502,6 +545,15 @@ func hit_by_explosion(dano: int, centro: Vector3, attacker: Node3D = null) -> vo
 		fx.blood(pos, (dir.normalized() if dir.length_squared() > 0.0001 else Vector3.UP), false, float(dano))
 		if state == State.DEAD:
 			fx.blood_kill(global_position, pos, Vector3.UP, false)
+	if state == State.DEAD and dano >= int(max_health * 0.5):
+		# explosão forte: o corpo se despedaça (1–3 membros + cabeça às vezes)
+		var membros := [&"LeftUpperArm", &"RightUpperArm", &"LeftUpperLeg", &"RightUpperLeg"]
+		membros.shuffle()
+		for k in randi_range(1, 3):
+			arrancar(membros[k], dir + Vector3.UP)
+		if randf() < 0.35:
+			arrancar(&"Head", dir + Vector3.UP)
+		PEDACOS.soltar(get_parent() if get_parent() else self, global_position + Vector3.UP * 0.9, dir + Vector3.UP, &"corpo")
 
 
 ## Explosão em área sobre todos os zumbis da árvore: dano linear até raio (visada livre no mundo).
@@ -602,6 +654,41 @@ func _ajustar_corpo_ao_chao() -> void:
 	_visual_root.position.y = minf(maxf(hs, 0.13) - _hips_alto, 0.0)
 
 
+## Zumbis não colidem entre si (máscara só do mundo; barato para 90 vivos), então uma horda convergia para a MESMA posição
+## e virava um bolo de corpos sobrepostos. Separação por direção: a cada 0,3 s (escalonado) soma o empurrão dos vizinhos a
+## menos de SEP_RAIO; o resultado só curva o rumo (nada de física extra).
+const SEP_RAIO := 1.3
+var _sep := Vector3.ZERO
+var _sep_t := randf() * 0.3
+
+
+func _afastar_vizinhos(direction: Vector3, delta: float) -> Vector3:
+	_sep_t -= delta
+	if _sep_t <= 0.0:
+		_sep_t = 0.3
+		_sep = Vector3.ZERO
+		var p := global_position
+		for z in get_tree().get_nodes_in_group("zombie"):
+			if z == self or not (z is ZombieEnemy) or not is_instance_valid(z):
+				continue
+			var o: Vector3 = p - (z as Node3D).global_position
+			o.y = 0.0
+			var d := o.length()
+			if d >= SEP_RAIO:
+				continue
+			if d < 0.05:
+				# exatamente empilhados: cada um foge para um lado diferente (determinístico pelo id)
+				var a := float(get_instance_id() % 628) * 0.01
+				o = Vector3(cos(a), 0.0, sin(a))
+				d = 0.05
+			_sep += o / d * (1.0 - d / SEP_RAIO)
+	if _sep.length_squared() < 0.0001:
+		return direction
+	var r := direction + _sep * 2.4
+	r.y = 0.0
+	return r.normalized() if r.length_squared() > 0.0001 else direction
+
+
 func _physics_process(delta: float) -> void:
 	if _morte_ativa:
 		_ajustar_corpo_ao_chao()
@@ -626,6 +713,13 @@ func _physics_process(delta: float) -> void:
 	_groan_timer -= delta
 	if state == State.DEAD:
 		velocity = Vector3.ZERO
+		# corpo: depois que o clipe de morte termina (tempo real = _state_time * velocidade), alinha uma última vez
+		# e para a física (antes rodava todo quadro para sempre; a pose final já fica parada no AnimationPlayer)
+		if not _death_finished and _state_time * _morte_velocidade >= _animation_length(_death_animation):
+			_death_finished = true
+			_ajustar_corpo_ao_chao()
+		if _death_finished:
+			set_physics_process(false)
 		return
 	if _demo_locked:
 		velocity = Vector3.ZERO
@@ -768,6 +862,7 @@ func _move_toward_target(delta: float) -> void:
 	if direction.length_squared() > 0.02:
 		direction = direction.normalized()
 		direction = _steer(direction, speed, delta, _flat_distance_between(destination, global_position))
+		direction = _afastar_vizinhos(direction, delta)
 		var desired_yaw := atan2(-direction.x, -direction.z)
 		rotation.y = rotate_toward(rotation.y, desired_yaw, turn_speed * delta)
 		velocity.x = move_toward(velocity.x, direction.x * speed, 9.0 * delta)
@@ -1065,9 +1160,23 @@ func _play_groan(volume_db: float = -15.0) -> void:
 ## Voz do zumbi (sons CC0 do OpenGameArt preparados por tools/prep_audio_net.py): groan = ocioso/patrulha,
 ## alert = viu o jogador, run = rosnado correndo, attack = golpe, hurt = levou tiro, die = morte.
 ## Posicional na altura da cabeça; alcance proporcional ao tipo para ouvir de longe a horda e perto o golpe.
+## Limite global de gemidos (com 20+ zumbis por cidade o coro virava ruído contínuo): no máximo GEMIDOS_MAX gemidos/
+## corrida em GEMIDOS_JANELA ms no mapa todo. Alerta, ataque, dor e morte sempre tocam (são informação para o jogador).
+const GEMIDOS_MAX := 3
+const GEMIDOS_JANELA := 2000
+static var _gemidos_ms: Array[int] = []
+
+
 func _voz(id: StringName, volume_db := -6.0, alcance := 40.0) -> void:
 	if not Audio.has_sound(String(id)):
 		return
+	if id == &"zombie_groan" or id == &"zombie_run":
+		var agora := Time.get_ticks_msec()
+		while not _gemidos_ms.is_empty() and agora - _gemidos_ms[0] > GEMIDOS_JANELA:
+			_gemidos_ms.pop_front()
+		if _gemidos_ms.size() >= GEMIDOS_MAX:
+			return
+		_gemidos_ms.append(agora)
 	Audio.play_at(String(id), global_position + Vector3.UP * 1.5, {
 		"volume_db": volume_db, "pitch": randf_range(0.9, 1.1) * (1.05 - float(_variant_index) * 0.01),
 		"pitch_var": 0.04, "unit_size": 7.0, "max_distance": alcance, "bus": "SFX"})
@@ -1129,6 +1238,7 @@ func _set_state(next_state: State, clip_override: StringName = &"") -> void:
 			get_node("BodyCollider").set_deferred("disabled", true)
 			_death_animation = clip_override if not clip_override.is_empty() else _death_animation
 			_animation_tree.active = false
+			_death_finished = false
 			_variar_morte()
 			_voz(&"zombie_die", -1.0, 55.0)
 			_play(_death_animation, false)

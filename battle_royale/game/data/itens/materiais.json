@@ -1,0 +1,11 @@
+{
+	"tora": {"name": "Tora", "kind": "material", "size": [2, 1], "kg": 1.6, "stack": 1, "model_path": "res://assets/models/itens/tora.glb", "vale_madeira": 20, "combustivel_min": 10.0},
+	"tabua": {"name": "Tábua", "kind": "material", "size": [2, 1], "kg": 0.6, "stack": 10, "model_path": "res://assets/models/itens/tabua.glb", "vale_madeira": 8},
+	"graveto": {"name": "Graveto", "kind": "material", "size": [1, 1], "kg": 0.1, "stack": 20, "model_path": "res://assets/models/itens/graveto.glb", "combustivel_min": 2.0},
+	"pregos": {"name": "Pregos", "kind": "material", "size": [1, 1], "kg": 0.02, "stack": 50, "model_path": "res://assets/models/itens/pregos.glb"},
+	"corda": {"name": "Corda", "kind": "material", "size": [1, 1], "kg": 0.15, "stack": 5, "model_path": "res://assets/models/itens/corda.glb"},
+	"pedra": {"name": "Pedra", "kind": "material", "size": [1, 1], "kg": 0.6, "stack": 10, "model_path": "res://assets/models/itens/pedra_item.glb"},
+	"kit_fogueira": {"name": "Kit de fogueira", "kind": "fogueira", "size": [2, 2], "kg": 1.2, "stack": 1, "model_path": "res://assets/models/itens/kit_fogueira.glb", "combustivel_min": 8.0},
+	"fosforos": {"name": "Fósforos", "kind": "material", "size": [1, 1], "kg": 0.02, "stack": 10, "model_path": "res://assets/models/itens/fosforos.glb"},
+	"galao": {"name": "Galão de combustível", "kind": "material", "size": [2, 2], "kg": 4.0, "stack": 1, "model_path": "res://assets/models/itens/galao.glb", "litros": 10}
+}

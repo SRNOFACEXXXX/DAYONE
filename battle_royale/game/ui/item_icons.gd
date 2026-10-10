@@ -19,6 +19,7 @@ const WEAPON_MODELS := {
 }
 const DARK_MODELS := ["m4", "glock", "usp"]
 const ICON_SIZE := Vector2i(384, 192)
+const DIR_MODELOS := "res://assets/models/itens/"
 
 static var textures: Dictionary = {}
 static var _renderer: Node
@@ -72,6 +73,21 @@ class IconRenderer extends Node:
 			var tex := await _render(path)
 			if tex != null:
 				ItemIcons.textures[id] = tex
+		# itens de sobrevivência (data/itens/*.json) com modelo próprio: miniatura renderizada do próprio .glb. Modelos que servem a
+		# vários itens (as latas) ficam com o ícone de código, para não virarem todos iguais.
+		var usos := {}
+		var ids := BRInventory.todos_ids()
+		for id in ids:
+			var cam_path := String(BRInventory.definition(String(id)).get("model_path", ""))
+			if cam_path.begins_with(ItemIcons.DIR_MODELOS):
+				usos[cam_path] = int(usos.get(cam_path, 0)) + 1
+		for id in ids:
+			var caminho := String(BRInventory.definition(String(id)).get("model_path", ""))
+			if not caminho.begins_with(ItemIcons.DIR_MODELOS) or int(usos.get(caminho, 0)) != 1 or not ResourceLoader.exists(caminho):
+				continue
+			var tex2 := await _render(caminho)
+			if tex2 != null:
+				ItemIcons.textures[String(id)] = tex2
 		ItemIcons._notify_ready()
 		queue_free()
 
@@ -87,20 +103,28 @@ class IconRenderer extends Node:
 		env.background_mode = Environment.BG_CLEAR_COLOR
 		env.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
 		env.ambient_light_color = Color(0.78, 0.8, 0.85)
-		env.ambient_light_energy = 1.3
+		env.ambient_light_energy = 0.8 if path.begins_with(ItemIcons.DIR_MODELOS) else 1.3   # itens têm cores claras: sem estourar
 		var we := WorldEnvironment.new()
 		we.environment = env
 		vp.add_child(we)
 		var sun := DirectionalLight3D.new()
 		sun.rotation_degrees = Vector3(-35, 35, 0)
-		sun.light_energy = 1.3
+		sun.light_energy = 0.9 if path.begins_with(ItemIcons.DIR_MODELOS) else 1.3
 		vp.add_child(sun)
 		var model: Node3D = (load(path) as PackedScene).instantiate()
 		var holder := Node3D.new()
 		vp.add_child(holder)
 		holder.add_child(model)
 		var box := _aabb(model, Transform3D.IDENTITY)
-		if box.size.z > box.size.x:
+		if path.begins_with(ItemIcons.DIR_MODELOS):
+			# itens de sobrevivência: deitados (carne, pele) vistos de cima inclinados; compridos em pé (ferramentas) na diagonal
+			if box.size.y < box.size.x * 0.5 and box.size.y < box.size.z * 0.7:
+				holder.rotation.x = deg_to_rad(66.0)
+				box = holder.transform * box
+			elif box.size.y > box.size.x * 1.35:
+				holder.rotation.z = deg_to_rad(-48.0)
+				box = holder.transform * box
+		elif box.size.z > box.size.x:
 			holder.rotation.y = PI * 0.5
 			box = holder.transform * box
 		var c := box.get_center()
@@ -138,6 +162,10 @@ class IconRenderer extends Node:
 		return out
 
 
+static func _e_item(id: String) -> bool:
+	return String(BRInventory.definition(id).get("model_path", "")).begins_with(DIR_MODELOS)
+
+
 ## Desenha o ícone de `id` dentro de `r` (o ícone se ajusta ao menor lado).
 static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 	var tex := texture_for(id)
@@ -146,7 +174,8 @@ static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 		var ts := tex.get_size()
 		var k := minf(inner.size.x / ts.x, inner.size.y / ts.y)
 		var sz := ts * k
-		ci.draw_texture_rect(tex, Rect2(inner.get_center() - sz * 0.5, sz), false, Color(2.3, 2.3, 2.3, 1.0) if id in DARK_MODELS else Color(1.45, 1.45, 1.45, 1.0))
+		var ganho := 1.0 if _e_item(id) else (2.3 if id in DARK_MODELS else 1.45)
+		ci.draw_texture_rect(tex, Rect2(inner.get_center() - sz * 0.5, sz), false, Color(ganho, ganho, ganho, 1.0))
 		return
 	var c := r.get_center()
 	var u := minf(r.size.x, r.size.y)
@@ -171,10 +200,62 @@ static func draw(ci: CanvasItem, id: String, r: Rect2) -> void:
 			_backpack(ci, c, u, id)
 		"knife":
 			_knife(ci, c, u)
+		"lata_comida", "feijao_lata", "sardinha", "refrigerante":
+			_lata(ci, c, u, id)
+		"garrafa_agua", "cantil":
+			_garrafa(ci, c, u, id)
+		"frutas", "carne_cozida", "carne_crua", "barra_cereal", "chocolate":
+			_comida(ci, c, u, id)
 		"mosin":
 			_mosin(ci, r)
 		_:
 			_generic_gun(ci, c, u, r.size.x)
+
+
+## Comida e bebida (sobrevivência): ícones simples em código, como as curas.
+static func _lata(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	var rot := Color("b8412f") if id == "lata_comida" else Color("9a6b2f") if id == "feijao_lata" else Color("3f7fa8") if id == "sardinha" else Color("c9302c")
+	var w := u * 0.34
+	var h := u * 0.46
+	ci.draw_rect(Rect2(c.x - w, c.y - h, w * 2.0, h * 2.0), Color("c8ccd0"))
+	ci.draw_rect(Rect2(c.x - w, c.y - h * 0.55, w * 2.0, h * 1.1), rot)
+	ci.draw_rect(Rect2(c.x - w, c.y - h, w * 2.0, h * 0.14), Color("8d9298"))
+	ci.draw_rect(Rect2(c.x - w, c.y + h * 0.86, w * 2.0, h * 0.14), Color("8d9298"))
+	ci.draw_rect(Rect2(c.x - w * 0.55, c.y - h * 0.2, w * 1.1, h * 0.4), Color("f0e6c8"))
+
+
+static func _garrafa(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	if id == "cantil":
+		var k := Color("5f6b3a")
+		ci.draw_rect(Rect2(c.x - u * 0.2, c.y - u * 0.34, u * 0.4, u * 0.7), k)
+		ci.draw_rect(Rect2(c.x - u * 0.2, c.y - u * 0.05, u * 0.4, u * 0.3), Color("78854a"))
+		ci.draw_rect(Rect2(c.x - u * 0.08, c.y - u * 0.46, u * 0.16, u * 0.12), Color("2d2d2d"))
+		return
+	_p(ci, [c + Vector2(-u * 0.16, -u * 0.2), c + Vector2(u * 0.16, -u * 0.2), c + Vector2(u * 0.2, u * 0.42), c + Vector2(-u * 0.2, u * 0.42)], Color(0.55, 0.78, 0.95, 0.9))
+	_p(ci, [c + Vector2(-u * 0.17, u * 0.1), c + Vector2(u * 0.18, u * 0.1), c + Vector2(u * 0.2, u * 0.42), c + Vector2(-u * 0.2, u * 0.42)], Color("2f7fc0"))
+	ci.draw_rect(Rect2(c.x - u * 0.07, c.y - u * 0.4, u * 0.14, u * 0.2), Color("dfe6ea"))
+	ci.draw_rect(Rect2(c.x - u * 0.09, c.y - u * 0.46, u * 0.18, u * 0.07), Color("2f7fc0"))
+
+
+static func _comida(ci: CanvasItem, c: Vector2, u: float, id: String) -> void:
+	match id:
+		"frutas":
+			ci.draw_circle(c + Vector2(-u * 0.12, u * 0.04), u * 0.2, Color("d8432f"))
+			ci.draw_circle(c + Vector2(u * 0.14, u * 0.1), u * 0.18, Color("e8b72e"))
+			ci.draw_line(c + Vector2(-u * 0.12, -u * 0.15), c + Vector2(-u * 0.06, -u * 0.27), Color("4f7a2a"), 2.0)
+		"carne_cozida", "carne_crua":
+			var cor := Color("8a4a2a") if id == "carne_cozida" else Color("d0626a")
+			ci.draw_circle(c + Vector2(-u * 0.1, -u * 0.05), u * 0.24, cor)
+			ci.draw_line(c + Vector2(u * 0.05, u * 0.1), c + Vector2(u * 0.3, u * 0.32), Color("e9e6dc"), 4.0)
+			ci.draw_circle(c + Vector2(u * 0.34, u * 0.3), u * 0.07, Color("e9e6dc"))
+		"barra_cereal":
+			ci.draw_rect(Rect2(c.x - u * 0.32, c.y - u * 0.1, u * 0.64, u * 0.2), Color("c89a4a"))
+			ci.draw_rect(Rect2(c.x - u * 0.32, c.y - u * 0.02, u * 0.64, u * 0.06), Color("8a5a1c"))
+		_:   # chocolate
+			ci.draw_rect(Rect2(c.x - u * 0.24, c.y - u * 0.3, u * 0.48, u * 0.6), Color("5a3320"))
+			ci.draw_rect(Rect2(c.x - u * 0.24, c.y - u * 0.3, u * 0.48, u * 0.16), Color("d9a441"))
+			for i in 3:
+				ci.draw_line(Vector2(c.x - u * 0.24, c.y - u * 0.05 + i * u * 0.14), Vector2(c.x + u * 0.24, c.y - u * 0.05 + i * u * 0.14), Color("3c2114"), 1.5)
 
 
 static func _p(ci: CanvasItem, pts: Array, col: Color) -> void:

@@ -43,6 +43,7 @@ func _check(cond: bool, msg: String) -> void:
 
 
 func _ready() -> void:
+	Game.test_args["construcao_livre"] = "1"   # teste da mecânica de encaixe, não do custo em toras
 	Game.test_mode = true
 	DisplayServer.window_set_size(Vector2i(1280, 720))
 	_out_dir = ProjectSettings.globalize_path("res://tests/_out")

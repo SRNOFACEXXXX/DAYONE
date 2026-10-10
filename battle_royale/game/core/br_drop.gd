@@ -40,6 +40,8 @@ func _build_visual() -> void:
 		var wd := WeaponDB.get_def(StringName(id))
 		if wd:
 			path = wd.model_path
+	if path.is_empty():
+		path = String(def.get("model_path", ""))   # itens de dados (res://data/itens/*.json): toras, comida, ferramentas
 	_visual = Node3D.new()
 	add_child(_visual)
 	if not path.is_empty() and ResourceLoader.exists(path):

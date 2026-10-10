@@ -39,6 +39,80 @@ class Quickbar extends Control:
 					qty = str(int(it.qty))
 			YUI.draw_slot(self, font, rect, str(i + 1), "" if it.is_empty() else String(it.id), qty, ativo, it.is_empty())
 
+## Fôlego de corrida: fio fino no centro-baixo, logo acima da barra de acesso rápido. Só aparece quando falta fôlego
+## (ou quando está cansado); some devagar ao encher. Cansado: vermelho pulsando. Desligado em Ajustes, some.
+class FolegoBar extends Control:
+	var soldier: Soldier
+	var _vis := 0.0
+
+	func _init() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		modulate.a = 0.0
+
+	func _process(dt: float) -> void:
+		var mostrar := soldier != null and soldier.alive and Settings.stamina_ativa and (soldier.stamina < 0.999 or soldier.stamina_cansado())
+		_vis = move_toward(_vis, 1.0 if mostrar else 0.0, dt * 3.0)
+		modulate.a = _vis
+		if _vis > 0.0:
+			queue_redraw()
+
+	func _draw() -> void:
+		if soldier == null:
+			return
+		var r := Rect2(Vector2.ZERO, size)
+		var f := clampf(soldier.stamina, 0.0, 1.0)
+		var cansado := soldier.stamina_cansado()
+		draw_rect(r, Color(0, 0, 0, 0.5), true)
+		var cor := UIStyle.DANGER if cansado else UIStyle.ACCENT
+		if cansado:
+			cor = cor.lerp(Color.WHITE, 0.25 * (0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.01)))
+		draw_rect(Rect2(0, 0, r.size.x * f, r.size.y), cor, true)
+		# marca de 20%: abaixo dela, quem ficou sem fôlego ainda não volta a correr
+		draw_rect(Rect2(r.size.x * Soldier.STAMINA_RETORNO, 0, 1, r.size.y), Color(1, 1, 1, 0.35), true)
+
+
+## Painel do carro (só ao dirigir): km/h, marcha, RPM, vida e combustível (só se usar_combustivel). Discreto.
+class VeiculoHud extends Control:
+	var carro: DrivableVehicle
+	var _vis := 0.0
+
+	func _init() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		modulate.a = 0.0
+
+	func _process(dt: float) -> void:
+		var mostrar := carro != null and is_instance_valid(carro) and carro.driver != null
+		_vis = move_toward(_vis, 1.0 if mostrar else 0.0, dt * 4.0)
+		modulate.a = _vis
+		if _vis > 0.0:
+			queue_redraw()
+
+	func _draw() -> void:
+		if carro == null or not is_instance_valid(carro):
+			return
+		var r := Rect2(Vector2.ZERO, size)
+		draw_rect(r, UIStyle.BG, true)
+		draw_rect(r, UIStyle.PANEL_LINE, false, 1.0)
+		var num := UIStyle.font(600, "num")
+		var txt := UIStyle.font(400, "text")
+		draw_string(num, Vector2(14, 42), str(carro.speed_kmh()), HORIZONTAL_ALIGNMENT_LEFT, -1, 32, UIStyle.TEXT)
+		draw_string(txt, Vector2(14, 56), "km/h", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, UIStyle.TEXT_DIM)
+		draw_string(num, Vector2(size.x - 90, 42), "M%d" % carro.marcha_atual(), HORIZONTAL_ALIGNMENT_RIGHT, 76, 22, UIStyle.TEXT)
+		var rot: float = carro.rpm_frac()
+		_barra(66, "RPM", rot, UIStyle.DANGER if rot > 0.85 else UIStyle.ACCENT)
+		_barra(82, "VIDA", carro.vida_frac(), UIStyle.DANGER.lerp(UIStyle.GOOD, carro.vida_frac()))
+		if carro.usar_combustivel:
+			_barra(98, "COMB", carro.combustivel_frac(), UIStyle.MONEY)
+
+	func _barra(y: float, rotulo: String, frac: float, cor: Color) -> void:
+		var txt := UIStyle.font(400, "text")
+		draw_string(txt, Vector2(14, y + 6), rotulo, HORIZONTAL_ALIGNMENT_LEFT, -1, 10, UIStyle.TEXT_DIM)
+		var x0 := 60.0
+		var w := size.x - x0 - 14.0
+		draw_rect(Rect2(x0, y, w, 6), UIStyle.PANEL_LINE, true)
+		draw_rect(Rect2(x0, y, w * clampf(frac, 0.0, 1.0), 6), cor, true)
+
+
 var match_ref: Match
 var root: Control
 var crosshair: Crosshair
@@ -60,6 +134,8 @@ var lbl_reload_hint: Label
 var weapon_list: VBoxContainer
 var _weapon_list_t := 0.0
 var quickbar: Quickbar
+var folego: FolegoBar
+var veiculo_hud: VeiculoHud
 # dinheiro
 var lbl_money: Label
 var lbl_money_delta: Label
@@ -242,6 +318,12 @@ func _build() -> void:
 	quickbar.name = "Quickbar"
 	quickbar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_place(quickbar, Control.PRESET_CENTER_BOTTOM, -220, -84, 220, -16)
+	folego = FolegoBar.new()
+	folego.name = "Folego"
+	_place(folego, Control.PRESET_CENTER_BOTTOM, -110, -92, 110, -88)
+	veiculo_hud = VeiculoHud.new()
+	veiculo_hud.name = "VeiculoHud"
+	_place(veiculo_hud, Control.PRESET_BOTTOM_RIGHT, -262, -236, -22, -124)   # acima da caixa de munição, longe da quickbar
 
 	# ---- topo-centro: vivos + placar + cronômetro + rodada
 	var top := VBoxContainer.new()
@@ -392,6 +474,7 @@ func _process(dt: float) -> void:
 		var local_controller := lp.controller as PlayerController if lp.controller else null
 		quickbar.modulate.a = 0.28 if local_controller and not local_controller._third_person and local_controller._ads_amount > 0.05 else 1.0
 		quickbar.queue_redraw()
+		folego.soldier = lp
 		var low := view.health <= 25
 		lbl_health.text = str(view.health)
 		_cor(lbl_health, UIStyle.DANGER if low else UIStyle.TEXT)
@@ -487,6 +570,9 @@ func _process(dt: float) -> void:
 	fps_label.visible = Settings.show_fps
 	if fps_label.visible:
 		fps_label.text = "%d FPS" % Engine.get_frames_per_second()
+	# painel do carro: só enquanto o jogador local dirige
+	var c_veh: Object = lp.controller if lp else null
+	veiculo_hud.carro = c_veh.get("active_vehicle") if c_veh else null
 	if m.phase == Match.Phase.MATCH_END and match_end == null:
 		match_end = MatchEndScreen.new()
 		root.add_child(match_end)
@@ -752,6 +838,12 @@ func modo_sobrevivencia() -> void:
 		vital_bar = VitalBar.new()
 		vital_bar.vincular(match_ref.local_player)
 		_place(vital_bar, Control.PRESET_BOTTOM_LEFT, 16, -80, 330, -16)
+		var sv := match_ref.local_player.get_node_or_null("Sobrevivencia")
+		if sv != null:   # fome / sede / temperatura (core/sobrevivencia.gd): faixa fina acima da saúde
+			var sh: Control = preload("res://ui/sobrev_hud.gd").new()
+			sh.name = "SobrevHud"
+			sh.call("vincular", sv)
+			_place(sh, Control.PRESET_BOTTOM_LEFT, 16, -100, 330, -83)
 
 
 func _on_plate_started(seconds: float) -> void:

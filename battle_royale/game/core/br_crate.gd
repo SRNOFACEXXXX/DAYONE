@@ -5,13 +5,15 @@ extends BRLoot
 
 const SORTEIO := {
 	"alto": {"armas": [&"ak47", &"mosin", &"m4", &"m249", &"m107", &"uzi"], "extra": ["grenade", "ammo", "acog", "reddot", "backpack_medium", "kit_medico", "bandagem"]},
-	"medio": {"armas": [&"ak47", &"m4", &"glock", &"usp", &"mosin", &"uzi"], "extra": ["grenade", "ammo", "reddot", "backpack_small", "bandagem", "bandagem"]},
-	"baixo": {"armas": [&"glock", &"usp"], "extra": ["grenade", "ammo", "ammo", "bandagem"]},
+	"medio": {"armas": [&"ak47", &"m4", &"glock", &"usp", &"mosin", &"uzi"], "extra": ["grenade", "ammo", "reddot", "backpack_small", "bandagem", "bandagem", "comida"]},
+	"baixo": {"armas": [&"glock", &"usp"], "extra": ["grenade", "ammo", "ammo", "bandagem", "comida"]},
 }
 const MUNICAO := {"762": ["ammo_762", 30], "556": ["ammo_556", 30], "9mm": ["ammo_9mm", 36], "127": ["ammo_127", 10]}
 # caixa de armamento do pacote do usuário (Assets/caixa de armamentos): corpo e tampa separados
 const CORPO := "res://assets/models/cenario/caixas/caixa_3_corpo.glb"
 const TAMPA := "res://assets/models/cenario/caixas/caixa_3_tampa.glb"
+const CORPO_CENA := preload("res://assets/models/cenario/caixas/caixa_3_corpo.glb")   # caixa: antes load() a cada construção
+const TAMPA_CENA := preload("res://assets/models/cenario/caixas/caixa_3_tampa.glb")
 const MODELOS_ITEM := {
 	"vest": "res://assets/models/props/colete_placas.glb",
 	"grenade": "res://assets/models/weapons/wf/rgd5.glb",
@@ -56,6 +58,9 @@ func _sortear() -> void:
 		contents.add_item(String(m[0]), int(m[1]))
 	elif extra == "grenade":
 		contents.add_item("grenade", 1 + randi() % 2)
+	elif extra == "comida":   # ração de campo: algo de comer e de beber
+		contents.add_item(["lata_comida", "feijao_lata", "barra_cereal"][randi() % 3], 1 + randi() % 2)
+		contents.add_item(["garrafa_agua", "cantil"][randi() % 2], 1)
 	elif extra == "bandagem":
 		contents.add_item("bandagem", 1 + randi() % 3)
 	elif extra == "kit_medico":
@@ -70,11 +75,11 @@ func _sortear() -> void:
 func _build_visual() -> void:
 	_visual = Node3D.new()
 	add_child(_visual)
-	var corpo: Node3D = load(CORPO).instantiate()
+	var corpo: Node3D = CORPO_CENA.instantiate()
 	_visual.add_child(corpo)
 	# dobradiça na aresta de trás (-Z) do topo do corpo; medidas tiradas das próprias malhas
 	var cb := _aabb(corpo)
-	var tampa: Node3D = load(TAMPA).instantiate()
+	var tampa: Node3D = TAMPA_CENA.instantiate()
 	var tb := _aabb(tampa)
 	_tampa = Node3D.new()
 	_tampa.position = Vector3(cb.get_center().x, cb.end.y, cb.position.z)

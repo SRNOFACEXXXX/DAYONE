@@ -1,0 +1,559 @@
+{
+	"dinamite": {
+		"name": "Dinamite",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.5,
+		"stack": 3,
+		"rarity": "raro",
+		"model_path": "res://assets/models/itens/props/dynamite.glb",
+		"acao": "arremesso",
+		"pavio": 3.5,
+		"raio": 8.0,
+		"dano": 200,
+		"lore": "Bananas de dinamite de mineração com pavio curto. Joga e corre: 3,5 s. Mata horda, abre pedra, acorda a ilha inteira.",
+		"mao": {
+			"escala": 1.4,
+			"rot": [
+				0,
+				0,
+				-90
+			]
+		}
+	},
+	"bomba": {
+		"name": "Bomba de ferro",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.6,
+		"stack": 1,
+		"rarity": "epico",
+		"model_path": "res://assets/models/itens/props/bomb.glb",
+		"acao": "arremesso",
+		"pavio": 5.0,
+		"raio": 13.0,
+		"dano": 280,
+		"lore": "Bomba esférica de pavio longo, estilo pirata. 5 s e um estrondo que se ouve do continente.",
+		"mao": {
+			"escala": 1.1
+		}
+	},
+	"mina_naval": {
+		"name": "Mina naval",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			2
+		],
+		"kg": 5.0,
+		"stack": 1,
+		"rarity": "epico",
+		"model_path": "res://assets/models/itens/props/water_mine.glb",
+		"acao": "plantar",
+		"raio": 11.0,
+		"dano": 300,
+		"lore": "Mina de contato arrancada de um casco. Planta no chão; armada em 2 s; explode quando algo chega perto.",
+		"mao": {
+			"escala": 0.9
+		}
+	},
+	"garrafa_vazia": {
+		"name": "Garrafa vazia",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.25,
+		"stack": 4,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/bottle.glb",
+		"acao": "arremesso",
+		"ruido": 45.0,
+		"lore": "Garrafa esportiva. Arremessada longe, o estalo atrai a horda para o lado errado.",
+		"mao": {
+			"escala": 1.3,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"moeda": {
+		"name": "Moeda antiga",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.03,
+		"stack": 30,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/bitcoin.glb",
+		"acao": "arremesso",
+		"ruido": 14.0,
+		"valor": 5,
+		"lore": "Moeda de ouro com um B. Não compra mais nada, mas o tilintar distrai.",
+		"mao": {
+			"escala": 2.0,
+			"rot": [
+				90,
+				0,
+				0
+			]
+		}
+	},
+	"dado": {
+		"name": "Dado azul",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.03,
+		"stack": 6,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/dice_blue.glb",
+		"acao": "arremesso",
+		"ruido": 10.0,
+		"lore": "Um dado gigante de neon. Seis lados, nenhuma sorte.",
+		"mao": {
+			"escala": 1.8
+		}
+	},
+	"idolo": {
+		"name": "Ídolo dourado",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			2
+		],
+		"kg": 1.1,
+		"stack": 1,
+		"rarity": "raro",
+		"model_path": "res://assets/models/itens/props/idol.glb",
+		"acao": "arremesso",
+		"ruido": 28.0,
+		"valor": 40,
+		"lore": "Ídolo de olhos vermelhos achado num buraco do farol. Pesado, feio, valioso. Atirado, faz um barulho de igreja.",
+		"mao": {
+			"escala": 1.3
+		}
+	},
+	"calice": {
+		"name": "Cálice dourado",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.5,
+		"stack": 1,
+		"rarity": "raro",
+		"model_path": "res://assets/models/itens/props/bowl.glb",
+		"acao": "arremesso",
+		"ruido": 24.0,
+		"valor": 30,
+		"lore": "Cálice de uma igreja da ilha. Dourado maciço. Rola longe.",
+		"mao": {
+			"escala": 1.5
+		}
+	},
+	"cofrinho": {
+		"name": "Cofrinho",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.6,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/piggy_bank.glb",
+		"acao": "abrir",
+		"loot": [
+			[
+				"moeda",
+				3
+			],
+			[
+				"pregos",
+				4
+			],
+			[
+				"fosforos",
+				2
+			]
+		],
+		"lore": "Porquinho cor de rosa. Chacoalha. Clique para quebrar e ver o que o dono guardou.",
+		"mao": {
+			"escala": 1.5
+		}
+	},
+	"frigideira": {
+		"name": "Frigideira",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.1,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/frying_pan.glb",
+		"acao": "melee",
+		"dano_melee": 1.3,
+		"cozinha": true,
+		"lore": "Ferro fundido. Frita carne mais rápido na fogueira e, na mão, derruba um zumbi.",
+		"mao": {
+			"escala": 1.5,
+			"rot": [
+				90,
+				0,
+				0
+			]
+		}
+	},
+	"ancinho": {
+		"name": "Ancinho",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.6,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/baby_rake.glb",
+		"acao": "melee",
+		"dano_melee": 0.8,
+		"lore": "Ancinho de jardim. Arma fraca, mas melhor que nada.",
+		"mao": {
+			"escala": 1.5
+		}
+	},
+	"celular": {
+		"name": "Celular",
+		"kind": "ferramenta",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.18,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/smartphone.glb",
+		"acao": "luz",
+		"lore": "Sem sinal desde o dia 1. A lanterna ainda funciona; clique para ligar e desligar.",
+		"mao": {
+			"escala": 2.2,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"panela": {
+		"name": "Panela",
+		"kind": "utensilio",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.0,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/pot.glb",
+		"cozinha": true,
+		"lore": "Panela de aço. Na bolsa, a carne cozinha na metade do tempo na fogueira."
+	},
+	"chaves": {
+		"name": "Jogo de chaves",
+		"kind": "peca",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.3,
+		"stack": 4,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/hex_wrench_set.glb",
+		"repara": 25,
+		"lore": "Chaves Allen de várias bitolas. Cada uso (F perto do carro) devolve 25 de lataria."
+	},
+	"fita": {
+		"name": "Fita adesiva",
+		"kind": "heal",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.15,
+		"stack": 3,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/tape.glb",
+		"heal": 4,
+		"time": 3.0,
+		"stop_bleed": true,
+		"repara": 10,
+		"lore": "Fita larga. Segura curativo, estanca sangramento e remenda lataria (+10)."
+	},
+	"leme": {
+		"name": "Leme de madeira",
+		"kind": "peca",
+		"size": [
+			2,
+			2
+		],
+		"kg": 2.5,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/steering_wheel.glb",
+		"lore": "Leme de barco com raios de latão. O MARÉ MANSA perdeu o dele na tempestade."
+	},
+	"mochila_trilha": {
+		"name": "Mochila de trilha",
+		"kind": "backpack",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.4,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/backpack.glb",
+		"rows": 5,
+		"capacity_kg": 20.0,
+		"lore": "Mochila cinza de trilheiro, com alças reforçadas. Cabe mais que a média."
+	},
+	"regador": {
+		"name": "Regador",
+		"kind": "bebida",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.0,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/watering_can.glb",
+		"time": 4.0,
+		"agua": 30,
+		"suja": true,
+		"lore": "Regador azul com água parada. Mata a sede, mas é água suja."
+	},
+	"chapeu": {
+		"name": "Chapéu",
+		"kind": "cosmetico",
+		"size": [
+			2,
+			2
+		],
+		"kg": 0.2,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/hat.glb",
+		"slot": "cabeca",
+		"chuva": 0.5,
+		"lore": "Chapéu de feltro de aba larga. Protege da chuva (molha 50% menos).",
+		"mao": {
+			"pos": [
+				0,
+				0.16,
+				0.0
+			],
+			"escala": 1.0,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"fones": {
+		"name": "Fones de ouvido",
+		"kind": "cosmetico",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.25,
+		"stack": 1,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/props/headphones.glb",
+		"slot": "orelhas",
+		"lore": "Fones grandes. Sem música, só estilo.",
+		"mao": {
+			"pos": [
+				0,
+				0.1,
+				0
+			],
+			"escala": 1.0,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"coroa": {
+		"name": "Coroa",
+		"kind": "cosmetico",
+		"size": [
+			2,
+			1
+		],
+		"kg": 0.6,
+		"stack": 1,
+		"rarity": "epico",
+		"model_path": "res://assets/models/itens/props/crown.glb",
+		"slot": "cabeca",
+		"valor": 60,
+		"lore": "Coroa dourada com gemas vermelhas. Quem a usa é rei da ilha — dos zumbis, ninguém sabe.",
+		"mao": {
+			"pos": [
+				0,
+				0.2,
+				0
+			],
+			"escala": 1.0,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"mascara_mergulho": {
+		"name": "Máscara de mergulho",
+		"kind": "cosmetico",
+		"size": [
+			2,
+			1
+		],
+		"kg": 0.4,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/diver_mask.glb",
+		"slot": "rosto",
+		"folego": 2.0,
+		"lore": "Máscara com snorkel. Dobra o fôlego debaixo d'água.",
+		"mao": {
+			"pos": [
+				0,
+				0.1,
+				0.12
+			],
+			"escala": 1.0,
+			"rot": [
+				0,
+				0,
+				0
+			]
+		}
+	},
+	"chuteira": {
+		"name": "Chuteira",
+		"kind": "cosmetico",
+		"size": [
+			2,
+			2
+		],
+		"kg": 0.8,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/soccer_boot.glb",
+		"slot": "pes",
+		"queda": 0.6,
+		"lore": "Chuteira roxa com travas. A trava segura na aterrissagem: 40% menos dano de queda.",
+		"mao": {
+			"escala": 1.0
+		}
+	},
+	"amuleto": {
+		"name": "Amuleto sorriso",
+		"kind": "cosmetico",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.1,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/smiley.glb",
+		"slot": "peito",
+		"lore": "Uma carinha amarela num cordão. O último que sorriu na ilha.",
+		"mao": {
+			"escala": 1.0
+		}
+	},
+	"escada_telescopica": {
+		"name": "Escada telescópica",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			3
+		],
+		"kg": 3.5,
+		"stack": 1,
+		"rarity": "raro",
+		"model_path": "res://assets/models/itens/props/telescopic_ladder.glb",
+		"acao": "escada",
+		"lore": "Escada de alumínio que estica até 3 m. Clique perto de uma parede para apoiar e subir.",
+		"mao": {
+			"escala": 0.6
+		}
+	},
+	"regua_torre": {
+		"name": "Régua de torre",
+		"kind": "material",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.4,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/props/tower_ruler.glb",
+		"lore": "Poste de medição da torre meteorológica. Sucata de bom aço."
+	},
+	"arco": {
+		"name": "Arco",
+		"kind": "ferramenta",
+		"size": [
+			2,
+			3
+		],
+		"kg": 0.9,
+		"stack": 1,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/arco.glb",
+		"acao": "arco",
+		"mao": {
+			"escala": 0.55
+		},
+		"lore": "Arco de madeira dobrada. Silencioso: o melhor amigo de quem caça sem acordar a ilha. Segure para puxar, solte para atirar."
+	},
+	"flecha": {
+		"name": "Flecha",
+		"kind": "material",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.05,
+		"stack": 20,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/flecha.glb",
+		"lore": "Haste de madeira com penas e ponta de aço. Recuperável se não quebrar... às vezes."
+	}
+}

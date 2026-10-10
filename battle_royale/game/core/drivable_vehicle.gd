@@ -9,6 +9,8 @@ const ENGINE_FORCE_N := 6400.0
 const REVERSE_FORCE_N := 3900.0
 const SERVICE_BRAKE_N := 44.0
 const HANDBRAKE_N := 72.0
+## Freio de mão ao DIRIGIR (derrapar): bem mais fraco que o de estacionar (HANDBRAKE_N), senão o carro trava em vez de deslizar.
+const HANDBRAKE_DRIVE_N := 12.0
 const AERO_DOWNFORCE_COEFFICIENT := 0.7
 const MAX_AERO_DOWNFORCE_N := 650.0
 const MAX_STEER := deg_to_rad(25.0)
@@ -18,6 +20,30 @@ const WHEEL_X := 0.82291
 const FRONT_Z := 1.58892
 const REAR_Z := -1.35370
 const DOOR_ANGLE := deg_to_rad(67.0)
+## Módulos puros da dirigibilidade (preload: não dependem do cache global de class_name).
+const Transmissao = preload("res://core/veiculo_powertrain.gd")
+const Estab = preload("res://core/veiculo_estabilidade.gd")
+## Aceleração lateral máxima que o pneu absorve (m/s²); com freio de mão é reduzida pelo fator de drift.
+const ACEL_LATERAL_MAX := 9.0
+## Hook opcional para chão sem tag (ex.: terreno de areia): Callable(x, z) -> "areia" | "grama" | "terra" ...
+static var superficie_chao := Callable()
+
+## Vida do carro (%), aderência lateral (1/s), fator de drift com freio de mão, dano por batida,
+## tempo capotado até endireitar sozinho e inclinação visual da carroceria.
+@export var vida_max := 100.0
+@export var aderencia_lateral := 3.0
+@export var aderencia_freio_mao := 0.3
+## Batida só conta acima de 9 m/s de variação horizontal (lateral/frontal). Quicadas de terreno são ignoradas.
+@export var limiar_impacto_mps := 9.0
+@export var dano_por_mps := 2.6
+@export var tempo_recuperacao := 2.5
+## Rolagem/arfagem visual da carroceria. Padrão 0: as portas são filhas do modelo e o modelo gira com a
+## carroceria; sem validar em partida real, deixamos desligado (ajuste > 0 só para teste).
+@export var inclinacao_carroceria := 0.0
+@export var arfagem_carroceria := 0.0
+## Combustível simulado. Padrão desligado (não há posto no jogo): com false nunca consome e nunca corta o motor.
+## Liga com --combustivel (Game.test_args) ou ao chamar abastecer().
+@export var usar_combustivel := false
 
 var driver: Soldier
 var vehicle_kind := "sedan"
@@ -45,6 +71,19 @@ var _door_close_sound: AudioStreamPlayer3D
 ## desempenho: estacionado (congelado, sem motorista, portas paradas) não processa nada por quadro
 var _paineis_ativos := true
 var _rodas_paradas_ok := false
+## estado da dirigibilidade
+var vida := 100.0
+var _trem = Transmissao.new()
+var _modelo: Node3D
+var _fumaca: CPUParticles3D
+var _vel_anterior := Vector3.ZERO
+var _acel_suave := Vector3.ZERO
+var _janela_t := 0.0
+var _janela_vel := Vector3.ZERO
+var _janela_dano := 0.0
+var _tempo_capotado := 0.0
+var _freio_mao := false
+var _freio_atual := 0.0
 
 
 static func create_from_model(model: Node3D, kind: String) -> DrivableVehicle:
@@ -82,6 +121,12 @@ func _build(model: Node3D) -> void:
 	# VehicleWheel3D congelado desde a criação pode inicializar seus pontos em 0,0,0.
 	freeze = false
 	add_to_group("drivable_vehicle")
+	# Contatos reportados alimentam o dano por colisão (get_colliding_bodies, ver _registrar_impacto).
+	contact_monitor = true
+	max_contacts_reported = 4
+	vida = vida_max
+	if Game.test_args.has("combustivel"):
+		usar_combustivel = true
 	_last_safe_transform = global_transform
 
 	var chassis_shape := CollisionShape3D.new()
@@ -117,8 +162,10 @@ func _build(model: Node3D) -> void:
 	# A carroceria original estava visualmente alta sobre os pneus. Baixamos a
 	# casca 4 cm sem mexer no curso das molas nem nos cubos físicos das rodas.
 	model.position.y -= 0.04
+	_modelo = model
 	_build_audio()
 	_build_motor()
+	_build_fumaca()
 	call_deferred("_finish_spawn")
 
 
@@ -242,7 +289,7 @@ func _build_audio() -> void:
 
 
 ## Motor: 3 laços CC0 (marcha lenta / média / alta, OpenGameArt 'racing car engine sound loops') com pitch pela
-## rotação simulada (4 marchas sobre MAX_FORWARD_MPS) e crossfade; liga ao entrar, apaga suave ao sair.
+## rotação simulada (curva de torque + 5 marchas em core/veiculo_powertrain.gd) e crossfade; liga ao entrar, apaga suave ao sair.
 var _mot: Array = []
 var _mot_vol := 0.0
 var _thr := 0.0
@@ -258,10 +305,42 @@ func _build_motor() -> void:
 			_mot.append(p)
 
 
+## Fumaça do capô: liga com a vida abaixo de 30% (ver veiculo_estabilidade.gd).
+func _build_fumaca() -> void:
+	_fumaca = CPUParticles3D.new()
+	_fumaca.name = "FumacaMotor"
+	_fumaca.position = Vector3(0, 1.0, 1.4)
+	_fumaca.amount = 24
+	_fumaca.lifetime = 1.6
+	_fumaca.direction = Vector3.UP
+	_fumaca.spread = 18.0
+	_fumaca.initial_velocity_min = 0.6
+	_fumaca.initial_velocity_max = 1.2
+	_fumaca.gravity = Vector3(0, 0.4, 0)
+	_fumaca.scale_amount_min = 0.4
+	_fumaca.scale_amount_max = 0.9
+	var malha := QuadMesh.new()
+	malha.size = Vector2(0.5, 0.5)
+	var mat := StandardMaterial3D.new()
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mat.albedo_color = Color(0.12, 0.12, 0.12, 0.6)
+	mat.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
+	malha.material = mat
+	_fumaca.mesh = malha
+	_fumaca.emitting = false
+	add_child(_fumaca)
+
+
 func _atualizar_motor(dt: float) -> void:
+	var ligado := driver != null and vida > 0.0 and _tem_combustivel()
+	var v_frente := absf((global_basis.inverse() * linear_velocity).z)
+	_trem.atualizar(dt, v_frente, absf(_thr) if ligado else 0.0, ligado)
+	if ligado and usar_combustivel:
+		_trem.consumir(dt, absf(_thr))
+	_atualizar_fumaca()
 	if _mot.size() < 3:
 		return
-	var ligado := driver != null
 	if not ligado and _mot_vol <= 0.0:
 		return
 	_mot_vol = move_toward(_mot_vol, 1.0 if ligado else 0.0, dt * (2.5 if ligado else 1.4))
@@ -269,12 +348,7 @@ func _atualizar_motor(dt: float) -> void:
 		for p in _mot:
 			(p as AudioStreamPlayer3D).stop()
 		return
-	var v := linear_velocity.length()
-	var marcha_v := MAX_FORWARD_MPS / 4.0
-	var g := mini(int(v / marcha_v), 3)
-	var frac := clampf((v - float(g) * marcha_v) / marcha_v, 0.0, 1.0) if g < 3 else clampf((v - 3.0 * marcha_v) / marcha_v, 0.0, 1.0)
-	var alvo := clampf(0.2 + 0.7 * frac + 0.2 * absf(_thr), 0.0, 1.0)
-	_rpm = lerpf(_rpm, alvo, clampf(dt * 5.0, 0.0, 1.0))
+	_rpm = _trem.rpm_norm()
 	var w_idle := clampf(1.0 - _rpm * 2.4, 0.0, 1.0)
 	var w_high := clampf((_rpm - 0.4) * 2.4, 0.0, 1.0)
 	var w_mid := clampf(1.0 - w_idle - w_high + 0.15, 0.0, 1.0)
@@ -287,6 +361,14 @@ func _atualizar_motor(dt: float) -> void:
 		p.volume_db = base_db + linear_to_db(maxf(pesos[i], 0.0001)) + linear_to_db(maxf(_mot_vol, 0.0001))
 		if not p.playing:
 			p.play(randf() * 0.3)
+
+
+func _atualizar_fumaca() -> void:
+	if _fumaca == null:
+		return
+	var ligada := Estab.fumaca_ligada(vida_frac())
+	if _fumaca.emitting != ligada:
+		_fumaca.emitting = ligada
 
 
 func _finish_spawn() -> void:
@@ -307,6 +389,10 @@ func _finish_spawn() -> void:
 
 
 func _physics_process(dt: float) -> void:
+	# Aceleração do quadro anterior (rolagem visual) e velocidade antes do passo de física (impacto).
+	var acel_mundo := (linear_velocity - _vel_anterior) / maxf(dt, 0.0001)
+	_registrar_impacto(dt)
+	_vel_anterior = linear_velocity
 	_atualizar_motor(dt)
 	if freeze and driver == null and _entry_timer < 0.0 and _exit_timer < 0.0 and not _parking and not _paineis_ativos:
 		return
@@ -319,6 +405,9 @@ func _physics_process(dt: float) -> void:
 	else:
 		engine_force = 0.0
 		brake = 8.0 if not freeze else 0.0
+		_freio_mao = false
+	if not freeze:
+		_atualizar_estabilidade(dt, acel_mundo)
 	if _parking:
 		_parking_timer += dt
 		brake = HANDBRAKE_N
@@ -388,32 +477,40 @@ func _drive(dt: float) -> void:
 	var local_velocity := global_basis.inverse() * linear_velocity
 	var forward_speed := local_velocity.z
 	var speed := linear_velocity.length()
-	# Menos esterço conforme a velocidade sobe: ângulo alto em velocidade gera
-	# aceleração lateral irreal e era a causa principal de o sedã capotar.
-	var steering_limit := MAX_STEER * lerpf(1.0, .24, clampf(speed * 3.6 / 70.0, 0.0, 1.0))
-	steering = move_toward(steering, -turn * steering_limit, dt * 2.8)
-	brake = 0.0
-	engine_force = 0.0
+	var kmh := speed * 3.6
+	# Esterço: menos ângulo conforme a velocidade sobe; o volante volta ao centro sem snap.
+	steering = move_toward(steering, -turn * MAX_STEER * Estab.fator_direcao(kmh), dt * Estab.taxa_direcao(turn, kmh))
+	var freio := 0.0
+	var motor := 0.0
 	if throttle > .05:
 		if forward_speed < -1.0:
-			brake = SERVICE_BRAKE_N * throttle
+			freio = SERVICE_BRAKE_N * throttle
 		elif forward_speed < MAX_FORWARD_MPS:
-			engine_force = ENGINE_FORCE_N * throttle * (1.0 - .42 * clampf(forward_speed / MAX_FORWARD_MPS, 0.0, 1.0))
+			motor = ENGINE_FORCE_N * throttle * _fator_motor() * (1.0 - .42 * clampf(forward_speed / MAX_FORWARD_MPS, 0.0, 1.0))
 	elif throttle < -.05:
 		if forward_speed > 1.0:
-			brake = SERVICE_BRAKE_N * -throttle
+			freio = SERVICE_BRAKE_N * -throttle
 		elif forward_speed > -MAX_REVERSE_MPS:
-			engine_force = REVERSE_FORCE_N * throttle
+			# Ré: força cai conforme ganha velocidade para trás (sem disparo de marcha ré).
+			motor = REVERSE_FORCE_N * throttle * _fator_motor() * (1.0 - .5 * clampf(-forward_speed / MAX_REVERSE_MPS, 0.0, 1.0))
 	else:
-		brake = 2.5
-	if not blocked and Input.is_action_pressed("jump"):
-		brake = HANDBRAKE_N
-		engine_force = 0.0
-		for rear in _rear_wheels:
-			rear.wheel_friction_slip = 2.1
-	else:
-		for rear in _rear_wheels:
-			rear.wheel_friction_slip = 5.9
+		# sem acelerador: freio leve em movimento; parado (<1 m/s) segura o carro numa ladeira
+		freio = 8.0 if speed < 1.0 else 2.5
+	_freio_mao = not blocked and Input.is_action_pressed("jump")
+	if _freio_mao:
+		freio = HANDBRAKE_DRIVE_N
+		motor = 0.0
+	# Freio com rampa: o pedal não vai de 0 a 44 de um quadro para o outro.
+	_freio_atual = move_toward(_freio_atual, freio, dt * (600.0 if freio > _freio_atual else 900.0))
+	brake = _freio_atual
+	engine_force = motor
+	# Tração por superfície: a roda traseira perde tração em areia/água; freio de mão solta a traseira.
+	for rear in _rear_wheels:
+		var f_r: Vector2 = _fator_roda(rear)
+		rear.wheel_friction_slip = (2.1 if _freio_mao else 5.9) * f_r.y
+	for front in _front_wheels:
+		var f_f: Vector2 = _fator_roda(front)
+		front.wheel_friction_slip = 5.3 * f_f.x
 	# Carga aerodinâmica leve: a força antiga (até 5200 N) somava 42% do peso
 	# do carro e comprimia demais a suspensão justamente em velocidade alta.
 	apply_central_force(Vector3.DOWN * minf(speed * speed * AERO_DOWNFORCE_COEFFICIENT, MAX_AERO_DOWNFORCE_N))
@@ -424,6 +521,93 @@ func _drive(dt: float) -> void:
 			_upright_hold = 0.0
 	else:
 		_upright_hold = 0.0
+
+
+## Fator de torque do motor (curva e marcha, troca, vida e combustível). 0 = motor parado.
+func _fator_motor() -> float:
+	if vida <= 0.0 or not _tem_combustivel():
+		return 0.0
+	# Carro muito batido perde potência: 100% acima de 60% de vida, 50% com a vida zerada.
+	var saude := clampf(vida / maxf(vida_max, 1.0) / 0.6, 0.0, 1.0)
+	return _trem.fator_torque() * lerpf(0.5, 1.0, saude)
+
+
+## Aderência (x) e tração (y) da roda pela superfície do ponto de contato. Fora do chão = 1.
+func _fator_roda(wheel: VehicleWheel3D) -> Vector2:
+	if not wheel.is_in_contact():
+		return Vector2.ONE
+	return Estab.perfil_superficie(_nome_superficie(wheel))
+
+
+func _nome_superficie(wheel: VehicleWheel3D) -> String:
+	var ponto := wheel.get_contact_point()
+	if Soldier.agua_fn.is_valid():
+		# Represa: abaixo da superfície. Mar (nível 0 fora da represa): só se a roda estiver submersa.
+		var nivel := float(Soldier.agua_fn.call(ponto.x, ponto.z))
+		var limite := nivel + 0.05 if nivel > 0.0 else -0.15
+		if ponto.y < limite:
+			return "agua"
+	var corpo := wheel.get_contact_body()
+	if corpo != null and corpo.has_meta("surface"):
+		return str(corpo.get_meta("surface"))
+	if superficie_chao.is_valid():
+		return str(superficie_chao.call(ponto.x, ponto.z))
+	return "asfalto"
+
+
+## Com o carro livre: só endireita depois de capotar. A física de pneu é a do VehicleBody3D (como na versão estável):
+## a "trava de rolagem" que reescrevia angular_velocity a cada quadro e o impulso lateral artificial apagavam a guinada
+## (carro com rodas viradas e giro 0°, medido em tests/carro_curva.tscn) e foram removidos.
+func _atualizar_estabilidade(dt: float, _acel_mundo: Vector3) -> void:
+	if Estab.esta_capotado(global_basis.y.dot(Vector3.UP)):
+		_tempo_capotado += dt
+		if _tempo_capotado >= tempo_recuperacao and linear_velocity.length() < 5.0:
+			_endireitar()
+	else:
+		_tempo_capotado = 0.0
+
+
+## Endireita o carro capotado mantendo a direção horizontal, um pouco acima do ponto atual.
+func _endireitar() -> void:
+	var frente := global_basis.z
+	var plano := Vector3(frente.x, 0.0, frente.z)
+	if plano.length_squared() < 0.01:
+		plano = Vector3(global_basis.x.x, 0.0, global_basis.x.z)
+	if plano.length_squared() < 0.0001:
+		plano = Vector3(0, 0, 1)
+	plano = plano.normalized()
+	# A frente da carroceria é +Z; Basis.looking_at aponta -Z para o alvo, então usamos -plano.
+	global_transform = Transform3D(Basis.looking_at(-plano, Vector3.UP), global_position + Vector3.UP * 1.1)
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	_tempo_capotado = 0.0
+
+
+## Dano por colisão: a variação de velocidade da batida (m/s) acima do limiar vira % de vida.
+## Dano por colisão, por quadro: enquanto o carro encosta em algo que não é terreno (nem o motorista), a variação
+## de velocidade é medida desde o início do contato (janela que dura 0,3 s após o último contato). Só o dano novo
+## é aplicado, então parar em duas quadros contra a mesma cerca conta como uma batida só.
+func _registrar_impacto(dt: float) -> void:
+	if freeze or vida <= 0.0:
+		_janela_t = 0.0
+		return
+	var batendo := false
+	for c in get_colliding_bodies():
+		if c != driver and not Estab.e_terreno(String(c.name)):
+			batendo = true
+			break
+	if not batendo:
+		_janela_t = maxf(_janela_t - dt, 0.0)
+		return
+	if _janela_t <= 0.0:
+		_janela_vel = _vel_anterior
+		_janela_dano = 0.0
+	_janela_t = 0.3
+	var dano_total := Estab.dano_colisao(_janela_vel - linear_velocity, limiar_impacto_mps, dano_por_mps)
+	var novo := dano_total - _janela_dano
+	if novo > 0.0:
+		_janela_dano = dano_total
+		vida = maxf(vida - novo, 0.0)
 
 
 func start_entry(s: Soldier) -> bool:
@@ -525,6 +709,7 @@ func _finish_exit() -> void:
 		s.controller.detach_vehicle(self)
 	_parking = false
 	_parking_timer = 0.0
+	_freio_mao = false
 
 
 func set_panel_open(panel: String, opened: bool) -> void:
@@ -619,6 +804,45 @@ func update_camera(camera: Camera3D, dt: float) -> void:
 
 func speed_kmh() -> int:
 	return roundi(linear_velocity.length() * 3.6)
+
+
+## Rotação do motor (RPM) para HUD. Parado/desligado = 0.
+func rpm_hud() -> int:
+	return roundi(_trem.rpm)
+
+
+## Marcha atual para HUD (1..5).
+func marcha_atual() -> int:
+	return _trem.marcha_humana()
+
+
+## Fração do tanque (0..1).
+func combustivel_frac() -> float:
+	return _trem.fracao_combustivel()
+
+
+## Abastecer liga o consumo de combustível (usar_combustivel) e enche o tanque em `litros`.
+func abastecer(litros: float) -> void:
+	usar_combustivel = true
+	_trem.abastecer(litros)
+
+
+## Rotação do motor como fração do limite (0..1) para barra de RPM.
+func rpm_frac() -> float:
+	return _trem.rpm_norm()
+
+
+func _tem_combustivel() -> bool:
+	return not usar_combustivel or _trem.tem_combustivel()
+
+
+## Fração da vida do carro (0..1). Fumaça abaixo de 30%; vida zero desliga o motor.
+func vida_frac() -> float:
+	return clampf(vida / maxf(vida_max, 1.0), 0.0, 1.0)
+
+
+func reparar(pontos: float) -> void:
+	vida = minf(vida + maxf(pontos, 0.0), vida_max)
 
 
 func display_name() -> String:

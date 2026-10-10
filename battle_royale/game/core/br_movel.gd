@@ -27,6 +27,25 @@ const TABELA := {
 	"Work_Table": [30, 32, 16, 8, 4, 6, 4, 8],
 	"Wash_Basin": [60, 30, 10, 0, 0, 0, 0, 20],
 }
+## Peso extra do saque de comida/bebida por móvel (9ª coluna da tabela): cozinha e geladeira têm muito mais.
+const PESO_COMIDA := {"Fridge": 70, "geladeira": 70, "Kitchen_D_01": 55, "Kitchen_D": 50, "armario_alto": 30, "armario_baixo": 30,
+	"cristaleira": 30, "Work_Table": 12, "Nightstand": 14, "comoda": 8, "estante": 6, "Closet_01": 6, "guarda_roupa": 4, "Closet_02": 4, "Wash_Basin": 4}
+## [id, peso] do que sai quando o móvel dá comida; geladeira/cozinha favorecem refeição e bebida.
+const COMIDAS := [["lata_comida", 16], ["feijao_lata", 12], ["sardinha", 12], ["frutas", 12], ["barra_cereal", 10], ["chocolate", 6],
+	["garrafa_agua", 16], ["refrigerante", 10], ["carne_crua", 3], ["carne_cozida", 3], ["cantil", 3]]
+## Utilidades (10ª coluna): ferramentas, materiais, remédios e peças. Peso por móvel e tabelas por "tema" do móvel.
+## Oficina (mesa de trabalho) tem ferramentas e peças; banheiro/criado-mudo tem remédios; o resto, miudezas de casa.
+const PESO_UTIL := {"Work_Table": 60, "Wash_Basin": 30, "Nightstand": 22, "Closet_01": 14, "Closet_02": 14, "guarda_roupa": 12,
+	"armario_alto": 16, "armario_baixo": 18, "Kitchen_D": 14, "Kitchen_D_01": 12, "comoda": 10, "estante": 12, "cristaleira": 6, "Fridge": 2}
+const UTIL_OFICINA := [["machado", 6], ["picareta", 4], ["martelo", 9], ["serrote", 7], ["faca", 8], ["pregos", 14], ["corda", 10],
+	["fosforos", 8], ["galao", 7], ["kit_reparo", 6], ["bateria_carro", 3], ["roda_carro", 2], ["tabua", 8], ["graveto", 6],
+	["chaves", 7], ["fita", 8], ["frigideira", 3], ["panela", 3], ["dinamite", 2], ["garrafa_vazia", 6], ["ancinho", 3], ["leme", 3],
+	["regua_torre", 2], ["arco", 3], ["flecha", 9], ["celular", 2], ["mina_naval", 1], ["regador", 2], ["escada_telescopica", 1], ["bomba", 1]]
+const UTIL_REMEDIO := [["curativo", 22], ["analgesico", 22], ["bandagem", 14], ["soro", 8], ["antibiotico", 6], ["tala", 6], ["kit_medico", 3], ["fita", 6]]
+const UTIL_CASA := [["fosforos", 16], ["corda", 10], ["pregos", 8], ["faca", 8], ["graveto", 10], ["curativo", 8], ["analgesico", 6], ["martelo", 3], ["galao", 2],
+	["celular", 3], ["flecha", 3], ["garrafa_vazia", 5], ["panela", 5], ["frigideira", 4], ["chapeu", 4], ["fones", 3], ["dado", 3], ["moeda", 4],
+	["cofrinho", 3], ["amuleto", 2], ["chuteira", 3], ["mochila_trilha", 2], ["mascara_mergulho", 2], ["coroa", 1], ["idolo", 1],
+	["calice", 1], ["regador", 3], ["chaves", 3], ["fita", 4]]
 const PISTOLAS := [&"glock", &"usp"]
 const RIFLES := [&"ak47", &"m4", &"mosin", &"uzi", &"m249", &"m107"]
 const MOCHILAS := ["backpack_small", "backpack_small", "backpack_medium"]
@@ -46,7 +65,9 @@ func setup_movel(t: String) -> void:
 
 ## Sorteio do conteúdo (chamado ao abrir). Máximo 2 itens.
 func sortear() -> void:
-	var w: Array = TABELA.get(tipo, TABELA.get(Moveis.familia(tipo), TABELA["armario_baixo"]))
+	var w: Array = (TABELA.get(tipo, TABELA.get(Moveis.familia(tipo), TABELA["armario_baixo"])) as Array).duplicate()
+	w.append(int(PESO_COMIDA.get(tipo, PESO_COMIDA.get(Moveis.familia(tipo), 8))))   # índice 8 = comida/bebida
+	w.append(int(PESO_UTIL.get(tipo, PESO_UTIL.get(Moveis.familia(tipo), 8))))   # índice 9 = utilidades
 	var total := 0
 	for x in w:
 		total += int(x)
@@ -82,6 +103,29 @@ func sortear() -> void:
 				contents.add_item("kit_medico", 1)
 			else:
 				contents.add_item("bandagem", 1 + randi() % 3)
+		9:
+			var tema: Array = UTIL_OFICINA if tipo.begins_with("Work_Table") else (UTIL_REMEDIO if (tipo.begins_with("Wash_Basin") or tipo.begins_with("Nightstand")) else UTIL_CASA)
+			var tu := 0
+			for c in tema:
+				tu += int(c[1])
+			var ru := randi() % tu
+			for c in tema:
+				ru -= int(c[1])
+				if ru < 0:
+					var id_u := String(c[0])
+					if not BRInventory.definition(id_u).is_empty():
+						contents.add_item(id_u, 1 + (randi() % 3 if id_u in ["pregos", "graveto", "fosforos", "curativo", "analgesico", "tabua"] else 0))
+					break
+		8:
+			var tot := 0
+			for c in COMIDAS:
+				tot += int(c[1])
+			var r2 := randi() % tot
+			for c in COMIDAS:
+				r2 -= int(c[1])
+				if r2 < 0:
+					contents.add_item(String(c[0]), 1 + (randi() % 2 if c[0] in ["lata_comida", "feijao_lata", "sardinha", "barra_cereal", "frutas"] else 0))
+					break
 
 
 ## Abre: sorteia, tenta passar tudo para a mochila e devolve a lista de nomes achados (vazia = móvel vazio).

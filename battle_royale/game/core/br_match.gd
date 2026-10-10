@@ -17,6 +17,7 @@ const PARA_ALTURA := 110.0     # abre o paraquedas a esta altura do chão
 const PARA_V := 7.0
 const PARA_H := 11.0
 const OLHO_VOO := Vector3(-26.0, 6.0, 0.0)   # no avião o jogador vê de fora, atrás e acima da cauda (câmera de perseguição)
+const AVIAO_CENA := preload("res://assets/models/veiculos/aviao_salto.glb")
 const RAMPA := Vector3(-6.0, -2.5, 0.0)      # ponto de saída do salto: abaixo da rampa aberta (local do avião, frente = +X)
 
 var ilha: Node3D
@@ -93,9 +94,7 @@ func _setup_survival_async() -> void:
 		br_bag.add_item("ammo_9mm", 45)
 		# Kit inicial de construção só quando a construção é paga por material; no modo livre (testes) ele só
 		# ocupava 8 kg dos 12 kg do bolso e impedia pegar qualquer arma.
-		if not ConstructionSystem.FREE_BUILD_MODE:
-			br_bag.add_item("wood", 120)
-			br_bag.add_item("stone", 40)
+		# (sem kit de madeira/pedra: a construção custa TORAS, que o jogador consegue cortando árvores com machado)
 		if starter.br_uid >= 0:
 			br_bag.assign_quick_slot(0, starter.br_uid)
 	br_bag.changed.connect(_sync_br_reserve)
@@ -176,13 +175,16 @@ func _spawn_br_loot_async() -> void:
 	var n := 0
 	var arq := "res://maps/ilha/pontos_loot.json"
 	if FileAccess.file_exists(arq) and blk:
-		var data: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(arq))
-		for id in data.get("predios", {}):
+		var data: Dictionary = JsonSeguro.dict(arq)
+		var predios: Dictionary = JsonSeguro.mapa(data, "predios")
+		for id in predios:
 			var corpo := blk.get_node_or_null(NodePath(String(id))) as Node3D
 			if corpo == null or corpo.has_meta("casa_pacote"):
 				continue   # casas do pacote têm saque nos móveis
 			var k := 0
-			for pt in data.predios[id]:
+			for pt in (predios[id] if predios[id] is Array else []):
+				if not pt is Dictionary:
+					continue
 				# casas têm saque nos móveis (BRMovel); caixa de suprimento só em galpão/container/prédio militar (tier alto)
 				if String(pt.get("sala", "")) in ["quarto", "cozinha", "sala"] and String(pt.get("tier", "medio")) != "alto":
 					continue
@@ -327,9 +329,9 @@ func use_quick_slot(slot: int) -> bool:
 			_equip_br_weapon(int(item.uid))
 		"grenade":
 			_lancar_granada()
-		"heal":
+		"heal", "comida", "bebida":
 			if not local_player.usar_cura(String(item.id)):
-				hud_message.emit("%s: nada a curar ou já curando" % String(def.get("name", item.id)), 1.5)
+				hud_message.emit("%s: nada a consumir agora ou já em uso" % String(def.get("name", item.id)), 1.5)
 		_:
 			hud_message.emit("%s: abra o inventário (TAB) para usar" % String(def.get("name", item.id)), 1.5)
 	return true
@@ -452,7 +454,11 @@ func _nearby_loot() -> BRLoot:
 
 ## Porta e saque disputam o E quando ficam lado a lado (porta da cozinha ao lado do armário): vence quem está mais no centro da mira.
 func _porta_vence(loot: BRLoot) -> bool:
-	var pt := _porta_alvo()
+	return _porta_vence_com(loot, _porta_alvo())
+
+
+## Mesma disputa de _porta_vence, com a porta já escolhida (o HUD reaproveita a porta em cache).
+func _porta_vence_com(loot: BRLoot, pt: PortaCasa) -> bool:
 	if pt == null or loot == null:
 		return pt != null
 	var cam := get_viewport().get_camera_3d()
@@ -463,6 +469,19 @@ func _porta_vence(loot: BRLoot) -> bool:
 	var sl := frente.dot(vl.normalized()) * 2.0 - vl.length() * 0.3
 	var sp := frente.dot(vp.normalized()) * 2.0 - vp.length() * 0.3 + 0.45   # a porta é grande: leve preferência
 	return sp > sl
+
+
+var _porta_hint_t := -1.0
+var _porta_hint: PortaCasa = null
+
+
+## _porta_alvo() reavaliado a cada 0,1 s para o HUD (a tecla E continua consultando direto).
+func _porta_alvo_hint() -> PortaCasa:
+	if clock - _porta_hint_t < 0.1 and (_porta_hint == null or is_instance_valid(_porta_hint)):
+		return _porta_hint
+	_porta_hint_t = clock
+	_porta_hint = _porta_alvo()
+	return _porta_hint
 
 
 ## Porta que o jogador está olhando (até 2,4 m, dentro de ~55° da mira).
@@ -526,16 +545,23 @@ func abrir_inventario() -> void:
 func _update_br_loot_hint() -> void:
 	if br_loot_hint == null or local_player == null:
 		return
+	# dentro do carro a dica de saque ficava por cima da dica do veículo (dois textos no mesmo lugar, piscando)
+	if local_player.controller != null and local_player.controller.get("active_vehicle") != null:
+		br_loot_hint.text = ""
+		if hold_circle != null:
+			hold_circle.mostrar(0.0, "")
+		return
 	if hold_circle == null:
 		hold_circle = HoldCircle.new()
 		hud.add_child(hold_circle)
 	var alvo := _nearby_loot()
-	if alvo != null and _porta_vence(alvo):
+	var pt_hint: PortaCasa = _porta_alvo_hint() if not br_ui.visible else null
+	if alvo != null and _porta_vence_com(alvo, pt_hint):
 		alvo = null
 	if alvo == null or br_ui.visible or not local_player.alive:
 		_loot_t = 0.0
 		hold_circle.mostrar(0.0, "")
-		var pt := _porta_alvo() if not br_ui.visible else null
+		var pt := pt_hint
 		br_loot_hint.text = ("[E] %s a porta" % ("Fechar" if pt.aberta else "Abrir")) if pt else "[TAB] Inventário"
 		return
 	if alvo is StorageChest:
@@ -710,6 +736,9 @@ func spawns_for(_team: int) -> Array[Node3D]:
 
 func _spawn_soldiers_async() -> void:
 	local_player = _make_soldier(0, Settings.player_name, false)
+	var sv: Node = preload("res://core/sobrevivencia.gd").new()   # fome/sede/frio do jogador local
+	sv.call("setup", local_player)
+	sv.connect("aviso", func(t: String) -> void: hud_message.emit(t, 3.0))
 	var pc := local_player.controller as PlayerController
 	if pc and pc.camera:
 		pc.camera.far = 6000.0   # mar/céu até o horizonte (ilha usa 6 km)
@@ -933,7 +962,7 @@ func _preparar_voo() -> void:
 				ini = voo_dur * i / n
 			fim = voo_dur * i / n
 	voo_terra = Vector2(ini, fim) if ini >= 0.0 else Vector2(0.0, voo_dur)
-	aviao = load("res://assets/models/veiculos/aviao_salto.glb").instantiate()
+	aviao = AVIAO_CENA.instantiate()
 	aviao.name = "AviaoSalto"
 	add_child(aviao)
 	_posicionar_aviao()
@@ -961,8 +990,13 @@ func _process(dt: float) -> void:
 	_lod_corpos()
 
 
+var _lod_corpos_t := -1.0
+
 ## LOD dos corpos pela distância à câmera: perto < 35 m, médio < 90 m, longe além.
 func _lod_corpos() -> void:
+	if clock - _lod_corpos_t < 0.2:
+		return   # distâncias de LOD (35/90 m): 5 Hz bastam, não é quadro a quadro
+	_lod_corpos_t = clock
 	var cam := get_viewport().get_camera_3d()
 	if cam == null:
 		return

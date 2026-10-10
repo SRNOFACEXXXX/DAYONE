@@ -22,6 +22,9 @@ func _collision_for(mesh: Mesh, convex: bool) -> Shape3D:
 
 
 const FOG_CHAO := 0.0007
+## Sombra do sol (GT 730, ortogonal 1 estágio: sem splits; o custo é o nº de objetos na caixa de sombra).
+const SOMBRA_DISTANCIA := 50.0   # antes 70.0; o atlas (4096) fica igual para não perder nitidez perto do jogador
+const SOMBRA_FADE := 0.8         # fração da distância em que a sombra começa a sumir (padrão do Godot)
 var FOG_ATUAL := FOG_CHAO
 var _env: Environment
 
@@ -40,7 +43,7 @@ func _ready() -> void:
 func _build_map_async() -> void:
 	Loading.show_progress("Lendo o mapa e as texturas...", 5.0)
 	Loading.marcar_passo("layout")
-	layout = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/ilha_layout.json"))
+	layout = JsonSeguro.dict("res://maps/ilha/ilha_layout.json")
 	if Loading.ceder():
 		await get_tree().process_frame
 	Loading.marcar_passo("ambiente")
@@ -128,6 +131,21 @@ func _build_map_async() -> void:
 		_zumbis_adiados = true
 	else:
 		zombie_director.setup(terrain, p, _zombie_settlement_centers())
+		zombie_director.definir_raios(_zombie_settlement_radii())
+	# animais vivos (cervo, galinha, lobo à noite) perto do jogador — core/animal_director.gd
+	if not Game.test_args.has("sem_animais"):
+		var animais: Node3D = load("res://core/animal_director.gd").new()
+		animais.name = "Animais"
+		add_child(animais)
+		animais.setup(terrain, _zombie_settlement_centers())
+	var abast: Node = load("res://core/abastecer.gd").new()
+	abast.name = "Abastecer"
+	add_child(abast)
+	# objetivo final: o barco do Pescador encalhado na praia sul (design -26, 468 -> mundo x=-26, z=-468)
+	var barco: Node3D = load("res://core/barco_fuga.gd").new()
+	barco.name = "BarcoFuga"
+	add_child(barco)
+	barco.global_position = Vector3(-26.0, terrain.height_world(-26.0, -468.0), -468.0)
 	map_ready.emit()
 	if Game.current_match == null:
 		Loading.hide_after_render()
@@ -147,6 +165,24 @@ func _zombie_settlement_centers() -> Array[Vector3]:
 		var world_z := -map_center.y
 		centers.append(Vector3(world_x, terrain.height_world(world_x, world_z), world_z))
 	return centers
+
+
+## Raio de cada assentamento (mesma ordem de _zombie_settlement_centers): prédio mais distante do centro + 12 m.
+func _zombie_settlement_radii() -> Array:
+	var raios: Array = []
+	for poi in layout.get("pois", []):
+		var buildings: Array = poi.get("predios", [])
+		if buildings.is_empty():
+			continue
+		var centro := Vector2.ZERO
+		for building in buildings:
+			centro += Vector2(float(building.pos[0]), float(building.pos[1]))
+		centro /= buildings.size()
+		var r := 0.0
+		for building in buildings:
+			r = maxf(r, centro.distance_to(Vector2(float(building.pos[0]), float(building.pos[1]))))
+		raios.append(r + 12.0)
+	return raios
 
 
 var _we_adiado: WorldEnvironment
@@ -170,6 +206,7 @@ func ativar_ambiente(jogador: Node3D = null) -> void:
 			zd.process_mode = Node.PROCESS_MODE_INHERIT
 			if jogador:
 				zd.setup(terrain, jogador, _zombie_settlement_centers())
+				zd.definir_raios(_zombie_settlement_radii())
 
 
 func _environment() -> void:
@@ -217,7 +254,8 @@ func _environment() -> void:
 	sun.light_energy = 1.35
 	sun.light_color = Color("FFDEB3")
 	sun.shadow_enabled = true
-	sun.directional_shadow_max_distance = 70.0
+	sun.directional_shadow_max_distance = SOMBRA_DISTANCIA
+	sun.directional_shadow_fade_start = SOMBRA_FADE
 	sun.shadow_blur = 1.5
 	sun.shadow_opacity = 0.8   # crítica 04: sombra não chapada em preto
 	sun.directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL   # 1 estágio: metade dos passes de sombra (GT 730)
@@ -367,8 +405,8 @@ func _coberturas_async() -> void:
 	var i := 0
 	var lista: Array = layout.cobertura_campo_aberto.duplicate()
 	if FileAccess.file_exists("res://maps/ilha/gameplay_01.json"):
-		var gp: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/gameplay_01.json"))
-		lista.append_array(gp.get("coberturas_novas", []))
+		var gp: Dictionary = JsonSeguro.dict("res://maps/ilha/gameplay_01.json")
+		lista.append_array(JsonSeguro.lista(gp, "coberturas_novas"))
 		_marcos(gp)
 	for c in lista:
 		i += 1
@@ -407,14 +445,14 @@ func _plataformas_carros() -> Array:
 			"res://maps/ilha/cenario_atualizacao.json"]
 
 	for file_path in files:
-		if not FileAccess.file_exists(file_path):
-			continue
-		var data = JSON.parse_string(FileAccess.get_file_as_string(file_path))
+		var data = JsonSeguro.ler(file_path, TYPE_DICTIONARY)
 		if data == null:
 			continue
 
-		for area in data.get("areas", []):
-			for prop in area.get("props", []):
+		for area in JsonSeguro.lista(data, "areas"):
+			for prop in JsonSeguro.lista(area, "props"):
+				if not prop is Dictionary:
+					continue
 				var tipo = String(prop.get("tipo", ""))
 				if not tipo.begins_with("cenario/carros/carro_"):
 					continue
@@ -436,8 +474,8 @@ func _bloqueios_terreno() -> Array:
 			out.append([Vector2(float(pts[i][0]), -float(pts[i][1])), Vector2(float(pts[i + 1][0]), -float(pts[i + 1][1])), float(tr.largura_m) * 0.5 + 6.0])
 	var lista: Array = []
 	if FileAccess.file_exists("res://maps/ilha/cenario_atualizacao.json"):
-		var ca: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/cenario_atualizacao.json"))
-		lista = ca.get("pontes", []).duplicate()
+		var ca: Dictionary = JsonSeguro.dict("res://maps/ilha/cenario_atualizacao.json")
+		lista = JsonSeguro.lista(ca, "pontes").duplicate()
 	lista.append({"centro": [-100.0, -86.0], "direcao_deg": -45.0, "comprimento_m": 40.0, "largura_m": 6.0})   # crista da barragem
 	for p in lista:
 		var dv := Vector2(cos(deg_to_rad(float(p.direcao_deg))), sin(deg_to_rad(float(p.direcao_deg))))

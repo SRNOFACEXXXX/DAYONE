@@ -31,6 +31,7 @@ func _ready() -> void:
 		return
 	var car := vehicles[0] as DrivableVehicle
 	check(is_equal_approx(car.mass, DrivableVehicle.MASS_KG), "vehicle has realistic mass")
+	check(car.vida_frac() == 1.0 and not car.usar_combustivel, "vida cheia e combustivel desligado por padrao")
 	check(car.freeze, "parked car is static and cannot be pushed by player")
 	check(car.get_node_or_null("ChassisCollision") != null, "chassis collision exists")
 	var wheels := car.get_children().filter(func(n): return n is VehicleWheel3D)

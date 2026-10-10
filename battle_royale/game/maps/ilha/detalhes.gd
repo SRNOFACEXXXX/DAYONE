@@ -10,7 +10,7 @@ const SEM_COLISAO_PACOTE := ["arbusto_a", "arbusto_b", "samambaia_a", "samambaia
 const COLISAO_CAIXA := ["varal", "cenario/rua/rua_box_03"]   # ignora as formas UCX do glb (cobriam só parte): caixa do AABB da malha
 const SEM_COLISAO := ["lixeira", "mochila_tatica"]   # varal/placa_rua/bicicleta agora colidem (auditoria tests/props_colisao.gd)
 const SEGMENTO := 3.0
-const ESCALA_TIPO := {"lixeira": 0.65, "barraca_militar": 0.01}
+const ESCALA_TIPO := {"lixeira": 0.65, "barraca_militar": 0.01, "detalhes/barraca_militar": 0.01}   # barraca vem em cm (474 m sem escala)
 const CRUZETA := {"poste_madeira": [0.7, 7.78], "poste_concreto": [0.8, 8.73]}   # [x do isolador, altura]
 
 var terrain: IlhaTerrain
@@ -46,7 +46,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				_casas.append([Vector2((b as Node3D).position.x, (b as Node3D).position.z), (b as Node3D).rotation.y])
 	if not FileAccess.file_exists(path):
 		return 0
-	var d: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(path))
+	var d: Dictionary = JsonSeguro.dict(path)
 	_corpo = StaticBody3D.new()
 	_corpo.name = "DetalhesColisao"
 	add_child(_corpo)
@@ -78,8 +78,10 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 			Loading.set_progress("Montando objetos e saque...", 48.0 + 25.0 * float(completed) / maxf(1.0, float(props.size())))
 			await get_tree().process_frame
 	if FileAccess.file_exists("res://maps/ilha/detalhes_refino.json"):
-		var extra: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/detalhes_refino.json"))
-		for p in extra.get("props", []):
+		var extra: Dictionary = JsonSeguro.dict("res://maps/ilha/detalhes_refino.json")
+		for p in JsonSeguro.lista(extra, "props"):
+			if not p is Dictionary:
+				continue
 			_colocar(String(p.tipo), Vector2(float(p.x), float(p.y)), float(p.get("rot_deg", 0.0)))
 			n += 1
 			completed += 1
@@ -87,16 +89,18 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				await get_tree().process_frame
 	# decoração por área com as peças dos pacotes do usuário (docs/design/cenario_areas.json, autoral: tipo = "cenario/<pasta>/<nome>")
 	for arq in ["res://maps/ilha/cenario_areas.json", "res://maps/ilha/cenario_areas_02.json", "res://maps/ilha/cenario_areas_03.json",
-			"res://maps/ilha/cenario_atualizacao.json"]:
+			"res://maps/ilha/cenario_atualizacao.json", "res://maps/ilha/cenario_pontos.json"]:
 		if not FileAccess.file_exists(arq):
 			continue
-		var areas: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(arq))
-		for area in areas.get("areas", []):
+		var areas: Dictionary = JsonSeguro.dict(arq)
+		for area in JsonSeguro.lista(areas, "areas"):
+			if not area is Dictionary:
+				continue
 			if Game.test_args.has("sem_vilas") and String(area.get("nome", "")).begins_with("Vilas"):
 				continue   # A/B da rodada das vilas (tests/mundo_fps -- --sem_vilas)
 			for p in area.get("props", []):
 				var no := _colocar(String(p.tipo), Vector2(float(p.x), float(p.y)), float(p.get("rot_deg", 0.0)), 1.0,
-					float(p.get("escala", 1.0)), float(p.get("dy", 0.0)))
+					float(p.get("escala", 1.0)), float(p.get("dy", 0.0)), float(p.get("tomba", 0.0)))
 				if no and arq.ends_with("cenario_atualizacao.json"):
 					no.set_meta("atualizacao", true)   # tests/mundo_fps.gd mede com/sem estas peças
 				if no and p.has("copa"):   # árvore do pacote com copa de outono (escolha autoral por instância)
@@ -110,9 +114,19 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 				completed += 1
 				if Loading.ceder():
 					await get_tree().process_frame
+			for c in area.get("cercas", []):   # cercas autorais do ponto de interesse (mesma montagem das cercas do layout)
+				n += await _cerca_async(String(c.tipo), c.pontos)
+		# ruído autoral (rodada 3): grupos de 2-4 props soltos ao longo das estradas, vilas e costa; mesmo caminho de _colocar
+		for p in (areas.get("ruido", []) if not Game.test_args.has("sem_ruido") else []):   # A/B: --sem_ruido
+			_colocar(String(p.tipo), Vector2(float(p.x), float(p.y)), float(p.get("rot_deg", 0.0)), 1.0,
+				float(p.get("escala", 1.0)), float(p.get("dy", 0.0)), float(p.get("tomba", 0.0)))
+			n += 1
+			completed += 1
+			if Loading.ceder():
+				await get_tree().process_frame
 	# pontes sobre o rio (decisões em cenario_atualizacao.json -> "pontes"; montagem em pontes_atualizacao.gd)
 	if FileAccess.file_exists("res://maps/ilha/cenario_atualizacao.json"):
-		var ca: Dictionary = JSON.parse_string(FileAccess.get_file_as_string("res://maps/ilha/cenario_atualizacao.json"))
+		var ca: Dictionary = JsonSeguro.dict("res://maps/ilha/cenario_atualizacao.json")
 		if ca.has("pontes"):
 			var pa: Node3D = load("res://maps/ilha/pontes_atualizacao.gd").new()
 			pa.name = "Pontes"
@@ -138,10 +152,12 @@ func _casas_pacote_async() -> int:
 	var arq := "res://maps/ilha/casas_pacote.json"
 	if not FileAccess.file_exists(arq):
 		return 0
-	var dados: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(arq))
+	var dados: Dictionary = JsonSeguro.dict(arq)
 	var n := 0
 	var aj: Dictionary = CasaPacote.ajustes()
-	for c in dados.get("casas", []):
+	for c in JsonSeguro.lista(dados, "casas"):
+		if not c is Dictionary:
+			continue
 		var a: Dictionary = aj.get("extra_%d" % n, {})
 		CasaPacote.criar(self, terrain, "CasaPacote_%d" % n, float(c.x) + float(a.get("dx", 0.0)), -float(c.y) - float(a.get("dy", 0.0)),
 			deg_to_rad(float(a.yaw_deg)) if a.has("yaw_deg") else deg_to_rad(float(c.get("rot_deg", 0.0))))
@@ -224,9 +240,9 @@ func _chao(xy: Vector2) -> Vector3:
 var auditoria: Array = []
 
 
-func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0) -> Node3D:
+func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0, tomba := 0.0) -> Node3D:
 	var tipo0 := tipo
-	var r := _colocar_i(tipo, xy, rot_deg, escala_x, escala, dy)
+	var r := _colocar_i(tipo, xy, rot_deg, escala_x, escala, dy, tomba)
 	if r != null and Game.test_args.has("audit_props"):
 		var pts := PackedVector3Array()
 		for mi in r.find_children("*", "MeshInstance3D", true, false):
@@ -247,7 +263,7 @@ func _colocar(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala
 	return r
 
 
-func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0) -> Node3D:
+func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, escala := 1.0, dy := 0.0, tomba := 0.0) -> Node3D:
 	if TROCA.has(tipo) and not (tipo == "tambor" and Game.test_args.has("sem_vilas")):
 		_n_troca += 1
 		tipo = String(TROCA[tipo][_n_troca % TROCA[tipo].size()])
@@ -263,6 +279,9 @@ func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, esca
 	var e: float = ESCALA_TIPO.get(tipo, 1.0)
 	n.scale = Vector3(escala_x * e, e, e) * escala
 	n.position.y += dy
+	# tombado (poste caído): gira em torno do eixo Z local antes de criar a colisão, que é copiada da transformação atual
+	if tomba != 0.0:
+		n.rotation.z = deg_to_rad(tomba)
 	# Os carros do cenário deixam de ser cascos estáticos: a própria carroceria existente
 	# vira VehicleBody3D, mantendo posição, rotação, modelo e materiais autorais do mapa.
 	if tipo.begins_with("cenario/carros/carro_"):

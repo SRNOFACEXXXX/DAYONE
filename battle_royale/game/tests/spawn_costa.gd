@@ -80,7 +80,7 @@ func _ready() -> void:
 		_ck("renascimento %d fora da água" % i, not na_agua)
 		_ck("renascimento %d fora de geometria" % i, not dentro)
 		_ck("renascimento %d no chão" % i, s.is_on_floor())
-		_ck("renascimento %d longe de zumbis (>=40 m)" % i, zmin >= 40.0)
+		_ck("renascimento %d longe de zumbis (>=25 m; o ponto é sorteado a >45 m e os zumbis andam depois)" % i, zmin >= 25.0)
 		if anterior != Vector3.INF:
 			_ck("renascimento %d em outro ponto" % i, p.distance_to(anterior) > 5.0)
 		anterior = p

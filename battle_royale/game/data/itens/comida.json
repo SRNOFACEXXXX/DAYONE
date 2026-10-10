@@ -1,0 +1,165 @@
+{
+	"lata_comida": {
+		"name": "Lata de comida",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.4,
+		"stack": 3,
+		"time": 4.0,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"energia": 35,
+		"agua": -3
+	},
+	"feijao_lata": {
+		"name": "Feijão em lata",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.42,
+		"stack": 3,
+		"time": 4.0,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"energia": 30,
+		"agua": 0
+	},
+	"sardinha": {
+		"name": "Sardinha em lata",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.15,
+		"stack": 4,
+		"time": 3.0,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"energia": 20,
+		"agua": -2
+	},
+	"frutas": {
+		"name": "Frutas",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.3,
+		"stack": 4,
+		"time": 2.5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/frutas.glb",
+		"energia": 15,
+		"agua": 6
+	},
+	"carne_cozida": {
+		"name": "Carne cozida",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.35,
+		"stack": 3,
+		"time": 5.0,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/carne_cozida.glb",
+		"energia": 45,
+		"agua": -2
+	},
+	"carne_crua": {
+		"name": "Carne crua",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.35,
+		"stack": 3,
+		"time": 5.0,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/carne_crua.glb",
+		"energia": 18,
+		"cru": true
+	},
+	"garrafa_agua": {
+		"name": "Garrafa de água",
+		"kind": "bebida",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.55,
+		"stack": 2,
+		"time": 3.0,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/garrafa_agua.glb",
+		"agua": 45
+	},
+	"cantil": {
+		"name": "Cantil",
+		"kind": "bebida",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.7,
+		"stack": 1,
+		"time": 3.5,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/cantil.glb",
+		"agua": 60
+	},
+	"refrigerante": {
+		"name": "Refrigerante",
+		"kind": "bebida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.35,
+		"stack": 3,
+		"time": 2.5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"agua": 22,
+		"energia": 8
+	},
+	"barra_cereal": {
+		"name": "Barra de cereal",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.06,
+		"stack": 5,
+		"time": 1.5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"energia": 14,
+		"agua": -1
+	},
+	"chocolate": {
+		"name": "Chocolate",
+		"kind": "comida",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.08,
+		"stack": 5,
+		"time": 1.5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/lata_comida.glb",
+		"energia": 18,
+		"agua": -1
+	}
+}

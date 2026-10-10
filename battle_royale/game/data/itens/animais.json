@@ -1,0 +1,41 @@
+{
+	"pele": {
+		"name": "Pele de animal",
+		"kind": "material",
+		"size": [
+			2,
+			2
+		],
+		"kg": 1.2,
+		"stack": 3,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/pele.glb",
+		"lore": "Couro cru, ainda com pelo. Curtido com corda e gordura vira bota e mochila."
+	},
+	"gordura": {
+		"name": "Gordura animal",
+		"kind": "material",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.25,
+		"stack": 5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/gordura.glb",
+		"lore": "Sebo. Serve de combustível para a fogueira e para curtir couro."
+	},
+	"osso": {
+		"name": "Osso",
+		"kind": "material",
+		"size": [
+			2,
+			1
+		],
+		"kg": 0.15,
+		"stack": 5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/osso.glb",
+		"lore": "Osso limpo. Dá ponta de flecha, agulha e cabo de faca."
+	}
+}

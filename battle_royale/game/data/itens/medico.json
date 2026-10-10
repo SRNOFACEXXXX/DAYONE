@@ -1,0 +1,78 @@
+{
+	"curativo": {
+		"name": "Curativo improvisado",
+		"kind": "heal",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.03,
+		"stack": 6,
+		"heal": 8,
+		"time": 2.0,
+		"stop_bleed": true,
+		"rarity": "comum",
+		"lore": "Tira de camiseta fervida. Para o sangue; não faz milagre.",
+		"model_path": "res://assets/models/itens/curativo.glb"
+	},
+	"analgesico": {
+		"name": "Analgésico",
+		"kind": "heal",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.02,
+		"stack": 4,
+		"heal": 12,
+		"time": 1.5,
+		"rarity": "comum",
+		"model_path": "res://assets/models/itens/analgesico.glb"
+	},
+	"soro": {
+		"name": "Soro fisiológico",
+		"kind": "heal",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.5,
+		"stack": 1,
+		"heal": 35,
+		"time": 6.0,
+		"rarity": "incomum",
+		"lore": "Bolsa de 500 ml do posto de saúde. Validade vencida em 2 meses — serve.",
+		"model_path": "res://assets/models/itens/soro.glb"
+	},
+	"antibiotico": {
+		"name": "Antibiótico",
+		"kind": "heal",
+		"size": [
+			1,
+			1
+		],
+		"kg": 0.05,
+		"stack": 2,
+		"heal": 20,
+		"time": 3.0,
+		"rarity": "raro",
+		"lore": "Amoxicilina. Cura intoxicação (carne crua, água suja). Alguém riscou 'NÃO CURA O 27' na caixa.",
+		"cura_doenca": true,
+		"model_path": "res://assets/models/itens/antibiotico.glb"
+	},
+	"tala": {
+		"name": "Tala",
+		"kind": "heal",
+		"size": [
+			1,
+			2
+		],
+		"kg": 0.3,
+		"stack": 1,
+		"heal": 15,
+		"time": 4.0,
+		"stop_bleed": true,
+		"rarity": "incomum",
+		"model_path": "res://assets/models/itens/tala.glb"
+	}
+}

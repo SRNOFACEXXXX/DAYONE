@@ -71,10 +71,9 @@ static func _ler() -> void:
 	if _lido:
 		return
 	_lido = true
-	if FileAccess.file_exists(JSON_PATH):
-		var d = JSON.parse_string(FileAccess.get_file_as_string(JSON_PATH))
-		if d is Dictionary:
-			_dados = d
+	var d = JsonSeguro.ler(JSON_PATH, TYPE_DICTIONARY)
+	if d != null:
+		_dados = d
 
 
 static func e_novo(m: String) -> bool:
@@ -431,11 +430,11 @@ static func _malha_aabb_antiga(m: String) -> AABB:
 	if not _aabb_lidas:
 		_aabb_lidas = true
 		var arq := DIR_NOVO + "aabb_antigos.json"
-		if FileAccess.file_exists(arq):
-			var d = JSON.parse_string(FileAccess.get_file_as_string(arq))
-			if d is Dictionary:
-				for k in d:
-					var a: Array = d[k]
+		var d = JsonSeguro.ler(arq, TYPE_DICTIONARY)
+		if d != null:
+			for k in d:
+				var a = d[k]
+				if a is Array and a.size() >= 6:
 					_aabb_antigas[k] = AABB(Vector3(a[0], a[1], a[2]), Vector3(a[3], a[4], a[5]))
 	if _aabb_antigas.has(m):
 		return _aabb_antigas[m]

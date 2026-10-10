@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dqtackoc7p2in"
-path="res://.godot/imported/Rifle_Idle.fbx-5925d08781614a2dcc9056f6ad0fdc0a.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/anim_mixamo/Rifle_Idle.fbx"
-dest_files=["res://.godot/imported/Rifle_Idle.fbx-5925d08781614a2dcc9056f6ad0fdc0a.scn"]
 
 [params]
 
