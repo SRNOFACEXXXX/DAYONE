@@ -99,7 +99,7 @@ func _ambiente(dt: float, correndo: bool) -> void:
 	if na_agua:
 		molhado = minf(1.0, molhado + dt / 6.0)
 	elif chuva > 0.05:
-		molhado = minf(1.0, molhado + dt * chuva / 90.0)
+		molhado = minf(1.0, molhado + dt * chuva / 90.0 * soldier.efeito_cosmetico("chuva"))
 	else:
 		molhado = maxf(0.0, molhado - dt / (240.0 if not perto_fogueira else 25.0) * (1.0 + luz * 0.5))
 	if perto_fogueira and chuva <= 0.05:
@@ -252,6 +252,8 @@ func consumir_item(item_id: String) -> void:
 		comer(en, bool(def.get("cru", false)))
 	if agua != 0.0:
 		beber(agua)
+	if bool(def.get("suja", false)):
+		adoecer("Água parada: você está passando mal")
 	consumiu.emit(item_id)
 
 

@@ -3,7 +3,8 @@ extends Node
 ## (F perto do carro, +20 L, gasta o galão). Sem class_name (preload em maps/ilha/ilha.gd).
 const LITROS_GALAO := 20.0
 const ALCANCE := 3.6
-const PONTOS_KIT := 50.0
+## Itens que consertam o carro (F perto dele), do melhor ao pior: [id, pontos de lataria].
+const REPAROS := [["kit_reparo", 50.0], ["chaves", 25.0], ["fita", 10.0]]
 var _dica: Label3D
 var _t := 0.0
 
@@ -41,13 +42,13 @@ func _process(dt: float) -> void:
 		return
 	var tem := _galoes(bag) > 0
 	var cheio: bool = alvo.combustivel_frac() > 0.97
-	var kit := _contar(bag, "kit_reparo") > 0
+	var kit := _melhor_reparo(bag) != ""
 	var batido: bool = alvo.vida_frac() < 0.98
 	_dica.global_position = alvo.global_position + Vector3.UP * 1.8
 	var linhas: PackedStringArray = []
 	linhas.append(("Tanque cheio" if cheio else "[F] Abastecer (galão)") if tem else "Tanque %d%% — precisa de um GALÃO" % int(alvo.combustivel_frac() * 100.0))
 	if batido:
-		linhas.append("[F] Consertar (kit de reparo)" if kit else "Lataria %d%% — precisa de um KIT DE REPARO" % int(alvo.vida_frac() * 100.0))
+		linhas.append("[F] Consertar (%s)" % String(BRInventory.definition(_melhor_reparo(bag)).get("name", "")) if kit else "Lataria %d%% — precisa de KIT, CHAVES ou FITA" % int(alvo.vida_frac() * 100.0))
 	_dica.text = "\n".join(linhas)
 	if Input.is_action_just_pressed("inspect"):
 		if tem and not cheio:
@@ -56,12 +57,27 @@ func _process(dt: float) -> void:
 			consertar(alvo, bag)
 
 
-## Gasta 1 kit de reparo e devolve PONTOS_KIT de vida ao carro. Devolve true se consertou.
+## Primeiro item de REPAROS que a mochila tem ("" se nenhum).
+static func _melhor_reparo(bag: BRInventory) -> String:
+	for par in REPAROS:
+		if _contar(bag, String(par[0])) > 0:
+			return String(par[0])
+	return ""
+
+
+## Gasta 1 do melhor item de reparo e devolve seus pontos de vida ao carro. Devolve true se consertou.
 func consertar(carro: Node, bag: BRInventory) -> bool:
+	var id := _melhor_reparo(bag)
+	if id == "":
+		return false
+	var pontos := 0.0
+	for par in REPAROS:
+		if String(par[0]) == id:
+			pontos = float(par[1])
 	for it in bag.items:
-		if String(it.id) == "kit_reparo":
+		if String(it.id) == id:
 			bag.remove_item(int(it.uid), 1)
-			carro.reparar(PONTOS_KIT)
+			carro.reparar(pontos)
 			if Audio.has_sound("loot_open"):
 				Audio.play("loot_open", {"volume_db": -3.0})
 			return true

@@ -1,5 +1,37 @@
 {
-	"bateria_carro": {"name": "Bateria automotiva", "kind": "peca", "size": [2, 2], "kg": 4.5, "stack": 1, "model_path": "res://assets/models/itens/bateria_carro.glb", "lore": "Bateria de 60 Ah. Alguém escreveu 'CARREGADA 03/09' com caneta de tecido."},
-	"kit_reparo": {"name": "Kit de reparo", "kind": "peca", "size": [2, 1], "kg": 1.8, "stack": 2, "model_path": "res://assets/models/itens/kit_reparo.glb", "lore": "Massa epóxi, fita, rebites e uma chave de boca. Serve para casco, motor e lataria."},
-	"roda_carro": {"name": "Roda de carro", "kind": "peca", "size": [3, 3], "kg": 9.0, "stack": 1, "model_path": "res://assets/models/itens/roda_carro.glb"}
+	"bateria_carro": {
+		"name": "Bateria automotiva",
+		"kind": "peca",
+		"size": [
+			2,
+			2
+		],
+		"kg": 4.5,
+		"stack": 1,
+		"model_path": "res://assets/models/itens/bateria_carro.glb",
+		"lore": "Bateria de 60 Ah. Alguém escreveu 'CARREGADA 03/09' com caneta de tecido."
+	},
+	"kit_reparo": {
+		"name": "Kit de reparo",
+		"kind": "peca",
+		"size": [
+			2,
+			1
+		],
+		"kg": 1.8,
+		"stack": 2,
+		"model_path": "res://assets/models/itens/kit_reparo.glb",
+		"lore": "Massa epóxi, fita, rebites e uma chave de boca. Serve para casco, motor e lataria."
+	},
+	"roda_carro": {
+		"name": "Roda de carro",
+		"kind": "peca",
+		"size": [
+			3,
+			3
+		],
+		"kg": 9.0,
+		"stack": 1,
+		"model_path": "res://assets/models/itens/props/wheel.glb"
+	}
 }

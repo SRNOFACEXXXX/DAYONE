@@ -70,6 +70,7 @@ func _ready() -> void:
 		bag.add_item("kit_reparo", 2)
 		bag.add_item("corda", 2)
 		bag.add_item("tora", 4)
+		bag.add_item("leme", 1)
 		var n2: int = barco.entregar(bag)
 		print("BARCO entregou=%d faltando=%s fugiu=%s" % [n2, str(barco.faltando()), barco._fugiu])
 		if not barco._fugiu:

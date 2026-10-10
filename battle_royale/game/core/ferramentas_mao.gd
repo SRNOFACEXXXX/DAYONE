@@ -127,13 +127,23 @@ func equipar(uid: int) -> bool:
 	var path := String(BRInventory.definition(em_id).get("model_path", ""))
 	if path != "" and ResourceLoader.exists(path):
 		var sc: Node3D = (load(path) as PackedScene).instantiate()
-		sc.scale = Vector3.ONE * float(ESCALA_MAO.get(em_id, 0.65))
+		var cfg: Dictionary = BRInventory.definition(em_id).get("mao", {})
+		sc.scale = Vector3.ONE * float(cfg.get("escala", ESCALA_MAO.get(em_id, 0.65)))
+		if cfg.has("rot"):
+			var r: Array = cfg.rot
+			sc.rotation_degrees = Vector3(float(r[0]), float(r[1]), float(r[2]))
 		_mao.add_child(sc)
 		if MAOS.has(em_id):
 			_por_maos(sc, MAOS[em_id])
+		elif String(BRInventory.definition(em_id).get("acao", "")) != "":
+			_por_maos(sc, [_centro_y(sc) / maxf(sc.scale.y, 0.001)])   # props: uma mão fechada no meio do objeto
 		for g in sc.find_children("*", "GeometryInstance3D", true, false):
 			(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var acao_i := String(BRInventory.definition(em_id).get("acao", ""))
+	_ajuste = Vector3(-0.07, 0.12, 0.02) if acao_i != "" and acao_i != "golpe" and acao_i != "melee" else Vector3.ZERO
 	pc.camera.add_child(_mao)
+	if String(BRInventory.definition(em_id).get("acao", "")) == "luz":
+		_ligar_lanterna(true)
 	_pose(0.0)
 	m.hud_message.emit("%s na mão" % String(BRInventory.definition(em_id).get("name", em_id)), 1.4)
 	return true
@@ -149,6 +159,7 @@ func desequipar() -> void:
 	var bm := pc.soldier.body_model as BodyModel if pc != null and pc.soldier != null else null
 	if bm != null and bm.has_meta(MxRetarget.META):
 		MxRetarget.parar(bm)
+	_ligar_lanterna(false)
 	if _mao != null and is_instance_valid(_mao):
 		_mao.queue_free()
 	_mao = null
@@ -179,6 +190,7 @@ const GOLPE := [
 ## na câmera (IK simples: o cilindro é esticado da mão ao ombro a cada quadro, então o braço nunca "gira" junto com a ferramenta).
 ## `alturas` = onde cada mão agarra (m, no modelo); a mão de baixo é a direita.
 const OMBROS := [Vector3(0.34, -0.70, 0.30), Vector3(-0.30, -0.72, 0.28)]   # no espaço da câmera (z>0 = atrás do plano de visão)
+var _ajuste := Vector3.ZERO   # props (garrafa, dinamite...) ficam mais para dentro da tela que as ferramentas
 var _punhos: Array[Node3D] = []
 var _bracos: Array[MeshInstance3D] = []
 
@@ -199,6 +211,7 @@ func _por_maos(modelo: Node3D, alturas: Array) -> void:
 		punho.mesh = bm
 		punho.material_override = pele
 		punho.position = Vector3(0.0, float(alturas[i]), 0.0)
+		punho.scale = Vector3.ONE / modelo.scale   # tamanho de mão fixo, qualquer que seja a escala do modelo
 		punho.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		modelo.add_child(punho)
 		_punhos.append(punho)
@@ -251,7 +264,7 @@ func _pose(k: float) -> void:
 			break
 	var t := clampf((k - float(a[0])) / maxf(float(b[0]) - float(a[0]), 0.0001), 0.0, 1.0)
 	t = t * t * (3.0 - 2.0 * t)
-	_mao.position = (a[1] as Vector3).lerp(b[1] as Vector3, t)
+	_mao.position = (a[1] as Vector3).lerp(b[1] as Vector3, t) + _ajuste
 	_mao.rotation_degrees = (a[2] as Vector3).lerp(b[2] as Vector3, t)
 	_esticar_bracos()
 
@@ -340,7 +353,20 @@ func _acao_principal() -> void:
 	var def := BRInventory.definition(em_id)
 	var kind := String(def.get("kind", ""))
 	if kind == "ferramenta":
-		_iniciar_golpe()
+		match String(def.get("acao", "golpe")):
+			"arremesso":
+				_arremessar(def)
+			"plantar":
+				_plantar_mina(def)
+			"abrir":
+				_abrir(def)
+			"luz":
+				_ligar_lanterna(_lanterna == null or not _lanterna.visible)
+				_cd = 0.35
+			"escada":
+				_apoiar_escada()
+			_:
+				_iniciar_golpe()
 	elif kind == "fogueira" or em_id == "graveto" or em_id == "tora":
 		_montar_fogueira()
 		_cd = 0.6
@@ -372,8 +398,194 @@ func _anim_corpo(ligar: bool) -> void:
 		MxRetarget.parar(bm)
 
 
+# ------------------------------------------------------------------ props: arremesso, mina, cofrinho, luz, melee
+## Panela ou frigideira na bolsa (definição com `cozinha`): a carne cozinha na metade do tempo.
+func _tem_utensilio() -> bool:
+	var b := _bag()
+	if b == null:
+		return false
+	for it in b.items:
+		if bool(BRInventory.definition(String(it.id)).get("cozinha", false)):
+			return true
+	return false
+
+
+func _centro_y(n: Node3D) -> float:
+	var ab := AABB()
+	var primeiro := true
+	for mi in n.find_children("*", "MeshInstance3D", true, false):
+		var b: AABB = (mi as MeshInstance3D).transform * (mi as MeshInstance3D).get_aabb()
+		ab = b if primeiro else ab.merge(b)
+		primeiro = false
+	return (ab.position.y + ab.size.y * 0.5) * n.scale.y
+
+
+## Gasta 1 do item da mão e devolve a quantidade que sobrou (-1 se o item não estava na mochila).
+func _gastar_da_mao() -> int:
+	var b := _bag()
+	if b == null or b.get_item(em_uid).is_empty():
+		return -1
+	b.remove_item(em_uid, 1)
+	var resto := b.get_item(em_uid)
+	return int(resto.qty) if not resto.is_empty() else 0
+
+
+func _modelo_do_item(def: Dictionary) -> PackedScene:
+	var path := String(def.get("model_path", ""))
+	return load(path) as PackedScene if path != "" and ResourceLoader.exists(path) else null
+
+
+## Dinamite, bomba e itens de barulho (garrafa, moeda, ídolo...): saem da câmera em arco (Grenade com parâmetros do item).
+func _arremessar(def: Dictionary) -> void:
+	var cam := pc.camera
+	var dir := -cam.global_transform.basis.z
+	var params := {"pavio": float(def.get("pavio", 3.0)), "raio": float(def.get("raio", 7.0)), "dano": float(def.get("dano", 100.0)),
+		"ruido": float(def.get("ruido", 0.0)), "modelo": _modelo_do_item(def)}
+	if _gastar_da_mao() < 0:
+		return
+	Grenade.lancar(m, pc.soldier, cam.global_position + dir * 0.7 + Vector3(0, -0.15, 0), dir, params)
+	pc.shake(0.1)
+	_cd = 0.7
+	m.hud_message.emit("%s arremessad%s" % [String(def.get("name", em_id)), "a" if String(def.get("name", "")).ends_with("a") else "o"], 1.0)
+
+
+func _plantar_mina(def: Dictionary) -> void:
+	var pos := _ponto_no_chao()
+	if pos.y < 0.3:
+		m.hud_message.emit("Não dá para plantar na água", 1.4)
+		return
+	if _gastar_da_mao() < 0:
+		return
+	Grenade.lancar(m, pc.soldier, pos + Vector3(0, 0.2, 0), Vector3.ZERO, {"mina": true, "raio": float(def.get("raio", 11.0)),
+		"dano": float(def.get("dano", 300.0)), "modelo": _modelo_do_item(def)})
+	_cd = 1.0
+	m.hud_message.emit("Mina plantada. Armada em 2 s. Afaste-se.", 2.0)
+
+
+func _abrir(def: Dictionary) -> void:
+	var b := _bag()
+	if b == null or _gastar_da_mao() < 0:
+		return
+	var txt: PackedStringArray = []
+	for par in def.get("loot", []):
+		var id := String(par[0])
+		var n: int = b.add_item(id, int(par[1]))
+		if n > 0:
+			txt.append("%dx %s" % [n, String(BRInventory.definition(id).get("name", id))])
+	m.hud_message.emit("Quebrou: " + (", ".join(txt) if not txt.is_empty() else "vazio (ou sem espaço)"), 2.2)
+	if Audio.has_sound("impact_stone"):
+		Audio.play("impact_stone", {"volume_db": -2.0})
+	_cd = 0.8
+
+
+var _lanterna: SpotLight3D
+
+
+func _ligar_lanterna(ligar: bool) -> void:
+	if ligar:
+		if _lanterna == null or not is_instance_valid(_lanterna):
+			_lanterna = SpotLight3D.new()
+			_lanterna.spot_range = 32.0
+			_lanterna.spot_angle = 34.0
+			_lanterna.spot_attenuation = 0.8
+			_lanterna.light_energy = 4.0
+			_lanterna.shadow_enabled = false
+			pc.camera.add_child(_lanterna)
+		_lanterna.visible = true
+	elif _lanterna != null and is_instance_valid(_lanterna):
+		_lanterna.queue_free()
+		_lanterna = null
+
+
+## Frigideira/ancinho: acerta o que está no cone à frente (zumbis e animais a ≤ 2 m).
+func _golpe_melee(def: Dictionary) -> void:
+	var s := pc.soldier
+	var cam := pc.camera
+	var origem := cam.global_position
+	var dir := -cam.global_transform.basis.z
+	var faca := WeaponDB.get_def(&"knife")
+	var esc := float(def.get("dano_melee", 1.0))
+	var acertou := 0
+	var alvos: Array = get_tree().get_nodes_in_group("zombie") + get_tree().get_nodes_in_group("animal")
+	for z in alvos:
+		var n := z as Node3D
+		if n == null or not is_instance_valid(n):
+			continue
+		var peito := n.global_position + Vector3.UP * 1.1
+		var v := peito - origem
+		if v.length() > 2.1 or v.normalized().dot(dir) < 0.6:
+			continue
+		if n.has_method("hit_by_bullet"):
+			n.hit_by_bullet(peito, dir, faca, esc, s)
+			acertou += 1
+	if acertou > 0:
+		pc.shake(0.35)
+		if Audio.has_sound("knife_hit_flesh"):
+			Audio.play_at("knife_hit_flesh", origem + dir, {"volume_db": -2.0, "max_distance": 25.0})
+	elif Audio.has_sound("knife_swing"):
+		Audio.play_at("knife_swing", origem, {"volume_db": -8.0, "max_distance": 18.0})
+
+
+## Escada telescópica: apoia na parede à frente (3 m de alcance) e cria uma EscadaVertical do chão até o topo da parede (1,6 a 3,8 m
+## de altura, com plataforma em cima). "E — subir" funciona como nas torres do mapa. A escada fica no mundo e o item é gasto.
+func _apoiar_escada() -> void:
+	var cam := pc.camera
+	var s := pc.soldier
+	var ss := s.get_world_3d().direct_space_state
+	var o := cam.global_position
+	var d := -cam.global_transform.basis.z
+	var hit := ss.intersect_ray(PhysicsRayQueryParameters3D.create(o, o + d * 3.2, Soldier.LAYER_WORLD, [s.get_rid()]))
+	if hit.is_empty() or absf(float(hit.normal.y)) > 0.4:
+		m.hud_message.emit("Aponte para uma parede (até 3 m)", 1.6)
+		return
+	var n := Vector3(hit.normal.x, 0.0, hit.normal.z).normalized()
+	var base_xz: Vector3 = hit.position + n * 0.45
+	var chao := ss.intersect_ray(PhysicsRayQueryParameters3D.create(base_xz + Vector3(0, 1.5, 0), base_xz + Vector3(0, -4.0, 0), Soldier.LAYER_WORLD, [s.get_rid()]))
+	if chao.is_empty():
+		m.hud_message.emit("Sem chão firme aqui", 1.4)
+		return
+	var y0: float = chao.position.y
+	var topo_xz: Vector3 = hit.position - n * 0.5
+	var cima := ss.intersect_ray(PhysicsRayQueryParameters3D.create(topo_xz + Vector3(0, y0 + 4.4 - topo_xz.y, 0), topo_xz + Vector3(0, y0 - 1.0 - topo_xz.y, 0), Soldier.LAYER_WORLD, [s.get_rid()]))
+	if cima.is_empty() or float(cima.normal.y) < 0.7:
+		m.hud_message.emit("A escada precisa de uma plataforma no alto da parede", 2.0)
+		return
+	var altura: float = float(cima.position.y) - y0
+	if altura < 1.6 or altura > 3.8:
+		m.hud_message.emit("Parede de %.1f m: a escada serve de 1,6 a 3,8 m" % altura, 2.0)
+		return
+	if _gastar_da_mao() < 0:
+		return
+	var e := EscadaVertical.new()
+	e.name = "EscadaTelescopica"
+	e.base_local = Vector3(base_xz.x, y0, base_xz.z)
+	e.topo_local = Vector3(topo_xz.x, cima.position.y, topo_xz.z)
+	e.collision_layer = Soldier.LAYER_TRIGGER
+	e.collision_mask = Soldier.LAYER_SOLDIER
+	e.monitoring = true
+	e.monitorable = false
+	m.add_child(e)
+	e._forma(e.base_local + Vector3(0, 1.0, 0), Vector3(1.6, 2.4, 1.6))
+	e._forma(e.topo_local + Vector3(0, 0.9, 0), Vector3(1.8, 2.0, 1.8))
+	e.body_entered.connect(e._entrou)
+	e.body_exited.connect(e._saiu)
+	e.add_to_group("escadas_verticais")
+	var vis: Node3D = (_modelo_do_item(BRInventory.definition("escada_telescopica"))).instantiate()
+	vis.scale = Vector3(1.9, (altura + 0.3) / 0.85, 1.9)
+	vis.position = Vector3(base_xz.x, y0, base_xz.z) - n * 0.12
+	vis.look_at_from_position(vis.position, vis.position - n, Vector3.UP)   # frente do modelo para a parede
+	e.add_child(vis)
+	for g in vis.find_children("*", "GeometryInstance3D", true, false):
+		(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_cd = 1.0
+	m.hud_message.emit("Escada apoiada (%.1f m). Chegue perto e aperte E." % altura, 2.4)
+
+
 func _impacto() -> void:
 	var s := pc.soldier
+	if String(BRInventory.definition(em_id).get("acao", "")) == "melee":
+		_golpe_melee(BRInventory.definition(em_id))
+		return
 	if em_id == "machado":
 		if corte.golpear(s.global_position, s.aim_dir()):
 			pc.shake(0.3)
@@ -493,7 +705,7 @@ func _modo_fogo(f: Node3D) -> Dictionary:
 			return {"modo": "acender", "tempo": Fogueira.ACENDE_S}
 		return {}
 	if contar("carne_crua") > 0:
-		return {"modo": "cozinhar", "tempo": Fogueira.COZINHA_S}
+		return {"modo": "cozinhar", "tempo": Fogueira.COZINHA_S * (Fogueira.COZINHA_UTENSILIO if _tem_utensilio() else 1.0)}
 	return {}
 
 

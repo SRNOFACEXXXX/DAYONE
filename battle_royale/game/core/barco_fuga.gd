@@ -4,7 +4,7 @@ extends Node3D
 ## sobrevividos e volta ao menu. Peças: galão (combustível), bateria, kit de reparo (casco/motor), corda, toras (remendo).
 ## Lore: data/lore/barco.json. Sem class_name (preload em maps/ilha/ilha.gd).
 
-const PECAS := {"galao": 2, "bateria_carro": 1, "kit_reparo": 2, "corda": 2, "tora": 4}
+const PECAS := {"galao": 2, "bateria_carro": 1, "kit_reparo": 2, "corda": 2, "tora": 4, "leme": 1}
 const ALCANCE := 5.0
 var entregues := {}
 var _rotulo: Label3D

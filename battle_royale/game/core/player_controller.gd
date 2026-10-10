@@ -19,6 +19,7 @@ var _ads_amount := 0.0
 var _ads_acog := false
 var _mira := ""                  # mira instalada na arma da mão: "", "acog" (4x, só luneta) ou "reddot" (holográfica); trocar = retirar a atual no inventário
 var _ads_indicator: Control
+var cosmeticos: Node = null      # core/cosmeticos.gd (jogador local)
 var _prefer_third_person := false
 var _third_person := false
 var _air_camera_blend := 0.0
@@ -69,6 +70,9 @@ func setup(s: Soldier, m: Match) -> void:
 	ferramentas = preload("res://core/ferramentas_mao.gd").new()   # machado/kit de fogueira na mão, cortar árvore, fogueira
 	add_child(ferramentas)
 	ferramentas.setup(self, m)
+	cosmeticos = preload("res://core/cosmeticos.gd").new()   # chapéu, fones, coroa, máscara, chuteira, amuleto
+	add_child(cosmeticos)
+	cosmeticos.setup(self, m)
 	if not Game.test_mode:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

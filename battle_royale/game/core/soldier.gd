@@ -683,11 +683,17 @@ func _move(dt: float) -> void:
 				Audio.play_at("land", global_position, {"volume_db": lv + 6.0, "unit_size": 4.0, "max_distance": 34.0, "pitch_var": 0.06})
 		if fall_speed > 11.0 and match_ref:
 			# dano de queda (CS: acima de ~580 u/s)
-			var dmg := int((fall_speed - 11.0) * 9.0)
+			var dmg := int((fall_speed - 11.0) * 9.0 * efeito_cosmetico("queda"))
 			if dmg > 0:
 				take_damage(dmg, null, null, "legs", Vector3.DOWN)
 	was_on_floor = now_floor
 	_update_footsteps(dt, now_floor)
+
+
+## Multiplicador de efeito dos cosméticos vestidos (chuva, folego, queda); 1.0 sem nenhum (bots e NPCs não têm).
+func efeito_cosmetico(chave: String) -> float:
+	var c = controller.get("cosmeticos") if controller != null else null
+	return float(c.efeito(chave)) if c != null else 1.0
 
 
 # ------------------------------------------------------------------ nado e fôlego
@@ -726,7 +732,7 @@ func _agua_estado(dt: float) -> void:
 		_nado_parar()
 	submerso = nadando and eye_position().y < agua_y - 0.03
 	if submerso:
-		folego = maxf(folego - dt, 0.0)
+		folego = maxf(folego - dt / efeito_cosmetico("folego"), 0.0)
 		if folego <= 0.0:
 			_afogar_acc += dt
 			var passo := 1.0 / AFOGAR_HPS

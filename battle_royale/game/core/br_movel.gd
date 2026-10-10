@@ -38,9 +38,14 @@ const COMIDAS := [["lata_comida", 16], ["feijao_lata", 12], ["sardinha", 12], ["
 const PESO_UTIL := {"Work_Table": 60, "Wash_Basin": 30, "Nightstand": 22, "Closet_01": 14, "Closet_02": 14, "guarda_roupa": 12,
 	"armario_alto": 16, "armario_baixo": 18, "Kitchen_D": 14, "Kitchen_D_01": 12, "comoda": 10, "estante": 12, "cristaleira": 6, "Fridge": 2}
 const UTIL_OFICINA := [["machado", 6], ["picareta", 4], ["martelo", 9], ["serrote", 7], ["faca", 8], ["pregos", 14], ["corda", 10],
-	["fosforos", 8], ["galao", 7], ["kit_reparo", 6], ["bateria_carro", 3], ["roda_carro", 2], ["tabua", 8], ["graveto", 6]]
-const UTIL_REMEDIO := [["curativo", 22], ["analgesico", 22], ["bandagem", 14], ["soro", 8], ["antibiotico", 6], ["tala", 6], ["kit_medico", 3]]
-const UTIL_CASA := [["fosforos", 16], ["corda", 10], ["pregos", 8], ["faca", 8], ["graveto", 10], ["curativo", 8], ["analgesico", 6], ["martelo", 3], ["galao", 2]]
+	["fosforos", 8], ["galao", 7], ["kit_reparo", 6], ["bateria_carro", 3], ["roda_carro", 2], ["tabua", 8], ["graveto", 6],
+	["chaves", 7], ["fita", 8], ["frigideira", 3], ["panela", 3], ["dinamite", 2], ["garrafa_vazia", 6], ["ancinho", 3], ["leme", 3],
+	["regua_torre", 2], ["celular", 2], ["mina_naval", 1], ["regador", 2], ["escada_telescopica", 1], ["bomba", 1]]
+const UTIL_REMEDIO := [["curativo", 22], ["analgesico", 22], ["bandagem", 14], ["soro", 8], ["antibiotico", 6], ["tala", 6], ["kit_medico", 3], ["fita", 6]]
+const UTIL_CASA := [["fosforos", 16], ["corda", 10], ["pregos", 8], ["faca", 8], ["graveto", 10], ["curativo", 8], ["analgesico", 6], ["martelo", 3], ["galao", 2],
+	["celular", 3], ["garrafa_vazia", 5], ["panela", 5], ["frigideira", 4], ["chapeu", 4], ["fones", 3], ["dado", 3], ["moeda", 4],
+	["cofrinho", 3], ["amuleto", 2], ["chuteira", 3], ["mochila_trilha", 2], ["mascara_mergulho", 2], ["coroa", 1], ["idolo", 1],
+	["calice", 1], ["regador", 3], ["chaves", 3], ["fita", 4]]
 const PISTOLAS := [&"glock", &"usp"]
 const RIFLES := [&"ak47", &"m4", &"mosin", &"uzi", &"m249", &"m107"]
 const MOCHILAS := ["backpack_small", "backpack_small", "backpack_medium"]

@@ -6,6 +6,7 @@ extends Node3D
 const MODELO := "res://assets/models/itens/fogueira.glb"
 const MAX_MIN := 30.0
 const COZINHA_S := 4.0
+const COZINHA_UTENSILIO := 0.5   # panela/frigideira na bolsa: metade do tempo
 const ACENDE_S := 0.8
 
 var combustivel_s := 0.0
