@@ -654,6 +654,41 @@ func _ajustar_corpo_ao_chao() -> void:
 	_visual_root.position.y = minf(maxf(hs, 0.13) - _hips_alto, 0.0)
 
 
+## Zumbis não colidem entre si (máscara só do mundo; barato para 90 vivos), então uma horda convergia para a MESMA posição
+## e virava um bolo de corpos sobrepostos. Separação por direção: a cada 0,3 s (escalonado) soma o empurrão dos vizinhos a
+## menos de SEP_RAIO; o resultado só curva o rumo (nada de física extra).
+const SEP_RAIO := 1.3
+var _sep := Vector3.ZERO
+var _sep_t := randf() * 0.3
+
+
+func _afastar_vizinhos(direction: Vector3, delta: float) -> Vector3:
+	_sep_t -= delta
+	if _sep_t <= 0.0:
+		_sep_t = 0.3
+		_sep = Vector3.ZERO
+		var p := global_position
+		for z in get_tree().get_nodes_in_group("zombie"):
+			if z == self or not (z is ZombieEnemy) or not is_instance_valid(z):
+				continue
+			var o: Vector3 = p - (z as Node3D).global_position
+			o.y = 0.0
+			var d := o.length()
+			if d >= SEP_RAIO:
+				continue
+			if d < 0.05:
+				# exatamente empilhados: cada um foge para um lado diferente (determinístico pelo id)
+				var a := float(get_instance_id() % 628) * 0.01
+				o = Vector3(cos(a), 0.0, sin(a))
+				d = 0.05
+			_sep += o / d * (1.0 - d / SEP_RAIO)
+	if _sep.length_squared() < 0.0001:
+		return direction
+	var r := direction + _sep * 2.4
+	r.y = 0.0
+	return r.normalized() if r.length_squared() > 0.0001 else direction
+
+
 func _physics_process(delta: float) -> void:
 	if _morte_ativa:
 		_ajustar_corpo_ao_chao()
@@ -827,6 +862,7 @@ func _move_toward_target(delta: float) -> void:
 	if direction.length_squared() > 0.02:
 		direction = direction.normalized()
 		direction = _steer(direction, speed, delta, _flat_distance_between(destination, global_position))
+		direction = _afastar_vizinhos(direction, delta)
 		var desired_yaw := atan2(-direction.x, -direction.z)
 		rotation.y = rotate_toward(rotation.y, desired_yaw, turn_speed * delta)
 		velocity.x = move_toward(velocity.x, direction.x * speed, 9.0 * delta)

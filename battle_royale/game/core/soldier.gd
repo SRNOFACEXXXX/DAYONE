@@ -929,6 +929,18 @@ func _raio(de: Vector3, ate: Vector3) -> Dictionary:
 	return get_world_3d().direct_space_state.intersect_ray(q)
 
 
+## O topo aguenta o corpo? Quatro raios a 0,3 m do ponto de pouso: com menos de 3 apoios (±0,15 m do topo) é trilho/ripa/aresta
+## e o jogador não pode ficar em pé ali (antes ficava equilibrado em cima da cerca e de raízes).
+func _topo_largo(xz: Vector3, topo: float) -> bool:
+	var apoios := 0
+	for off in [Vector3(0.3, 0, 0), Vector3(-0.3, 0, 0), Vector3(0, 0, 0.3), Vector3(0, 0, -0.3)]:
+		var q: Vector3 = xz + off
+		var r := _raio(q + Vector3(0, topo + 0.4, 0), q + Vector3(0, topo - 0.4, 0))
+		if not r.is_empty() and absf(float(r.position.y) - topo) <= 0.15:
+			apoios += 1
+	return apoios >= 3
+
+
 ## Procura um obstáculo à frente entre MANTLE_MIN e MANTLE_MAX de altura e um pouso livre (em cima ou do outro lado).
 func _tentar_mantle(dir: Vector3) -> bool:
 	var pos := global_position
@@ -973,8 +985,8 @@ func _tentar_mantle(dir: Vector3) -> bool:
 		var g := _raio(xz + Vector3(0, topo + 0.6, 0), xz + Vector3(0, -2.5, 0))
 		if g.is_empty() or g.normal.y < cos(floor_max_angle) or not _cap_livre(g.position + Vector3(0, 0.02, 0)):
 			continue
-		if i == 0 and absf(g.position.y - topo) > 0.12:
-			continue                      # o primeiro candidato só vale se for o topo do obstáculo
+		if i == 0 and (absf(g.position.y - topo) > 0.12 or not _topo_largo(xz, topo)):
+			continue                      # o primeiro candidato só vale se for o topo LARGO do obstáculo (cerca/trilho fino: pula por cima)
 		var p3: Vector3 = g.position + Vector3(0, 0.02, 0)
 		var p2 := Vector3(p3.x, topo + 0.04, p3.z)
 		if test_move(Transform3D(Basis(), p1), p2 - p1):

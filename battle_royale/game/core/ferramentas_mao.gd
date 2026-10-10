@@ -127,8 +127,10 @@ func equipar(uid: int) -> bool:
 	var path := String(BRInventory.definition(em_id).get("model_path", ""))
 	if path != "" and ResourceLoader.exists(path):
 		var sc: Node3D = (load(path) as PackedScene).instantiate()
-		sc.scale = Vector3.ONE * 0.65
+		sc.scale = Vector3.ONE * float(ESCALA_MAO.get(em_id, 0.65))
 		_mao.add_child(sc)
+		if MAOS.has(em_id):
+			_por_maos(sc, MAOS[em_id])
 		for g in sc.find_children("*", "GeometryInstance3D", true, false):
 			(g as GeometryInstance3D).cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	pc.camera.add_child(_mao)
@@ -144,6 +146,9 @@ func desequipar() -> void:
 	em_uid = -1
 	_bloqueio = Input.is_action_pressed("fire")
 	_swing = -1.0
+	var bm := pc.soldier.body_model as BodyModel if pc != null and pc.soldier != null else null
+	if bm != null and bm.has_meta(MxRetarget.META):
+		MxRetarget.parar(bm)
 	if _mao != null and is_instance_valid(_mao):
 		_mao.queue_free()
 	_mao = null
@@ -151,18 +156,106 @@ func desequipar() -> void:
 		pc.viewmodel.set_viewmodel_enabled(true)
 
 
-## Pose do item na câmera. `k` = 0 repouso … 1 fim do golpe (animação própria, sem rig).
+## Escala do modelo na mão e onde as mãos seguram o cabo (altura em metros do modelo, a partir da base do cabo).
+const ESCALA_MAO := {"machado": 0.95, "picareta": 0.8, "martelo": 0.9}
+const MAOS := {"machado": [0.07, 0.27], "picareta": [0.10, 0.40], "martelo": [0.07, 0.25]}
+const COR_PELE := Color(0.80, 0.60, 0.46)
+const COR_MANGA := Color(0.26, 0.33, 0.20)
+## Quadros-chave do golpe (k = 0..1): [k, posição na câmera, rotação em graus (x = ponta para trás/frente, y, z)]. O impacto cai em
+## k = IMPACTO_S / SWING_S (0,48); antes, o recuo para cima e para a direita; depois, o arrasto e a volta ao descanso.
+const GOLPE := [
+	[0.00, Vector3(0.30, -0.42, -0.58), Vector3(-8.0, -14.0, -10.0)],
+	[0.10, Vector3(0.28, -0.32, -0.54), Vector3(8.0, -12.0, -14.0)],
+	[0.30, Vector3(0.20, -0.12, -0.50), Vector3(48.0, -8.0, -24.0)],
+	[0.40, Vector3(0.21, -0.10, -0.49), Vector3(52.0, -8.0, -26.0)],
+	[0.48, Vector3(0.10, -0.30, -0.64), Vector3(-62.0, -16.0, 8.0)],
+	[0.60, Vector3(0.12, -0.27, -0.62), Vector3(-54.0, -15.0, 6.0)],
+	[0.80, Vector3(0.22, -0.38, -0.64), Vector3(-30.0, -14.0, -4.0)],
+	[1.00, Vector3(0.30, -0.42, -0.58), Vector3(-8.0, -14.0, -10.0)],
+]
+
+
+## Mãos de luva (pele) seguram o cabo e os antebraços de manga (cor da manga dos braços da arma) ligam cada mão a um ombro FIXO
+## na câmera (IK simples: o cilindro é esticado da mão ao ombro a cada quadro, então o braço nunca "gira" junto com a ferramenta).
+## `alturas` = onde cada mão agarra (m, no modelo); a mão de baixo é a direita.
+const OMBROS := [Vector3(0.34, -0.70, 0.30), Vector3(-0.30, -0.72, 0.28)]   # no espaço da câmera (z>0 = atrás do plano de visão)
+var _punhos: Array[Node3D] = []
+var _bracos: Array[MeshInstance3D] = []
+
+
+func _por_maos(modelo: Node3D, alturas: Array) -> void:
+	_punhos.clear()
+	_bracos.clear()
+	var pele := StandardMaterial3D.new()
+	pele.albedo_color = COR_PELE
+	pele.roughness = 1.0
+	var manga := StandardMaterial3D.new()
+	manga.albedo_color = COR_MANGA
+	manga.roughness = 1.0
+	for i in alturas.size():
+		var punho := MeshInstance3D.new()
+		var bm := BoxMesh.new()
+		bm.size = Vector3(0.08, 0.065, 0.085)
+		punho.mesh = bm
+		punho.material_override = pele
+		punho.position = Vector3(0.0, float(alturas[i]), 0.0)
+		punho.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		modelo.add_child(punho)
+		_punhos.append(punho)
+		var braco := MeshInstance3D.new()
+		var cm := CylinderMesh.new()
+		cm.top_radius = 0.034
+		cm.bottom_radius = 0.034
+		cm.height = 1.0
+		cm.radial_segments = 6
+		braco.mesh = cm
+		braco.material_override = manga
+		braco.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		braco.top_level = true   # transformação em mundo: calculada da mão ao ombro
+		_mao.add_child(braco)
+		_bracos.append(braco)
+
+
+func _esticar_bracos() -> void:
+	if _bracos.is_empty() or pc == null or pc.camera == null:
+		return
+	var cam := pc.camera.global_transform
+	for i in _bracos.size():
+		if not is_instance_valid(_punhos[i]):
+			continue
+		var mao_w: Vector3 = _punhos[i].global_position
+		var ombro_w: Vector3 = cam * (OMBROS[i % 2] as Vector3)
+		var v := ombro_w - mao_w
+		var L := v.length()
+		if L < 0.01:
+			continue
+		var d := v / L
+		var ref := Vector3.RIGHT if absf(d.dot(Vector3.RIGHT)) < 0.9 else Vector3.FORWARD
+		var x := ref.cross(d).normalized()
+		var z := x.cross(d).normalized()
+		_bracos[i].global_transform = Transform3D(Basis(x, d * L, z), mao_w + v * 0.5)
+
+
+## Pose do item na câmera. `k` = 0 repouso … 1 fim do golpe (animação própria, sem rig): interpola os quadros-chave GOLPE com
+## suavização (aceleração na descida, parada seca no impacto).
 func _pose(k: float) -> void:
 	if _mao == null:
 		return
-	# repouso: canto inferior direito, cabo para baixo-trás; golpe: levanta e desce na diagonal
-	var levanta := sin(clampf(k / 0.4, 0.0, 1.0) * PI * 0.5) * (1.0 - clampf((k - 0.4) / 0.2, 0.0, 1.0))
-	var desce := clampf((k - 0.4) / 0.25, 0.0, 1.0) * (1.0 - clampf((k - 0.65) / 0.35, 0.0, 1.0))
-	_mao.position = Vector3(0.32, -0.34 + 0.12 * levanta - 0.05 * desce, -0.62 + 0.1 * desce)
-	_mao.rotation_degrees = Vector3(-12.0 + 55.0 * levanta - 70.0 * desce, -20.0, -8.0 + 15.0 * desce)
+	k = clampf(k, 0.0, 1.0)
+	var a: Array = GOLPE[0]
+	var b: Array = GOLPE[GOLPE.size() - 1]
+	for i in GOLPE.size() - 1:
+		if k <= float((GOLPE[i + 1] as Array)[0]):
+			a = GOLPE[i]
+			b = GOLPE[i + 1]
+			break
+	var t := clampf((k - float(a[0])) / maxf(float(b[0]) - float(a[0]), 0.0001), 0.0, 1.0)
+	t = t * t * (3.0 - 2.0 * t)
+	_mao.position = (a[1] as Vector3).lerp(b[1] as Vector3, t)
+	_mao.rotation_degrees = (a[2] as Vector3).lerp(b[2] as Vector3, t)
+	_esticar_bracos()
 
 
-# ------------------------------------------------------------------ entrada
 func _unhandled_input(ev: InputEvent) -> void:
 	if not (ev is InputEventKey) or not ev.pressed or ev.echo or not _livre():
 		return
@@ -240,6 +333,7 @@ func _process(dt: float) -> void:
 	if _swing >= SWING_S:
 		_swing = -1.0
 		_pose(0.0)
+		_anim_corpo(false)
 
 
 func _acao_principal() -> void:
@@ -258,6 +352,24 @@ func _iniciar_golpe() -> void:
 	_swing = 0.0
 	_acertou = false
 	_cd = SWING_S + 0.12
+	_anim_corpo(true)
+
+
+## Terceira pessoa: se o clipe Mixamo da ferramenta existir (assets/anim_mixamo/leve/<Clipe>.glb), o corpo toca o golpe real
+## (retarget MxRetarget); sem o arquivo, só o item balança. Clipes: Axe_Chop.glb (machado) e Pickaxe_Mine.glb (picareta).
+const CLIPES := {"machado": "Axe_Chop", "picareta": "Pickaxe_Mine"}
+
+
+func _anim_corpo(ligar: bool) -> void:
+	var bm := pc.soldier.body_model as BodyModel
+	if bm == null or not CLIPES.has(em_id):
+		return
+	var nome: String = CLIPES[em_id]
+	if ligar:
+		if ResourceLoader.exists("res://assets/anim_mixamo/leve/%s.glb" % nome):
+			MxRetarget.tocar(bm, nome, false, 1.0)
+	elif bm.has_meta(MxRetarget.META):
+		MxRetarget.parar(bm)
 
 
 func _impacto() -> void:

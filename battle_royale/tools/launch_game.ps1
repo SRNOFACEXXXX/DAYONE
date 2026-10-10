@@ -1,3 +1,4 @@
+param([string[]]$ExtraArgs = @())
 $ErrorActionPreference = 'Stop'
 $projectPath = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\game')).TrimEnd('\')
 $godotPath = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages\GodotEngine.GodotEngine_Microsoft.Winget.Source_8wekyb3d8bbwe\Godot_v4.7.1-stable_win64.exe'
@@ -54,4 +55,4 @@ if ($precisa) {
     Start-Process -FilePath $godotPath -ArgumentList @('--headless', '--editor', '--quit', '--path', ('"' + $projectPath + '"')) -Wait
 }
 
-Start-Process -FilePath $godotPath -ArgumentList @('--path', ('"' + $projectPath + '"'))
+Start-Process -FilePath $godotPath -ArgumentList (@('--path', ('"' + $projectPath + '"')) + $ExtraArgs)
