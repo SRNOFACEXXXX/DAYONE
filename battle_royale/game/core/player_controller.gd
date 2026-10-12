@@ -570,7 +570,21 @@ func _update_third_person_camera(dt: float, base: Vector3, aim_basis: Basis, sha
 	if not hit.is_empty():
 		desired = hit.position + (focus - desired).normalized() * 0.22
 	var blend := clampf(dt * (10.0 if _air_camera_blend > 0.0 else 8.0), 0.0, 1.0)
-	camera.global_position = camera.global_position.lerp(desired + shake_off, blend)
+	var cam_pos := camera.global_position.lerp(desired + shake_off, blend)
+	# O suavizado (lerp) fazia a câmera ATRAVESSAR rochas/paredes/troncos entre a posição antiga e a nova (só o alvo era testado):
+	# o trecho foco -> câmera é sempre varrido com uma esfera (raio 0,25 m: também afasta o plano de corte das faces próximas).
+	var esf := SphereShape3D.new()
+	esf.radius = 0.25
+	var qs := PhysicsShapeQueryParameters3D.new()
+	qs.shape = esf
+	qs.transform = Transform3D(Basis(), focus)
+	qs.motion = cam_pos - focus
+	qs.collision_mask = Soldier.LAYER_WORLD
+	qs.exclude = [soldier.get_rid()]
+	var mov := soldier.get_world_3d().direct_space_state.cast_motion(qs)
+	if mov.size() == 2 and float(mov[0]) < 1.0:
+		cam_pos = focus + (cam_pos - focus) * float(mov[0])
+	camera.global_position = cam_pos
 	var look_dir := (focus + follow_basis * Vector3(0, 0, -24.0) - camera.global_position).normalized()
 	if look_dir.length_squared() > 0.5:
 		var wanted_basis := Basis.looking_at(look_dir, Vector3.UP)

@@ -1,0 +1,3 @@
+{
+ "_ajuda": "Catalogo de colisao por asset (chave = tipo do prop em detalhes.json, ex. cenario/rua/rua_box_03). Valores: trimesh (malha fiel, p/ vazados: cercas, escadas, portoes), convexo (casco simplificado, p/ solidos compactos: pedras, caixas, barris), caixa (AABB), nenhuma (atravessavel). Sem entrada = regra automatica. Medir com tests/colisao_atravessa.tscn e tests/colisao_auditoria.tscn."
+}

@@ -15,6 +15,9 @@ const CRUZETA := {"poste_madeira": [0.7, 7.78], "poste_concreto": [0.8, 8.73]}  
 
 var terrain: IlhaTerrain
 var _cache := {}
+## CATÁLOGO DE COLISÃO POR ASSET (maps/ilha/colisao_props.json): tipo -> "trimesh" | "convexo" | "caixa" | "nenhuma".
+## Muda a colisão de TODAS as instâncias do tipo de uma vez (os props se repetem). Sem entrada = regra automática abaixo.
+var _politicas: Dictionary = {}
 var _shape_cache: Dictionary = {}
 var _corpo: StaticBody3D
 var _fio_mat: StandardMaterial3D
@@ -47,6 +50,8 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/detalhes.json") -> int
 	if not FileAccess.file_exists(path):
 		return 0
 	var d: Dictionary = JsonSeguro.dict(path)
+	if FileAccess.file_exists("res://maps/ilha/colisao_props.json"):
+		_politicas = JsonSeguro.dict("res://maps/ilha/colisao_props.json")
 	_corpo = StaticBody3D.new()
 	_corpo.name = "DetalhesColisao"
 	add_child(_corpo)
@@ -326,10 +331,21 @@ func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, esca
 				break
 		cyl.height = 5.0 * n.scale.y
 		_forma(cyl, Transform3D(Basis(), n.global_position + Vector3.UP * cyl.height * 0.5))
+		# forma real do tronco (casco da malha de 0 a 3,4 m): troncos inclinados/raízes abertas colidem onde se veem
+		for mi1 in n.find_children("*", "MeshInstance3D", true, false):
+			var me1: Mesh = (mi1 as MeshInstance3D).mesh
+			if me1 != null:
+				var casco := IlhaVegetation.casco_tronco(me1, n.scale.x, n.global_transform.affine_inverse() * (mi1 as MeshInstance3D).global_transform)
+				if casco != null:
+					_forma(casco, n.global_transform)
+				break
 		return n
 	if nat != "" and (nat in SEM_COLISAO_PACOTE):
 		return n
-	if not (tipo in SEM_COLISAO or (antiga and tipo in ["varal", "placa_rua", "bicicleta"])) and not tem_colisao:
+	var pol := String(_politicas.get(tipo, ""))
+	if pol == "nenhuma":
+		return n
+	if not (tipo in SEM_COLISAO or (antiga and tipo in ["varal", "placa_rua", "bicicleta"])) and (not tem_colisao or pol != ""):
 		for mi in n.find_children("*", "MeshInstance3D", true, false):
 			var mesh: Mesh = (mi as MeshInstance3D).mesh
 			var mesh_id := mesh.get_instance_id()
@@ -338,7 +354,11 @@ func _colocar_i(tipo: String, xy: Vector2, rot_deg: float, escala_x := 1.0, esca
 				# fechava os vãos e criava a "parede invisível" que impedia pular/passar
 				var fiel := tipo == "barraca_militar" or tipo.begins_with("cerca") or tipo.begins_with("muro") or tipo.begins_with("portao") 						or tipo.begins_with("cenario/natureza/cerca") or tipo.begins_with("cenario/natureza/muro") or tipo == "cenario/natureza/entulho"
 				# o resto vira caixa (AABB da malha): convexo por peça custava caro no move_and_slide
-				if fiel:
+				if pol == "convexo":
+					_shape_cache[mesh_id] = mesh.create_convex_shape(true, true)
+				elif pol == "caixa":
+					_shape_cache[mesh_id] = _caixa_aabb(mesh.get_aabb())
+				elif fiel or pol == "trimesh":
 					var tm := mesh.create_trimesh_shape()
 					tm.backface_collision = true   # sem isso o corpo atravessa a cerca/muro vindo pelo lado de trás da malha
 					_shape_cache[mesh_id] = tm
@@ -487,10 +507,10 @@ func _fundir() -> void:
 		for g in itens:
 			var mi := g as MeshInstance3D
 			var p := mi.global_position
-			var k := "%d|%d|%d|%d|%d|%d" % [mi.mesh.get_instance_id(), mi.material_override.get_instance_id() if mi.material_override else 0,
+			var k := "%s|%d|%d|%d|%d|%d|%d" % [String(no.get_meta("prop")), mi.mesh.get_instance_id(), mi.material_override.get_instance_id() if mi.material_override else 0,
 				mi.cast_shadow, int(mi.visibility_range_end), int(floor(p.x / CELULA)), int(floor(p.z / CELULA))]
 			if not grupos.has(k):
-				grupos[k] = [mi.mesh, mi.material_override, mi.cast_shadow, mi.visibility_range_end, []]
+				grupos[k] = [mi.mesh, mi.material_override, mi.cast_shadow, mi.visibility_range_end, [], String(no.get_meta("prop"))]
 			grupos[k][4].append(mi.global_transform)
 		soltar.append(no)
 		if Loading.ceder():   # orçamento por quadro (pré-montagem atrás do criador)
@@ -509,6 +529,7 @@ func _fundir() -> void:
 		mmi.cast_shadow = gq[2]
 		mmi.visibility_range_end = gq[3]
 		mmi.visibility_range_end_margin = 15.0
+		mmi.set_meta("prop", gq[5])   # asset fonte (auditoria de colisão agrupa por aqui)
 		add_child(mmi)
 		if Loading.ceder():
 			await get_tree().process_frame

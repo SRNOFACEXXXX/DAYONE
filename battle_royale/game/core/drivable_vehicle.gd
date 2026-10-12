@@ -136,6 +136,7 @@ func _build(model: Node3D) -> void:
 	chassis_shape.shape = box
 	chassis_shape.position = Vector3(0, 0.74, -0.04)
 	add_child(chassis_shape)
+	_casco_carroceria(model)
 
 	var left_source: MeshInstance3D
 	var right_source: MeshInstance3D
@@ -167,6 +168,36 @@ func _build(model: Node3D) -> void:
 	_build_motor()
 	_build_fumaca()
 	call_deferred("_finish_spawn")
+
+
+## Colisão pela FORMA REAL da carroceria (cabine, capô, porta-malas, para-lamas): casco convexo dos vértices das peças do modelo
+## acima de 0,5 m (a parte baixa continua sendo só a caixa do chassi + rodas, então a direção/suspensão não mudam). Antes só havia a
+## caixa 1,76 x 0,66 x 4,35 m a 0,74 m: o jogador entrava na cabine, no capô e nas pontas do carro.
+func _casco_carroceria(model: Node3D) -> void:
+	var pts := PackedVector3Array()
+	var vistos := {}
+	var inv := global_transform.affine_inverse()
+	for item in model.find_children("*", "MeshInstance3D", true, false):
+		var mn := item as MeshInstance3D
+		var low := String(mn.name).to_lower()
+		if mn.mesh == null or "wheel" in low or "decal" in low or "glass" in low:
+			continue
+		var xf := inv * mn.global_transform
+		for v in mn.mesh.get_faces():
+			var q: Vector3 = xf * v
+			if q.y >= 0.5 and q.y <= 2.2:
+				var k := Vector3i(roundi(q.x * 16.0), roundi(q.y * 16.0), roundi(q.z * 16.0))
+				if not vistos.has(k):
+					vistos[k] = true
+					pts.append(q)
+	if pts.size() < 8:
+		return
+	var forma := ConvexPolygonShape3D.new()
+	forma.points = pts
+	var cs := CollisionShape3D.new()
+	cs.name = "CarroceriaFiel"
+	cs.shape = forma
+	add_child(cs)
 
 
 func _apply_car_materials(part: MeshInstance3D) -> void:

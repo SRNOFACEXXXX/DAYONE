@@ -52,6 +52,44 @@ static func raio_tronco(me: Mesh, s: float, xf := Transform3D.IDENTITY) -> float
 		r = clampf(rs[int(rs.size() * 0.95)], 0.12, 1.6)
 	_raio_cache[chave] = r
 	return r
+static var _casco_cache := {}
+
+
+## FORMA REAL DO TRONCO: casco convexo dos vértices da malha entre -0,15 m e `altura` m (a copa fica de fora = sem parede invisível),
+## só os que estão a até 1,25x do raio do percentil 80 (descarta galhos longos). Troncos inclinados (coqueiro) e raízes abertas (carvalho)
+## passam a colidir onde estão visualmente; antes só havia um cilindro vertical na origem. `s` = escala base do modelo, `xf` leva a malha
+## ao espaço do prop. Devolve null se a malha não tem vértices suficientes nessa faixa. Em cache por malha.
+static func casco_tronco(me: Mesh, s: float, xf := Transform3D.IDENTITY, altura := 3.4) -> ConvexPolygonShape3D:
+	var chave := "%d|%.2f|%s" % [me.get_instance_id(), s, xf]
+	if _casco_cache.has(chave):
+		return _casco_cache[chave]
+	var pts := PackedVector3Array()
+	var rs: Array[float] = []
+	for v in me.get_faces():
+		var q: Vector3 = xf * v
+		if q.y * s >= -0.15 and q.y * s <= altura:
+			pts.append(q)
+			rs.append(Vector2(q.x, q.z).length() * s)
+	var forma: ConvexPolygonShape3D = null
+	if pts.size() >= 8:
+		var ord := rs.duplicate()
+		ord.sort()
+		var rlim := maxf(float(ord[int(ord.size() * 0.8)]) * 1.25, 0.45)
+		var vistos := {}
+		var fin := PackedVector3Array()
+		for i in pts.size():
+			if rs[i] <= rlim:
+				var k := Vector3i(roundi(pts[i].x * 20.0), roundi(pts[i].y * 20.0), roundi(pts[i].z * 20.0))
+				if not vistos.has(k):
+					vistos[k] = true
+					fin.append(pts[i])
+		if fin.size() >= 8:
+			forma = ConvexPolygonShape3D.new()
+			forma.points = fin
+	_casco_cache[chave] = forma
+	return forma
+
+
 ## Árvores cortáveis (arvore_mata_a/b, coqueiro): {pos, tipo, mesh, escala, xf, raio, refs:[[chave,indice]], col, viva}.
 ## `derrubar(i)` esconde a instância dos MultiMesh (transform zerado) e remove a colisão; só quem corta mexe nisto (nada por quadro).
 var arvores: Array = []
@@ -200,8 +238,19 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 			cs.shape = cyl
 			cs.position = Vector3(x, y + 3.0 * s, z)
 			corpo.add_child(cs)
+			# forma real do tronco (casco da malha na faixa 0–3,4 m), além do cilindro vertical
+			var sref := float(VAR_ESCALA.get(tipo, ESCALA_TIPO.get(tipo, 1.0)))
+			var casco := casco_tronco(meshes[tipo], sref)
+			var cs2: CollisionShape3D = null
+			if casco != null:
+				cs2 = CollisionShape3D.new()
+				cs2.shape = casco
+				cs2.transform = xf
+				corpo.add_child(cs2)
 			if not arv.is_empty():
 				arv.col = cs
+				arv.col2 = cs2
+				arv.casco = casco
 				arv.raio = cyl.radius
 		if index > 0 and Loading.ceder():
 			Loading.set_progress("Distribuindo vegetação e colisões...", 25.0 + 20.0 * float(index) / maxf(1.0, float(lista.size())))
@@ -222,6 +271,7 @@ func build_async(t: IlhaTerrain, path := "res://maps/ilha/vegetacao.json") -> in
 		var mmi := MultiMeshInstance3D.new()
 		mmi.multimesh = mm
 		_mm_chave[key] = mm
+		mmi.set_meta("prop", "veg:%s%s" % [base, "" if tipo == base else "|" + tipo])   # asset fonte (auditoria de colisão)
 		var alcance: float = ALCANCE.get(base, 300.0)
 		mmi.visibility_range_end_margin = 20.0
 		if faixa == "longe":
@@ -405,6 +455,9 @@ func derrubar(i: int) -> Dictionary:
 	if a.col != null and is_instance_valid(a.col):
 		(a.col as Node).queue_free()
 	a.col = null
+	if a.get("col2") != null and is_instance_valid(a.col2):
+		(a.col2 as Node).queue_free()
+	a["col2"] = null
 	return a
 
 
@@ -430,3 +483,9 @@ func restaurar(i: int) -> void:
 		cs.position = (a.pos as Vector3) + Vector3(0, 3.0 * float(a.escala), 0)
 		corpo.add_child(cs)
 		a.col = cs
+		if a.get("casco") != null:
+			var cs2 := CollisionShape3D.new()
+			cs2.shape = a.casco
+			cs2.transform = a.xf
+			corpo.add_child(cs2)
+			a["col2"] = cs2
