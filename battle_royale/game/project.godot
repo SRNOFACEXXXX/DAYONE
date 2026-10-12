@@ -4,6 +4,7 @@ config_version=5
 [application]
 
 config/name="DAYONE"
+config/version="0.1.1"
 config/description="DAYONE — sobrevivência na Ilha do Tauá."
 run/main_scene="res://ui/intro.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")

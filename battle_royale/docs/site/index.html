@@ -1,0 +1,217 @@
+<title>DAYONE — Central do Lançamento</title>
+<meta name="description" content="Central do DAYONE: estado da Steam, fotos, história, objetivos e hotfix.">
+<style>
+/* Plano: sobrevivência noturna numa ilha, com neon sobre fundo de madrugada.
+   Layout em faixas: hero, checklist da Steam (progresso), galeria, história, objetivos, hotfix. */
+:root {
+  --bg: #07060f;
+  --bg2: #0e0c1d;
+  --fg: #e9e6ff;
+  --muted: #9b95c7;
+  --rosa: #ff2e88;
+  --ciano: #19f0ff;
+  --lima: #b6ff3b;
+  --amarelo: #ffd23f;
+  --linha: rgba(25, 240, 255, .22);
+  --display: "Chakra Petch", "Trebuchet MS", system-ui, sans-serif;
+  --texto: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: radial-gradient(1200px 600px at 80% -10%, #2a0b3a 0%, transparent 60%), radial-gradient(900px 500px at -10% 30%, #04262e 0%, transparent 60%), var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 var(--texto);
+  padding-block: 0;
+}
+.wrap { padding: 0 16px; max-width: 1080px; margin: 0 auto; }
+img { max-width: 100%; height: auto; display: block; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(22px, 4vw, 34px); letter-spacing: .02em; }
+.rotulo { font: 600 12px/1 var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--ciano); }
+section { padding-block: 56px; border-top: 1px solid var(--linha); }
+a { color: var(--ciano); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--amarelo); outline-offset: 3px; }
+
+/* hero */
+.hero { padding-block: 72px 56px; }
+.titulo {
+  font-size: clamp(56px, 13vw, 132px);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #fff;
+  text-shadow: 0 0 6px var(--rosa), 0 0 18px var(--rosa), 0 0 42px rgba(255, 46, 136, .55);
+  margin-top: 14px;
+}
+.subtitulo { font-size: clamp(16px, 2.4vw, 20px); color: var(--muted); max-width: 60ch; margin-top: 18px; }
+.neon-linha { height: 2px; margin: 26px 0 0; background: linear-gradient(90deg, var(--rosa), var(--ciano), var(--lima)); box-shadow: 0 0 14px var(--ciano); border-radius: 2px; }
+.botoes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.btn {
+  font: 600 14px/1 var(--display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  color: var(--ciano);
+  border: 1px solid var(--ciano);
+  background: rgba(25, 240, 255, .06);
+  box-shadow: 0 0 12px rgba(25, 240, 255, .35), inset 0 0 12px rgba(25, 240, 255, .12);
+  text-decoration: none;
+  border-radius: 4px;
+}
+.btn.rosa { color: var(--rosa); border-color: var(--rosa); background: rgba(255, 46, 136, .07); box-shadow: 0 0 12px rgba(255, 46, 136, .35), inset 0 0 12px rgba(255, 46, 136, .12); }
+
+/* progresso Steam */
+.progresso { display: flex; align-items: center; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+.barra { flex: 1 1 260px; height: 14px; background: var(--bg2); border: 1px solid var(--linha); border-radius: 999px; overflow: hidden; }
+.barra i { display: block; height: 100%; width: 38%; background: linear-gradient(90deg, var(--rosa), var(--ciano)); box-shadow: 0 0 14px var(--ciano); }
+.numero { font: 700 28px/1 var(--display); color: var(--lima); text-shadow: 0 0 10px var(--lima); font-variant-numeric: tabular-nums; }
+.lista { display: grid; gap: 12px; margin-top: 26px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.item { background: var(--bg2); border: 1px solid var(--linha); border-radius: 6px; padding: 16px 18px; display: grid; gap: 6px; min-width: 0; }
+.item h3 { font-size: 17px; letter-spacing: .02em; }
+.item p { margin: 0; color: var(--muted); font-size: 14px; }
+.tag { justify-self: start; font: 600 11px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; padding: 6px 9px; border-radius: 3px; }
+.feito { color: var(--lima); border: 1px solid var(--lima); box-shadow: 0 0 8px rgba(182, 255, 59, .35); }
+.falta { color: var(--amarelo); border: 1px solid var(--amarelo); }
+.bloqueio { color: var(--rosa); border: 1px solid var(--rosa); }
+
+/* galeria */
+.galeria { display: grid; gap: 14px; margin-top: 26px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+figure { margin: 0; background: var(--bg2); border: 1px solid var(--linha); border-radius: 6px; overflow: hidden; min-width: 0; }
+figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+figcaption { padding: 10px 12px; color: var(--muted); font-size: 13px; }
+
+/* prosa */
+.prosa { max-width: 68ch; }
+.prosa p { color: var(--fg); }
+.citacao { border-left: 3px solid var(--rosa); padding: 6px 0 6px 16px; color: var(--muted); font-style: italic; box-shadow: -10px 0 18px -14px var(--rosa); }
+
+/* objetivos */
+.fases { display: grid; gap: 14px; margin-top: 26px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.fase { background: var(--bg2); border: 1px solid var(--linha); border-radius: 6px; padding: 18px; min-width: 0; }
+.fase .rotulo { color: var(--lima); }
+.fase h3 { margin-top: 10px; font-size: 18px; }
+.fase ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+
+/* hotfix */
+.codigo { font: 13px/1.6 ui-monospace, "Cascadia Mono", Consolas, monospace; background: #05040b; border: 1px solid var(--linha); border-radius: 6px; padding: 14px 16px; overflow-x: auto; color: var(--lima); }
+.nota { color: var(--muted); font-size: 13px; margin-top: 12px; }
+footer { padding-block: 40px 56px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--linha); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .titulo { animation: pulso 4s ease-in-out infinite; }
+  @keyframes pulso { 0%, 100% { text-shadow: 0 0 6px var(--rosa), 0 0 18px var(--rosa), 0 0 42px rgba(255, 46, 136, .55); } 50% { text-shadow: 0 0 4px var(--rosa), 0 0 12px var(--rosa), 0 0 28px rgba(255, 46, 136, .4); } }
+}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="rotulo">Central do lançamento · Ilha do Tauá</div>
+  <h1 class="titulo">DAYONE</h1>
+  <p class="subtitulo">Sobrevivência de mundo aberto numa ilha litorânea tomada por zumbis. Pesca, machado, fogueira, arco, carro e um barco que pode levar você embora.</p>
+  <div class="neon-linha"></div>
+  <div class="botoes">
+    <a class="btn" href="#steam">Checklist da Steam</a>
+    <a class="btn rosa" href="#fotos">Fotos do jogo</a>
+    <a class="btn" href="#hotfix">Hotfix 0.1.1</a>
+  </div>
+</header>
+
+<section id="steam">
+  <div class="rotulo">Steam</div>
+  <h2>Onde estamos no caminho para a loja</h2>
+  <div class="progresso" aria-label="Progresso estimado: 4 de 15 itens">
+    <div class="barra"><i style="width:27%"></i></div>
+    <div><span class="numero">4/15</span> <span class="rotulo" style="color:var(--muted)">itens prontos</span></div>
+  </div>
+  <p class="prosa nota" style="margin-top:14px">Levantamento de 2026-10-10 feito com a documentação pública da Steamworks. Confira os valores e tamanhos de arte no painel Steamworks antes de enviar: a Valve pode mudar isso.</p>
+
+  <div class="lista">
+    <article class="item"><span class="tag feito">Pronto</span><h3>Build jogável</h3><p>Partida completa com menu, cutscene, zumbis, carro, construção e barco de fuga rodando no Godot 4.7.1.</p></article>
+    <article class="item"><span class="tag feito">Pronto</span><h3>Trailer e fotos</h3><p>Trailer de 2 minutos e capturas reais do jogo. A galeria desta página já tem material para a loja.</p></article>
+    <article class="item"><span class="tag feito">Pronto</span><h3>Testes automatizados</h3><p>Mais de 200 cenas de teste no jogo real, mais testes visuais com capturas. Regressão principal passando.</p></article>
+    <article class="item"><span class="tag feito">Pronto</span><h3>Hotfix 0.1.1</h3><p>Correções prontas no código (zumbis, animais, arco, ferramentas, câmera). O build 0.1.1 ainda não foi gerado. Veja a seção de hotfix.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Conta Steamworks</h3><p>Criar a conta de parceiro, preencher impostos, dados bancários e a verificação de identidade do titular.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Taxa de US$ 100</h3><p>Paga uma vez por app (ID novo) e reembolsada no pagamento seguinte quando o jogo passar de US$ 1.000 de receita.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Página da loja</h3><p>Descrição, tags, idiomas (português e inglês), classificação etária IARC e requisitos mínimo e recomendado.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Arte de cápsulas</h3><p>Cápsula principal, cabeçalho, capa de biblioteca e fundo. Confirme as medidas exatas na documentação de arte da Steamworks.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Screenshots e trailer na loja</h3><p>A Steam pede um mínimo de capturas: escolha as melhores da galeria e envie o trailer em alta.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Integração Steamworks</h3><p>O projeto ainda não tem SDK nem GodotSteam: faltam conquistas, nuvem e entrada pela Steam.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Upload com SteamPipe</h3><p>Enviar o build pelo steamcmd, com depot e branch <code>default</code>. Branch <code>hotfix</code> para correções rápidas.</p></article>
+    <article class="item"><span class="tag bloqueio">Bloqueia</span><h3>Revisão da Valve</h3><p>Depois do envio, a loja passa por revisão antes de publicar. Não dá para cronometrar com certeza.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Teste de compra e build estável</h3><p>Testar instalação limpa em PC com GT 730 (meta 60 FPS em 1024×768) e confirmar a performance real.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Preço e região</h3><p>Escolher preço, regiões de venda e se entra em promoção de lançamento.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Página de acesso antecipado</h3><p>Decidir se entra em acesso antecipado ou lança direto. Acesso antecipado costuma pedir um build mais polido.</p></article>
+    <article class="item"><span class="tag falta">Falta</span><h3>Data de lançamento</h3><p>Marcar a data (pode ser "em breve" até termos build e arte finais).</p></article>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="rotulo">Fotos</div>
+  <h2>Capturas reais do jogo</h2>
+  <div class="galeria">
+    <figure><img src="img/cosmeticos.png" alt="Jogador com máscara de mergulho e fones em terceira pessoa"><figcaption>Cosméticos no corpo e máscara de mergulho.</figcaption></figure>
+    <figure><img src="img/arco.png" alt="Arco sendo puxado na primeira pessoa com a flecha encaixada"><figcaption>Arco e flecha: segure para puxar, solte para atirar.</figcaption></figure>
+    <figure><img src="img/dinamite.png" alt="Dinamite na mão antes de ser arremessada"><figcaption>Dinamite: 3,5 segundos para correr.</figcaption></figure>
+    <figure><img src="img/escada.png" alt="Escada telescópica apoiada numa plataforma"><figcaption>Escada telescópica apoiada numa plataforma.</figcaption></figure>
+    <figure><img src="img/machado.png" alt="Machado na mão em primeira pessoa"><figcaption>Machado: golpe com recuo e impacto.</figcaption></figure>
+    <figure><img src="img/horda.png" alt="Horda de zumbis"><figcaption>Horda: zumbis se afastam uns dos outros.</figcaption></figure>
+    <figure><img src="img/colisao_fardo.png" alt="Fardos de feno bloqueando o jogador"><figcaption>Fardos de feno: o jogador é bloqueado de verdade.</figcaption></figure>
+    <figure><img src="img/cervo_morte.png" alt="Cervo caído de lado"><figcaption>Cervo abatido tomba de lado.</figcaption></figure>
+    <figure><img src="img/icones.png" alt="Folha com ícones de todos os itens"><figcaption>Todos os ícones do inventário, renderizados dos modelos.</figcaption></figure>
+  </div>
+</section>
+
+<section id="historia">
+  <div class="rotulo">História</div>
+  <h2>A ilha e o COROV-27</h2>
+  <div class="prosa">
+    <p>Um vírus de incubação curta, o COROV-27, infectou quase toda a humanidade em semanas. Quem perde a consciência vira um morto-vivo faminto. A contenção falhou em todos os continentes, e o rádio de emergência só repete: <em>"stay indoors"</em>.</p>
+    <p>O herói é um pescador. Ele cai do barco numa tempestade e acorda de bruços numa praia da Ilha do Tauá, no dia um. O barco está encalhado, há fumaça sobre a vila e fios caídos. Ele não sabe o que aconteceu.</p>
+    <p class="citacao">"They say the sea always gives back what it takes… I wish it hadn't."</p>
+    <p>A ilha tem vilas, quartel, helicópteros caídos, galpões e uma represa. A fauna se espalhou: cervos, galinhas, cães e, à noite, lobos. Os sobreviventes ainda estão lá, cada um com seu próprio motivo.</p>
+  </div>
+  <h3 style="margin-top:36px;font-size:20px;color:var(--lima)">A história de quem fez o jogo (inventada, troque pela sua)</h3>
+  <div class="prosa">
+    <p>Tudo começou numa máquina de casa, com um pescador de mentira e um mapa feito à mão, ponto por ponto. A primeira versão tinha um zumbi, uma praia e um carro que não virava. A partir daí, cada mecânica entrou no jogo porque alguém perguntou "e se o personagem precisasse disso para sobreviver?". O machado veio antes do arco. A fogueira veio antes da fome. E o barco de fuga veio porque era preciso ter um motivo para sair da ilha.</p>
+  </div>
+</section>
+
+<section id="objetivos">
+  <div class="rotulo">Objetivos</div>
+  <h2>Do primeiro dia até a fuga</h2>
+  <div class="fases">
+    <article class="fase"><span class="rotulo">Fase 1 · agora</span><h3>Publicar na Steam</h3><ul><li>Conta de parceiro e taxa</li><li>Arte e página da loja</li><li>Integração Steamworks</li><li>Primeiro build na loja</li></ul></article>
+    <article class="fase"><span class="rotulo">Fase 2</span><h3>Sobreviver mais</h3><ul><li>Pesca e roupas com isolamento</li><li>Salvar o progresso</li><li>Sons da fogueira e dos zumbis ouvidos no jogo</li><li>FPS medido na GT 730</li></ul></article>
+    <article class="fase"><span class="rotulo">Fase 3</span><h3>Dar um mundo</h3><ul><li>Facções e sobreviventes com voz própria</li><li>Diários e bilhetes no loot</li><li>Base com cama e respawn</li></ul></article>
+    <article class="fase"><span class="rotulo">Fim</span><h3>Fugir da ilha</h3><ul><li>Consertar o barco MARÉ MANSA</li><li>Juntar 2 galões, bateria, 2 kits, 2 cordas, 4 toras e o leme</li><li>Partir com o sol nascendo (final inventado; confirme)</li></ul></article>
+  </div>
+</section>
+
+<section id="hotfix">
+  <div class="rotulo">Hotfix</div>
+  <h2>Versão 0.1.1 — correções</h2>
+  <p class="prosa">Correções desde a versão 0.1.0, em ordem de impacto. Cada uma tem um teste no jogo real.</p>
+  <div class="codigo">
+- Zumbis se afastam entre si (fim da horda empilhada)<br>
+- Fardos, cercas e pedras bloqueiam o jogador em terceira pessoa<br>
+- Topo fino (trilho, ripa) não aguenta o jogador em pé<br>
+- Animais tombam de lado ao morrer<br>
+- Dica de saque não aparece por cima do aviso do carro<br>
+- Kit de reparo, chaves e fita consertam o carro (F)<br>
+- Arco e flecha, dinamite, mina, frigideira, cofrinho e celular<br>
+- Cosméticos no corpo (chapéu, fones, coroa, máscara, chuteira, amuleto)<br>
+- Escada telescópica e mochila de trilha<br>
+- Pele, gordura e osso como itens com modelo<br>
+- Mineração com picareta; água com T; doença com carne crua e antibiótico<br>
+- Som da fogueira em laço
+  </div>
+  <p class="nota">Para publicar: branch <code>hotfix</code> no SteamPipe, com build <code>0.1.1</code>, e nota de atualização igual à lista acima. Itens em aberto ficam para a 0.2.</p>
+</section>
+
+<footer>
+  <p>DAYONE · Godot 4.7.1 · Central montada em 2026-10-10. Dados de estado vêm de <code>docs/HANDOFF_PROXIMOS_PASSOS.md</code> e <code>docs/ATUALIZACAO_DAYONE.md</code>.</p>
+</footer>
+
+</div>
