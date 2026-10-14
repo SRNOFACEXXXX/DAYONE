@@ -1,0 +1,40 @@
+DAYONE — jogo de sobrevivência numa ilha tomada por zumbis
+===========================================================
+
+INSTALAR
+  1. Execute DAYONE_Setup.exe.
+  2. Escolha a pasta (a padrão é a sua pasta de programas, sem precisar de administrador).
+  3. Marque "Criar atalho na área de trabalho" se quiser e conclua.
+
+REQUISITOS
+  - Windows 10 ou 11, 64 bits.
+  - Processador de 4 núcleos (ex.: Intel i7-3770) e placa de vídeo com OpenGL 3.3
+    (ex.: GeForce GT 730). Meta: 60 FPS em 1024×768.
+  - Espaço livre de cerca de 2 GB.
+
+COMO JOGAR
+  - Menu: crie seu personagem e entre na partida.
+  - Pegue itens com E, abra o inventário com TAB.
+  - Clique com o botão direito num item para usar; o item na mão vai para os atalhos 1–5.
+  - Cortar árvore: machado na mão, clique. Picareta quebra pedras.
+  - Fogueira: kit ou gravetos + fósforos; segure E para acender e para cozinhar.
+  - Carro: segure E perto da porta. F perto dele abastece (galão) e conserta (kit, chaves ou fita).
+  - Barco de fuga: MARÉ MANSA, praia sul. Entregue as peças para fugir da ilha.
+  - Água: T bebe de lago ou mar (água do mar e água parada deixam doente; antibiótico cura).
+
+CONTROLES BÁSICOS
+  WASD mover · Shift correr · Espaço pular · Ctrl agachar · Alt andar devagar
+  Clique esquerdo ação/tiro · Clique direito mirar · R recarregar · G granada
+  E pegar/usar · F abastecer/inspecionar · T beber · H curar · C câmera
+  TAB inventário · 1–5 atalhos · Esc pausa · configurações no menu de Ajustes.
+
+ARQUIVOS
+  - Salvamentos e ajustes ficam em %APPDATA%\Godot\app_userdata\DAYONE.
+  - Para desinstalar, use "Aplicativos" do Windows ou o desinstalador na pasta do jogo.
+
+PROBLEMAS CONHECIDOS (versão 0.1.1)
+  - Sons de zumbi e da fogueira ainda não foram ouvidos em todas as situações.
+  - Sem salvamento de progresso: cada partida começa do zero.
+  - Pesca, roupas com isolamento e algumas peças de cenário ainda não estão prontas.
+
+Versão 0.1.1 · dúvidas e bugs: abra uma issue no repositório do projeto.
