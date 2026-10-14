@@ -18,3 +18,6 @@ battle_royale/Assets/_ext/
 *.avi
 # Cópias antigas
 teste GPT - Copia/
+
+# Saídas de build/instalador (regeráveis)
+build/
